@@ -1,0 +1,20 @@
+*~
+.DS_Store
+.babelrc
+.editorconfig
+
+# Jekyll site stuff
+_data/*
+_includes/*
+_site/*
+_config.yml
+Gemfile
+Gemfile.lock
+index.md
+interface.md
+typography.md
+
+test/*
+dist/browser.css
+npm-shrinkwrap.json
+webpack.config.js

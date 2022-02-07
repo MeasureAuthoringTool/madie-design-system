@@ -1,0 +1,45 @@
+*.gem
+*.swp
+*~
+.DS_Store
+.idea/
+.bundle/
+.jekyll-metadata
+.ruby-gemset
+.ruby-version
+.sass-cache
+/vendor
+Gemfile.lock
+_site/
+site/_site/
+tmp/*
+package-lock.json
+
+# Logs
+*.log
+logs
+npm-debug.log*
+coverage
+
+# Build files
+build
+dist
+
+# Dependencies
+.env
+node_modules
+
+# vscode
+launch.json
+
+# Storybook Static Build Location
+react/storybook-static
+shared/storybook-static
+
+# post-build files in react dir
+react/fonts
+react/images
+react/styles
+
+# temporary script to build and deploy chromatic locally w/ project token
+shared/deploy-chromatic.sh
