@@ -1,0 +1,52 @@
+@import '../settings/index';
+
+.qpp-c-link {
+  color: $blue-70;
+  text-decoration: underline;
+
+  &:hover,
+  &.qpp-c-link--hover {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.qpp-c-link--focus {
+    @include link-focus;
+  }
+}
+
+.qppds a {
+  color: $blue-70;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include link-focus;
+  }
+}
+
+.qppds {
+  .qpp-dark-background {
+    a {
+      color: $white;
+    }
+  }
+}
+
+.qppds.qpp-dark-background {
+  a {
+    color: $white;
+  }
+}
+
+.qppds a:not(.qpp-c-button):not(.qpp-c-tabs__item) > svg,
+.qpp-c-link:not(.qpp-c-button):not(.qpp-c-tabs__item) > svg {
+  @include inline-icon;
+  margin-top: -0.3em;
+  margin-left: rem(6px);
+  width: 1.2em;
+  height: 1.2em;
+}

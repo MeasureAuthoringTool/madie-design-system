@@ -1,0 +1,22 @@
+.menu {
+  padding: 40px 0;
+  width: 25%;
+  position: fixed;
+  background-color: rgb(240, 240, 240);
+  height: 100vh;
+}
+
+.menu-label {
+  padding: 0 30px;
+}
+
+.menu-list a {
+  padding: 10px 30px;
+}
+
+
+.content {
+  margin-left: 25%;
+  padding: 40px;
+  flex: 0 0 75%;
+}

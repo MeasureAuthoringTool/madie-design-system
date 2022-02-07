@@ -1,0 +1,85 @@
+@import '../settings/index';
+
+// scope all base (global) styles nested under .qppds selector
+// this can help avoid conflicts between new qppds styles and legacy styles
+.qppds,
+.qpp-prose {
+  // *:not() { // TODO: ignore component classes
+  // Override legacy qpp-style label styles
+  // TODO: reevaluate this when we get to forms and fieldsets
+  label {
+    @include input-label;
+  }
+
+  @for $i from 1 through length($headings) {
+    $heading: nth($headings, $i);
+
+    h#{$i},
+    .h#{$i} {
+      @include heading($heading);
+    }
+  }
+
+  p,
+  .p1 {
+    @include p1;
+  }
+
+  .p2 {
+    @include p2;
+  }
+
+  .l1 {
+    @include l1;
+  }
+
+  .l2 {
+    @include l2;
+  }
+  //}
+}
+
+// prefixed, single-use global classes for typography styles that can
+// be used outside a .qppds wrapper.
+.qpp-label {
+  @include input-label;
+}
+
+@for $i from 1 through length($headings) {
+  $heading: nth($headings, $i);
+
+  .qpp-h#{$i} {
+    @include heading($heading);
+  }
+}
+
+.qpp-p,
+.qpp-p1 {
+  @include p1;
+}
+
+.qpp-p2 {
+  @include p2;
+}
+
+.qpp-l1 {
+  @include l1;
+}
+
+.qpp-l2 {
+  @include l2;
+}
+
+.qpp-error-message {
+  color: $red-60;
+  display: block;
+  font-size: $font-size-14;
+  font-weight: 400;
+}
+
+.qpp-hint-message {
+  color: $gray-60;
+  display: block;
+  font-size: $font-size-14;
+  font-weight: 400;
+}

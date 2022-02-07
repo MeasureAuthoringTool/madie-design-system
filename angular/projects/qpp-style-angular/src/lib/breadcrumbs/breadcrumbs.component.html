@@ -1,0 +1,16 @@
+<nav class="qpp-c-breadcrumbs qpp-c-breadcrumbs--light" aria-label="Breadcrumbs" *ngIf="breadcrumbs?.length">
+  <ol class="qpp-c-breadcrumbs__list">
+    <li *ngFor="let breadcrumb of breadcrumbs" class="qpp-c-breadcrumbs__list-item">
+      <ng-container *ngIf="breadcrumb.external; else internal">
+        <a class="qpp-c-breadcrumbs__link" [attr.href]="breadcrumb.url">
+          <span>{{breadcrumb.title}}</span>
+        </a>
+      </ng-container>
+      <ng-template #internal>
+        <a class="qpp-c-breadcrumbs__link" [routerLink]="breadcrumb.url" [queryParams]="breadcrumb.queryParams">
+          <span>{{breadcrumb.title}}</span>
+        </a>
+      </ng-template>
+    </li>
+  </ol>
+</nav>

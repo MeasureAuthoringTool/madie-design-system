@@ -1,0 +1,16 @@
+.file-upload-container {
+  height: 200px;
+  width: 200px;
+  max-height: 400px;
+  max-width: 400px;
+  outline: 2px dotted black;
+  border-radius: 2px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logger-container {
+  max-height: 400px;
+  overflow-y: scroll;
+}

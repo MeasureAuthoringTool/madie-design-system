@@ -1,0 +1,19 @@
+.tabs > ul {
+  margin: 0;
+}
+
+.example-content {
+  margin: 30px 0 70px;
+}
+
+.example-content:first-child > p > .tag {
+  margin-bottom: 30px;
+}
+
+.example-content:not(:first-child) > .tag {
+  margin-bottom: 10px;
+}
+
+pre {
+  padding: 10px;
+}

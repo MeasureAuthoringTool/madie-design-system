@@ -1,0 +1,597 @@
+@import '../settings/index';
+
+footer.legacy-footer {
+  background: $color-navy;
+  color: $nav-text-color;
+  font-size: 1rem;
+  margin-top: 100px;
+  padding: 0 0 25px;
+
+  h4 {
+    color: $nav-text-color;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 26px;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: block;
+      margin-bottom: 10px;
+      margin-right: 2em;
+      @include breakpoint(sm) {
+        display: inline-block;
+      }
+
+      a {
+        margin: 0;
+
+        &:link,
+        &:visited {
+          color: $nav-color-secondary-light;
+          text-decoration: none;
+        }
+
+        &:focus,
+        &:hover {
+          color: $nav-color-secondary-light;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &.small {
+      @include breakpoint(xs) {
+        margin-top: 40px;
+      }
+
+      li {
+        margin: 0 1em 1em 0;
+      }
+
+      .divider {
+        border-left: 1px solid #294d71;
+        height: 16px;
+        padding-right: 1em;
+
+        @include breakpoint(xs) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .banner {
+    background: $color-gray-light;
+    border-top: 1px solid $color-gray-very-light;
+    color: $color-gray-darker;
+    margin-bottom: 25px;
+    padding: 15px 0;
+
+    span {
+      color: $color-navy;
+      font-weight: $rubik-medium;
+    }
+  }
+
+  .logo-container {
+    border-bottom: 1px solid #294d71;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+
+    @include breakpoint(xs) {
+      border-bottom: none;
+      flex-direction: column;
+    }
+
+    .social-container {
+      border-top: none;
+      display: flex;
+      margin-top: 0;
+      padding-top: 15px;
+
+      @include breakpoint(xs) {
+        border-top: 1px solid #294d71;
+        margin-top: 30px;
+        padding: 30px 0 0;
+      }
+
+      .social-link {
+        align-items: center;
+        border: 1px solid #80cbc4;
+        border-radius: 50%;
+        color: $color-white;
+        display: flex;
+        height: 45px;
+        justify-content: center;
+        margin-left: 15px;
+        text-decoration: none;
+        width: 45px;
+
+        @include breakpoint(xs) {
+          margin-left: 0;
+          margin-right: 15px;
+        }
+
+        .glyphicon-twitter,
+        .glyphicon-youtube {
+          font-size: 20px;
+        }
+
+        .glyphicon-twitter::before {
+          content: '\f099';
+          font-family: 'FontAwesome';
+        }
+
+        .glyphicon-youtube::before {
+          content: '\f167';
+          font-family: 'FontAwesome';
+        }
+      }
+    }
+  }
+
+  .qpp-logo {
+    height: 55px;
+    width: 233px;
+    @include breakpoint(xs) {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .hhs-logo-container {
+    border-top: 1px solid #294d71;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    @include breakpoint(sm) {
+      border-left: 1px solid #294d71;
+      border-top: none;
+      padding-left: 15px;
+    }
+    @include breakpoint(md) {
+      padding-left: 30px;
+    }
+
+    img {
+      display: block;
+      height: 150px;
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      @include breakpoint(xs) {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+      }
+
+      // IE11 Fix
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        width: 100%;
+      }
+    }
+  }
+
+  #build-version {
+    display: none;
+  }
+
+  // Authenticated Footer
+
+  .container-full-width {
+    margin-left: 40px;
+    margin-right: 0;
+
+    .logo-container .qpp-logo {
+      margin: 0;
+      @include breakpoint(xs) {
+        display: block;
+        margin: auto;
+      }
+      @include breakpoint(sm) {
+        display: block;
+        margin: auto;
+      }
+      @include breakpoint(md) {
+        margin: 0;
+      }
+    }
+
+    .hhs-logo-container {
+      @include breakpoint(sm) {
+        border-left: none;
+        border-top: 1px solid #294d71;
+      }
+
+      @include breakpoint(md) {
+        border-left: 1px solid #294d71;
+        border-top: none;
+      }
+    }
+
+    .links {
+      ul li {
+        @include breakpoint(sm) {
+          display: block;
+        }
+
+        @include breakpoint(md) {
+          display: inline-block;
+        }
+      }
+    }
+
+    .row {
+      margin-right: 0;
+    }
+  }
+
+  .adobe-link {
+    svg {
+      fill: $color-teal-light;
+      height: 16px;
+      margin-right: 6px;
+      position: relative;
+      top: 4px;
+      width: 16px;
+    }
+  }
+
+  .email-note-link {
+    color: #0073c8;
+    &:hover {
+      color: #125496;
+    }
+    &:focus {
+      color: #125496;
+    }
+  }
+
+  .footer-trs-infotip {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    height: 16px;
+    padding-left: 5px;
+  }
+}
+
+// New DS footer css
+
+.feedback-session-sign-up .responsive-container {
+  text-align: center;
+  font-size: 0.875rem;
+
+  a {
+    color: $blue-60;
+    text-decoration: $link-decoration;
+
+    &:hover {
+      color: $blue-70;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+
+  p {
+    margin-bottom: 32px;
+  }
+
+  hr {
+    margin: 32px 0;
+  }
+}
+
+footer {
+  background: $white;
+  background-color: $gray-02;
+  color: $black;
+  font-size: 0.875rem;
+
+  a {
+    color: $gray-90;
+    text-decoration: none;
+
+    &:hover {
+      color: $gray-90;
+      text-decoration: underline;
+    }
+  }
+
+  hr {
+    margin: 32px 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    &.small {
+      padding: 0;
+      margin: 0;
+      font-size: 100%;
+
+      li {
+        margin: 0;
+        display: inline-block;
+
+        @include breakpoint(xs) {
+          display: block;
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 32px;
+          }
+        }
+      }
+
+      .divider {
+        border-left: 1px solid $gray-02;
+        height: 16px;
+        padding-right: 1.5em;
+
+        @include breakpoint(xs) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #build-version {
+    display: none;
+  }
+
+  .global-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
+
+    @include breakpoint(sm) {
+      flex-direction: column;
+    }
+
+    @include breakpoint(md) {
+      flex-direction: row;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .sub-title {
+      font-weight: 500;
+      margin-top: 32px;
+    }
+
+    .contact-title {
+      font-weight: lighter;
+    }
+
+    .footer-contact-cms {
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .footer-social-newsletter {
+      .social-container {
+        margin-bottom: 64px;
+
+        @include breakpoint(xs) {
+          margin-bottom: 20px;
+        }
+
+        @include breakpoint(sm) {
+          margin-bottom: 20px;
+        }
+
+        @include breakpoint(md) {
+          margin-bottom: 64px;
+        }
+
+        .social-link {
+          padding-right: 10px;
+        }
+      }
+
+      .subscriber-form {
+        .form-control {
+          border-radius: 4px 0 0 4px;
+          font-size: 14px;
+          height: 46px;
+          width: 250px;
+
+          @include breakpoint(xs) {
+            border-radius: 4px;
+            width: 100%;
+          }
+
+          @include breakpoint(sm) {
+            border-radius: 4px 0 0 4px;
+            width: 100%;
+          }
+        }
+
+        .btn-subscribe {
+          border-radius: 0 4px 4px 0;
+          margin: 0;
+          line-height: 1.42857;
+          font-size: 14px;
+          font-weight: 300;
+          text-align: center;
+          width: 100px;
+
+          @include breakpoint(xs) {
+            border-radius: 4px;
+            margin-top: 1rem;
+            width: 100%;
+          }
+
+          @include breakpoint(sm) {
+            border-radius: 0 4px 4px 0;
+            width: 100px;
+          }
+        }
+      }
+    }
+
+    .footer-trs-infotip {
+      display: inline-block;
+      position: relative;
+      top: 4px;
+      height: 16px;
+      padding-left: 5px;
+    }
+  }
+
+  .qpp-hhs-logo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
+
+    @include breakpoint(sm) {
+      flex-direction: row;
+    }
+
+    .qpp-logo-container {
+      margin: 0;
+
+      @include breakpoint(xs) {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+
+      @include breakpoint(sm) {
+        flex-direction: row;
+        margin: 0;
+      }
+
+      .qpp-logo {
+        height: 40px;
+        width: 170px;
+      }
+    }
+
+    .hhs-logo-container {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+      padding: 0;
+
+      @include breakpoint(xs) {
+        flex-direction: column;
+        padding-bottom: 8rem;
+        width: 100%;
+      }
+
+      @include breakpoint(sm) {
+        flex-direction: row;
+        width: 60%;
+      }
+
+      @include breakpoint(md) {
+        flex-direction: row;
+        width: 50%;
+      }
+
+      @include breakpoint(lg) {
+        flex-direction: row;
+        width: 40%;
+      }
+
+      .hhs-logo {
+        width: 53px;
+        height: 52px;
+        padding: 0;
+        margin: 0;
+
+        @include breakpoint(xs) {
+          margin: 3rem auto;
+        }
+
+        @include breakpoint(sm) {
+          margin: 0;
+        }
+      }
+
+      p {
+        line-height: 1.5;
+        margin-top: -5px;
+        padding-left: 15px;
+        width: 410px;
+
+        @include breakpoint(xs) {
+          margin-top: 0;
+          padding: 0;
+          width: 100%;
+        }
+
+        @include breakpoint(sm) {
+          padding-left: 15px;
+          width: 410px;
+        }
+      }
+    }
+  }
+}
+
+.global-footer,
+.feedback-session-sign-up {
+  .responsive-container {
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @include breakpoint(xs) {
+      padding: 0 32px;
+    }
+
+    @include breakpoint(sm) {
+      padding: 0 32px;
+    }
+
+    @include breakpoint(md) {
+      padding: 0 15px;
+    }
+  }
+}
+
+footer .subscriber-form form {
+  display: flex;
+  align-items: center;
+
+  @include breakpoint(xs) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,39 @@
+version: 0.2
+env:
+  variables:
+    STAGE: 'start build'
+    NODE_ENV: "TEST"
+    HOME: '.'
+    ENV_SQ_HOST_URL: "https://sonarcloud.io"
+    ENV_SQ_ORGANIZATION: "cmsgov"
+    ENV_SQ_PROJECT: "qpp-style"
+  parameter-store:
+    PS_SONAR_CLOUD_TOKEN: "/devops/extra/sonarcloud-token"
+
+phases:
+  pre_build:
+    commands:
+      - STAGE="pre-build"
+      - n 14.15.4
+      - node --version
+      - npm --version
+      - npm install -g sonarqube-scanner
+
+  build:
+    commands:
+      - STAGE="ci tests"
+      - cd react && npm ci && npm test && npm run start
+
+      - STAGE="Sonar Cloud Analysis"
+      - |
+        sonar-scanner \
+            -Dsonar.projectKey=${ENV_SQ_PROJECT} \
+            -Dsonar.branch.name=${CODEBUILD_SOURCE_VERSION} \
+            -Dsonar.organization=${ENV_SQ_ORGANIZATION} \
+            -Dsonar.sources="." \
+            -Dsonar.host.url=${ENV_SQ_HOST_URL} \
+            -Dsonar.login=${PS_SONAR_CLOUD_TOKEN} \
+
+  post_build:
+    commands:
+      - echo "#### Code build succeeding $CODEBUILD_BUILD_SUCCEEDING"

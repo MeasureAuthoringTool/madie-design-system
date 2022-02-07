@@ -1,0 +1,9 @@
+{
+  "extends": ["@cmsgov/stylelint-config-design-system"],
+  "ignoreFiles": ["styles/!(qppds)/**/*", "styles/*.scss"],
+  "rules": {
+    "color-hex-length": "long",
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 3
+  }
+}

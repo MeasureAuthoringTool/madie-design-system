@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+$font-path: '~qpp-style/fonts/';
+@import '~qpp-style/styles/qpp-style';
+@import '~qpp-style/styles/qppds';
+
+@import '../node_modules/bulma/bulma.sass';
+@import './scss/tooltip';
+@import '../node_modules/highlight.js/styles/monokai-sublime.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.pad-h-100 {
+  padding: 0 100px;
+}
+
+.custom-class-modal-panel {
+  .qpp-c-modal__header,
+  .qpp-c-modal__footer {
+    background-color: lightcoral;
+  }
+}
+
+.custom-class-modal-backdrop {
+  &.qpp-c-modal-overlay.cdk-overlay-backdrop {
+    background-color: rgba(173, 216, 230, 0.5);
+  }
+}

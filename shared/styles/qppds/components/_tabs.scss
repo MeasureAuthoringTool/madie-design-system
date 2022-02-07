@@ -1,0 +1,197 @@
+@import '../settings/index';
+
+/* stylelint-disable selector-max-specificity */
+
+.qpp-c-tabs {
+  border-bottom: 1px solid $gray-10;
+  display: flex;
+}
+
+/*
+`Tab Panel`
+*/
+.qpp-c-tabs__panel {
+  background-color: transparent;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: $spacing-16 0;
+
+  &[aria-hidden='true'] {
+    /* stylelint-disable declaration-no-important */
+    display: none !important;
+    /* stylelint-enable declaration-no-important */
+  }
+
+  // Increase size on larger screens
+  @media (min-width: $width-xs) {
+    padding: $spacing-24 0;
+  }
+}
+
+/*
+`Tab`
+*/
+.qpp-c-tabs__item,
+.qpp-c-tabs__item:visited,
+.qppds .qpp-c-tabs__item,
+.qppds .qpp-c-tabs__item:visited {
+  appearance: none;
+  background-color: transparent;
+  border-bottom: 4px solid transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  color: $gray-80;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $font-size-16;
+  font-weight: $font-regular;
+  line-height: $line-height-sm;
+  padding: $spacing-24 $spacing-8 rem(20px);
+  position: relative;
+  text-decoration: none;
+
+  // font size and spacing on larger screens
+  @media (min-width: $width-xs) {
+    font-size: $font-size-16;
+    padding: $spacing-24 $spacing-16 rem(20px);
+  }
+
+  // Override CMSDS pseudo-element when including cmsds css
+  &::after {
+    background-color: transparent;
+    content: none;
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  // States
+  &[aria-selected='true'] {
+    border-bottom: 4px solid $blue-60;
+    color: $gray-80;
+    pointer-events: none;
+    font-weight: $font-medium;
+
+    &::after {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+
+    &:focus {
+      border-bottom: 4px solid $blue-60;
+    }
+
+    &:focus::after {
+      background-color: transparent;
+    }
+  }
+
+  &[aria-disabled='true'] {
+    background-color: $gray-10;
+    border-color: $gray-10;
+    color: $gray-60;
+    pointer-events: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $gray-20;
+      border-color: $gray-20;
+      color: $gray-70;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: $gray-80;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    outline: 1px solid $blue-60;
+    outline-offset: -1px;
+    background-color: $blue-10;
+    box-shadow: none;
+    color: $gray-80;
+    text-decoration: none;
+    line-height: $line-height-sm;
+    padding: $spacing-24 $spacing-8 rem(20px);
+    border-bottom: 4px solid transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+
+    &::after {
+      background-color: $gray-80;
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+
+    @media (min-width: $width-xs) {
+      font-size: $font-size-16;
+      padding: $spacing-24 $spacing-16 rem(20px);
+    }
+  }
+
+  // SVG icons
+  > svg {
+    @include inline-icon-md;
+  }
+}
+
+.qpp-c-tabs--mui {
+  height: unset;
+  align-items: unset;
+  box-shadow: none;
+  border-bottom: 1px solid $gray-10;
+
+  appearance: none;
+  background-color: transparent;
+
+  .qpp-c-tabs__item {
+    min-width: unset;
+    font-family: $font-rubik;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: $font-size-16;
+    padding: $spacing-24 $spacing-8 rem(20px);
+    font-weight: $font-regular;
+    border-bottom: 4px solid transparent;
+    line-height: $line-height-sm;
+
+    &[aria-selected='true'] {
+      border-bottom: 4px solid $blue-60;
+      color: $gray-80;
+      font-weight: $font-medium;
+    }
+
+    // font size and spacing on larger screens
+    @media (min-width: $width-xs) {
+      font-size: $font-size-16;
+      padding: $spacing-24 $spacing-16 rem(20px);
+    }
+  }
+
+  .MuiTab-textColorInherit,
+  .MuiTab-textColorInherit.Mui-disabled {
+    opacity: 1;
+  }
+
+  .MuiTabs-indicator {
+    display: none;
+  }
+}
+
+/* stylelint-enable selector-max-specificity */

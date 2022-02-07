@@ -1,0 +1,99 @@
+{
+  "default": [
+    {
+      "url": "/user/submissions",
+      "label": "Account Home"
+    },
+    {
+      "url": "/user/dashboard",
+      "label": "Eligibility & Reporting"
+    },
+    {
+      "url": "/user/submissions/facility-based-preview",
+      "label": "Facility Based Preview"
+    },
+    {
+      "urlExpressionToMatch": "/user/submissions/feedback/[0-9][0-9][0-9][0-9]",
+      "url": "/user/submissions/feedback",
+      "label": "Performance Feedback"
+    },
+    {
+      "url": "/user/apm-incentive-payments",
+      "label": "APM Incentive Payments"
+    },
+    {
+      "url": "/user/submissions/doctors-clinicians-preview",
+      "label": "Doctors & Clinicians Preview"
+    },
+    {
+      "url": "/user/exception/#/landing",
+      "label": "Exceptions Application"
+    },
+    {
+      "className": "stroke-based-icon",
+      "url": "/user/targeted-review/#/landing",
+      "label": "Targeted Review"
+    },
+    {
+      "url": "/user/submissions/reports",
+      "label": "Reports"
+    },
+    {
+      "url": "/user/manage-access",
+      "label": "Manage Access",
+      "listOfLinks": [
+        {
+          "url": "/user/impersonate",
+          "label": "QPP User Impersonation"
+        },
+        {
+          "url": "/user/self-nomination/#/landing",
+          "label": "Registry/QCDR Self-Nomination",
+          "items": []
+        }
+      ]
+    },
+    {
+      "url": "/resources/help-and-support",
+      "label": "Help and Support"
+    }
+  ],
+  "devPre": [
+    {
+      "url": "/user/applications",
+      "label": "My Applications"
+    },
+    {
+      "url": "/user/test-data",
+      "label": "My Test Data"
+    },
+    {
+      "url": "/user/manage-access",
+      "label": "Manage Access"
+    },
+    {
+      "url": "/developers",
+      "label": "Developer Tools"
+    }
+  ],
+  "internalReviewers": [
+    {
+      "url": "/user/reviewers",
+      "label": "Dashboard Home"
+    },
+    {
+      "url": "/reviewer/exception",
+      "label": "Exceptions Application"
+    },
+    {
+      "className": "stroke-based-icon",
+      "url": "/reviewer/targeted-review",
+      "label": "Targeted Review"
+    },
+    {
+      "url": "/self-nomination",
+      "label": "Self Nomination"
+    }
+  ],
+  "viewer": []
+}

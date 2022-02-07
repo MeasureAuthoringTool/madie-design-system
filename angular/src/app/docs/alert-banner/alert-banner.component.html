@@ -1,0 +1,127 @@
+<div class="container">
+  <h1>Alert Banner Component</h1>
+  
+  <app-tabs
+    [tabs]="[
+      {
+        name: 'Overview',
+        examples: [{ scss: imports,
+          documentation: alertBannerDocumentation }]
+      },
+      {
+        name: 'Basic Info Banner',
+        examples: [
+          {
+            html: basicHtml,
+            content: basicBanner
+          }
+        ]
+      },
+      {
+        name: 'Warning Banner',
+        examples: [
+          {
+            html: basicHtml,
+            content: warningBanner
+          }
+        ]
+      },
+      {
+        name: 'Error Banner',
+        examples: [
+          {
+            html: basicHtml,
+            content: errorBanner
+          }
+        ]
+      },
+      {
+        name: 'Success Banner',
+        examples: [
+          {
+            html: basicHtml,
+            content: successBanner
+          }
+        ]
+      },
+      {
+        name: 'No Title Banner',
+        examples: [
+          {
+            html: basicHtml,
+            content: noTitleBanner
+          }
+        ]
+      }
+    ]">
+  </app-tabs>
+
+  <ng-template #alertBannerDocumentation>
+    <h2>Alert Notification Banner</h2>
+    <p>This directive shows an alert banner.</p>
+  
+    <h2>Attributes</h2>
+    <table>
+      <tr>
+        <td><b>Name</b></td>
+        <td><b>Type</b></td>
+        <td><b>Example Value</b></td>
+        <td><b>Required?</b></td>
+        <td><b>Description</b></td>
+        <td><b>Example</b></td>
+      </tr>
+      <tr>
+        <td>alertBanner</td>
+        <td>AlertBanner</td>
+        <td>type: AlertBannerType.Error, title: bannerTitle</td>
+        <td>yes</td>
+        <td>Input for the alert banner</td>
+        <td><code [highlight]="'<cms-alert-banner [alertBanner]=informationBanner> </cms-alert-banner>'"></code></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>AlertBannerType</td>
+        <td>Info = 'info',
+          Warning = 'warning',
+          Error = 'error',
+          Success = 'success'</td>
+        <td>yes</td>
+        <td>Type enum for the banner; Info, Warning, Success, and Error</td>
+        <td><code [highlight]="'informationBanner = {type: AlertBannerType.Success}'"></code></td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>string</td>
+        <td>"Title"</td>
+        <td>no</td>
+        <td>Input for the alert banner</td>
+        <td><code [highlight]="'informationBanner = {type: AlertBannerType.Info, title: bannerTitle}'"></code></td>
+      </tr>
+    </table>
+  </ng-template>
+  
+  <ng-template #basicBanner>
+    <cms-alert-banner [alertBanner]="banners[0]">Lorem ipsum dolor sit amet, <a class="qpp-c-link" href="javascript:void(0);">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </cms-alert-banner>
+  </ng-template>
+  
+  <ng-template #warningBanner>
+    <cms-alert-banner [alertBanner]="banners[1]">Lorem ipsum dolor sit amet, <a class="qpp-c-link" href="javascript:void(0);">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </cms-alert-banner>
+  </ng-template>
+  
+  <ng-template #errorBanner>
+    <cms-alert-banner [alertBanner]="banners[2]">Lorem ipsum dolor sit amet, <a class="qpp-c-link" href="javascript:void(0);">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </cms-alert-banner>
+  </ng-template>
+  
+  <ng-template #successBanner>
+    <cms-alert-banner [alertBanner]="banners[3]">Lorem ipsum dolor sit amet, <a class="qpp-c-link" href="javascript:void(0);">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </cms-alert-banner>
+  </ng-template>
+  
+  <ng-template #noTitleBanner>
+    <cms-alert-banner [alertBanner]="banners[4]">Lorem ipsum dolor sit amet, <a class="qpp-c-link" href="javascript:void(0);">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </cms-alert-banner>
+  </ng-template>
+</div>

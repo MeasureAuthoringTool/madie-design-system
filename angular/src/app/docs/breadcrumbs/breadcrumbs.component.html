@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Breadcrumbs</h1>
+
+  <app-tabs
+    [tabs]="[
+      {
+        name: 'SCSS',
+        examples: [{ scss: scss }]
+      },
+      {
+        name: 'Basic',
+        examples: [
+          {
+            html: basicHtml,
+            content: basicContent
+          }
+        ]
+      }
+    ]">
+  </app-tabs>
+
+  <ng-template #basicContent>
+    <div class="qpp-c-page-header">
+      <div class="qpp-c-page-header__main-content">
+        <cms-breadcrumbs
+          [breadcrumbs]="breadcrumbs"
+        >
+        </cms-breadcrumbs>
+      </div>
+    </div>
+  </ng-template>
