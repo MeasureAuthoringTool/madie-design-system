@@ -1,15 +1,16 @@
 {
-  "name": "qpp-style",
-  "version": "9.12.2",
-  "description": "Shared style guide across the QPP program.",
+  "name": "@madie/madie-design-system",
+  "version": "1.0.0",
+  "description": "Shared style guide across the Madie program.",
   "main": "dist/index.js",
-  "homepage": "https://cmsgov.github.io/qpp-style",
+  "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run clean && webpack-cli --progress --colors --env.production=true && npm run build-react",
     "dev": "npm run clean && webpack-cli --progress --colors --watch --env.production=false",
     "clean": "rimraf build && rimraf dist",
     "build-react": "webpack --progress --config webpack.config.react.js",
+    "build-react-watch": "webpack --progress --config --watch webpack.config.react.js",
     "start": "npm run build",
     "test": "jest",
     "precommit": "npm run format && npm run lint && npm run format-styles",
@@ -88,7 +89,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CMSgov/qpp-style.git"
+    "url": "git+https://github.com/MeasureAuthoringTool/madie-design-system.git"
   },
   "keywords": [
     "QPP",
@@ -101,7 +102,7 @@
   "author": "Centers for Medicare & Medicaid Services",
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/CMSgov/qpp-style/issues"
+    "url": "https://github.com/MeasureAuthoringTool/madie-design-system/issues"
   },
   "dependencies": {
     "@cmsgov/design-system": "^2.13.0",
