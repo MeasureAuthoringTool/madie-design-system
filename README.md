@@ -1,10 +1,10 @@
-# qpp-style
+# @madie/madie-design-system
 
 Shared style guide across the QPP program.
 
-This repository houses `qpp-style`, a shared style guide/library for the QPP program. `qpp-style` was built on top of bootstrap.
+This repository houses `@madie/madie-design-system`, a shared style guide/library for the QPP program. `@madie/madie-design-system` was built on top of bootstrap.
 
-The purpose of `qpp-style` is to provide assets such as CSS, SCSS, JS, images and fonts to design a site with the visual style of `qpp.cms.gov`. This allows multiple sites built in separate repositories and with different languages to share a global style without repeating styling code. The qpp-style library is primarily distributed on the node/npm ecosystem.
+The purpose of `madie/madie-design-system` is to provide assets such as CSS, SCSS, JS, images and fonts to design a site with the visual style of `madie`. This allows multiple sites built in separate repositories and with different languages to share a global style without repeating styling code. The qpp-style library is primarily distributed on the node/npm ecosystem.
 
 ## System Requirements
 
@@ -12,60 +12,72 @@ Node 14.15.4 (LTS)
 
 ## Style Guide Documentation
 
-The style guide is located at https://qpp.cms.gov/style-guide
+The style guide is located at https://zeroheight.com/079543162/p/01a512-qpp-design-system
 
 ## Install and Use
 
-Use [npm](https://www.npmjs.com/) to install qpp-style. If you haven’t already installed the `qpp-style` [module](https://www.npmjs.com/package/qpp-style), run the following command to install qpp-style into your project.
+Use [npm](https://www.npmjs.com/) to install madie-design-system. If you haven’t already installed the `@madie/madie-design-system` [module](https://www.npmjs.com/package/@madie/madie-design-system), run the following command to install madie-design-system into your project.
 
+
+<!-- npm install --save @madie/madie-design-system``` -->
+
+Once installed, all the assets from `madie-design-system` need to be consumed by your project. The simplest way to to this is by copying over the relevant assets with build commands and include them from the html with link tags. For example:
+
+To build and develop locally, you can either initialize a storybook, or build and consume the linked project elsewhere.
+
+1. Build shared assets required for react directory. From shared, and react directories:
+```sh
+$ npm install
 ```
-npm install --save qpp-style
+
+2. Build react from withing react:
+```sh
+$ npm run build-react
 ```
 
-Once installed, all the assets from `qpp-style` need to be consumed by your project. The simplest way to to this is by copying over the relevant assets with build commands and include them from the html with link tags. For example:
+From here you can either initialize a story book as a testing playground from within react:
+```sh 
+$ npm run storybook
+```
 
-1. Build all assets that came with the module:
-    ```sh
-    $ pushd .
-    $ cd ./node_modules/qpp-style
-    $ npm install
-    $ npm start
-    ```
-1. Copy assets to project directory:
-    ```sh
-    $ popd
-    $ mkdir -p public
-    $ cp -r ./node_modules/qpp-style/build/* public
-    ```
-1. Create webpage:
-    ```sh
-    $ touch public/index.html
-    ```
-1. Link to css in html:
-    ```html
-    <html lang="en">
-        <head>
-            <link href="/css/qpp-style.css" type="text/css" rel="stylesheet" />
-        </head>
-        <body>
-            <h1>QPP Quality Payment Program</h1>
-        </body>
-    </html>
-    ```
+Or concurrently build and work locally with a consuming project:
+```sh
+$ build-react-watch
+```
 
-Another way to use the style is by importing the sass into your project. This can be done in the following way:
+Establish an npm link relationship with the repository you're working on:
+In app repo root:
+```sh
+$ npm install
+$ npm link node_modules/react
+$ npm link node_modules/react-dom
+```
 
-1. Copy the fonts to `/fonts`:
+in library root:
+```sh
+$ npm link
+$ npm link react
+$ npm link react-dom
+```
 
-    ```sh
-    $ mkdir -p fonts
-    $ cp -r ./node_modules/qpp-style/fonts/* fonts
-    ```
+In app repo:
+```sh
+$ npm link @madie/madie-design-system
+```
+Reflect changes in real time, from within react:
+```sh
+$ build-react-watch
+```
 
-1. Create a `.scss` file and adding this line:
+In order to use styles associated with the library in a consuming project you will need to copy the `/fonts` and `images` directory from node_modules reference them with scss, and associate a font-path variable.
+
+Create a `.scss` file and adding the following lines:
 
 ```scss
-@import '../node_modules/qpp-style/styles/qpp_style';
+$font-path: "/public/fonts/"; // directory associated with webpack assett copy over. The required assets live in shared.
+@import "@madie/madie-design-system/styles/third-party/legacy-bootstrap";
+@import "@madie/madie-design-system/styles/qpp-style";
+@import "@madie/madie-design-system/styles/qppds";
 ```
 
 ## Using React components
@@ -73,7 +85,7 @@ Another way to use the style is by importing the sass into your project. This ca
 To use React components import into your project:
 
 ```js
-import { Header, Footer, SideNav } from 'qpp-style/dist/react';
+import { Header, Footer, SideNav } from '@madie/madie-design-system/dist/react';
 ```
 
 Available React components include
@@ -90,7 +102,7 @@ Available React components include
 
 ## Develop Locally with Storybook
 
-While working on `qpp-style` components and styles locally, Storybook can be a useful tool for development, testing, and documentation. For more information see the [Storybook Documentation](https://storybook.js.org/). To launch Storybook locally, run the following command:
+While working on `@madie/madie-design-system` components and styles locally, Storybook can be a useful tool for development, testing, and documentation. For more information see the [Storybook Documentation](https://storybook.js.org/). To launch Storybook locally, run the following command:
 
 -   `npm run storybook`
 

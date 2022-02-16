@@ -1,5 +1,4 @@
-# QPP-Style React
+# Madie/madie-design-system React
 
-This directory contains react implementations of the components for QPP.
+This directory contains react implementations of the components for Madie.
 
-A storybook with examples is published at [https://cmsgov.github.io/qpp-style](https://cmsgov.github.io/qpp-style)
