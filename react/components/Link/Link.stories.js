@@ -1,7 +1,7 @@
 import React from 'react';
 import DSLink from './index';
 import { withKnobs } from '@storybook/addon-knobs';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export default {
   title: 'Link',

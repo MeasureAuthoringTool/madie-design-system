@@ -1,7 +1,7 @@
 import React from 'react';
 import cookie from 'cookie';
 import axios from 'axios';
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { TextButton } from '../Button';
 import { deleteImpersonatedUser, revertQppHasAuthsCookie } from '../../session/logout';
@@ -21,7 +21,7 @@ const ImpersonatorBanner = () => {
   ].join(' ');
 
   const onClick = () => {
-    const fn = () => {      
+    const fn = () => {
       deleteImpersonatedUser({ qpp_impersonated_user: user });
       // Set qpp_has_authorizations cookie back to impersonator's value
       revertQppHasAuthsCookie();
