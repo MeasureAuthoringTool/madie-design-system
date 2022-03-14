@@ -135,7 +135,7 @@ const Pagination = ({
           onChange={handleLimitChange}
         >
           {limitOptions.map((val) => (
-            <MenuItem value={val} key={`limit-${val}`}>
+            <MenuItem value={val} key={`limit-${val}`} data-testid="limit-option">
               {val}
             </MenuItem>
           ))}
@@ -164,7 +164,6 @@ const Pagination = ({
               <PaginationItem
                 {...props}
                 classes={{ text: classes.prev }}
-                data-testid=""
               />
             );
           }
