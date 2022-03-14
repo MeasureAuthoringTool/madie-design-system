@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import MuiTabs from '@material-ui/core/Tabs'
+import { Tabs as MuiTabs } from '@mui/material'
 import TabPanel from './TabPanel'
 import LinkTab from './Tab'
 
@@ -12,7 +12,7 @@ const getPanelChildren = (children) => {
 
 const Tabs = ({ children, onChange, selected, defaultSelectedId, ariaLabel }) => {
   const [value, setValue] = useState(defaultSelectedId || selected)
-  
+
   useEffect(() => {
     if (selected) {
       setValue(selected)
@@ -37,10 +37,10 @@ const Tabs = ({ children, onChange, selected, defaultSelectedId, ariaLabel }) =>
       }
       return child
     })
-  }  
+  }
 
   const panels = getPanelChildren(children)
-  
+
   const tabList = panels.map(
     (panel) => {
       const { id, tab, tabHref, disabled } = panel?.props || {}
@@ -49,7 +49,7 @@ const Tabs = ({ children, onChange, selected, defaultSelectedId, ariaLabel }) =>
   )
 
   const foundIndex = tabList.findIndex(({ id }) => id === value)
-  
+
   const tabIndex = foundIndex >= 0 ? foundIndex : 0
 
   return (

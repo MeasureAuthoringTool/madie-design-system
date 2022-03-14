@@ -9,17 +9,27 @@ const entry = ['./index.js'];
 
 const _module = {
   rules: [
+    // {
+    //   enforce: 'pre',
+    //   test: /\.(js|jsx)?$/,
+    //   loader: 'eslint-loader',
+    //   exclude: /node_modules/,
+    // },
+    // {
+    //   test: /\.(js|jsx)?$/,
+    //   loader: 'babel-loader',
+    //   exclude: /node_modules/,
+    // },
     {
-      enforce: 'pre',
-      test: /\.(js|jsx)?$/,
-      loader: 'eslint-loader',
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.(js|jsx)?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-    },
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          },
     {
       test: /\.scss$/,
       use: [
@@ -68,6 +78,10 @@ const _module = {
 const plugins = [
   new MiniCssExtractPlugin({
     filename: 'default.css',
+  }),
+  new ESLintPlugin({
+      files: '/\.(js|jsx)?$/',
+      exclude: '/node_modules/'
   }),
   // copy styles, images, fonts from shared directory
   new CopyWebpackPlugin([

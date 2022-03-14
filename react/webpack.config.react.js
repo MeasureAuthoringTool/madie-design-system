@@ -1,6 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 const _module = {
   rules: [
@@ -64,6 +67,7 @@ const plugins = [
   new MiniCssExtractPlugin({
     filename: 'default.css',
   }),
+  new HtmlWebpackPlugin()
 ];
 
 module.exports = {
@@ -72,8 +76,9 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist/react'),
-    library: '',
-    libraryTarget: 'umd',
+    library: "$",
+    libraryTarget: "umd",
+    globalObject: 'this',
   },
   devtool: 'source-map',
   module: _module,

@@ -8,6 +8,7 @@ import FlashNotification from './FlashNotification/FlashNotificationUI';
 import Footer from './Footer/FooterUI';
 import Header from './Header/HeaderUI';
 import Modal from './Modal';
+import { Pagination } from './Pagination';
 import SideNav from './SideNav/UI/SideNavUI';
 import Spinner from './UnwrappedSpinner';
 import TabPanel from './Tabs/TabPanel';
@@ -113,6 +114,7 @@ export {
   Icons,
   Infotip,
   Modal,
+  Pagination,
   Search,
   SideNav,
   Spinner,

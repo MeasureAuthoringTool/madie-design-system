@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MuiTab from '@material-ui/core/Tab';
+import { Tab as MuiTab } from '@mui/material';
 
 const Tab = ({ href, ...rest }) => {
   return (
