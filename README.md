@@ -30,9 +30,9 @@ To build and develop locally, you can either initialize a storybook, or build an
 $ npm install
 ```
 
-2. Build react from withing react:
+2. Build react from within react:
 ```sh
-$ npm run build-react
+$ npm run build-react-watch
 ```
 
 From here you can either initialize a story book as a testing playground from within react:
@@ -49,15 +49,13 @@ Establish an npm link relationship with the repository you're working on:
 In app repo root:
 ```sh
 $ npm install
-$ npm link node_modules/react
-$ npm link node_modules/react-dom
 ```
 
 in library root:
 ```sh
+$ npm install
 $ npm link
-$ npm link react
-$ npm link react-dom
+$ npm link
 ```
 
 In app repo:
