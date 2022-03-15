@@ -7,7 +7,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run clean && webpack-cli --progress --color --env production && npm run build-react",
-    "dev": "npm run clean && webpack-cli --progress --color --watch --env.production=false",
+    "dev": "npm run clean && webpack-cli --progress --color --watch --env production=false",
     "clean": "rimraf build && rimraf dist",
     "build-react": "webpack --progress --config webpack.config.react.js",
     "build-react-watch": "webpack --progress --watch --config webpack.config.react.js",
