@@ -32,7 +32,7 @@ $ npm install
 
 2. Build react from within react:
 ```sh
-$ npm run build-react-watch
+$ npm run build-react
 ```
 
 From here you can either initialize a story book as a testing playground from within react:
@@ -41,9 +41,6 @@ $ npm run storybook
 ```
 
 Or concurrently build and work locally with a consuming project:
-```sh
-$ build-react-watch
-```
 
 Establish an npm link relationship with the repository you're working on:
 In app repo root:
@@ -54,7 +51,6 @@ $ npm install
 in library root:
 ```sh
 $ npm install
-$ npm link
 $ npm link
 ```
 
@@ -93,6 +89,7 @@ Available React components include
 -   Header,
 -   InfoModal,
 -   Modal,
+-   Pagination,
 -   SideNav,
 -   Spinner,
 -   TabPanel,
