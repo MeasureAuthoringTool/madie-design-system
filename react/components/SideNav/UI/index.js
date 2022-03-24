@@ -1,3 +1,3 @@
-import SideNavUI from './SideNavUI';
+import SideNavUI from "./SideNavUI";
 
 export { SideNavUI };
