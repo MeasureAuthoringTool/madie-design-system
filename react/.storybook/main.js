@@ -2,6 +2,9 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    core: {
+        builder: 'webpack5',
+    },
   stories: [
     '../components/**/*.stories.@(js|jsx|mdx)',
     '../lib/**/*.stories.@(js|jsx|mdx)',
