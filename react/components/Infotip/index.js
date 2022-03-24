@@ -1,3 +1,3 @@
-import Infotip from './Infotip';
+import Infotip from "./Infotip";
 
 export default Infotip;

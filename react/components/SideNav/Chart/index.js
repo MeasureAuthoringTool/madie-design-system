@@ -1,3 +1,3 @@
-import ScoreChart from './ScoreChart';
+import ScoreChart from "./ScoreChart";
 
 export { ScoreChart };

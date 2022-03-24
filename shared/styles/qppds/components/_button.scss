@@ -138,7 +138,35 @@
       padding: 1px;
     }
   }
-
+  // cyan
+  &.qpp-c-button--cyan {
+    background-color: $cyan-40;
+    border-color: $cyan-40;
+    &:disabled,
+    &.qpp-c-button--disabled {
+    background-color: $gray-04;
+    color: $gray-60;
+    border-color: $gray-04;
+    }
+  
+    &:hover,
+    &.qpp-c-button--hover {
+      background-color: $cyan-50;
+      border-color:$cyan-50;
+    }
+  
+    &:active,
+    &.qpp-c-button--active {
+    background-color: fade-out($cyan-40, 0.2);
+    }
+  
+    &:focus,
+    &.qpp-c-button--focus {
+      border: 1px solid #048087;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 0px 4px rgba(32, 159, 166, 0.2);
+    }
+  }
   // Outline Button
   &.qpp-c-button--outline {
     background-color: transparent;
