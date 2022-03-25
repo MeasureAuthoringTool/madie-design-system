@@ -1,6 +1,6 @@
 {
   "name": "@madie/madie-design-system",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Shared style guide across the Madie program.",
   "main": "dist/index.js",
   "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
@@ -133,6 +133,7 @@
   },
   "overrides": {
     "webpack": "^5.70.0",
-    "trim-newlines": "^3.0.1"
+    "trim-newlines": "^3.0.1",
+    "glob-parent": "^5.1.2"
   }
 }
