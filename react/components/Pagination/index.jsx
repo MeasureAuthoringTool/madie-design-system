@@ -32,10 +32,17 @@ const useStyles = makeStyles({
         color: "#757575",
     },
     //select
-    select: {
-        margin: "0 11px",
-        "& .MuiSelect-select": {
-            margin: "0 11px",
+    selectRoot: {
+        margin: '0 11px',
+        "& .MuiOutlinedInput-notchedOutline": {
+            "& legend": {
+                width: 0,
+            },
+        },
+        "& .MuiInputBase-input": {
+            fontFamily: "Rubik",
+            fontSize: 14,
+            borderRadius: 3,
         },
     },
     // pagination
@@ -130,9 +137,7 @@ const Pagination = ({
                 </Typography>
                 <Select
                     size="small"
-                    classes={{
-                        root: classes.select,
-                    }}
+                    className={classes.selectRoot}
                     id="pagination-limit-select"
                     value={limit}
                     label={null}
