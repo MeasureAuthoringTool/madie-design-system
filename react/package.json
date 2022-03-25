@@ -1,6 +1,6 @@
 {
   "name": "@madie/madie-design-system",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shared style guide across the Madie program.",
   "main": "dist/index.js",
   "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
@@ -104,8 +104,14 @@
   },
   "dependencies": {
     "@cmsgov/design-system": "^2.13.0",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
     "@reach/portal": "^0.16.2",
     "@reach/tooltip": "^0.16.2",
+    "@mui/icons-material": "^5.5.0",
+    "@mui/material": "^5.2.5",
+    "@mui/styles": "^5.5.1",
+    "@mui/system": "^5.5.2",
     "@storybook/builder-webpack5": "^6.4.19",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/user-event": "^13.5.0",
@@ -124,12 +130,6 @@
     "xss": "^1.0.10"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.5.0",
-    "@mui/material": "5.0.2",
-    "@mui/styles": "^5.5.0",
-    "@mui/system": "^5.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
