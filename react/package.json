@@ -132,6 +132,7 @@
     "xss": "^1.0.10"
   },
   "overrides": {
-    "webpack": "^5.70.0"
+    "webpack": "^5.70.0",
+    "trim-newlines": "^3.0.1"
   }
 }
