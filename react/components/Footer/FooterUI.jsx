@@ -18,6 +18,27 @@ const FooterUI = (props) => {
         : "mailto:QPPUserResearch@cms.hhs.gov?subject=Sign up for feedback sessions&body=Please let us know your role and how many Tax Identification Numbers (TINs) you represent. Don’t send us your actual TINs, that is confidential information that should not be shared with this email address. If you do not represent a practice, let us know what work you do in connection to QPP.";
     const [listServ, setListServ] = useState(false);
 
+    // Default footer assets
+    const assets = {
+        ...{
+            hhsLogo: (
+                <img
+                    className="hhs-logo"
+                    alt="Department of Health &amp; Human Services USA"
+                    src="/images/hhs-logo-black.svg"
+                />
+            ),
+            qppLogo: (
+                <img
+                    className="qpp-logo"
+                    src="/images/qpp_logo_rgb_color.png"
+                    alt="qpp logo"
+                />
+            ),
+        },
+        ...props.assets,
+    };
+
     const setLink = (link) => {
         return isIESupportPage ? "/" : link;
     };
@@ -236,18 +257,10 @@ const FooterUI = (props) => {
                         </div>
                         <div className="qpp-hhs-logo-container">
                             <div className="qpp-logo-container">
-                                <img
-                                    className="qpp-logo"
-                                    src="/images/qpp_logo_rgb_color.png"
-                                    alt="qpp logo"
-                                />
+                                {assets.qppLogo}
                             </div>
                             <div className="hhs-logo-container">
-                                <img
-                                    className="hhs-logo"
-                                    alt="Department of Health &amp; Human Services USA"
-                                    src="/images/hhs-logo-black.svg"
-                                />
+                                {assets.hhsLogo}
                                 <p>
                                     A federal government website managed and
                                     paid for by the U.S Centers for Medicare
@@ -276,6 +289,10 @@ FooterUI.propTypes = {
     isNewFooter: PropTypes.bool,
     isIESupportPage: PropTypes.bool,
     showHcdResearch: PropTypes.bool,
+    assets: PropTypes.shape({
+        hhsLogo: PropTypes.element,
+        qppLogo: PropTypes.element,
+    }),
 };
 
 export default FooterUI;
