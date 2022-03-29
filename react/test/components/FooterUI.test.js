@@ -57,6 +57,36 @@ describe("FooterUI", () => {
         const isFullWidthNode = ReactDOM.findDOMNode(isFullWidth);
         expect(ReactTestUtils.isDOMComponent(isFullWidthNode)).to.be.true;
     });
+
+    it("renders optional custom assets if passed", () => {
+        // Test render with default assets
+        const stockComponent = ReactTestUtils.renderIntoDocument(
+            <Wrapper>
+                <FooterUI isNewFooter={true} />
+            </Wrapper>
+        );
+        const defaultLogoNode =
+            ReactTestUtils.findRenderedDOMComponentWithClass(
+                stockComponent,
+                "hhs-logo"
+            );
+        expect(ReactTestUtils.isDOMComponent(defaultLogoNode)).to.be.true;
+
+        // Test render with custom asset
+        const assets = {
+            hhsLogo: <img src="/test-image.png" className="hhs-logo-custom" />,
+        };
+        const customAssetComponent = ReactTestUtils.renderIntoDocument(
+            <Wrapper>
+                <FooterUI isNewFooter={true} assets={assets} />
+            </Wrapper>
+        );
+        const customLogoNode = ReactTestUtils.findRenderedDOMComponentWithClass(
+            customAssetComponent,
+            "hhs-logo-custom"
+        );
+        expect(ReactTestUtils.isDOMComponent(customLogoNode)).to.be.true;
+    });
 });
 
 describe("renders the footer properly in the non-authenticated experience", () => {
