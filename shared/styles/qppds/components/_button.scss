@@ -236,6 +236,45 @@
       padding: 1px;
     }
   }
+  // Danger-Primary / Destructive Button
+  &.qpp-c-button--danger-primary {
+    border: 1px solid $red-50;
+    background-color: $red-50;
+	color: $white;
+    font-size: $font-size-14;
+
+    &:disabled,
+    &.qpp-c-button--disabled {
+		background-color: $gray-04;
+		color: $gray-60;
+		border-color: $gray-04;
+    }
+
+    &:hover,
+    &.qpp-c-button--hover {
+		background-color: $red-60;
+		border-color: $red-60;
+    }
+
+    &:active,
+    &.qpp-c-button--active {
+      background-color: fade-out($red-50, 0.2);
+    }
+
+    &:focus,
+    &.qpp-c-button--focus {
+      border: 1px solid $red-50;
+      box-shadow: 0 0 0 4px $red-10;
+      outline: none;
+      text-decoration: none;
+    }
+
+    &.qpp-c-button--text {
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 1px;
+    }
+  }
 }
 
 .qpp-c-button.qpp-c-button--text,

@@ -19,6 +19,7 @@ import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import TextField from "./TextField";
 import Tooltip from "./Tooltip";
+import Toast from './Toast';
 import Infotip from "./Infotip";
 import Search from "./Search";
 import TextInput from "./TextInput";
@@ -132,6 +133,7 @@ export {
     TextButton,
     TextInput,
     TextField,
+    Toast,
     Dropdown,
     Tooltip,
     DSLink,
