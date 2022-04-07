@@ -23,7 +23,7 @@ const useStyles = makeStyles({
             paddingBottom: 7.5,
             fontFamily: "Rubik",
             fontSize: 14,
-            borderRadius: 3,
+            borderRadius: 3
         },
     },
 });
@@ -48,7 +48,7 @@ const Select = ({
     ...rest
 }) => {
     const classes = useStyles();
-    const placehold = <span>{placeHolder?.name || "placeholder"}</span>;
+    const placehold = <span style={{ opacity: .6 }}>{placeHolder?.name || "placeholder"}</span>;
     return (
         <FormControl error={error} fullWidth>
             <InputLabel

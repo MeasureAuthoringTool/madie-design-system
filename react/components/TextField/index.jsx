@@ -28,7 +28,7 @@ const useStyles = makeStyles({
             borderRadius: 3,
             padding: "9px 14px",
             "&::placeholder": {
-                opacity: 1,
+                opacity: .6,
             },
         },
     },
