@@ -24,6 +24,6 @@ export const ExampleSpinner = () => (
     <Wrapper>
         <MadieSpinner />
     </Wrapper>
-)
+);
 
 ExampleSpinner.storyName = "example Madie Spinner";
