@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
 import PropTypes from "prop-types";
 import {
     Pagination as PaginationComponent,
@@ -8,90 +7,7 @@ import {
     MenuItem,
     Typography,
 } from "@mui/material";
-
-const useStyles = makeStyles({
-    root: {
-        display: "flex",
-        flexGrow: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        minHeight: 90,
-        padding: "0px 24px",
-    },
-    row: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    // text
-    dark: {
-        color: "#333333",
-    },
-    faded: {
-        color: "#757575",
-    },
-    //select
-    selectRoot: {
-        margin: '0 11px',
-        "& .MuiOutlinedInput-notchedOutline": {
-            "& legend": {
-                width: 0,
-            },
-        },
-        "& .MuiInputBase-input": {
-            fontFamily: "Rubik",
-            fontSize: 14,
-            borderRadius: 3,
-        },
-    },
-    // pagination
-    ul: {
-        "& .MuiPaginationItem-root": {
-            color: "#0073C8",
-            border: "solid 1px #CACACA",
-            "&:focus": {
-                border: "0.0625rem solid #125496",
-                borderRadius: "0.1875rem",
-                boxShadow: "0 0 0 0.25rem #cbe4ff",
-                outline: "none",
-            },
-        },
-        "& .Mui-selected": {
-            color: "#fff",
-            backgroundColor: "#0073C8 !important",
-        },
-        "& .MuiPaginationItem-ellipsis": {
-            border: "solid 1px transparent",
-        },
-        "& .MuiPaginationItem-previousNext": {
-            border: "solid 1px transparent",
-        },
-    },
-    next: {
-        border: "solid 1px transparent",
-        "&::before": {
-            content: '"Next  "',
-            marginRight: 5,
-            fontSize: 14,
-            fontFamily: "Rubik",
-        },
-    },
-    prev: {
-        border: "solid 1px transparent",
-        "&::after": {
-            content: '"  Previous"',
-            marginLeft: 5,
-            fontSize: 14,
-            fontFamily: "Rubik",
-        },
-    },
-    selected: {
-        backgroundColor: "#0073C8",
-        border: "solid 1px #0073C8",
-        color: "#fff",
-    },
-});
+import { styled } from "@mui/system";
 
 // for ts later implemeentation.
 // interface PaginationProps {
@@ -109,7 +25,20 @@ const useStyles = makeStyles({
 //     hidePrevButton: boolean;
 //     hideNextButton: boolean;
 //   }
-
+const Container = styled("div")({
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    minHeight: 90,
+    padding: "0px 24px",
+});
+const Row = styled("div")({
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+});
 const Pagination = ({
     totalItems = 0,
     visibleItems = 0,
@@ -124,20 +53,33 @@ const Pagination = ({
     hidePrevButton = true,
     hideNextButton = false,
 }) => {
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <div className={classes.row}>
+        <Container>
+            <Row>
                 <Typography
                     fontSize={14}
                     fontFamily="Rubik"
-                    className={classes.dark}
+                    sx={{
+                        color: "#333333",
+                    }}
                 >
                     Items per page
                 </Typography>
                 <Select
                     size="small"
-                    className={classes.selectRoot}
+                    sx={{
+                        margin: "0 11px",
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            "& legend": {
+                                width: 0,
+                            },
+                        },
+                        "& .MuiInputBase-input": {
+                            fontFamily: "Rubik",
+                            fontSize: 14,
+                            borderRadius: 3,
+                        },
+                    }}
                     id="pagination-limit-select"
                     value={limit}
                     label={null}
@@ -155,31 +97,75 @@ const Pagination = ({
                 </Select>
                 <Typography
                     fontSize={14}
-                    className={classes.faded}
+                    sx={{
+                        color: "#757575",
+                    }}
                     fontFamily="Rubik"
                 >{`${offset + 1} - ${
                     visibleItems + offset
                 } of ${totalItems}`}</Typography>
-            </div>
+            </Row>
             <PaginationComponent
-                classes={{
-                    ul: classes.ul,
-                    selected: classes.selected,
+                sx={{
+                    "& .MuiPagination-ul": {
+                        "& .MuiPaginationItem-root": {
+                            color: "#0073C8",
+                            border: "solid 1px #CACACA",
+                            "&:focus": {
+                                border: "0.0625rem solid #125496",
+                                borderRadius: "0.1875rem",
+                                boxShadow: "0 0 0 0.25rem #cbe4ff",
+                                outline: "none",
+                            },
+                        },
+                        "& .Mui-selected": {
+                            color: "#fff",
+                            backgroundColor: "#0073C8 !important",
+                        },
+                        "& .MuiPaginationItem-ellipsis": {
+                            border: "solid 1px transparent",
+                        },
+                        "& .MuiPaginationItem-previousNext": {
+                            border: "solid 1px transparent",
+                        },
+                    },
                 }}
                 renderItem={(props) => {
                     if (props.type === "next") {
                         return (
                             <PaginationItem
+                                sx={{
+                                    border: "solid 1px transparent",
+                                    "& .Mui-selected": {
+                                        backgroundColor: "#0073C8",
+                                        border: "solid 1px #0073C8",
+                                        color: "#fff",
+                                    },
+                                    "&::before": {
+                                        content: '"Next  "',
+                                        marginRight: "5px",
+                                        fontSize: 14,
+                                        fontFamily: "Rubik",
+                                    },
+                                }}
                                 {...props}
-                                classes={{ text: classes.next }}
                             />
                         );
                     }
                     if (props.type === "previous") {
                         return (
                             <PaginationItem
+                                sx={{
+                                    border: "solid 1px transparent",
+                                    "& .Mui-selected": {},
+                                    "&::after": {
+                                        content: '"  Previous"',
+                                        marginLeft: "5px",
+                                        fontSize: 14,
+                                        fontFamily: "Rubik",
+                                    },
+                                }}
                                 {...props}
-                                classes={{ text: classes.prev }}
                             />
                         );
                     }
@@ -194,7 +180,7 @@ const Pagination = ({
                 hidePrevButton={hidePrevButton}
                 hideNextButton={hideNextButton}
             />
-        </div>
+        </Container>
     );
 };
 
