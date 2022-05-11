@@ -21,7 +21,7 @@ const LegacyFooterUI = ({ buildVersion, isFullWidth, signUpNowLink }) => {
                 >
                     <div className="row">
                         <div className="col-sm-12 col-md-12 col-lg-12">
-                            <span>Help shape the future of QPP</span> by
+                            <span>Help shape the future of MADiE</span> by
                             participating in user feedback sessions.{" "}
                             <a className="email-note-link" href={signUpNowLink}>
                                 Send us an email to sign up
@@ -118,7 +118,7 @@ const LegacyFooterUI = ({ buildVersion, isFullWidth, signUpNowLink }) => {
                             <ul className="small">
                                 <li>
                                     <a
-                                        href="/privacy"
+                                        href="https://www.cms.gov/privacy"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenPrivacyDisclaimer"
                                         data-track-label="Notice of Privacy and Disclaimer"
@@ -129,7 +129,7 @@ const LegacyFooterUI = ({ buildVersion, isFullWidth, signUpNowLink }) => {
                                 <span className="divider"></span>
                                 <li>
                                     <a
-                                        href="/accessibility"
+                                        href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Policiesforaccessibility"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenAccessibility"
                                         data-track-label="Accessibility"
@@ -157,10 +157,10 @@ const LegacyFooterUI = ({ buildVersion, isFullWidth, signUpNowLink }) => {
                                 <span className="divider"></span>
                                 <li>
                                     <a
-                                        href="mailto:QPP@cms.hhs.gov"
+                                        href="mailto:sb-mat-help@semanticbits.com"
                                         className="email-link"
                                     >
-                                        QPP@cms.hhs.gov
+                                        sb-mat-help@semanticbits.com
                                     </a>
                                 </li>
                                 <li>
