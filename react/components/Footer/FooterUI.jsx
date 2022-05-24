@@ -15,7 +15,7 @@ const FooterUI = (props) => {
     const isIESupportPage = props.isIESupportPage;
     const signUpNowLink = props.showHcdResearch
         ? "/about/hcd-research"
-        : "mailto:QPPUserResearch@cms.hhs.gov?subject=Sign up for feedback sessions&body=Please let us know your role and how many Tax Identification Numbers (TINs) you represent. Don’t send us your actual TINs, that is confidential information that should not be shared with this email address. If you do not represent a practice, let us know what work you do in connection to QPP.";
+        : "mailto:sb-mat-help@semanticbits.com?subject=Sign up for feedback sessions";
     const [listServ, setListServ] = useState(false);
 
     // Default footer assets
@@ -86,7 +86,7 @@ const FooterUI = (props) => {
                         <div className="responsive-container">
                             <hr />
                             <p>
-                                <strong>Help shape the future of QPP.</strong>{" "}
+                                <strong>Help shape the future of MADiE.</strong>{" "}
                                 Participate in a user feedback session.{" "}
                                 <a
                                     className="email-note-link"
@@ -185,11 +185,11 @@ const FooterUI = (props) => {
                                         </p>
                                         <p>
                                             <a
-                                                aria-label="QPP@cms.hhs.gov"
-                                                href="mailto:QPP@cms.hhs.gov"
+                                                aria-label="sb-mat-help@semanticbits.com"
+                                                href="mailto:sb-mat-help@semanticbits.com"
                                                 className="email-link"
                                             >
-                                                QPP@cms.hhs.gov
+                                                sb-mat-help@semanticbits.com
                                             </a>
                                         </p>
                                     </div>
@@ -200,8 +200,8 @@ const FooterUI = (props) => {
                                         <SocialLinks />
                                         <p className="sub-title">
                                             {listServ
-                                                ? "Sign Up for the QPP Listserv"
-                                                : "Sign Up for the QPP Newsletter"}
+                                                ? "Sign Up for the MADiE Listserv"
+                                                : "Sign Up for the MADiE Newsletter"}
                                         </p>
                                         <Subscribe />
                                     </div>
@@ -214,7 +214,7 @@ const FooterUI = (props) => {
                             <ul className="small">
                                 <li>
                                     <a
-                                        href={setLink("/privacy")}
+                                        href={setLink("https://www.cms.gov/privacy")}
                                         aria-label="Notice of Privacy and Disclaimer"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenPrivacyDisclaimer"
@@ -226,7 +226,7 @@ const FooterUI = (props) => {
                                 <li className="divider"></li>{" "}
                                 <li>
                                     <a
-                                        href={setLink("/accessibility")}
+                                        href={setLink("https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Policiesforaccessibility")}
                                         aria-label="Accessibility"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenAccessibility"
