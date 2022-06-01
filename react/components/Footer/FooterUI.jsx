@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 import LegacyFooterUI from "./LegacyFooterUI";
 
@@ -36,41 +35,6 @@ const FooterUI = (props) => {
         return isIESupportPage ? "/" : link;
     };
 
-    // The footer content is populated with the following priority order:
-    // 1. Use the footer content in localStorage if it's there
-    // 2. If not, make a call to get it from the QPPFE endpoint. Hydrate the localStorage item with the response.
-    // 3. If the call fails, use the default value
-    useEffect(() => {
-        const storageContent = JSON.parse(
-            localStorage.getItem("qpp_footer_listServ")
-        );
-        if (
-            storageContent?.content &&
-            new Date().valueOf() < storageContent.expiration
-        ) {
-            setListServ(storageContent.listServ);
-        } else {
-            const origin = window.location.origin;
-            axios
-                .get(
-                    !origin.includes("localhost")
-                        ? `${origin}/config/footer`
-                        : "https://qpp.cms.gov/config/footer"
-                )
-                .then(({ data: { data = {} } }) => {
-                    localStorage.setItem(
-                        "qpp_footer_listServ",
-                        JSON.stringify({
-                            listServ: data.listServ,
-                        })
-                    );
-                    setListServ(data.listServ);
-                })
-                .catch((e) => {
-                    setListServ(false);
-                });
-        }
-    }, []);
     if (isNewFooter) {
         return (
             <>
