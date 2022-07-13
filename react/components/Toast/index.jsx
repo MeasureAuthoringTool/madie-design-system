@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
@@ -45,6 +46,7 @@ const Toast = ({
                     color="inherit"
                     sx={{ p: 0 }}
                     onClick={onClose}
+                    data-testId="close-error-button"
                 >
                     <CloseIcon />
                 </IconButton>
@@ -111,6 +113,16 @@ const Toast = ({
             {...rest}
         />
     );
+};
+
+Toast.propTypes = {
+    open: PropTypes.bool,
+    message: PropTypes.string,
+    toastType: PropTypes.string, // 'danger | success, more later when mockups come out
+    autoHideDuration: PropTypes.number,
+    onClose: PropTypes.func,
+    testId: PropTypes.string,
+    toastKey: PropTypes.string,
 };
 
 export default Toast;

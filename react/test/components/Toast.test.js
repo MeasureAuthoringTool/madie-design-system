@@ -22,28 +22,30 @@ const ToastTester = (toastProps) => {
                 {...toastProps}
             />
         </div>
-    )
-}
+    );
+};
 
 describe("Toast", () => {
     test("Danger toast renders correctly and disappears", async () => {
         await act(async () => {
             const { findByTestId, getByTestId, queryByText } = await render(
                 <ToastTester
-                    toastKey='toast-key'
+                    toastKey="toast-key"
                     testId="danger-toast"
-                    toastType='danger'
+                    toastType="danger"
                     autoHideDuration={1000}
-                    message='Something has gone wrong. Please try again'
-                 />
+                    message="Something has gone wrong. Please try again"
+                />
             );
             const result = await findByTestId("toast-tester");
             fireEvent.click(result);
             const dangerToast = await getByTestId("danger-toast");
             expect(dangerToast).toBeInTheDocument();
             await waitFor(() => {
-                expect(queryByText('Something has gone wrong. Please try again')).not.toBeVisible()
-            })
+                expect(
+                    queryByText("Something has gone wrong. Please try again")
+                ).not.toBeVisible();
+            });
         });
     });
 
@@ -51,20 +53,22 @@ describe("Toast", () => {
         await act(async () => {
             const { findByTestId, getByTestId, queryByText } = await render(
                 <ToastTester
-                    toastKey='toast-key'
+                    toastKey="toast-key"
                     testId="success-toast"
-                    toastType='success'
+                    toastType="success"
                     autoHideDuration={1000}
-                    message='Something has completed'
-                 />
+                    message="Something has completed"
+                />
             );
             const result = await findByTestId("toast-tester");
             fireEvent.click(result);
             const dangerToast = await getByTestId("success-toast");
             expect(dangerToast).toBeInTheDocument();
             await waitFor(() => {
-                expect(queryByText('Something has completed')).not.toBeVisible()
-            })
+                expect(
+                    queryByText("Something has completed")
+                ).not.toBeVisible();
+            });
         });
     });
 });
