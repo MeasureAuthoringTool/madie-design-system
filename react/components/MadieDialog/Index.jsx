@@ -158,7 +158,7 @@ const MadieDialog = ({
                         >
                             <span>
                                 {cancelText}
-                                {cancelIcon && cancelIcon}
+                                {cancelIcon}
                             </span>
                         </Button>
                         <Button
@@ -169,7 +169,7 @@ const MadieDialog = ({
                         >
                             <span>
                                 {continueText}
-                                {continueIcon && continueIcon}
+                                {continueIcon}
                             </span>
                         </Button>
                     </DialogActions>
@@ -223,7 +223,7 @@ const MadieDialog = ({
                         >
                             <span>
                                 {cancelText}
-                                {cancelIcon && cancelIcon}
+                                {cancelIcon}
                             </span>
                         </Button>
                         <Button
@@ -234,7 +234,7 @@ const MadieDialog = ({
                         >
                             <span>
                                 {continueText}
-                                {continueIcon && continueIcon}
+                                {continueIcon}
                             </span>
                         </Button>
                     </DialogActions>
