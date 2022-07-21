@@ -51,7 +51,7 @@ jobs:
 
       - name: Audit dependencies for security vulnerabilities
         working-directory: ./react
-        run: npm audit
+        run: npm audit --production
 
       - name: Lint the source code
         working-directory: ./react
