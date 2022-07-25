@@ -15,7 +15,7 @@
         "test": "jest",
         "precommit": "npm run format && npm run lint && npm run format-styles",
         "prepush": "npm test",
-        "format": "prettier --write 'components/**/*.(js|jsx)'",
+        "check-format": "prettier --write 'components/**/*.(js|jsx)'",
         "format-test": "prettier --write 'test/**/*.(js|jsx)'",
         "lint": "eslint 'components/**/*.{js,jsx}'",
         "stylelint": "stylelint 'styles/**/*.{css,scss}'",
