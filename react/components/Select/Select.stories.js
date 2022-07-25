@@ -61,11 +61,10 @@ export const WithHelperText = () => (
             data-testid="measure-name-text-field"
             size="small"
             helperText={
-                <FormHelperText
-                    data-testid={`helper-text`}
-                    children={"A descriptive message"}
-                    error={false}
-                />
+                <FormHelperText data-testid={`helper-text`} error={false}>
+                    {" "}
+                    A descriptive message
+                </FormHelperText>
             }
             options={options.map(({ key, value, testId, name }) => {
                 return (
@@ -146,11 +145,9 @@ export const Error = () => (
             data-testid="measure-name-text-field"
             size="small"
             helperText={
-                <FormHelperText
-                    data-testid={`helper-text`}
-                    children={"An error message"}
-                    error={true}
-                />
+                <FormHelperText data-testid={`helper-text`} error={true}>
+                    An error message
+                </FormHelperText>
             }
             options={options.map(({ key, value, testId, name }) => {
                 return (
