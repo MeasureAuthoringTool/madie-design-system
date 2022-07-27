@@ -13,6 +13,7 @@
         "build-react-watch": "webpack --progress --watch --config webpack.config.react.js",
         "start": "npm run build",
         "test": "jest",
+        "coverage": "cross-env BABEL_ENV=test jest --coverage",
         "precommit": "npm run format && npm run lint && npm run format-styles",
         "prepush": "npm test",
         "check-format": "prettier --write 'components/**/*.(js|jsx)'",
