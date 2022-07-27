@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
-import TextField from "../../components/Textfield/index";
+import TextField from "../../components/TextField/index";
 import { act, Simulate } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
