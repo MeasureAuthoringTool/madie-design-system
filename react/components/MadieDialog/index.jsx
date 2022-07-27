@@ -13,7 +13,6 @@ import {
 import { Box } from "@mui/system";
 import Button from "../Button";
 
-// We have multiple situations to consider
 const MadieDialog = ({
     /*
       Lets make a reusable component
