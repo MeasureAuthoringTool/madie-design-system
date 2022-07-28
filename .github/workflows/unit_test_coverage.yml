@@ -96,6 +96,8 @@ jobs:
     needs: node_matrix
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Download coverage artifact
         uses: actions/download-artifact@v3
         with:
