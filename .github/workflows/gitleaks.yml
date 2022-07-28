@@ -6,7 +6,7 @@ jobs:
   gitleaks_scan:
     runs-on: ubuntu-latest
     env:
-      REPO: https://github.com/MeasureAuthoringTool/madie-design-systems
+      REPO: https://github.com/MeasureAuthoringTool/madie-design-system
       REMOTE_EXCLUDES_URL: https://raw.githubusercontent.com/semanticbits/bmat-gitleaks-automation/master/madie-design-systems/gitleaks.toml
       GITLEAKS_VERSION: v7.5.0
     steps:
