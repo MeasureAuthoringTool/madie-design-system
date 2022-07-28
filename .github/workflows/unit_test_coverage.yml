@@ -77,7 +77,6 @@ jobs:
 
   upload-codacy-coverage:
     name: Upload code coverage to Codacy
-    working-directory: ./react
     needs: node_matrix
     runs-on: ubuntu-latest
     steps:
@@ -94,7 +93,6 @@ jobs:
 
   upload-codecov-coverage:
     name: Upload code coverage to Codecov
-    working-directory: ./react
     needs: node_matrix
     runs-on: ubuntu-latest
     steps:
