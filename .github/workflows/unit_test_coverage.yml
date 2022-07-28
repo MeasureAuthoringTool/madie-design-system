@@ -70,13 +70,15 @@ jobs:
         run: npm run-script coverage
 
       - name: Store the coverage report as an artifact
+        working-directory: ./react
         uses: actions/upload-artifact@v3
         with:
           name: coverage
-          path: react/coverage/lcov.info
+          path: coverage/lcov.info
 
   upload-codacy-coverage:
     name: Upload code coverage to Codacy
+    working-directory: ./react
     needs: node_matrix
     runs-on: ubuntu-latest
     steps:
@@ -93,6 +95,7 @@ jobs:
 
   upload-codecov-coverage:
     name: Upload code coverage to Codecov
+    working-directory: ./react
     needs: node_matrix
     runs-on: ubuntu-latest
     steps:
