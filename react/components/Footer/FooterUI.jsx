@@ -50,9 +50,11 @@ const FooterUI = (props) => {
                         <div className="other-links">
                             <hr className="divider-top" />
                             <ul className="small">
-                            <li>
+                                <li>
                                     <a
-                                        href={setLink("https://harp.cms.gov/login/terms-of-use")}
+                                        href={setLink(
+                                            "https://harp.cms.gov/login/terms-of-use"
+                                        )}
                                         aria-label="Terms of Use"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenTermsOfService"
@@ -64,7 +66,9 @@ const FooterUI = (props) => {
                                 <li className="divider"></li>{" "}
                                 <li>
                                     <a
-                                        href={setLink("https://www.cms.gov/privacy")}
+                                        href={setLink(
+                                            "https://www.cms.gov/privacy"
+                                        )}
                                         aria-label="Privacy Policy"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenPrivacyPolicy"
@@ -76,7 +80,9 @@ const FooterUI = (props) => {
                                 <li className="divider"></li>{" "}
                                 <li>
                                     <a
-                                        href={setLink("https://www.hhs.gov/web/governance/digital-strategy/it-policy-archive/hhs-rules-of-behavior-for-the-use-of-hhs-information-and-it-resources-policy.html")}
+                                        href={setLink(
+                                            "https://www.hhs.gov/web/governance/digital-strategy/it-policy-archive/hhs-rules-of-behavior-for-the-use-of-hhs-information-and-it-resources-policy.html"
+                                        )}
                                         aria-label="Rules of Behavior"
                                         data-track-category="FooterNav"
                                         data-track-action="OpenRulesofBehavior"
