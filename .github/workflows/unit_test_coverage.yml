@@ -70,7 +70,6 @@ jobs:
         run: npm run-script coverage
 
       - name: Store the coverage report as an artifact
-        working-directory: ./react
         uses: actions/upload-artifact@v3
         with:
           name: coverage
