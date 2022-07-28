@@ -43,6 +43,12 @@ export const Danger = () => (
     </Container>
 );
 
+export const DangerPrimary = () => (
+    <Container>
+        <Button variant="danger-primary">Button</Button>
+    </Container>
+);
+
 export const Outline = () => (
     <Container className="qpp-u-fill--blue-80">
         <Button variant="outline">Button</Button>

@@ -6,18 +6,19 @@ import CalloutBox from "./CalloutBox";
 import Card from "./Card";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
-import Header from "./Header/HeaderUI";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
+import MadieDialog from "./MadieDialog";
+import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import { Pagination } from "./Pagination";
-import SideNav from "./SideNav/UI/SideNavUI";
 import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import TextField from "./TextField";
 import Tooltip from "./Tooltip";
+import Toast from "./Toast";
 import Infotip from "./Infotip";
 import Search from "./Search";
 import TextInput from "./TextInput";
@@ -115,21 +116,22 @@ export {
     FlashNotification,
     Footer,
     FormControlLabel,
-    Header,
     InputLabel,
     Icons,
     Infotip,
     Modal,
+    MadieDialog,
+    MadieSpinner,
     Pagination,
     Search,
     Select,
-    SideNav,
     Spinner,
     TabPanel,
     Tabs,
     TextButton,
     TextInput,
     TextField,
+    Toast,
     Dropdown,
     Tooltip,
     DSLink,

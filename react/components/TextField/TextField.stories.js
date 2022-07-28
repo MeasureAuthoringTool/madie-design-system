@@ -41,11 +41,9 @@ export const WithHelperText = () => (
             data-testid="measure-name-text-field"
             size="small"
             helperText={
-                <FormHelperText
-                    data-testid={`helper-text`}
-                    children={"a descriptive message"}
-                    error={false}
-                />
+                <FormHelperText data-testid={`helper-text`} error={false}>
+                    a descriptive message
+                </FormHelperText>
             }
         />
     </Wrapper>
@@ -92,11 +90,9 @@ export const Error = () => (
             data-testid="measure-name-text-field"
             size="small"
             helperText={
-                <FormHelperText
-                    data-testid={`helper-text`}
-                    children="An error message"
-                    error={true}
-                />
+                <FormHelperText data-testid={`helper-text`} error={true}>
+                    An error message
+                </FormHelperText>
             }
         />
     </Wrapper>

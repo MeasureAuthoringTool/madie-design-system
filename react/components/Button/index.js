@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const VARIANTS = ["secondary", "outline", "danger", "white"];
+const VARIANTS = [
+    "secondary",
+    "outline",
+    "cyan",
+    "danger",
+    "danger-primary",
+    "white",
+];
 const SIZES = ["big"];
 
 const Button = ({

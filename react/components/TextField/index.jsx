@@ -1,39 +1,8 @@
 import React from "react";
 import { FormControl, TextField as MUITextField } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
 
-const useStyles = makeStyles({
-    asterisk: {
-        color: "#D92F2F",
-    },
-    select: {
-        borderRadius: 3,
-        height: 40, //there's a .13 coming from somewhere.
-        border: "1px solid #DDDDDD",
-        // remove weird line break from legend
-        "& .MuiOutlinedInput-notchedOutline": {
-            "& legend": {
-                width: 0,
-            },
-        },
-        "& .MuiOutlinedInput-root": {
-            borderRadius: 3,
-        },
-        // input base selector
-        "& .MuiInputBase-input": {
-            fontFamily: "Rubik",
-            fontSize: 14,
-            borderRadius: 3,
-            padding: "9px 14px",
-            "&::placeholder": {
-                opacity: 1,
-            },
-        },
-    },
-    // add a little space
-});
 const TextField = ({
     id,
     error = false,
@@ -43,7 +12,6 @@ const TextField = ({
     label,
     ...rest
 }) => {
-    const classes = useStyles();
     return (
         <FormControl fullWidth error={error}>
             <InputLabel
@@ -56,7 +24,33 @@ const TextField = ({
                 {label}
             </InputLabel>
             <MUITextField
-                className={classes.select}
+                sx={{
+                    borderRadius: "3px",
+                    height: 40, //there's a .13 coming from somewhere.
+                    border: "1px solid #DDDDDD",
+                    // remove weird line break from legend
+                    "& .MuiOutlinedInput-notchedOutline": {
+                        borderRadius: "3px",
+                        "& legend": {
+                            width: 0,
+                        },
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "&&": {
+                            borderRadius: "3px",
+                        },
+                    },
+                    // input base selector
+                    "& .MuiInputBase-input": {
+                        fontFamily: "Rubik",
+                        fontSize: 14,
+                        borderRadius: "3px",
+                        padding: "9px 14px",
+                        "&::placeholder": {
+                            opacity: 0.6,
+                        },
+                    },
+                }}
                 label={null}
                 error={error}
                 disabled={disabled}
