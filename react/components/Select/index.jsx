@@ -24,7 +24,6 @@ const Select = ({
     ],
     ...rest
 }) => {
-    // const classes = useStyles();
     const placehold = (
         <span style={{ opacity: 0.6 }}>
             {placeHolder?.name || "placeholder"}
@@ -73,7 +72,6 @@ const Select = ({
                 }}
                 displayEmpty
                 IconComponent={ExpandMoreIcon}
-                error={error}
                 disabled={disabled}
                 required={required}
                 id={id}
@@ -90,7 +88,7 @@ const Select = ({
             >
                 {options && options}
             </MUISelect>
-            {helperText && <FormHelperText>{helperText}</FormHelperText>}
+            {helperText && <FormHelperText data-testid={`helper-text`}>{helperText}</FormHelperText>}
         </FormControl>
     );
 };
