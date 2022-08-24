@@ -88,7 +88,11 @@ const Select = ({
             >
                 {options && options}
             </MUISelect>
-            {helperText && <FormHelperText data-testid={`helper-text`}>{helperText}</FormHelperText>}
+            {helperText && (
+                <FormHelperText data-testid={`helper-text`}>
+                    {helperText}
+                </FormHelperText>
+            )}
         </FormControl>
     );
 };
