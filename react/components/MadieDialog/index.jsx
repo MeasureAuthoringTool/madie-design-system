@@ -108,7 +108,7 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider />
-                    <DialogContent sx={{ padding: '32px' }}>
+                    <DialogContent sx={{ padding: "32px" }}>
                         {showRequiredFieldMessage && (
                             <Box
                                 sx={{
@@ -205,7 +205,9 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider />
-                    <DialogContent sx={{ padding: '32px'}}>{children}</DialogContent>
+                    <DialogContent sx={{ padding: "32px" }}>
+                        {children}
+                    </DialogContent>
                     <Divider />
                     <DialogActions
                         sx={{

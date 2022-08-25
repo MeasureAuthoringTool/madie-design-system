@@ -51,6 +51,8 @@ jobs:
         run: npm run-script coverage
 
       - name: Publish if version has been updated
+        env:
+          PUBLISH_COMMAND: npm
         uses: pascalgn/npm-publish-action@master
         with: # All of theses inputs are optional
           tag_name: "v%s"

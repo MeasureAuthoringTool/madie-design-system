@@ -5,7 +5,6 @@ import { render, fireEvent, waitFor } from "@testing-library/react";
 import MadieDialog from "../../components/MadieDialog";
 import "@testing-library/jest-dom";
 
-
 describe("Madie Dialog", () => {
     const onFormSubmit = jest.fn();
     const onFormCancel = jest.fn();
