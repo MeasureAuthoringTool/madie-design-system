@@ -12,6 +12,7 @@ import MadieDialog from "./MadieDialog";
 import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import { Pagination } from "./Pagination";
+import ReadOnlyTextField from "./ReadOnlyTextField";
 import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
@@ -123,6 +124,7 @@ export {
     MadieDialog,
     MadieSpinner,
     Pagination,
+    ReadOnlyTextField,
     Search,
     Select,
     Spinner,
