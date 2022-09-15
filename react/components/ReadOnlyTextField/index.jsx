@@ -29,8 +29,8 @@ const ReadOnlyTextField = ({
                     border: "none",
                     "& .MuiOutlinedInput-root": {
                         "& > fieldset": {
-                            border: "none"
-                          }
+                            border: "none",
+                        },
                     },
                     // input base selector
                     "& .MuiInputBase-input": {
@@ -42,11 +42,16 @@ const ReadOnlyTextField = ({
                         "&::placeholder": {
                             opacity: 0.6,
                         },
+                        "&:focus": {
+                            border: "none",
+                            outline: "none",
+                            boxShadow: "none",
+                        },
                     },
                 }}
                 InputProps={{
                     readOnly: true,
-                  }}
+                }}
                 disableUnderline={true}
                 label={null}
                 error={error}
