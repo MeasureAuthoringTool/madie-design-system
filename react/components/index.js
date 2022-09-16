@@ -9,6 +9,7 @@ import Footer from "./Footer/FooterUI";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
 import MadieDialog from "./MadieDialog";
+import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import { Pagination } from "./Pagination";
@@ -122,6 +123,7 @@ export {
     Infotip,
     Modal,
     MadieDialog,
+    MadieDiscardDialog,
     MadieSpinner,
     Pagination,
     ReadOnlyTextField,
