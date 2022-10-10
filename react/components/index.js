@@ -8,10 +8,13 @@ import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
+import MadieAlert from "./MadieAlert";
 import MadieDialog from "./MadieDialog";
+import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import { Pagination } from "./Pagination";
+import ReadOnlyTextField from "./ReadOnlyTextField";
 import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
@@ -120,9 +123,12 @@ export {
     Icons,
     Infotip,
     Modal,
+    MadieAlert,
     MadieDialog,
+    MadieDiscardDialog,
     MadieSpinner,
     Pagination,
+    ReadOnlyTextField,
     Search,
     Select,
     Spinner,

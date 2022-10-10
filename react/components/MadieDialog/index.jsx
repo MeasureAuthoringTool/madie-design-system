@@ -15,26 +15,26 @@ import Button from "../Button";
 
 const MadieDialog = ({
     /*
-      Lets make a reusable component
-      form booleon determines layout
-      Dialog props: props to be passed to the Dialog itself
-      {
-        open: bool,
-        onClose: function on close,
-        onSubmit: function onSubmit,
-        showRequiredFieldMessage: functional
-      }
-      Children: React components to be inside
-      Action Props for cancel or continue:
-      {
-        variants listed in design system like cyan
-        className
-        type
-        data-testid,
-        onClick
-        disabled
-      }
-      */
+        Lets make a reusable component
+        form booleon determines layout
+        Dialog props: props to be passed to the Dialog itself
+        {
+            open: bool,
+            onClose: function on close,
+            onSubmit: function onSubmit,
+            showRequiredFieldMessage: functional
+        }
+        Children: React components to be inside
+        Action Props for cancel or continue:
+        {
+            variants listed in design system like cyan
+            className
+            type
+            data-testid,
+            onClick
+            disabled
+        }
+    */
     form,
     title,
     dialogProps,
@@ -108,7 +108,7 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider />
-                    <DialogContent>
+                    <DialogContent sx={{ padding: "32px" }}>
                         {showRequiredFieldMessage && (
                             <Box
                                 sx={{
@@ -141,7 +141,7 @@ const MadieDialog = ({
 
                         {children}
                     </DialogContent>
-                    <Divider sx={{ marginTop: "10px" }} />
+                    <Divider />
                     <DialogActions
                         sx={{
                             padding: "16px",
@@ -205,8 +205,10 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider />
-                    <DialogContent>{children}</DialogContent>
-                    <Divider sx={{ marginTop: "10px" }} />
+                    <DialogContent sx={{ padding: "32px" }}>
+                        {children}
+                    </DialogContent>
+                    <Divider />
                     <DialogActions
                         sx={{
                             padding: "16px",

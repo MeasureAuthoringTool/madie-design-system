@@ -3,7 +3,6 @@
 @import 'utility/mixins';
 @import 'components/grid';
 @import 'utility/utilities';
-
 @import 'global';
 
 @import 'components/fonts';
@@ -13,6 +12,8 @@
 @import 'components/panels';
 @import 'components/forms';
 @import 'components/links';
+@import 'components/madie-discard-dialog';
+@import 'components/madie-alert';
 @import 'components/pie-chart';
 @import 'components/score-chart';
 @import 'components/wells';
