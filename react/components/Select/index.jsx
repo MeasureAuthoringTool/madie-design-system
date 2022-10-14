@@ -76,7 +76,6 @@ const Select = ({
                 required={required}
                 id={id}
                 label={null}
-                {...rest}
                 renderValue={(selected) => {
                     if (placeHolder) {
                         if (selected === placeHolder.value) {
@@ -85,6 +84,7 @@ const Select = ({
                     }
                     return selected;
                 }}
+                {...rest}
             >
                 {options && options}
             </MUISelect>
