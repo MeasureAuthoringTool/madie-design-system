@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { describe, expect } from "@jest/globals";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import MadieAlert from "../../components/MadieAlert";
 import "@testing-library/jest-dom";
 
 describe("Madie Alert", () => {
+
     it("It renders as expected with basic props and triggers on Close on click", async () => {
         const onClose = jest.fn();
         const { getByTestId } = render(
@@ -18,6 +18,7 @@ describe("Madie Alert", () => {
                     "data-testid": "alert-dialog",
                 }}
                 closeButtonProps={{
+                    "onClick": onClose,
                     "data-testid": "close-button",
                 }}
             />
@@ -30,9 +31,9 @@ describe("Madie Alert", () => {
             expect(onClose).toHaveBeenCalledTimes(1);
         });
     });
+
     it("It does not render when inivislbe", async () => {
-        const onClose = jest.fn();
-        const { getByTestId } = render(
+        render(
             <MadieAlert
                 type="warning"
                 visible={false}
@@ -46,6 +47,6 @@ describe("Madie Alert", () => {
                 }}
             />
         );
-        expect(getByTestId("alert-dialog")).not.toBeInTheDocument();
+        expect(screen.findByTestId("alert-dialog")).toBeNull;
     });
 });
