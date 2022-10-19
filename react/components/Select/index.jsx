@@ -89,7 +89,10 @@ const Select = ({
                 {options && options}
             </MUISelect>
             {helperText && (
-                <FormHelperText data-testid={`helper-text`}>
+                <FormHelperText
+                    data-testid={`helper-text`}
+                    id={`${id}-helper-text`}
+                >
                     {helperText}
                 </FormHelperText>
             )}

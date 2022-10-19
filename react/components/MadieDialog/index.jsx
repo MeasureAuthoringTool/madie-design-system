@@ -103,6 +103,7 @@ const MadieDialog = ({
                                         color: "#242424",
                                     }}
                                     data-testid="close-button"
+                                    aria-label="Close"
                                 />
                             </IconButton>
                         </div>
