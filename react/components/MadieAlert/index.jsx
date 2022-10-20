@@ -9,6 +9,8 @@ import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import classNames from "classnames";
+import PropTypes from "prop-types";
+
 // warning, info, error, success
 const MadieAlert = ({
     type = "warning",
@@ -58,5 +60,15 @@ const MadieAlert = ({
         )
     );
 };
+
+MadieAlert.propTypes = {
+    type: PropTypes.string,
+    visible: PropTypes.bool,
+    content: PropTypes.node,
+    canClose: PropTypes.bool,
+    alertProps: PropTypes.object,
+    closeButtonProps: PropTypes.object
+};
+
 
 export default MadieAlert;
