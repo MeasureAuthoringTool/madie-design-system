@@ -32,8 +32,8 @@ const Select = ({
     return (
         <FormControl error={error} fullWidth>
             <InputLabel
+                id={`${id}-label`}
                 disabled={disabled}
-                htmlFor={id}
                 required={required}
                 shrink
             >
@@ -75,7 +75,8 @@ const Select = ({
                 disabled={disabled}
                 required={required}
                 id={id}
-                label={null}
+                aria-describedby={`${id}-helper-text`}
+                labelId={`${id}-label`}
                 renderValue={(selected) => {
                     if (placeHolder) {
                         if (selected === placeHolder.value) {
