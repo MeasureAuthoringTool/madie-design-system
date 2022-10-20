@@ -24,7 +24,7 @@ const FooterUI = (props) => {
                 <img
                     className="qpp-logo"
                     src="/images/qpp_logo_rgb_color.png"
-                    alt="madie logo"
+                    alt="MADiE Measure Authoring Development Integrated Environment logo"
                 />
             ),
         },
