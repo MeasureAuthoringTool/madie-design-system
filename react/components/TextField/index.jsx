@@ -1,5 +1,9 @@
 import React from "react";
-import { FormControl, TextField as MUITextField } from "@mui/material";
+import {
+    FormControl,
+    TextField as MUITextField,
+    FormHelperText,
+} from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
 
@@ -57,7 +61,9 @@ const TextField = ({
                 id={id}
                 {...rest}
             />
-            {helperText && helperText}
+            <FormHelperText id={`${id}-helper-text`}>
+                {helperText && helperText}
+            </FormHelperText>
         </FormControl>
     );
 };
