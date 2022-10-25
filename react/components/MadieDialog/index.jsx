@@ -97,13 +97,12 @@ const MadieDialog = ({
                             {title}
                         </DialogTitle>
                         <div>
-                            <IconButton onClick={onClose}>
+                            <IconButton onClick={onClose} aria-label="Close">
                                 <CloseIcon
                                     sx={{
                                         color: "#242424",
                                     }}
                                     data-testid="close-button"
-                                    aria-label="Close"
                                 />
                             </IconButton>
                         </div>
