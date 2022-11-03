@@ -63,6 +63,7 @@ const Pagination = ({
                     sx={{
                         color: "#333333",
                     }}
+                    id="items-per-page"
                 >
                     Items per page
                 </Typography>
@@ -85,6 +86,10 @@ const Pagination = ({
                     value={limit}
                     label={null}
                     onChange={handleLimitChange}
+                    inputProps={{
+                        "aria-labelledby": "items-per-page",
+                        "aria-describedby": "offset-of-total-items"
+                    }}
                 >
                     {limitOptions.map((val) => (
                         <MenuItem
@@ -98,6 +103,7 @@ const Pagination = ({
                 </Select>
                 <Typography
                     fontSize={14}
+                    id="offset-of-total-items"
                     sx={{
                         color: "#757575",
                     }}
