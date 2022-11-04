@@ -98,7 +98,44 @@
       border: 1px solid $blue-60;
     }
   }
+  &.qpp-c-button--action {
+    color: $blue-60;
+    background-color: $white;
+    border: 1px solid $blue-60;
+    $font-size: $font-size-14;
 
+    &:hover,
+    &.qpp-c-button--hover {
+      border: 1px solid $gray-10;
+      background-color: $gray-10;
+      color: $gray-80;
+    }
+
+    &:active,
+    &.qpp-c-button--active {
+      background-color: darken($gray-10, 3%);
+      color: $gray-80;
+    }
+
+    &:focus,
+    &.qpp-c-button--focus {
+      border: 1px solid $blue-60;
+      box-shadow: 0 0 0 4px $blue-10;
+    }
+
+    &:disabled,
+    &.qpp-c-button--disabled {
+      background-color: $gray-10;
+      color: $gray-60;
+      border-color: $gray-10;
+    }
+
+    &.qpp-c-button--text {
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 1px;
+    }
+  }
   // White Button
   &.qpp-c-button--white {
     background-color: $white;
@@ -144,9 +181,9 @@
     border-color: $cyan-40;
     &:disabled,
     &.qpp-c-button--disabled {
-    background-color: $gray-04;
-    color: $gray-60;
-    border-color: $gray-04;
+      background-color: $gray-10;
+      color: $gray-60;
+      border-color: $gray-10;
     }
   
     &:hover,
@@ -240,14 +277,14 @@
   &.qpp-c-button--danger-primary {
     border: 1px solid $red-50;
     background-color: $red-50;
-	color: $white;
+	  color: $white;
     font-size: $font-size-14;
 
     &:disabled,
     &.qpp-c-button--disabled {
-		background-color: $gray-04;
-		color: $gray-60;
-		border-color: $gray-04;
+      background-color: $gray-10;
+      color: $gray-60;
+      border-color: $gray-10;
     }
 
     &:hover,
