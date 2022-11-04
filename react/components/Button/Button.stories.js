@@ -20,45 +20,91 @@ Container.propTypes = {
 };
 
 export const Primary = () => (
-    <Container>
-        <Button>Button</Button>
-    </Container>
+    <div>
+        <Container>
+            <Button>Button</Button>
+        </Container>
+        <Container>
+            <Button disabled>Button</Button>
+        </Container>
+    </div>
+);
+
+export const FormAction = () => (
+    <div>
+        <Container>
+            <Button variant="action">Button</Button>
+        </Container>
+        <Container>
+            <Button variant="action" disabled>Disabled</Button>
+        </Container>
+    </div>
 );
 
 export const Cyan = () => (
-    <Container>
-        <Button className="qpp-c-button--cyan">Button</Button>
-    </Container>
+    <div>
+        <Container>
+            <Button className="qpp-c-button--cyan">Button</Button>
+        </Container>
+        <Container>
+            <Button variant="cyan" disabled>Disabled</Button>
+        </Container>
+    </div>
 );
 
 export const Secondary = () => (
-    <Container>
-        <Button variant="secondary">Button</Button>
-    </Container>
+    <div>
+        <Container>
+            <Button variant="secondary">Button</Button>
+        </Container>
+        <Container>
+            <Button variant="secondary" disabled>Disabled</Button>
+        </Container>
+    </div>
 );
 
 export const Danger = () => (
-    <Container>
-        <Button variant="danger">Button</Button>
-    </Container>
+    <div>
+        <Container>
+            <Button variant="danger">Button</Button>
+        </Container>
+        <Container>
+            <Button disabled variant="danger">Disabled</Button>
+        </Container>
+    </div>
 );
 
 export const DangerPrimary = () => (
-    <Container>
-        <Button variant="danger-primary">Button</Button>
-    </Container>
+    <div>
+        <Container>
+            <Button variant="danger-primary">Button</Button>
+        </Container>
+        <Container>
+            <Button disabled variant="danger-primary">Disabled</Button>
+        </Container>
+    </div>
 );
 
 export const Outline = () => (
+    <div>
     <Container className="qpp-u-fill--blue-80">
         <Button variant="outline">Button</Button>
     </Container>
+    <Container className="qpp-u-fill--blue-80">
+        <Button variant="outline" disabled>Button</Button>
+    </Container>
+    </div>
 );
 
 export const White = () => (
-    <Container className="qpp-u-fill--blue-80">
-        <Button variant="white">Button</Button>
-    </Container>
+    <div>
+        <Container className="qpp-u-fill--blue-80">
+            <Button variant="white">Button</Button>
+        </Container>
+        <Container className="qpp-u-fill--blue-80">
+            <Button variant="white" disabled>Button</Button>
+        </Container>
+    </div>
 );
 
 export const Icon = () => (
@@ -87,6 +133,10 @@ export const Big = () => (
         <hr />
         <Button size="big" variant="secondary">
             Big Secondary Button
+        </Button>
+        <hr />
+        <Button size="big" variant="action">
+            Big Action Button
         </Button>
     </Container>
 );
