@@ -194,7 +194,7 @@ const MadieDialog = ({
                             {title}
                         </DialogTitle>
                         <div>
-                            <IconButton onClick={onClose}>
+                            <IconButton onClick={onClose} aria-label="Close">
                                 <CloseIcon
                                     sx={{
                                         color: "#242424",
