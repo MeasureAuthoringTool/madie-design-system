@@ -86,14 +86,31 @@ export const DangerPrimary = () => (
 );
 
 export const Outline = () => (
-    <div>
-    <Container className="qpp-u-fill--blue-80">
+    <Container>
         <Button variant="outline">Button</Button>
-    </Container>
-    <Container className="qpp-u-fill--blue-80">
+        <hr/>
         <Button variant="outline" disabled>Button</Button>
     </Container>
-    </div>
+);
+
+export const OutlineFilled = () => (
+    <Container className="qpp-u-fill--blue-80">
+        <Button variant="outline-filled">Button</Button>
+        <hr/>
+        <Button variant="outline-filled" disabled>Button</Button>
+        <hr />
+        <Button variant="outline-filled">
+            <FeatherIcon icon="download" />Button
+        </Button>
+    </Container>
+);
+
+export const OutlineSecondary = () => (
+    <Container>
+        <Button variant="outline-secondary">Button</Button>
+        <hr/>
+        <Button variant="outline-secondary" disabled>Button</Button>
+    </Container>
 );
 
 export const White = () => (
@@ -180,4 +197,5 @@ export const TextButtonStory = () => (
         </TextButton>
     </Container>
 );
+
 TextButtonStory.storyName = "Text Button";
