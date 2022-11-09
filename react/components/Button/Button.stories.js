@@ -93,15 +93,25 @@ export const Outline = () => (
     </Container>
 );
 
-export const OutlineSecondary = () => {
-    return(
-        <Container>
-            <Button variant="outline-secondary">Button</Button>
-            <hr/>
-            <Button variant="outline-secondary" disabled>Button</Button>
-        </Container>
-    )
-};
+export const OutlineFilled = () => (
+    <Container className="qpp-u-fill--blue-80">
+        <Button variant="outline-filled">Button</Button>
+        <hr/>
+        <Button variant="outline-filled" disabled>Button</Button>
+        <hr />
+        <Button variant="outline-filled">
+            <FeatherIcon icon="download" />Button
+        </Button>
+    </Container>
+);
+
+export const OutlineSecondary = () => (
+    <Container>
+        <Button variant="outline-secondary">Button</Button>
+        <hr/>
+        <Button variant="outline-secondary" disabled>Button</Button>
+    </Container>
+);
 
 export const White = () => (
     <div>
