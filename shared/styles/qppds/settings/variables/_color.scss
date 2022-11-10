@@ -41,9 +41,6 @@ $ia-gold: #ffa202;
 $pi-magenta: #ea5f92;
 $quality-blue: $blue-60;
 
-//madie link color
-$madie-link-blue: #0068b8;
-
 /* stylelint-disable property-case */
 :export {
   white: $white;
@@ -86,7 +83,5 @@ $madie-link-blue: #0068b8;
   iaGold: $ia-gold;
   piMagenta: $pi-magenta;
   qualityBlue: $quality-blue;
-
-  madieLinkBlue: $madie-link-blue;
 }
 /* stylelint-enable property-case */
