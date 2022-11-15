@@ -88,7 +88,7 @@ const Pagination = ({
                     onChange={handleLimitChange}
                     inputProps={{
                         "aria-labelledby": "items-per-page",
-                        "aria-describedby": "offset-of-total-items"
+                        "aria-describedby": "offset-of-total-items",
                     }}
                 >
                     {limitOptions.map((val) => (

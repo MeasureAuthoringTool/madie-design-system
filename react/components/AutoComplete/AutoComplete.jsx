@@ -1,9 +1,15 @@
 import React from "react";
-import { FormControl, FormHelperText, Autocomplete as MUIAutoComplete, TextField, Checkbox } from "@mui/material";
+import {
+    FormControl,
+    FormHelperText,
+    Autocomplete as MUIAutoComplete,
+    TextField,
+    Checkbox,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const autoCompleteStyles = {
     borderRadius: "3px",
@@ -82,58 +88,64 @@ const AutoComplete = ({
                 {label}
             </InputLabel>
             <MUIAutoComplete
-                 disablePortal
-                 id={id}
-                 data-testid={dataTestId}
-                 options={options}
-                 disabled={disabled}
-                 multiple={multiple}
-                 disableCloseOnSelect={multiple}
-                 sx={ multiple ? {
-                     ...autoCompleteStyles,
-                     height: "auto",
-                     "& .MuiAutocomplete-inputRoot": {
-                         // This styling are necessary
-                         paddingTop: 1,
-                         paddingBottom: 1,
-                     },
-                 } : autoCompleteStyles}
-                 renderInput={(params) => {
-                     const { inputProps } = params;
-                     inputProps["aria-required"] = required;
-                     inputProps["aria-describedby"] = `${id}-helper-text`;
-                     inputProps["aria-labelledby"] = `${id}-label`;
-                     return (
-                         <TextField
-                             {...params}
-                             placeholder={placeholder}
-                             inputProps={inputProps}
-                             label=""
-                             error={error}
-                         />
-                     );
-                 }}
-                 onChange={(_event, selectedVal) => onChange(id, selectedVal || "")}
-                 renderOption={(props, option, { selected}) => {
-                     debugger;
-                     return multiple ? renderOptionMultiple(props, option, selected)
-                         : renderOptionSingle(props, option)
-                 }}
-                 {...rest}
-             />
-             {helperText && (
-                 <FormHelperText
-                     tabIndex={0}
-                     aria-live="polite"
-                     id={`${id}-helper-text`}
-                     data-testid={`${id}-helper-text`}
-                     error={error}
-                 >
-                     {helperText}
-                 </FormHelperText>
-             )}
+                disablePortal
+                id={id}
+                data-testid={dataTestId}
+                options={options}
+                disabled={disabled}
+                multiple={multiple}
+                disableCloseOnSelect={multiple}
+                sx={
+                    multiple
+                        ? {
+                              ...autoCompleteStyles,
+                              height: "auto",
+                              "& .MuiAutocomplete-inputRoot": {
+                                  // This styling are necessary
+                                  paddingTop: 1,
+                                  paddingBottom: 1,
+                              },
+                          }
+                        : autoCompleteStyles
+                }
+                renderInput={(params) => {
+                    const { inputProps } = params;
+                    inputProps["aria-required"] = required;
+                    inputProps["aria-describedby"] = `${id}-helper-text`;
+                    inputProps["aria-labelledby"] = `${id}-label`;
+                    return (
+                        <TextField
+                            {...params}
+                            placeholder={placeholder}
+                            inputProps={inputProps}
+                            label=""
+                            error={error}
+                        />
+                    );
+                }}
+                onChange={(_event, selectedVal) =>
+                    onChange(id, selectedVal || "")
+                }
+                renderOption={(props, option, { selected }) => {
+                    return multiple
+                        ? renderOptionMultiple(props, option, selected)
+                        : renderOptionSingle(props, option);
+                }}
+                {...rest}
+            />
+            {helperText && (
+                <FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    error={error}
+                >
+                    {helperText}
+                </FormHelperText>
+            )}
         </FormControl>
-    )
+    );
 };
 
 AutoComplete.propTypes = {

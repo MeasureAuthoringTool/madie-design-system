@@ -36,7 +36,9 @@ export const FormAction = () => (
             <Button variant="action">Button</Button>
         </Container>
         <Container>
-            <Button variant="action" disabled>Disabled</Button>
+            <Button variant="action" disabled>
+                Disabled
+            </Button>
         </Container>
     </div>
 );
@@ -47,7 +49,9 @@ export const Cyan = () => (
             <Button className="qpp-c-button--cyan">Button</Button>
         </Container>
         <Container>
-            <Button variant="cyan" disabled>Disabled</Button>
+            <Button variant="cyan" disabled>
+                Disabled
+            </Button>
         </Container>
     </div>
 );
@@ -58,7 +62,9 @@ export const Secondary = () => (
             <Button variant="secondary">Button</Button>
         </Container>
         <Container>
-            <Button variant="secondary" disabled>Disabled</Button>
+            <Button variant="secondary" disabled>
+                Disabled
+            </Button>
         </Container>
     </div>
 );
@@ -69,7 +75,9 @@ export const Danger = () => (
             <Button variant="danger">Button</Button>
         </Container>
         <Container>
-            <Button disabled variant="danger">Disabled</Button>
+            <Button disabled variant="danger">
+                Disabled
+            </Button>
         </Container>
     </div>
 );
@@ -80,7 +88,9 @@ export const DangerPrimary = () => (
             <Button variant="danger-primary">Button</Button>
         </Container>
         <Container>
-            <Button disabled variant="danger-primary">Disabled</Button>
+            <Button disabled variant="danger-primary">
+                Disabled
+            </Button>
         </Container>
     </div>
 );
@@ -88,19 +98,24 @@ export const DangerPrimary = () => (
 export const Outline = () => (
     <Container>
         <Button variant="outline">Button</Button>
-        <hr/>
-        <Button variant="outline" disabled>Button</Button>
+        <hr />
+        <Button variant="outline" disabled>
+            Button
+        </Button>
     </Container>
 );
 
 export const OutlineFilled = () => (
     <Container className="qpp-u-fill--blue-80">
         <Button variant="outline-filled">Button</Button>
-        <hr/>
-        <Button variant="outline-filled" disabled>Button</Button>
+        <hr />
+        <Button variant="outline-filled" disabled>
+            Button
+        </Button>
         <hr />
         <Button variant="outline-filled">
-            <FeatherIcon icon="download" />Button
+            <FeatherIcon icon="download" />
+            Button
         </Button>
     </Container>
 );
@@ -108,8 +123,10 @@ export const OutlineFilled = () => (
 export const OutlineSecondary = () => (
     <Container>
         <Button variant="outline-secondary">Button</Button>
-        <hr/>
-        <Button variant="outline-secondary" disabled>Button</Button>
+        <hr />
+        <Button variant="outline-secondary" disabled>
+            Button
+        </Button>
     </Container>
 );
 
@@ -119,7 +136,9 @@ export const White = () => (
             <Button variant="white">Button</Button>
         </Container>
         <Container className="qpp-u-fill--blue-80">
-            <Button variant="white" disabled>Button</Button>
+            <Button variant="white" disabled>
+                Button
+            </Button>
         </Container>
     </div>
 );
