@@ -101,7 +101,6 @@ const AutoComplete = ({
                               ...autoCompleteStyles,
                               height: "auto",
                               "& .MuiAutocomplete-inputRoot": {
-                                  // This styling are necessary
                                   paddingTop: 1,
                                   paddingBottom: 1,
                               },
