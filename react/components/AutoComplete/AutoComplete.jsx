@@ -76,6 +76,10 @@ const AutoComplete = ({
     onChange,
     ...rest
 }) => {
+
+    // Todo error color #AE1C1C
+// .css-1m50jel-MuiFormLabel-root-MuiInputLabel-root.Mui-error
+//         .css-1wc848c-MuiFormHelperText-root.Mui-error
     return (
         <FormControl error={error} fullWidth>
             <InputLabel
@@ -84,6 +88,7 @@ const AutoComplete = ({
                 disabled={disabled}
                 required={required}
                 shrink
+                error={error}
             >
                 {label}
             </InputLabel>
@@ -139,6 +144,9 @@ const AutoComplete = ({
                     id={`${id}-helper-text`}
                     data-testid={`${id}-helper-text`}
                     error={error}
+                    sx={ error &&
+                        { color: "#AE1C1C !important" }
+                    }
                 >
                     {helperText}
                 </FormHelperText>
