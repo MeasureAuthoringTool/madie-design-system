@@ -76,10 +76,6 @@ const AutoComplete = ({
     onChange,
     ...rest
 }) => {
-
-    // Todo error color #AE1C1C
-// .css-1m50jel-MuiFormLabel-root-MuiInputLabel-root.Mui-error
-//         .css-1wc848c-MuiFormHelperText-root.Mui-error
     return (
         <FormControl error={error} fullWidth>
             <InputLabel
