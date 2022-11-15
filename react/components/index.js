@@ -1,5 +1,6 @@
 import Accordion from "./Accordion";
 import Alert from "./Alert";
+import AutoComplete from "./AutoComplete/AutoComplete"
 import Breadcrumb from "./Breadcrumb";
 import Button, { TextButton } from "./Button";
 import CalloutBox from "./CalloutBox";
@@ -112,6 +113,7 @@ const Icons = {
 export {
     Accordion,
     Alert,
+    AutoComplete,
     Breadcrumb,
     Button,
     CalloutBox,
