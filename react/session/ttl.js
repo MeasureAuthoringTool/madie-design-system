@@ -1,26 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
-const fetchTtl = token => {
+const fetchTtl = (token) => {
     const requestOptions = {
-        method: 'GET',
-        url: '/api/auth/sessions/ttl',
+        method: "GET",
+        url: "/api/auth/sessions/ttl",
         headers: {
-            Accept: 'application/vnd.qpp.cms.gov.v1+json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+            Accept: "application/vnd.qpp.cms.gov.v1+json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
         },
         transformResponse: [
-            function(response) {
+            function (response) {
                 return JSON.parse(response).data;
-            }
-        ]
+            },
+        ],
     };
 
-    return axios(requestOptions).then(response => {
+    return axios(requestOptions).then((response) => {
         let expiry;
 
         if (response && response.data) {
-            if (response.data.hasOwnProperty('time_remaining')) {
+            if (response.data.hasOwnProperty("time_remaining")) {
                 expiry = response.data.time_remaining;
             } else {
                 // See https://tools.ietf.org/html/rfc7519

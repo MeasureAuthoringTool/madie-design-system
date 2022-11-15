@@ -67,8 +67,7 @@ MadieAlert.propTypes = {
     content: PropTypes.node,
     canClose: PropTypes.bool,
     alertProps: PropTypes.object,
-    closeButtonProps: PropTypes.object
+    closeButtonProps: PropTypes.object,
 };
-
 
 export default MadieAlert;

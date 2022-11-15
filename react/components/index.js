@@ -11,6 +11,7 @@ import FormControlLabel from "./FormControlLabel";
 import MadieAlert from "./MadieAlert";
 import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
+import MadieDeleteDialog from "./MadieDeleteDialog";
 import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import { Pagination } from "./Pagination";
@@ -125,6 +126,7 @@ export {
     Modal,
     MadieAlert,
     MadieDialog,
+    MadieDeleteDialog,
     MadieDiscardDialog,
     MadieSpinner,
     Pagination,

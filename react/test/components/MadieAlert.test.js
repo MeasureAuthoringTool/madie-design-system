@@ -5,7 +5,6 @@ import MadieAlert from "../../components/MadieAlert";
 import "@testing-library/jest-dom";
 
 describe("Madie Alert", () => {
-
     it("It renders as expected with basic props and triggers on Close on click", async () => {
         const onClose = jest.fn();
         const { getByTestId } = render(
@@ -18,7 +17,7 @@ describe("Madie Alert", () => {
                     "data-testid": "alert-dialog",
                 }}
                 closeButtonProps={{
-                    "onClick": onClose,
+                    onClick: onClose,
                     "data-testid": "close-button",
                 }}
             />

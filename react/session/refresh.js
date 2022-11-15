@@ -1,6 +1,6 @@
-import cookie from 'cookie';
-import axios from 'axios';
-import LogoutSession from './logout.js';
+import cookie from "cookie";
+import axios from "axios";
+import LogoutSession from "./logout.js";
 
 /**
  * Makes an API request to refresh the session token cookie, if it exists.
@@ -13,25 +13,25 @@ import LogoutSession from './logout.js';
 const RefreshSession = (options = {}) => {
     let cookies = cookie.parse(options.window.document.cookie);
 
-    if (cookies.hasOwnProperty('qpp_auth_token')) {
+    if (cookies.hasOwnProperty("qpp_auth_token")) {
         const requestOptions = {
-            method: 'POST',
-            url: '/api/auth/sessions/refresh',
+            method: "POST",
+            url: "/api/auth/sessions/refresh",
             headers: {
-                Accept: 'application/vnd.qpp.cms.gov.v1+json',
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${cookies.qpp_auth_token}`
-            }
+                Accept: "application/vnd.qpp.cms.gov.v1+json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${cookies.qpp_auth_token}`,
+            },
         };
 
         let onSuccess = (/*response*/) => {
-            if (typeof options.onSuccess === 'function') {
+            if (typeof options.onSuccess === "function") {
                 options.onSuccess();
             }
         };
 
         let onError = (/*response*/) => {
-            if (typeof options.onError === 'function') {
+            if (typeof options.onError === "function") {
                 options.onError();
             }
 
@@ -40,7 +40,7 @@ const RefreshSession = (options = {}) => {
 
         return axios(requestOptions)
             .then(onSuccess, onError)
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log(err);
             });
     }
