@@ -45,7 +45,7 @@
         "@storybook/addons": "^6.5.0-alpha.51",
         "@storybook/builder-webpack5": "^6.5.0-alpha.51",
         "@storybook/manager-webpack5": "^6.5.0-alpha.51",
-        "@storybook/react": "^6.5.0-alpha.51",
+        "@storybook/react": "^6.5.13",
         "@testing-library/react": "^12.1.2",
         "autoprefixer": "^10.4.2",
         "babel-eslint": "^10.1.0",
