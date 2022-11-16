@@ -31,8 +31,8 @@ const autoCompleteStyles = {
         paddingBottom: 0,
     },
     "& .Mui-disabled" : {
-        backgroundColor: "#dddddd",
-        border: "#dddddd",
+        backgroundColor: "#EDEDED",
+        border: "#EDEDED",
     }
 };
 
