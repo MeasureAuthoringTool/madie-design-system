@@ -45,7 +45,7 @@
         "@storybook/addons": "^6.5.0-alpha.51",
         "@storybook/builder-webpack5": "^6.5.0-alpha.51",
         "@storybook/manager-webpack5": "^6.5.0-alpha.51",
-        "@storybook/react": "^6.5.13",
+        "@storybook/react": "^6.5.0-alpha.51",
         "@testing-library/react": "^12.1.2",
         "autoprefixer": "^10.4.2",
         "babel-eslint": "^10.1.0",
@@ -138,7 +138,6 @@
         "trim": ">=0.0.3",
         "webpack": "^5.70.0",
         "trim-newlines": "^3.0.1",
-        "glob-parent": "^6.0.1",
-        "loader-utils": "2.0.4"
+        "glob-parent": "^6.0.1"
     }
 }
