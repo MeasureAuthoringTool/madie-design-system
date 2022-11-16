@@ -30,6 +30,10 @@ const autoCompleteStyles = {
         paddingTop: 0,
         paddingBottom: 0,
     },
+    "& .Mui-disabled" : {
+        backgroundColor: "#dddddd",
+        border: "#dddddd",
+    }
 };
 
 const checkedIcon = <CheckBoxIcon fontSize="small" />;

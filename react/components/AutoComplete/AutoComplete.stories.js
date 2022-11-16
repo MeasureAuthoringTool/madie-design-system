@@ -36,7 +36,7 @@ AutoCompleteWithLabel.args = {
 export const AutoCompleteWithLabelDisabled = TemplateSingleSelect.bind({});
 AutoCompleteWithLabelDisabled.args = {
     disabled: true,
-    placeholder: "Search for a value",
+    value: "Option1"
 };
 
 export const AutoCompleteWithHelperText = TemplateSingleSelect.bind({});
