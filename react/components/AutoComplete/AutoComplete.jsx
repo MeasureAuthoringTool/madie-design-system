@@ -123,15 +123,15 @@ const AutoComplete = ({
                         />
                     );
                 }}
-                onChange={(_event, selectedVal) =>
-                    onChange(id, selectedVal || "")
-                }
                 renderOption={(props, option, { selected }) => {
                     return multiple
                         ? renderOptionMultiple(props, option, selected)
                         : renderOptionSingle(props, option);
                 }}
                 {...rest}
+                onChange={(_event, selectedVal) =>
+                    onChange(id, selectedVal || "")
+                }
             />
             {helperText && (
                 <FormHelperText
