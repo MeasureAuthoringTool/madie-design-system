@@ -5,6 +5,41 @@ import InputLabel from "../InputLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import PropTypes from "prop-types";
 
+const selectStyles = {
+    borderRadius: "3px",
+    height: 40, //there's a .13 coming from somewhere.
+    border: "1px solid #DDDDDD",
+    // remove weird line break from legend
+    "& .MuiOutlinedInput-notchedOutline": {
+        borderRadius: "3px",
+        "& legend": {
+            width: 0,
+        },
+    },
+    "& .MuiOutlinedInput-root": {
+        "&&": {
+            borderRadius: "3px",
+        },
+    },
+    // input base selector
+    "& .MuiInputBase-input": {
+        fontFamily: "Rubik",
+        fontSize: 14,
+        borderRadius: "3px",
+        padding: "9px 14px",
+        "&::placeholder": {
+            opacity: 0.6,
+        },
+    },
+    "& 	.MuiSelect-icon": {
+        color: "#323232",
+    },
+    "& .Mui-disabled" : {
+        backgroundColor: "#EDEDED",
+        border: "#EDEDED",
+    }
+}
+
 const Select = ({
     placeHolder = undefined, // expects placeholder objects of { name: value } and inserts into the render item function.
     required = false,
@@ -40,36 +75,7 @@ const Select = ({
                 {label}
             </InputLabel>
             <MUISelect
-                sx={{
-                    borderRadius: "3px",
-                    height: 40, //there's a .13 coming from somewhere.
-                    border: "1px solid #DDDDDD",
-                    // remove weird line break from legend
-                    "& .MuiOutlinedInput-notchedOutline": {
-                        borderRadius: "3px",
-                        "& legend": {
-                            width: 0,
-                        },
-                    },
-                    "& .MuiOutlinedInput-root": {
-                        "&&": {
-                            borderRadius: "3px",
-                        },
-                    },
-                    // input base selector
-                    "& .MuiInputBase-input": {
-                        fontFamily: "Rubik",
-                        fontSize: 14,
-                        borderRadius: "3px",
-                        padding: "9px 14px",
-                        "&::placeholder": {
-                            opacity: 0.6,
-                        },
-                    },
-                    "& 	.MuiSelect-icon": {
-                        color: "#323232",
-                    },
-                }}
+                sx={selectStyles}
                 displayEmpty
                 IconComponent={ExpandMoreIcon}
                 disabled={disabled}
