@@ -44,11 +44,11 @@ export const PopOver = () => {
                     toImplementFunction: viewEditredirect,
                     dataTestId: `edit-measure-1`,
                 }}
-                otherSelectOptionProps={{
+                otherSelectOptionProps={[{
                     label: "Export",
                     toImplementFunction: zipData,
                     dataTestId: `export-measure-1`,
-                }}
+                }]}
             />
         </div>
     );
