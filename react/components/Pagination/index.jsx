@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { visuallyHidden } from '@mui/utils';
+
 import {
     Pagination as PaginationComponent,
     PaginationItem,
@@ -57,13 +59,19 @@ const Pagination = ({
     return (
         <Container>
             <Row>
+                {/*this span is only for screen reader*/}
+                <span
+                    id="items-per-page"
+                    style={visuallyHidden}
+                >
+                    Items per page {limit}.
+                </span>
                 <Typography
                     fontSize={14}
                     fontFamily="Rubik"
                     sx={{
                         color: "#333333",
                     }}
-                    id="items-per-page"
                 >
                     Items per page
                 </Typography>
@@ -87,6 +95,7 @@ const Pagination = ({
                     label={null}
                     onChange={handleLimitChange}
                     inputProps={{
+                        "aria-labelledby":"items-per-page",
                         "aria-describedby": "items-per-page offset-of-total-items",
                     }}
                 >
