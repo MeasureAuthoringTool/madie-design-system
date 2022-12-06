@@ -1,6 +1,6 @@
 import Accordion from "./Accordion";
 import Alert from "./Alert";
-import AutoComplete from "./AutoComplete/AutoComplete"
+import AutoComplete from "./AutoComplete/AutoComplete";
 import Breadcrumb from "./Breadcrumb";
 import Button, { TextButton } from "./Button";
 import CalloutBox from "./CalloutBox";
@@ -15,6 +15,7 @@ import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
 import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
+import Popover from "./Popover";
 import { Pagination } from "./Pagination";
 import ReadOnlyTextField from "./ReadOnlyTextField";
 import Select from "./Select";
@@ -132,6 +133,7 @@ export {
     MadieDeleteDialog,
     MadieSpinner,
     Pagination,
+    Popover,
     ReadOnlyTextField,
     Search,
     Select,
