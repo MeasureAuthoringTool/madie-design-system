@@ -21,13 +21,13 @@ export const PopOver = () => {
         setOptionsOpen(true);
     };
 
-    const viewEditredirect=()=>{
+    const viewEditredirect = () => {
         setOptionsOpen(false);
-    }
+    };
 
-    const zipData=()=>{
+    const zipData = () => {
         setOptionsOpen(false);
-    }
+    };
 
     return (
         <div className="qpp-u-padding--12">
@@ -40,15 +40,15 @@ export const PopOver = () => {
                 onClose={onClose}
                 canEdit={true}
                 editViewSelectOptionProps={{
-                    label:"View",
+                    label: "View",
                     toImplementFunction: viewEditredirect,
-                    dataTestId: `edit-measure-1`
-                  }}
-                  otherSelectOptionProps={{
+                    dataTestId: `edit-measure-1`,
+                }}
+                otherSelectOptionProps={{
                     label: "Export",
                     toImplementFunction: zipData,
-                    dataTestId:`export-measure-1`
-                  }}  
+                    dataTestId: `export-measure-1`,
+                }}
             />
         </div>
     );

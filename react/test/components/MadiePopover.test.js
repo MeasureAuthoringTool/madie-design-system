@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
-import Popover from "../../components/Popover"
-import { render, fireEvent} from "@testing-library/react";
-
+import Popover from "../../components/Popover";
+import { render, fireEvent } from "@testing-library/react";
 
 export const PopoverTester = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -18,17 +17,21 @@ export const PopoverTester = () => {
         setOptionsOpen(true);
     };
 
-    const viewEditredirect=()=>{
+    const viewEditredirect = () => {
         setOptionsOpen(false);
-    }
+    };
 
-    const zipData=()=>{
+    const zipData = () => {
         setOptionsOpen(false);
-    }
+    };
 
     return (
         <div className="qpp-u-padding--12">
-            <button className="qpp-c-button" data-testid="popover-tester" onClick={(e) => handleOpen(e)}>
+            <button
+                className="qpp-c-button"
+                data-testid="popover-tester"
+                onClick={(e) => handleOpen(e)}
+            >
                 Open Popover
             </button>
             <Popover
@@ -37,15 +40,17 @@ export const PopoverTester = () => {
                 onClose={onClose}
                 canEdit={true}
                 editViewSelectOptionProps={{
-                    label:"View",
+                    label: "View",
                     toImplementFunction: viewEditredirect,
-                    dataTestId: `edit-measure-1`
-                  }}
-                  otherSelectOptionProps={{
-                    label: "Export",
-                    toImplementFunction: zipData,
-                    dataTestId:`export-measure-1`
-                  }}  
+                    dataTestId: `edit-measure-1`,
+                }}
+                otherSelectOptionProps={[
+                    {
+                        label: "Export",
+                        toImplementFunction: zipData,
+                        dataTestId: `export-measure-1`,
+                    },
+                ]}
             />
         </div>
     );
@@ -53,24 +58,20 @@ export const PopoverTester = () => {
 
 describe("MadiePopover", () => {
     test("Popover renders", async () => {
-        const { findByTestId, queryByText } = await render(
-            <PopoverTester />
-        );
+        const { findByTestId, queryByText } = await render(<PopoverTester />);
         const result = await findByTestId("popover-tester");
         fireEvent.click(result);
         expect(queryByText("View")).toBeVisible();
         expect(queryByText("Export")).toBeVisible();
-    })
+    });
 
     test("Popover disappears on clicking popover options", async () => {
-        const { findByTestId, queryByText } = await render(
-            <PopoverTester />
-        );
+        const { findByTestId, queryByText } = await render(<PopoverTester />);
         const result = await findByTestId("popover-tester");
         fireEvent.click(result);
         expect(queryByText("View")).toBeVisible();
         expect(queryByText("Export")).toBeVisible();
-        fireEvent.click(queryByText("View"))
+        fireEvent.click(queryByText("View"));
         expect(queryByText("View")).not.toBeVisible();
-    })
-})
+    });
+});
