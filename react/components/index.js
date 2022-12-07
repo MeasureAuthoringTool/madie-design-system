@@ -14,6 +14,7 @@ import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
 import MadieSpinner from "./MadieSpinner";
+import MadieToast from "./MadieToast";
 import Modal from "./Modal";
 import Popover from "./Popover";
 import { Pagination } from "./Pagination";
@@ -132,6 +133,7 @@ export {
     MadieDiscardDialog,
     MadieDeleteDialog,
     MadieSpinner,
+    MadieToast,
     Pagination,
     Popover,
     ReadOnlyTextField,
