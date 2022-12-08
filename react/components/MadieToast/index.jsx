@@ -46,7 +46,7 @@ const MadieToast = ({
             message={
                 <div className={toastClass} {...toastProps}>
                     <Icon className={iconClass} />
-                    <div id="content">{content && content}</div>
+                    <div id="content">{content}</div>
                     {canClose && (
                         <IconButton
                             onClick={onClose}
