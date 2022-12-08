@@ -100,6 +100,9 @@ MadieToast.propTypes = {
     visible: PropTypes.bool,
     content: PropTypes.node,
     canClose: PropTypes.bool,
+    onClose: PropTypes.func,
+    autoHideDuration: PropTypes.number,
+    toastKey: PropTypes.string,
     toastProps: PropTypes.object,
     closeButtonProps: PropTypes.object,
 };
