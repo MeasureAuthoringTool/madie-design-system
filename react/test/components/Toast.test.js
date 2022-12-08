@@ -71,4 +71,48 @@ describe("Toast", () => {
             });
         });
     });
+
+    test("Info toast renders correctly and disappears", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, queryByText } = await render(
+                <ToastTester
+                    toastKey="toast-key"
+                    testId="info-toast"
+                    toastType="info"
+                    autoHideDuration={1000}
+                    message="Something has completed"
+                />
+            );
+            const result = await findByTestId("toast-tester");
+            fireEvent.click(result);
+            const dangerToast = await getByTestId("info-toast");
+            expect(dangerToast).toBeInTheDocument();
+            await waitFor(() => {
+                expect(
+                    queryByText("Something has completed")
+                ).not.toBeVisible();
+            });
+        });
+    });
+
+    test("Warning toast renders correctly and disappears", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, queryByText } = await render(
+                <ToastTester
+                    toastKey="toast-key"
+                    testId="warning-toast"
+                    toastType="warning"
+                    autoHideDuration={1000}
+                    message="Something went wrong"
+                />
+            );
+            const result = await findByTestId("toast-tester");
+            fireEvent.click(result);
+            const dangerToast = await getByTestId("warning-toast");
+            expect(dangerToast).toBeInTheDocument();
+            await waitFor(() => {
+                expect(queryByText("Something went wrong")).not.toBeVisible();
+            });
+        });
+    });
 });
