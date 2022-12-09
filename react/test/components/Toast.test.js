@@ -115,4 +115,26 @@ describe("Toast", () => {
             });
         });
     });
+
+    it("It renders as expected with basic props and triggers on Close on click", async () => {
+        const onClose = jest.fn();
+        const { findByTestId, getByTestId } = await render(
+            <Toast
+                testId="test-toast"
+                message="Something went wrong"
+                onClose={onClose}
+                closeButtonProps={{
+                    "data-testid": "close-button",
+                }}
+            />
+        );
+
+        expect(getByTestId("test-toast")).toBeInTheDocument();
+        expect(getByTestId("close-button")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        fireEvent.click(cancelButton);
+        await waitFor(() => {
+            expect(onClose).toHaveBeenCalledTimes(1);
+        });
+    });
 });
