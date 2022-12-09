@@ -71,4 +71,70 @@ describe("Toast", () => {
             });
         });
     });
+
+    test("Info toast renders correctly and disappears", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, queryByText } = await render(
+                <ToastTester
+                    toastKey="toast-key"
+                    testId="info-toast"
+                    toastType="info"
+                    autoHideDuration={1000}
+                    message="Something has completed"
+                />
+            );
+            const result = await findByTestId("toast-tester");
+            fireEvent.click(result);
+            const dangerToast = await getByTestId("info-toast");
+            expect(dangerToast).toBeInTheDocument();
+            await waitFor(() => {
+                expect(
+                    queryByText("Something has completed")
+                ).not.toBeVisible();
+            });
+        });
+    });
+
+    test("Warning toast renders correctly and disappears", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, queryByText } = await render(
+                <ToastTester
+                    toastKey="toast-key"
+                    testId="warning-toast"
+                    toastType="warning"
+                    autoHideDuration={1000}
+                    message="Something went wrong"
+                />
+            );
+            const result = await findByTestId("toast-tester");
+            fireEvent.click(result);
+            const dangerToast = await getByTestId("warning-toast");
+            expect(dangerToast).toBeInTheDocument();
+            await waitFor(() => {
+                expect(queryByText("Something went wrong")).not.toBeVisible();
+            });
+        });
+    });
+
+    it("It renders as expected with basic props and triggers on Close on click", async () => {
+        const onClose = jest.fn();
+        const { findByTestId, getByTestId } = await render(
+            <Toast
+                testId="test-toast"
+                message="Something went wrong"
+                onClose={onClose}
+                closeButtonProps={{
+                    "data-testid": "close-button",
+                }}
+            />
+        );
+
+        expect(getByTestId("test-toast")).toBeInTheDocument();
+        expect(getByTestId("close-button")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        fireEvent.click(cancelButton);
+        await waitFor(() => {
+            expect(onClose).toHaveBeenCalledTimes(1);
+        });
+    });
 });

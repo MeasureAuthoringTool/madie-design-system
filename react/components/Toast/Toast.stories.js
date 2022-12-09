@@ -41,6 +41,72 @@ export const SuccessToast = () => {
     );
 };
 
+export const WarningToast = () => {
+    const [toastOpen, setToastOpen] = useState(false);
+    return (
+        <div
+            style={{
+                height: "100vh",
+                width: "100vw",
+                backgroundColor: "#242424",
+            }}
+        >
+            <button
+                onClick={() => setToastOpen(true)}
+                style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "calc(50% - 80px)",
+                }}
+            >
+                Simulate Warning
+            </button>
+            <Toast
+                toastKey="toast-key"
+                toastType="warning"
+                testId="warning-toast"
+                open={toastOpen}
+                message="Something has gone wrong. consider fixing before continuing"
+                onClose={() => setToastOpen(false)}
+                autoHideDuration={3000}
+            />
+        </div>
+    );
+};
+
+export const InfoToast = () => {
+    const [toastOpen, setToastOpen] = useState(false);
+    return (
+        <div
+            style={{
+                height: "100vh",
+                width: "100vw",
+                backgroundColor: "#242424",
+            }}
+        >
+            <button
+                onClick={() => setToastOpen(true)}
+                style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "calc(50% - 80px)",
+                }}
+            >
+                Simulate Info
+            </button>
+            <Toast
+                toastKey="toast-key"
+                toastType="info"
+                testId="info-toast"
+                open={toastOpen}
+                message="Some useful information"
+                onClose={() => setToastOpen(false)}
+                autoHideDuration={3000}
+            />
+        </div>
+    );
+};
+
 export const DangerToast = () => {
     const [toastOpen, setToastOpen] = useState(false);
     return (
