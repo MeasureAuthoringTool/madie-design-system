@@ -119,6 +119,16 @@ const AutoComplete = ({
                     inputProps["aria-labelledby"] = `${id}-label`;
                     return (
                         <TextField
+                            sx={{
+                                "& .MuiInputBase-input": {
+                                    opacity: 1,
+                                    color: "#333",
+                                    "&::placeholder": {
+                                        opacity: 1,
+                                        color: "#717171"
+                                    },
+                                },
+                            }}
                             {...params}
                             placeholder={placeholder}
                             inputProps={inputProps}

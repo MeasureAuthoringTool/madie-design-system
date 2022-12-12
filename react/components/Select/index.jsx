@@ -23,12 +23,13 @@ const selectStyles = {
     },
     // input base selector
     "& .MuiInputBase-input": {
+        color: "#333",
         fontFamily: "Rubik",
         fontSize: 14,
         borderRadius: "3px",
         padding: "9px 14px",
         "&::placeholder": {
-            opacity: 0.6,
+            color: "#717171"
         },
     },
     "& 	.MuiSelect-icon": {
@@ -60,7 +61,7 @@ const Select = ({
     ...rest
 }) => {
     const placehold = (
-        <span style={{ opacity: 0.6 }}>
+        <span style={{ color: "#717171" }}>
             {placeHolder?.name || "placeholder"}
         </span>
     );
