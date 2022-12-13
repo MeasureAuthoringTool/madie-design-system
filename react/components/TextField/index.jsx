@@ -52,6 +52,7 @@ const TextField = ({
                         borderRadius: "3px",
                         padding: "9px 14px",
                         "&::placeholder": {
+                            opacity: 1,
                             color: "#717171"
                         },
                     },
