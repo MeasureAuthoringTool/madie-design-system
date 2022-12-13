@@ -46,12 +46,13 @@ const TextField = ({
                     },
                     // input base selector
                     "& .MuiInputBase-input": {
+                        color: "#333",
                         fontFamily: "Rubik",
                         fontSize: 14,
                         borderRadius: "3px",
                         padding: "9px 14px",
                         "&::placeholder": {
-                            opacity: 0.6,
+                            color: "#717171"
                         },
                     },
                 }}
