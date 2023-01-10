@@ -17,8 +17,7 @@ const TextField = ({
     ...rest
 }) => {
     return (
-        <FormControl fullWidth error={error}
->
+        <FormControl fullWidth error={error}>
             <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/> 
             <InputLabel
                 disabled={disabled}
@@ -63,8 +62,11 @@ const TextField = ({
             >
                 {label}
             </InputLabel>
-            <FormHelperText
-                id={`${id}-helper-text`} 
+            { helperText && (<FormHelperText
+                tabIndex={0}
+                aria-live="polite"
+                id={`${id}-helper-text`}
+                data-testid={`${id}-helper-text`}
                 sx={[{
                     margin: "4px 0px 0px 0px",
                     color: "#515151", 
@@ -76,7 +78,7 @@ const TextField = ({
             ]}
                     >
                 {helperText}
-            </FormHelperText>
+            </FormHelperText>)}
             <MUITextField
                 sx={[{
                     borderRadius: "3px",
@@ -112,9 +114,7 @@ const TextField = ({
                     "& .MuiOutlinedInput-notchedOutline": {
                         borderColor: "#AE1C1C !important",
                     },
-                },
-                ]
-                }
+                }]}
                 label={null}
                 error={error}
                 disabled={disabled}

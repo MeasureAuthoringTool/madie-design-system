@@ -76,7 +76,9 @@ const Select = ({
             >
                 {label}
             </InputLabel>
-                <FormHelperText
+                {helperText && (<FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
                     data-testid={`${id}-helper-text`}
                     id={`${id}-helper-text`}
                     sx={[{
@@ -90,7 +92,7 @@ const Select = ({
                 ]}
                 >
                     {helperText}
-                </FormHelperText>
+                </FormHelperText>)}
             <MUISelect
                 sx={[{
                     borderRadius: "3px",

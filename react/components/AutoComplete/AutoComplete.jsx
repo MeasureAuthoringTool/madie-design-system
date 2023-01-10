@@ -12,6 +12,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const autoCompleteStyles = {
+    marginTop: "8px",
     borderRadius: "3px",
     height: 40,
     border: "1px solid #DDDDDD",
@@ -82,16 +83,68 @@ const AutoComplete = ({
 }) => {
     return (
         <FormControl error={error} fullWidth>
+            <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/> 
             <InputLabel
                 htmlFor={`${id}`}
                 id={`${id}-label`}
                 disabled={disabled}
                 required={required}
                 shrink
-                error={error}
+                style={{marginBottom: 0, height: 16}} // force a heignt
+                sx={[
+                {
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    flexDirection: "row-reverse",
+                    alignSelf: "baseline",
+                    textTransform: "none",
+                    // force it outside the select box
+                    position: "initial",
+                    transform: "translateX(0px) translateY(0px)",
+                    fontFamily: "Rubik",
+                    fontWeight: 500,
+                    fontSize: 14,
+                    color: "#333",
+                    "& .MuiInputLabel-asterisk": {
+                        color: "#AE1C1C !important",
+                        marginRight: "3px !important", //this was
+                    },
+                },
+                required && {
+                    transform: "translateX(-12px) translateY(0px)",
+                    "& .MuiInputLabel-asterisk": {
+                        color: "#D92F2",
+                        marginRight: "3px !important", //this was
+                    },
+                },
+                disabled && {
+                    color: "rgba(0,0,0,0.6)",
+                },
+                error && {
+                    color: "#AE1C1C !important",
+                },
+            ]}
             >
                 {label}
             </InputLabel>
+            {helperText && (<FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    error={error}
+                    sx={[{
+                        margin: "4px 0px 0px 0px",
+                        color: "#515151",
+                        lineHeight: 1
+                    },
+                    error && {
+                        color: "#AE1C1C !important",
+                    },
+                ]}
+                >
+                    {helperText}
+                </FormHelperText>)}
             <MUIAutoComplete
                 disablePortal
                 id={id}
@@ -147,20 +200,6 @@ const AutoComplete = ({
                     onChange(id, selectedVal || "")
                 }
             />
-            {helperText && (
-                <FormHelperText
-                    tabIndex={0}
-                    aria-live="polite"
-                    id={`${id}-helper-text`}
-                    data-testid={`${id}-helper-text`}
-                    error={error}
-                    sx={ error &&
-                        { color: "#AE1C1C !important" }
-                    }
-                >
-                    {helperText}
-                </FormHelperText>
-            )}
         </FormControl>
     );
 };

@@ -96,3 +96,16 @@ AutoCompleteMultipleWithError.args = {
     helperText: "At least one field is required",
     error: true,
 };
+
+
+export const AutoCompleteWithVariableHeights = () => {
+    return (
+        <div className="qpp-u-padding--16">
+            <div style={{display: "flex", flexDirection: "row", flexGrow: 1}}>
+                <TemplateMultipleSelect placeholder="test" required={true} helperText="test"/>
+                <TemplateMultipleSelect placeholder="test" required={true} helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "/>
+                <TemplateMultipleSelect placeholder="test" required={true} helperText="test"/>
+            </div>
+        </div>
+    );
+};
