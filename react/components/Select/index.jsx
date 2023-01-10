@@ -5,42 +5,6 @@ import InputLabel from "../InputLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import PropTypes from "prop-types";
 
-const selectStyles = {
-    borderRadius: "3px",
-    height: 40, //there's a .13 coming from somewhere.
-    border: "1px solid #DDDDDD",
-    // remove weird line break from legend
-    "& .MuiOutlinedInput-notchedOutline": {
-        borderRadius: "3px",
-        "& legend": {
-            width: 0,
-        },
-    },
-    "& .MuiOutlinedInput-root": {
-        "&&": {
-            borderRadius: "3px",
-        },
-    },
-    // input base selector
-    "& .MuiInputBase-input": {
-        color: "#333",
-        fontFamily: "Rubik",
-        fontSize: 14,
-        borderRadius: "3px",
-        padding: "9px 14px",
-        "&::placeholder": {
-            color: "#717171"
-        },
-    },
-    "& 	.MuiSelect-icon": {
-        color: "#323232",
-    },
-    "& .Mui-disabled" : {
-        backgroundColor: "#EDEDED",
-        border: "#EDEDED",
-    }
-}
-
 const Select = ({
     placeHolder = undefined, // expects placeholder objects of { name: value } and inserts into the render item function.
     required = false,
@@ -67,16 +31,110 @@ const Select = ({
     );
     return (
         <FormControl error={error} fullWidth>
+            {/* to deal with multiple height helper text in a single row*/}
+            <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/> 
             <InputLabel
+                // {/* has init at .2rem/3.2 px bottom. passing sx breaks style. */}
                 id={`${id}-label`}
                 disabled={disabled}
                 required={required}
                 shrink
+                style={{marginBottom: 0, height: 16}} // force a heignt
+                sx={[
+                    {
+                        backgroundColor: "transparent",
+                        display: "flex",
+                        flexDirection: "row-reverse",
+                        alignSelf: "baseline",
+                        textTransform: "none",
+                        // force it outside the select box
+                        position: "initial",
+                        transform: "translateX(0px) translateY(0px)",
+                        fontFamily: "Rubik",
+                        fontWeight: 500,
+                        fontSize: 14,
+                        color: "#333",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#AE1C1C !important",
+                            marginRight: "3px !important", //this was
+                        },
+                    },
+                    required && {
+                        transform: "translateX(-12px) translateY(0px)",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#D92F2",
+                            marginRight: "3px !important", //this was
+                        },
+                    },
+                    disabled && {
+                        color: "rgba(0,0,0,0.6)",
+                    },
+                    error && {
+                        color: "#AE1C1C !important",
+                    },
+                ]}
             >
                 {label}
             </InputLabel>
+                {helperText && (<FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    data-testid={`${id}-helper-text`}
+                    id={`${id}-helper-text`}
+                    sx={[{
+                        margin: "4px 0px 0px 0px",
+                        color: "#515151", 
+                        lineHeight: 1
+                    },
+                    error && {
+                        color: "#AE1C1C !important",
+                    },
+                ]}
+                >
+                    {helperText}
+                </FormHelperText>)}
             <MUISelect
-                sx={selectStyles}
+                sx={[{
+                    borderRadius: "3px",
+                    height: 40,
+                    border: "1px solid #DDDDDD",
+                    marginTop: "8px",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                        borderRadius: "3px",
+                        "& legend": {
+                            width: 0,
+                        },
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "&&": {
+                            borderRadius: "3px",
+                        },
+                    },
+                    // input base selector
+                    "& .MuiInputBase-input": {
+                        color: "#333",
+                        fontFamily: "Rubik",
+                        fontSize: 14,
+                        borderRadius: "3px",
+                        padding: "9px 14px",
+                        "&::placeholder": {
+                            color: "#717171"
+                        },
+                    },
+                    "& 	.MuiSelect-icon": {
+                        color: "#323232",
+                    },
+                    "& .Mui-disabled" : {
+                        backgroundColor: "#EDEDED",
+                        border: "#EDEDED",
+                    }},
+                    error && {
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#AE1C1C !important",
+                        },
+                    },
+                ]
+                }
                 displayEmpty
                 IconComponent={ExpandMoreIcon}
                 disabled={disabled}
@@ -96,14 +154,6 @@ const Select = ({
             >
                 {options && options}
             </MUISelect>
-            {helperText && (
-                <FormHelperText
-                    data-testid={`helper-text`}
-                    id={`${id}-helper-text`}
-                >
-                    {helperText}
-                </FormHelperText>
-            )}
         </FormControl>
     );
 };
