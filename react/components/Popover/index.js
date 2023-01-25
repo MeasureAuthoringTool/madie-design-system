@@ -78,9 +78,9 @@ const MadiePopover = ({
                     {additionalSelectOptionProps && additionalSelectOptionProps.map((res) => {
                             return (
                                 <button
-                                    key={res.dataTestId} // nosec
-                                    data-testid={res.dataTestId} // nosec
-                                    onClick={res.toImplementFunction} // nosec
+                                    key={res.dataTestId}
+                                    data-testid={res.dataTestId}
+                                    onClick={res.toImplementFunction}
                                 >
                                     {res.label}
                                 </button>
