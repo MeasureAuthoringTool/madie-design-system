@@ -8,6 +8,7 @@ const MadiePopover = ({
     handleClose,
     canEdit,
     editViewSelectOptionProps,
+    additionalSelectOptionProps,
     otherSelectOptionProps,
 }) => {
     return (
@@ -74,6 +75,17 @@ const MadiePopover = ({
                     >
                         {editViewSelectOptionProps.label}
                     </button>
+                    {additionalSelectOptionProps && additionalSelectOptionProps.map((res) => {
+                            return (
+                                <button
+                                    key={res.dataTestId}
+                                    data-testid={res.dataTestId}
+                                    onClick={res.toImplementFunction}
+                                >
+                                    {res.label}
+                                </button>
+                            );
+                        })}
                     {canEdit &&
                         otherSelectOptionProps.map((res) => {
                             return (
@@ -99,6 +111,13 @@ MadiePopover.propTypes = {
     canEdit: PropTypes.bool,
     editViewSelectOptionProps: PropTypes.object,
     otherSelectOptionProps: PropTypes.arrayOf(
+        PropTypes.shape({
+            dataTestId: PropTypes.string,
+            label: PropTypes.string,
+            toImplementFunction: PropTypes.func,
+        })
+    ),
+    additionalSelectOptionProps: PropTypes.arrayOf(
         PropTypes.shape({
             dataTestId: PropTypes.string,
             label: PropTypes.string,
