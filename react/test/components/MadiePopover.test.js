@@ -46,6 +46,13 @@ export const PopoverTester = () => {
                 }}
                 otherSelectOptionProps={[
                     {
+                        label: "Version",
+                        toImplementFunction: zipData,
+                        dataTestId: `version-measure-1`,
+                    },
+                ]}
+                additionalSelectOptionProps={[
+                    {
                         label: "Export",
                         toImplementFunction: zipData,
                         dataTestId: `export-measure-1`,
@@ -63,6 +70,7 @@ describe("MadiePopover", () => {
         fireEvent.click(result);
         expect(queryByText("View")).toBeVisible();
         expect(queryByText("Export")).toBeVisible();
+        expect(queryByText("Version")).toBeVisible();
     });
 
     test("Popover disappears on clicking popover options", async () => {
@@ -71,6 +79,7 @@ describe("MadiePopover", () => {
         fireEvent.click(result);
         expect(queryByText("View")).toBeVisible();
         expect(queryByText("Export")).toBeVisible();
+        expect(queryByText("Version")).toBeVisible();
         fireEvent.click(queryByText("View"));
         expect(queryByText("View")).not.toBeVisible();
     });
