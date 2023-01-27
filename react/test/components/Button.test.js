@@ -4,19 +4,13 @@ import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import Button, { TextButton } from "../../components/Button";
 import "@testing-library/jest-dom";
 
-
 describe("Button", () => {
-    
     const { getByTestId, getByText } = screen;
 
     it("Button renders with provided size, onClick triggers", async () => {
         const onClick = jest.fn();
         render(
-            <Button
-                size="big"
-                onClick={onClick}
-                data-testId="button-test-id"
-            />
+            <Button size="big" onClick={onClick} data-testId="button-test-id" />
         );
         const button = getByTestId("button-test-id");
         expect(button).toHaveClass("qpp-c-button--big");
@@ -27,12 +21,7 @@ describe("Button", () => {
     });
 
     it("Button renders with provided variant, no onClick", async () => {
-        render(
-            <Button
-                variant="cyan"
-                data-testId="button-test-id"
-            />
-        );
+        render(<Button variant="cyan" data-testId="button-test-id" />);
         const button = getByTestId("button-test-id");
         expect(button).toHaveClass("qpp-c-button--cyan");
     });
@@ -46,9 +35,8 @@ describe("Button", () => {
                 children="test"
             />
         );
-        expect(getByText("test").href).toBe("https://whatwouldkevindo.com/")
+        expect(getByText("test").href).toBe("https://whatwouldkevindo.com/");
     });
-
 
     it("TextButton renders to the screen with text and passed className", async () => {
         const onClick = jest.fn();
@@ -65,20 +53,20 @@ describe("Button", () => {
 
     it("Default props are as expected", async () => {
         const onClick = Button.defaultProps.onClick();
-        expect(onClick).toBe(null)
+        expect(onClick).toBe(null);
         const children = Button.defaultProps.children;
-        expect(children).toBe(false)
+        expect(children).toBe(false);
         const className = Button.defaultProps.className;
-        expect(className).toBe("")
+        expect(className).toBe("");
         const href = Button.defaultProps.href;
-        expect(href).toBe("")
+        expect(href).toBe("");
         const loading = Button.defaultProps.loading;
-        expect(loading).toBe(false)
+        expect(loading).toBe(false);
         const size = Button.defaultProps.size;
-        expect(size).toBe(null)
+        expect(size).toBe(null);
         const type = Button.defaultProps.type;
-        expect(type).toBe("button")
+        expect(type).toBe("button");
         const variant = Button.defaultProps.variant;
-        expect(variant).toBe(null)
-    })
+        expect(variant).toBe(null);
+    });
 });

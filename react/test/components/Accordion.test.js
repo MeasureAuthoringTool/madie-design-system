@@ -4,19 +4,26 @@ import { render, fireEvent, waitFor } from "@testing-library/react";
 import Accordion from "../../components/Accordion";
 
 describe("Accordion", () => {
-    it("Should render okay", async() => {
+    it("Should render okay", async () => {
         const { getByTestId, getByRole } = render(
-            <Accordion title="Title" centerItem="centerItem" rightItem="rightItem" leftItem="leftItem">Content</Accordion>
+            <Accordion
+                title="Title"
+                centerItem="centerItem"
+                rightItem="rightItem"
+                leftItem="leftItem"
+            >
+                Content
+            </Accordion>
         );
         expect(getByTestId("accordion")).toBeTruthy();
-        const button = getByRole("button")
-        fireEvent.click(button)
+        const button = getByRole("button");
+        fireEvent.click(button);
         await waitFor(() => {
-            expect(button).toHaveClass("active")
+            expect(button).toHaveClass("active");
         });
-        fireEvent.click(button) 
+        fireEvent.click(button);
         await waitFor(() => {
-            expect(button).not.toHaveClass("active")
+            expect(button).not.toHaveClass("active");
         });
     });
 });

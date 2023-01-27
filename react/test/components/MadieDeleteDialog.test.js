@@ -36,7 +36,9 @@ describe("MadieDeleteDialog", () => {
             const deleteDialog = await getByTestId("delete-dialog");
             expect(deleteDialog).toBeInTheDocument();
             await waitFor(() => {
-                expect(queryByText("Are you sure you want to delete ?")).toBeVisible();
+                expect(
+                    queryByText("Are you sure you want to delete ?")
+                ).toBeVisible();
             });
         });
     });
