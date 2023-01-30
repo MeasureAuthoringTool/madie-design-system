@@ -5,6 +5,10 @@ import { render } from "@testing-library/react";
 import { Pagination } from "../../components/Pagination";
 
 describe("Pagination", () => {
+    it("renders with default props", () => {
+        const { getByTestId } = render(<Pagination />);
+        expect(getByTestId("NavigateNextIcon")).toBeInTheDocument();
+    });
     it("renders the next button when more pages are available", () => {
         const { getByTestId } = render(
             <Pagination

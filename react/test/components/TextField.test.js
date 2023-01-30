@@ -47,4 +47,40 @@ describe("TextField", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
+    test("Helper text renders disabled", async () => {
+        await act(async () => {
+            const { findByText } = render(
+                <TextField
+                    disabled
+                    placeholder="test Name"
+                    helperText="helper text"
+                    label="test Name"
+                    id="testName"
+                    inputProps={{ "data-testid": "test-name-input" }}
+                    data-testid="test-name-text-field"
+                    size="small"
+                />
+            );
+            const helperText = await findByText("helper text");
+            expect(helperText).toBeInTheDocument();
+        });
+    });
+    test("HelperText renders errored", async () => {
+        await act(async () => {
+            const { findByText } = render(
+                <TextField
+                    error
+                    placeholder="test Name"
+                    helperText="helper text"
+                    label="test Name"
+                    id="testName"
+                    inputProps={{ "data-testid": "test-name-input" }}
+                    data-testid="test-name-text-field"
+                    size="small"
+                />
+            );
+            const helperText = await findByText("helper text");
+            expect(helperText).toBeInTheDocument();
+        });
+    });
 });
