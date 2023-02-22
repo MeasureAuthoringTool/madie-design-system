@@ -23,6 +23,7 @@ import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import TextField from "./TextField";
+import TextArea from './TextArea';
 import Tooltip from "./Tooltip";
 import Toast from "./Toast";
 import Infotip from "./Infotip";
@@ -143,6 +144,7 @@ export {
     TextButton,
     TextInput,
     TextField,
+    TextArea,
     Toast,
     Dropdown,
     Tooltip,
