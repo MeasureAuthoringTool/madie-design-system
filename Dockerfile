@@ -1,4 +1,4 @@
-FROM node:fermium-alpine3.11
+FROM node:14.21.3-bullseye-slim
 
 WORKDIR /app
 
