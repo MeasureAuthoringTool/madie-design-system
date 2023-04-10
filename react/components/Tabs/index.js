@@ -58,7 +58,6 @@ const Tabs = ({
     }
     const style = ((type) => {
         if (type === "A") {
-            console.log({ ...baseStyle, ...typeA})
             return  { ...baseStyle, ...typeA}
         }
         if (type === "B") {
