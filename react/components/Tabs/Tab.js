@@ -72,7 +72,7 @@ const Tab = ({ type, size, ...rest }) => {
 };
 
 Tab.propTypes = {
-    type: PropTypes.oneOf(["A", "B", "C"]),
+    type: PropTypes.oneOf(["A", "B", "C", "D"]),
     size: PropTypes.oneOf(["standard", "large"]),
 };
 Tab.defaultProps = {

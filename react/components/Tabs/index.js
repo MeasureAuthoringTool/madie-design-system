@@ -79,7 +79,7 @@ const Tabs = ({
 }
 
 Tabs.propTypes = {
-    type: PropTypes.oneOf(["A", "B", "C"]),
+    type: PropTypes.oneOf(["A", "B", "C", "D"]),
     size: PropTypes.oneOf(["standard", "large"]),
     ariaLabel: PropTypes.string,
     selected: PropTypes.string,
