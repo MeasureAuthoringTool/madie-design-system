@@ -1,87 +1,85 @@
-import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Tabs as MuiTabs } from "@mui/material";
-import TabPanel from "./TabPanel";
-import LinkTab from "./Tab";
+import React from "react";
 
-const isTabPanel = (child) => child?.type === TabPanel;
-
-const getPanelChildren = (children) => {
-    return React.Children.toArray(children).filter(isTabPanel);
+const typeA = {
+    backgroundColor: "#003366",
+    borderRadius: "4px 4px 0px 0px !important",
+    "& .MuiTabs-indicator": {
+        display: "none !important"
+      },
 };
+
+const typeB = {
+    backgroundColor: "#FFF",
+    color: "#515151",
+    "& .MuiTabs-indicator": {
+        backgroundColor:"#209FA6",
+        height: "6px"
+      },
+};
+
+const typeC = {
+    color:"333",
+    "& .MuiTabs-indicator": {
+        backgroundColor:"#209FA6",
+        height: "100%",
+        width: "6px !important",
+        left: 0,
+      },
+};
+
+const typeD = {
+    backgroundColor: "#FFF",
+    color: "#515151",
+    "& .MuiTabs-indicator": {
+        backgroundColor:"#209FA6",
+        height: "6px",
+        top: 0
+      },
+}
 
 const Tabs = ({
-    children,
-    onChange,
-    selected,
-    defaultSelectedId,
-    ariaLabel,
+    type,
+    size,
+    ...rest
 }) => {
-    const [value, setValue] = useState(defaultSelectedId || selected);
-
-    useEffect(() => {
-        if (selected) {
-            setValue(selected);
+    const baseStyle = {
+        outline: "none",
+        fontFamily: "Rubik, sans Sarif",
+        fontWeight: 400,
+        lineHeight: 19,
+        "& .Mui-selected": {
+            outline: "none",
+            fontWeight: 500,
+            color: "#333 !important",
+            backgroundColor: "#fff",
+          },
+    }
+    const style = ((type) => {
+        if (type === "A") {
+            return  { ...baseStyle, ...typeA}
         }
-    }, [selected]);
-
-    if (!children) return null;
-
-    const handleChange = (event, newValue) => {
-        if (onChange) {
-            onChange(tabList[newValue]?.id, event);
+        if (type === "B") {
+            return  { ...baseStyle, ...typeB}
         }
-        if (setValue) {
-            setValue(tabList[newValue]?.id);
+        if (type === "C") {
+            return  { ...baseStyle, ...typeC}
         }
-    };
-
-    const renderChildren = () => {
-        return React.Children.map(children, (child, index) => {
-            if (isTabPanel(child)) {
-                return React.cloneElement(child, { index, value: tabIndex });
-            }
-            return child;
-        });
-    };
-
-    const panels = getPanelChildren(children);
-
-    const tabList = panels.map((panel) => {
-        const { id, tab, tabHref, disabled } = panel?.props || {};
-        return { tab, tabHref, disabled, id };
-    });
-
-    const foundIndex = tabList.findIndex(({ id }) => id === value);
-
-    const tabIndex = foundIndex >= 0 ? foundIndex : 0;
-
-    return (
-        <>
-            <div className="qpp-c-tabs qpp-c-tabs--mui">
-                <MuiTabs
-                    value={tabIndex}
-                    onChange={handleChange}
-                    aria-label={ariaLabel}
-                >
-                    {tabList.map(({ tab, tabHref, disabled, id }, index) => (
-                        <LinkTab
-                            index={index}
-                            key={`link-tab-${tab}`}
-                            label={tab}
-                            href={tabHref}
-                            disabled={disabled}
-                            id={`qpp-c-tabs__item--${id}`}
-                        />
-                    ))}
-                </MuiTabs>
-            </div>
-            {renderChildren()}
-        </>
-    );
-};
+        if (type === "D") {
+            return  { ...baseStyle, ...typeD}
+        }
+    })(type)
+    return (<MuiTabs
+        disableRipple
+        sx={style}
+        {...rest}
+    />)
+}
 
 Tabs.propTypes = {
+    type: PropTypes.oneOf(["A", "B", "C", "D"]),
+    size: PropTypes.oneOf(["standard", "large"]),
     ariaLabel: PropTypes.string,
     selected: PropTypes.string,
     defaultSelectedId: PropTypes.string,
@@ -90,7 +88,8 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-    ariaLabel: "qpp tabs",
+    type: "A",
+    size: "standard",
     selected: null,
     defaultSelectedId: null,
     onChange: null,

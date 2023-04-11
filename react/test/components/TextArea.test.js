@@ -23,7 +23,7 @@ describe("TextArea", () => {
             expect(
                 await findByTestId("test-name-text-field")
             ).toBeInTheDocument();
-            const textNode = await getByTestId("test-name-text-field")
+            const textNode = await getByTestId("test-name-text-field");
             expect(textNode).toBeInTheDocument();
             userEvent.type(textNode, "newVal");
             Simulate.change(textNode);
