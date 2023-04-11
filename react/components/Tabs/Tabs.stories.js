@@ -79,6 +79,15 @@ export const TypeA = () => {
                     <Tab type="C" size="large" label="disabled" value={4} disabled/>
                 </Tabs>
             </div>
+            <div>
+                Vertical Standard: C
+                <Tabs type="C" value={selected} onChange={handleChange} orientation="vertical">
+                    <Tab type="C" size="standard" label="Item One" value={1} orientation="vertical"/>
+                    <Tab type="C" size="standard" label="Item Two" value={2} orientation="vertical"/>
+                    <Tab type="C" size="standard" label="Item Three"value={3} orientation="vertical"/>
+                    <Tab type="C" size="standard" label="disabled" value={4} disabled orientation="vertical"/>
+                </Tabs>
+            </div>
             <div style={{ width: "fit-content"}}>
                 Standard: D
                 <Tabs type="D" value={selected} onChange={handleChange}>
