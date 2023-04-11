@@ -22,6 +22,7 @@ import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
+import Tab from "./Tabs/Tab";
 import TextField from "./TextField";
 import TextArea from './TextArea';
 import Tooltip from "./Tooltip";
@@ -141,6 +142,7 @@ export {
     Spinner,
     TabPanel,
     Tabs,
+    Tab,
     TextButton,
     TextInput,
     TextField,
