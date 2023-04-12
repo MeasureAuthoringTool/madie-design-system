@@ -171,6 +171,45 @@ describe("Tabs", () => {
                         />
                     </Tabs>
                 </div>
+                <div>
+                    Vertical: C
+                    <Tabs
+                        type="C"
+                        value={1}
+                        data-testId="v-c"
+                        orientation="vertical"
+                    >
+                        <Tab
+                            type="C"
+                            size="large"
+                            label="Item One"
+                            value={1}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="large"
+                            label="Item Two"
+                            value={2}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="large"
+                            label="Item Three"
+                            value={3}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="large"
+                            label="disabled"
+                            value={4}
+                            orientation="vertical"
+                            disabled
+                        />
+                    </Tabs>
+                </div>
                 <div style={{ width: "fit-content" }}>
                     Standard: D
                     <Tabs type="D" value={1} data-testId="standard-d">
@@ -231,6 +270,7 @@ describe("Tabs", () => {
             const standardA = await findByTestId("standard-a");
             const standardB = await findByTestId("standard-b");
             const standardC = await findByTestId("standard-c");
+            const verticalC = await findByTestId("v-c");
             const standardD = await findByTestId("standard-d");
             const largeA = await findByTestId("large-a");
             const largeB = await findByTestId("large-b");
@@ -241,6 +281,7 @@ describe("Tabs", () => {
                 expect(standardA).toBeInTheDocument();
                 expect(standardB).toBeInTheDocument();
                 expect(standardC).toBeInTheDocument();
+                expect(verticalC).toBeInTheDocument();
                 expect(standardD).toBeInTheDocument();
                 expect(largeA).toBeInTheDocument();
                 expect(largeB).toBeInTheDocument();

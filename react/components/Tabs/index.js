@@ -3,8 +3,9 @@ import { Tabs as MuiTabs } from "@mui/material";
 import React from "react";
 
 const typeA = {
-    backgroundColor: "#003366",
-    borderRadius: "4px 4px 0px 0px !important",
+    "& .MuiTabs-flexContainer": {
+        columnGap: "4px !important",
+    },
     "& .MuiTabs-indicator": {
         display: "none !important"
       },
@@ -49,6 +50,7 @@ const Tabs = ({
         fontFamily: "Rubik, sans Sarif",
         fontWeight: 400,
         lineHeight: 19,
+        backgroundColor: "transparent",
         "& .Mui-selected": {
             outline: "none",
             fontWeight: 500,
@@ -78,6 +80,7 @@ const Tabs = ({
 }
 
 Tabs.propTypes = {
+    orientatin: PropTypes.string,
     type: PropTypes.oneOf(["A", "B", "C", "D"]),
     size: PropTypes.oneOf(["standard", "large"]),
     ariaLabel: PropTypes.string,
@@ -88,6 +91,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
+    orientation: "horizontal",
     type: "A",
     size: "standard",
     selected: null,
