@@ -17,6 +17,7 @@ import MadieSpinner from "./MadieSpinner";
 import Modal from "./Modal";
 import Popover from "./Popover";
 import { Pagination } from "./Pagination";
+import RadioButton from "./RadioButton/RadioButton";
 import ReadOnlyTextField from "./ReadOnlyTextField";
 import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
@@ -136,6 +137,7 @@ export {
     MadieSpinner,
     Pagination,
     Popover,
+    RadioButton,
     ReadOnlyTextField,
     Search,
     Select,
