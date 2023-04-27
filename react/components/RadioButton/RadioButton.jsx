@@ -22,7 +22,6 @@ const RadioButton = ({
 }) => {
     return (
         <FormControl error={error} fullWidth>
-            <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/>
             <InputLabel
                 htmlFor={`${id}`}
                 id={`${id}-label`}
