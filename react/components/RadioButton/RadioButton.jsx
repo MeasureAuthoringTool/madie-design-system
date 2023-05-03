@@ -89,7 +89,7 @@ const RadioButton = ({
                 {...rest}
             >
                 {options.map((option, index) => (
-                    <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} />
+                    <FormControlLabel disabled={disabled} key={index} value={option.value} control={<Radio />} label={option.label} />
                 ))}
             </RadioGroup>
         </FormControl>
