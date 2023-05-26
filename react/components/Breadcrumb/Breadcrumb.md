@@ -4,13 +4,13 @@ The Breadcrumb component is a secondary navigation scheme that reveals the user'
 
 ### Props
 
-| Property name         | Type       | Required | Default Value | Description                                |
-| --------------------- | ---------- | -------- | ------------- | ------------------------------------------ |
-| `breadcrumbClass`     | `String`   | `false`  | ''            | class to append to Breadcrumb nav element  |
-| `crumbs`              | `Array`    | `true`   |               | array of breadcrumbs                       |
-| `dark`                | `Boolean`  | `false`  | `false`       | Use dark mode theme                        |
-| `RouterLink`          | `Function` | `false`  | `null`        | Link component to use instead of `<a>`     |
-| `routerExcludedLinks` | `Array`    | `false`  | `[]`          | Array of paths to exclude from using Link  |
+| Property name         | Type       | Required | Default Value | Description                               |
+| --------------------- | ---------- | -------- | ------------- | ----------------------------------------- |
+| `breadcrumbClass`     | `String`   | `false`  | ''            | class to append to Breadcrumb nav element |
+| `crumbs`              | `Array`    | `true`   |               | array of breadcrumbs                      |
+| `dark`                | `Boolean`  | `false`  | `false`       | Use dark mode theme                       |
+| `RouterLink`          | `Function` | `false`  | `null`        | Link component to use instead of `<a>`    |
+| `routerExcludedLinks` | `Array`    | `false`  | `[]`          | Array of paths to exclude from using Link |
 
 ### Crumbs
 

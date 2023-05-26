@@ -95,38 +95,41 @@ export const Error = () => (
 );
 
 export const VariedHeights = () => (
-    <div className="qpp-u-padding--16" style={{ width: 900, marginBottom: "16px" }} >
-        <div style={{display: "flex",
-                flexDirection: "row"}}>
-                    <TextField
-            placeholder="Placeholder"
-            required
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message"
-        />
-        <TextField
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
-        />
-        <TextField
-            placeholder="Placeholder"
-            error
-            required
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message"
-        />
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px" }}
+    >
+        <div style={{ display: "flex", flexDirection: "row" }}>
+            <TextField
+                placeholder="Placeholder"
+                required
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message"
+            />
+            <TextField
+                placeholder="Placeholder"
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
+            />
+            <TextField
+                placeholder="Placeholder"
+                error
+                required
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message"
+            />
         </div>
-    </div>)
+    </div>
+);

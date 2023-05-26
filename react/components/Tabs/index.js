@@ -7,44 +7,40 @@ const typeA = {
         columnGap: "4px !important",
     },
     "& .MuiTabs-indicator": {
-        display: "none !important"
-      },
+        display: "none !important",
+    },
 };
 
 const typeB = {
     backgroundColor: "#FFF",
     color: "#515151",
     "& .MuiTabs-indicator": {
-        backgroundColor:"#209FA6",
-        height: "6px"
-      },
+        backgroundColor: "#209FA6",
+        height: "6px",
+    },
 };
 
 const typeC = {
-    color:"333",
+    color: "333",
     "& .MuiTabs-indicator": {
-        backgroundColor:"#209FA6",
+        backgroundColor: "#209FA6",
         height: "100%",
         width: "6px !important",
         left: 0,
-      },
+    },
 };
 
 const typeD = {
     backgroundColor: "#FFF",
     color: "#515151",
     "& .MuiTabs-indicator": {
-        backgroundColor:"#209FA6",
+        backgroundColor: "#209FA6",
         height: "6px",
-        top: 0
-      },
-}
+        top: 0,
+    },
+};
 
-const Tabs = ({
-    type,
-    size,
-    ...rest
-}) => {
+const Tabs = ({ type, size, ...rest }) => {
     const baseStyle = {
         outline: "none",
         fontFamily: "Rubik, sans Sarif",
@@ -56,28 +52,24 @@ const Tabs = ({
             fontWeight: 500,
             color: "#333 !important",
             backgroundColor: "#fff",
-          },
-    }
+        },
+    };
     const style = ((type) => {
         if (type === "A") {
-            return  { ...baseStyle, ...typeA}
+            return { ...baseStyle, ...typeA };
         }
         if (type === "B") {
-            return  { ...baseStyle, ...typeB}
+            return { ...baseStyle, ...typeB };
         }
         if (type === "C") {
-            return  { ...baseStyle, ...typeC}
+            return { ...baseStyle, ...typeC };
         }
         if (type === "D") {
-            return  { ...baseStyle, ...typeD}
+            return { ...baseStyle, ...typeD };
         }
-    })(type)
-    return (<MuiTabs
-        disableRipple
-        sx={style}
-        {...rest}
-    />)
-}
+    })(type);
+    return <MuiTabs disableRipple sx={style} {...rest} />;
+};
 
 Tabs.propTypes = {
     orientatin: PropTypes.string,

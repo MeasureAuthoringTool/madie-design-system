@@ -95,8 +95,11 @@ export const Error = () => (
 );
 
 export const VariedHeights = () => (
-    <div className="qpp-u-padding--16" style={{ width: 900, marginBottom: "16px" }} >
-        <div style={{display: "flex", flexDirection: "row"}}>
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px" }}
+    >
+        <div style={{ display: "flex", flexDirection: "row" }}>
             <TextArea
                 placeholder="Placeholder"
                 required
@@ -138,4 +141,5 @@ export const VariedHeights = () => (
                 helperText="An error message"
             />
         </div>
-    </div>)
+    </div>
+);

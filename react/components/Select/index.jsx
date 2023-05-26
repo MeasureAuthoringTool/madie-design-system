@@ -32,14 +32,21 @@ const Select = ({
     return (
         <FormControl error={error} fullWidth>
             {/* to deal with multiple height helper text in a single row*/}
-            <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/> 
+            <div
+                style={{
+                    width: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                }}
+            />
             <InputLabel
                 // {/* has init at .2rem/3.2 px bottom. passing sx breaks style. */}
                 id={`${id}-label`}
                 disabled={disabled}
                 required={required}
                 shrink
-                style={{marginBottom: 0, height: 16}} // force a heignt
+                style={{ marginBottom: 0, height: 16 }} // force a heignt
                 sx={[
                     {
                         backgroundColor: "transparent",
@@ -76,65 +83,69 @@ const Select = ({
             >
                 {label}
             </InputLabel>
-                {helperText && (<FormHelperText
+            {helperText && (
+                <FormHelperText
                     tabIndex={0}
                     aria-live="polite"
                     data-testid={`${id}-helper-text`}
                     id={`${id}-helper-text`}
-                    sx={[{
-                        margin: "4px 0px 0px 0px",
-                        color: "#515151", 
-                        lineHeight: 1
-                    },
-                    error && {
-                        color: "#AE1C1C !important",
-                    },
-                ]}
+                    sx={[
+                        {
+                            margin: "4px 0px 0px 0px",
+                            color: "#515151",
+                            lineHeight: 1,
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
+                        },
+                    ]}
                 >
                     {helperText}
-                </FormHelperText>)}
+                </FormHelperText>
+            )}
             <MUISelect
-                sx={[{
-                    borderRadius: "3px",
-                    height: 40,
-                    border: "1px solid #DDDDDD",
-                    marginTop: "8px",
-                    "& .MuiOutlinedInput-notchedOutline": {
+                sx={[
+                    {
                         borderRadius: "3px",
-                        "& legend": {
-                            width: 0,
-                        },
-                    },
-                    "& .MuiOutlinedInput-root": {
-                        "&&": {
+                        height: 40,
+                        border: "1px solid #DDDDDD",
+                        marginTop: "8px",
+                        "& .MuiOutlinedInput-notchedOutline": {
                             borderRadius: "3px",
+                            "& legend": {
+                                width: 0,
+                            },
+                        },
+                        "& .MuiOutlinedInput-root": {
+                            "&&": {
+                                borderRadius: "3px",
+                            },
+                        },
+                        // input base selector
+                        "& .MuiInputBase-input": {
+                            color: "#333",
+                            fontFamily: "Rubik",
+                            fontSize: 14,
+                            borderRadius: "3px",
+                            padding: "9px 14px",
+                            "&::placeholder": {
+                                color: "#717171",
+                            },
+                        },
+                        "& 	.MuiSelect-icon": {
+                            color: "#323232",
+                        },
+                        "& .Mui-disabled": {
+                            backgroundColor: "#EDEDED",
+                            border: "#EDEDED",
                         },
                     },
-                    // input base selector
-                    "& .MuiInputBase-input": {
-                        color: "#333",
-                        fontFamily: "Rubik",
-                        fontSize: 14,
-                        borderRadius: "3px",
-                        padding: "9px 14px",
-                        "&::placeholder": {
-                            color: "#717171"
-                        },
-                    },
-                    "& 	.MuiSelect-icon": {
-                        color: "#323232",
-                    },
-                    "& .Mui-disabled" : {
-                        backgroundColor: "#EDEDED",
-                        border: "#EDEDED",
-                    }},
                     error && {
                         "& .MuiOutlinedInput-notchedOutline": {
                             borderColor: "#AE1C1C !important",
                         },
                     },
-                ]
-                }
+                ]}
                 displayEmpty
                 IconComponent={ExpandMoreIcon}
                 disabled={disabled}

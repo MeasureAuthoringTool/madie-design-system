@@ -11,7 +11,10 @@ export default {
 };
 
 const Wrapper = ({ children }) => (
-    <div className="qpp-u-padding--16" style={{ width: 300, marginBottom: "16px" }} >
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 300, marginBottom: "16px" }}
+    >
         {children}
     </div>
 );
@@ -155,78 +158,78 @@ export const Error = () => (
     </Wrapper>
 );
 
-
-
 export const VariedHeights = () => (
-    <div className="qpp-u-padding--16" style={{ width: 900, marginBottom: "16px" }} >
-        <Box sx={{display: "flex",
-                flexDirection: "row"}}>
-        <Select
-            error
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message"
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-        <Select
-            // error
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText=""
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-        <Select
-            // error
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px" }}
+    >
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+            <Select
+                error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message"
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
+            <Select
+                // error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText=""
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
+            <Select
+                // error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
         </Box>
     </div>
-)
+);

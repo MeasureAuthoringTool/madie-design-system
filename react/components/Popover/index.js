@@ -75,7 +75,8 @@ const MadiePopover = ({
                     >
                         {editViewSelectOptionProps.label}
                     </button>
-                    {additionalSelectOptionProps && additionalSelectOptionProps.map((res) => {
+                    {additionalSelectOptionProps &&
+                        additionalSelectOptionProps.map((res) => {
                             return (
                                 <button
                                     key={res.dataTestId}
