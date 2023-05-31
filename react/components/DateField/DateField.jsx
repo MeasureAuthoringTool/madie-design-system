@@ -26,7 +26,7 @@ export const textFieldStyle = {
         },
     },
     "& .MuiInputBase-input": {
-        color: "#333",
+        color: "#333333",
         background: "#FFFFFF",
         fontFamily: "Rubik",
         fontSize: 14,
@@ -59,7 +59,7 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
                             fontStyle: "normal",
                             fontWeight: 500,
                             fontSize: 14,
-                            color: "#333333e8",
+                            color: "#333333",
                         },
                     ]}
                 >
@@ -79,7 +79,7 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
                                     <InputAdornment
                                         position="start"
                                         style={{
-                                            color: "#333333e0",
+                                            color: "#515151",
                                             left: "10.42%",
                                         }}
                                     >
