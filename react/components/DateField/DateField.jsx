@@ -12,7 +12,7 @@ export const textFieldStyle = {
   borderRadius: "3px",
   height: 40,
   border: "1px solid #DDDDDD",
-  marginTop: "4px",
+  marginTop: "8px",
   "& .MuiOutlinedInput-notchedOutline": {
     borderRadius: "3px",
     "& legend": {
@@ -46,6 +46,7 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <InputLabel
                     data-testid={dataTestId}
+                    style={{ marginBottom: 0, height: 16 }}
                     sx={[
                         {
                             backgroundColor: "transparent",
