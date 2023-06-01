@@ -34,7 +34,7 @@ export const textFieldStyle = {
         padding: "9px 3px 9px 0px",
         maxWidth: "150px",
         "&::placeholder": {
-            color: "#333333",
+            color: "#717171",
             fontFamily: "Rubik",
             fontSize: 14,
             padding: "9px 3px 9px 0px",
