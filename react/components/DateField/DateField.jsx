@@ -96,7 +96,7 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
 };
 DateField.propTypes = {
     label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.any,
     dataTestId: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
 };
