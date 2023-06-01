@@ -65,14 +65,13 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
                 >
                     {`${label} Date`}
                 </InputLabel>
-
                 <DatePicker
                     disableOpenPicker
                     value={value ? value : null}
                     onChange={onChange}
                     slotProps={{
                         textField: {
-                            id: "label",
+                            id: "date",
                             sx: textFieldStyle,
                             InputProps: {
                                 startAdornment: (
