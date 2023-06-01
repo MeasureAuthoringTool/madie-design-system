@@ -8,48 +8,47 @@ import InputAdornment from "@mui/material/InputAdornment";
 import EventIcon from "@mui/icons-material/Event";
 
 export const textFieldStyle = {
-    maxWidth: "160px",
+  width: "160px",
+  borderRadius: "3px",
+  height: 40,
+  border: "1px solid #DDDDDD",
+  marginTop: "4px",
+  "& .MuiOutlinedInput-notchedOutline": {
     borderRadius: "3px",
-    height: 40,
-    border: "1px solid #DDDDDD",
-    background: "#FFFFFF",
-    marginTop: "7px",
-    "& .MuiOutlinedInput-notchedOutline": {
-        borderRadius: "3px",
-        "& legend": {
-            width: 0,
-        },
+    "& legend": {
+      width: 0,
     },
-    "& .MuiOutlinedInput-root": {
-        "&&": {
-            borderRadius: "3px",
-        },
+  },
+  "& .MuiOutlinedInput-root": {
+    "&&": {
+      borderRadius: "3px",
     },
-    "& .MuiInputBase-input": {
-        color: "#333333",
-        background: "#FFFFFF",
-        fontFamily: "Rubik",
-        fontSize: 14,
-        borderRadius: "3px",
-        padding: "9px 3px 9px 0px",
-        maxWidth: "150px",
-        "&::placeholder": {
-            color: "#717171",
-            fontFamily: "Rubik",
-            fontSize: 14,
-            padding: "9px 3px 9px 0px",
-        },
+  },
+  "& .MuiInputBase-input": {
+    color: "#333333",
+    fontFamily: "Rubik",
+    fontSize: 14,
+    borderRadius: "3px",
+    padding: "9px 5px 9px 4px",
+    Width: "160px",
+    "&::placeholder": {
+      opacity: 1,
+      color: "#717171",
+      fontFamily: "Rubik",
+      fontSize: 14,
+      padding: "9px 5px 9px 4px",
     },
+  },
 };
 
 const DateField = ({ label, value, onChange, dataTestId }) => {
     return (
-        <div style={{ maxWidth: "155px" }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <InputLabel
                     data-testid={dataTestId}
                     sx={[
                         {
+                            backgroundColor: "transparent",
                             textTransform: "none",
                             height: 17,
                             left: 0,
@@ -91,7 +90,6 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
                     }}
                 />
             </LocalizationProvider>
-        </div>
     );
 };
 DateField.propTypes = {
