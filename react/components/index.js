@@ -5,6 +5,7 @@ import Breadcrumb from "./Breadcrumb";
 import Button, { TextButton } from "./Button";
 import CalloutBox from "./CalloutBox";
 import Card from "./Card";
+import DateField from "./DateField/DateField";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
 import InputLabel from "./InputLabel";
@@ -25,7 +26,7 @@ import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import Tab from "./Tabs/Tab";
 import TextField from "./TextField";
-import TextArea from './TextArea';
+import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
 import Toast from "./Toast";
 import Infotip from "./Infotip";
@@ -123,6 +124,7 @@ export {
     Button,
     CalloutBox,
     Card,
+    DateField,
     FlashNotification,
     Footer,
     FormControlLabel,

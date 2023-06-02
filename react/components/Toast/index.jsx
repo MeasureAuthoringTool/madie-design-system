@@ -46,7 +46,9 @@ const Toast = ({
             message={
                 <div className={toastClass} {...toastProps}>
                     <Icon className={iconClass} />
-                    <div id="message" data-testid={testId}>{message}</div>
+                    <div id="message" data-testid={testId}>
+                        {message}
+                    </div>
                     {canClose && (
                         <IconButton
                             onClick={onClose}

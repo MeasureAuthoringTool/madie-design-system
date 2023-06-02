@@ -7,10 +7,10 @@ export default {
 };
 
 const options = [
-        { label: "option 1", value: true },
-        { label: "option 2", value: false},
-        { label: "options 3", value: "options 3"},
-    ];
+    { label: "option 1", value: true },
+    { label: "option 2", value: false },
+    { label: "options 3", value: "options 3" },
+];
 
 const TemplateRadioButton = (args) => {
     const [value, setValue] = useState("test");

@@ -6,71 +6,64 @@ const typeA = {
     color: "#fff",
     borderRadius: "4px 4px 0px 0px !important",
     backgroundColor: "#003366",
-    "&:hover":{
-        background: "#001F3D"
+    "&:hover": {
+        background: "#001F3D",
     },
-    "&:focus":{
+    "&:focus": {
         background: "#125496",
         boxShadow: "0px 0px 0px 4px #CBE4FF",
     },
 };
 const typeB = {
     color: "#515151",
-    "&:hover":{
+    "&:hover": {
         background: "#F2F9FF",
-        color: "#242424"
+        color: "#242424",
     },
-    "&:focus":{
+    "&:focus": {
         boxShadow: "0px 0px 0px 4px #CBE4FF",
-        background: "#fff"
-    }
+        background: "#fff",
+    },
 };
 const typeC = {
     color: "#333",
     background: "#EDEDED",
-    "&:hover":{
+    "&:hover": {
         background: "#FAFAFA",
-        color: "#515151"
+        color: "#515151",
     },
-    "&:focus":{
+    "&:focus": {
         boxShadow: "0px 0px 0px 4px #CBE4FF",
-        background: "#fff"
-    }
+        background: "#fff",
+    },
 };
-
 
 const Tab = ({ type, orientation, size, ...rest }) => {
     const baseStyle = {
-        height: size === 'standard' ? '48px' : '60px',
+        height: size === "standard" ? "48px" : "60px",
         fontFamily: "Rubik, sans serif",
         fontWeight: 400,
-        padding: size === 'standard' ? "14.5px 24.5px" : "20.5px 24px",
+        padding: size === "standard" ? "14.5px 24.5px" : "20.5px 24px",
         textTransform: "none",
         fontSize: "16px",
-        alignItems: orientation === 'vertical' && "flex-start",
-        '& .Mui-disabled': {
+        alignItems: orientation === "vertical" && "flex-start",
+        "& .Mui-disabled": {
             background: "#DDDDDD",
-            color: "#717171"
+            color: "#717171",
         },
-    }
+    };
     const style = ((type) => {
         if (type === "A") {
-            return  { ...baseStyle, ...typeA}
+            return { ...baseStyle, ...typeA };
         }
         if (type === "B" || type === "D") {
-            return  { ...baseStyle, ...typeB, }
+            return { ...baseStyle, ...typeB };
         }
         if (type === "C") {
-            return  { ...baseStyle, ...typeC}
+            return { ...baseStyle, ...typeC };
         }
-    })(type)
-    return (
-        <MuiTab            
-            tabIndex={0}
-            sx={style}
-            {...rest}
-        />
-    );
+    })(type);
+    return <MuiTab tabIndex={0} sx={style} {...rest} />;
 };
 
 Tab.propTypes = {

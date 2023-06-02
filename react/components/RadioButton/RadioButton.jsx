@@ -28,7 +28,7 @@ const RadioButton = ({
                 disabled={disabled}
                 required={required}
                 shrink
-                style={{marginBottom: 0, height: 16}} // force a height
+                style={{ marginBottom: 0, height: 16 }} // force a height
                 sx={[
                     {
                         backgroundColor: "transparent",
@@ -65,31 +65,40 @@ const RadioButton = ({
             >
                 {label}
             </InputLabel>
-            {helperText && (<FormHelperText
-                tabIndex={0}
-                aria-live="polite"
-                id={`${id}-helper-text`}
-                data-testid={`${id}-helper-text`}
-                error={error}
-                sx={[{
-                    margin: "4px 0px 0px 0px",
-                    color: "#515151",
-                    lineHeight: 1
-                },
-                    error && {
-                        color: "#AE1C1C !important",
-                    },
-                ]}
-            >
-                {helperText}
-            </FormHelperText>)}
+            {helperText && (
+                <FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    error={error}
+                    sx={[
+                        {
+                            margin: "4px 0px 0px 0px",
+                            color: "#515151",
+                            lineHeight: 1,
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
+                        },
+                    ]}
+                >
+                    {helperText}
+                </FormHelperText>
+            )}
             <RadioGroup
                 aria-labelledby={`${id}-radio-buttons-group`}
                 data-testid={`${id}-radio-buttons-group`}
                 {...rest}
             >
                 {options.map((option, index) => (
-                    <FormControlLabel disabled={disabled} key={index} value={option.value} control={<Radio />} label={option.label} />
+                    <FormControlLabel
+                        disabled={disabled}
+                        key={index}
+                        value={option.value}
+                        control={<Radio />}
+                        label={option.label}
+                    />
                 ))}
             </RadioGroup>
         </FormControl>

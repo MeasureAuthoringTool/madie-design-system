@@ -31,10 +31,10 @@ const autoCompleteStyles = {
         paddingTop: 0,
         paddingBottom: 0,
     },
-    "& .Mui-disabled" : {
+    "& .Mui-disabled": {
         backgroundColor: "#EDEDED",
         border: "#EDEDED",
-    }
+    },
 };
 
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -83,68 +83,78 @@ const AutoComplete = ({
 }) => {
     return (
         <FormControl error={error} fullWidth>
-            <div style={{ width: 1, display: "flex", flexDirection: "column", flexGrow: 1}}/> 
+            <div
+                style={{
+                    width: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                }}
+            />
             <InputLabel
                 htmlFor={`${id}`}
                 id={`${id}-label`}
                 disabled={disabled}
                 required={required}
                 shrink
-                style={{marginBottom: 0, height: 16}} // force a heignt
+                style={{ marginBottom: 0, height: 16 }} // force a heignt
                 sx={[
-                {
-                    backgroundColor: "transparent",
-                    display: "flex",
-                    flexDirection: "row-reverse",
-                    alignSelf: "baseline",
-                    textTransform: "none",
-                    // force it outside the select box
-                    position: "initial",
-                    transform: "translateX(0px) translateY(0px)",
-                    fontFamily: "Rubik",
-                    fontWeight: 500,
-                    fontSize: 14,
-                    color: "#333",
-                    "& .MuiInputLabel-asterisk": {
-                        color: "#AE1C1C !important",
-                        marginRight: "3px !important", //this was
+                    {
+                        backgroundColor: "transparent",
+                        display: "flex",
+                        flexDirection: "row-reverse",
+                        alignSelf: "baseline",
+                        textTransform: "none",
+                        // force it outside the select box
+                        position: "initial",
+                        transform: "translateX(0px) translateY(0px)",
+                        fontFamily: "Rubik",
+                        fontWeight: 500,
+                        fontSize: 14,
+                        color: "#333",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#AE1C1C !important",
+                            marginRight: "3px !important", //this was
+                        },
                     },
-                },
-                required && {
-                    transform: "translateX(-12px) translateY(0px)",
-                    "& .MuiInputLabel-asterisk": {
-                        color: "#D92F2",
-                        marginRight: "3px !important", //this was
+                    required && {
+                        transform: "translateX(-12px) translateY(0px)",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#D92F2",
+                            marginRight: "3px !important", //this was
+                        },
                     },
-                },
-                disabled && {
-                    color: "rgba(0,0,0,0.6)",
-                },
-                error && {
-                    color: "#AE1C1C !important",
-                },
-            ]}
-            >
-                {label}
-            </InputLabel>
-            {helperText && (<FormHelperText
-                    tabIndex={0}
-                    aria-live="polite"
-                    id={`${id}-helper-text`}
-                    data-testid={`${id}-helper-text`}
-                    error={error}
-                    sx={[{
-                        margin: "4px 0px 0px 0px",
-                        color: "#515151",
-                        lineHeight: 1
+                    disabled && {
+                        color: "rgba(0,0,0,0.6)",
                     },
                     error && {
                         color: "#AE1C1C !important",
                     },
                 ]}
+            >
+                {label}
+            </InputLabel>
+            {helperText && (
+                <FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    error={error}
+                    sx={[
+                        {
+                            margin: "4px 0px 0px 0px",
+                            color: "#515151",
+                            lineHeight: 1,
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
+                        },
+                    ]}
                 >
                     {helperText}
-                </FormHelperText>)}
+                </FormHelperText>
+            )}
             <MUIAutoComplete
                 disablePortal
                 id={id}
@@ -178,7 +188,7 @@ const AutoComplete = ({
                                     color: "#333",
                                     "&::placeholder": {
                                         opacity: 1,
-                                        color: "#717171"
+                                        color: "#717171",
                                     },
                                 },
                             }}

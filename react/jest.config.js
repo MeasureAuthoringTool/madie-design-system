@@ -21,7 +21,7 @@ module.exports = {
     // collectCoverageFrom: null,
 
     // The directory where Jest should output its coverage files
-    coverageDirectory: 'coverage',
+    coverageDirectory: "coverage",
 
     // An array of regexp pattern strings used to skip coverage collection
     // coveragePathIgnorePatterns: [
@@ -120,7 +120,7 @@ module.exports = {
     // runner: "jest-runner",
 
     // The paths to modules that run some code to configure or set up the testing environment before each test
-    setupFiles: ['<rootDir>/test-setup.js'],
+    setupFiles: ["<rootDir>/test-setup.js"],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
     // setupFilesAfterEnv: [],
@@ -165,10 +165,10 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     transform: {
-        '^.+\\.jsx?$': 'babel-jest',
-        '\\.(svg|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)$':
-            '<rootDir>/jest/mediaFileTransformer.js',
-        '\\.(scss|css)': '<rootDir>/jest/mediaFileTransformer.js'
+        "^.+\\.jsx?$": "babel-jest",
+        "\\.(svg|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)$":
+            "<rootDir>/jest/mediaFileTransformer.js",
+        "\\.(scss|css)": "<rootDir>/jest/mediaFileTransformer.js",
     },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
@@ -178,7 +178,7 @@ module.exports = {
     // unmockedModulePathPatterns: undefined,
 
     // Indicates whether each individual test should be reported during the run
-    verbose: true
+    verbose: true,
 
     // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
     // watchPathIgnorePatterns: [],

@@ -1,5 +1,5 @@
-import '../../shared/styles/_main.scss';
+import "../../shared/styles/_main.scss";
 
 export const parameters = {
-  layout: 'fullscreen',
+    layout: "fullscreen",
 };
