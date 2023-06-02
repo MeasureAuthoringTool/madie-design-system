@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import InputAdornment from "@mui/material/InputAdornment";
 import EventIcon from "@mui/icons-material/Event";
+import { kebabCase } from "lodash";
 
 export const textFieldStyle = {
   width: "160px",
@@ -41,11 +42,11 @@ export const textFieldStyle = {
   },
 };
 
-const DateField = ({ label, value, onChange, dataTestId }) => {
+const DateField = ({ label, value, onChange }) => {
     return (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <InputLabel
-                    data-testid={dataTestId}
+                    data-testid={`${kebabCase(label)}-date`}
                     style={{ marginBottom: 0, height: 16 }}
                     sx={[
                         {
@@ -95,7 +96,6 @@ const DateField = ({ label, value, onChange, dataTestId }) => {
 DateField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.any,
-    dataTestId: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
 };
 
