@@ -17,6 +17,7 @@ describe("DateField", () => {
                     handlDateTimeChange={() => console.log("Status Date")}
                 />
             );
+            
             const labelText = await findByText("Status Date");
             expect(labelText).toBeInTheDocument();
             expect(await findByTestId("status-date")).toBeInTheDocument();
