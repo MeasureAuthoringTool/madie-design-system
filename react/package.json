@@ -110,7 +110,7 @@
         "@mui/material": "^5.2.5",
         "@mui/styles": "^5.5.1",
         "@mui/system": "^5.5.2",
-        "@mui/x-date-pickers": "^6.4.0",
+        "@mui/x-date-pickers": "^6.6.0",
         "@reach/portal": "^0.16.2",
         "@reach/tooltip": "^0.16.2",
         "@testing-library/jest-dom": "^5.16.2",
