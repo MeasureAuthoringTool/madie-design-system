@@ -46,9 +46,9 @@ const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange }) => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <InputLabel
                     style={{ marginBottom: 0, height: 16 }}
-                    data-testId={`${kebabCase(label)}-date/time`}
+                    data-testId={`${kebabCase(label)}`}
                 >
-                    {`${label} Date/Time`}
+                    {`${label}`}
                 </InputLabel>
                 <DateTimePicker
                     value={dateTimeValue ? dateTimeValue : null}

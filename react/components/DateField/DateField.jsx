@@ -43,7 +43,7 @@ const DateField = ({ label, value, handleDateChange }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <InputLabel
-                data-testid={`${kebabCase(label)}-date`}
+                data-testid={`${kebabCase(label)}`}
                 style={{ marginBottom: 0, height: 16 }}
                 sx={[
                     {
@@ -61,7 +61,7 @@ const DateField = ({ label, value, handleDateChange }) => {
                     },
                 ]}
             >
-                {`${label} Date`}
+                {`${label}`}
             </InputLabel>
             <DatePicker
                 value={value ? value : null}
