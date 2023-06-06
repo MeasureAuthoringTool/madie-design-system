@@ -39,11 +39,11 @@ export const dateTextFieldStyle = {
     },
 };
 
-const DateField = ({ label, value, handlDateTimeChange }) => {
+const DateField = ({ label, value, handleDateChange }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <InputLabel
-                data-testid={`${kebabCase(label)}-date`}
+                data-testid={`${kebabCase(label)}`}
                 style={{ marginBottom: 0, height: 16 }}
                 sx={[
                     {
@@ -61,11 +61,11 @@ const DateField = ({ label, value, handlDateTimeChange }) => {
                     },
                 ]}
             >
-                {`${label} Date`}
+                {`${label}`}
             </InputLabel>
             <DatePicker
                 value={value ? value : null}
-                onChange={handlDateTimeChange}
+                onChange={handleDateChange}
                 slotProps={{
                     textField: {
                         id: "date",
@@ -78,8 +78,8 @@ const DateField = ({ label, value, handlDateTimeChange }) => {
 };
 DateField.propTypes = {
     label: PropTypes.string.isRequired,
-    value: PropTypes.any,
-    handlDateTimeChange: PropTypes.func.isRequired,
+    value: PropTypes.object,
+    handleDateChange: PropTypes.func.isRequired,
 };
 
 export default DateField;
