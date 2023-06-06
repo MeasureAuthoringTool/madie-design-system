@@ -9,7 +9,7 @@ export default {
 };
 export const DateFieldComponent = (args) => {
     const [value, setValue] = useState("");
-    const handlDateTimeChange = (e) => {
+    const handlDateChange = (e) => {
         console.log("Handle change triggered", e.target.value);
         setValue(e.target.value);
     };
@@ -17,7 +17,7 @@ export const DateFieldComponent = (args) => {
         <div className="qpp-u-padding--16">
             <DateField
                 label="Status"
-                handlDateTimeChange={handlDateTimeChange}
+                handlDateChange={handlDateChange}
                 value={value}
             />
         </div>
