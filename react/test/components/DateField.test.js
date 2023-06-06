@@ -14,7 +14,7 @@ describe("DateField", () => {
                 <DateField
                     label="Status"
                     value={dayjs("2022-04-17")}
-                    handlDateChange={() => console.log("Status Date")}
+                    handleDateChange={() => console.log("Status Date")}
                 />
             );
             
