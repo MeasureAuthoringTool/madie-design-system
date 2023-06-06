@@ -78,7 +78,7 @@ const DateField = ({ label, value, handleDateChange }) => {
 };
 DateField.propTypes = {
     label: PropTypes.string.isRequired,
-    value: PropTypes.any,
+    value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
 };
 
