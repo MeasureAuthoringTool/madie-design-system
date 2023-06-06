@@ -12,9 +12,9 @@ describe("DateField", () => {
         await act(async () => {
             const { findByText, findByTestId, getByDisplayValue } = render(
                 <DateField
-                    label="Status"
+                    label="Status Date"
                     value={dayjs("2022-04-17")}
-                    handlDateTimeChange={() => console.log("Status Date")}
+                    handleDateChange={() => console.log("Status Date")}
                 />
             );
             

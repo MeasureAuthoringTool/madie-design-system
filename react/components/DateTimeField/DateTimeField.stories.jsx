@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import DateField from "./DateField";
+import DateTimeField from "./DateTimeField";
 import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
-    title: "DateField",
-    component: DateField,
+    title: "DateTimeField",
+    component: DateTimeField,
     decorators: [withKnobs],
 };
-export const DateFieldComponent = (args) => {
+
+export const TimeDateFieldComponent = (args) => {
     const [value, setValue] = useState("");
-    const handleDateChange = (e) => {
+    const handlDateTimeChange = (e) => {
         console.log("Handle change triggered", e.target.value);
         setValue(e.target.value);
     };
     return (
         <div className="qpp-u-padding--16">
-            <DateField
-                label="Status Date"
-                handleDateChange={handleDateChange}
-                value={value}
+            <DateTimeField
+                label="Status Date/Time"
+                handlDateTimeChange={handlDateTimeChange}
+                dateTimeValue={value}
             />
         </div>
     );
