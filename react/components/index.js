@@ -6,6 +6,7 @@ import Button, { TextButton } from "./Button";
 import CalloutBox from "./CalloutBox";
 import Card from "./Card";
 import DateField from "./DateField/DateField";
+import DateTimeField from "./DateTimeField/DateTimeField";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
 import InputLabel from "./InputLabel";
@@ -125,6 +126,7 @@ export {
     CalloutBox,
     Card,
     DateField,
+    DateTimeField,
     FlashNotification,
     Footer,
     FormControlLabel,
