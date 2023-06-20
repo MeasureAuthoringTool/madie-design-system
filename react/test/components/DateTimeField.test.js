@@ -17,6 +17,7 @@ describe("DateTimeField", () => {
                     handleDateTimeChange={() => {
                         return;
                     }}
+                    disabled={false}
                 />
             );
 
