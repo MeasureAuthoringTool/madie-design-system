@@ -81,7 +81,7 @@ DateField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
-    disabled:PropTypes.bool.isRequired
+    disabled:PropTypes.bool
 };
 
 export default DateField;
