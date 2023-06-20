@@ -16,6 +16,7 @@ export const DateFieldComponent = (args) => {
     return (
         <div className="qpp-u-padding--16">
             <DateField
+                disabled={false}
                 label="Status Date"
                 handleDateChange={handleDateChange}
                 value={value}

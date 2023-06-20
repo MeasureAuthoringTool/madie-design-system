@@ -39,7 +39,7 @@ export const dateTextFieldStyle = {
     },
 };
 
-const DateField = ({ label, value, handleDateChange }) => {
+const DateField = ({ label, value, handleDateChange, disabled }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <InputLabel
@@ -66,6 +66,7 @@ const DateField = ({ label, value, handleDateChange }) => {
             <DatePicker
                 value={value ? value : null}
                 onChange={handleDateChange}
+                disabled={disabled}
                 slotProps={{
                     textField: {
                         id: "date",
@@ -80,6 +81,7 @@ DateField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
+    disabled:PropTypes.bool
 };
 
 export default DateField;

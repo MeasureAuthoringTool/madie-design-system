@@ -15,6 +15,7 @@ describe("DateField", () => {
                     label="Status Date"
                     value={dayjs("2022-04-17")}
                     handleDateChange={() => console.log("Status Date")}
+                    disabled={false}
                 />
             );
             

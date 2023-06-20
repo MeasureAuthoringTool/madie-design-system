@@ -40,7 +40,8 @@ export const dateTimeTextFieldStyle = {
     },
 };
 
-const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange }) => {
+const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange,disabled }) => {
+    console.log(disabled)
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -54,6 +55,7 @@ const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange }) => {
                     value={dateTimeValue ? dateTimeValue : null}
                     onChange={handleDateTimeChange}
                     views={["year", "day", "hours", "minutes"]}
+                    disabled={disabled}
                     slotProps={{
                         textField: {
                             id: "dateTime",
@@ -69,6 +71,7 @@ DateTimeField.propTypes = {
     dateTimeValue: PropTypes.object,
     handleDateTimeChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
+    disabled:PropTypes.bool
 };
 
 export default DateTimeField;
