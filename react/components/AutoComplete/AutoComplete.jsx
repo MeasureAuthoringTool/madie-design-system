@@ -155,6 +155,7 @@ const AutoComplete = ({
                     {helperText}
                 </FormHelperText>
             )}
+            
             <MUIAutoComplete
                 disablePortal
                 id={id}
