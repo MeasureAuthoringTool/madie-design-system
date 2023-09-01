@@ -206,8 +206,8 @@ const AutoComplete = ({
                         : renderOptionSingle(props, option);
                 }}
                 {...rest}
-                onChange={(_event, selectedVal) =>
-                    onChange(id, selectedVal || "")
+                onChange={(_event, selectedVal, reason, detail ) =>
+                    onChange(id, selectedVal || "", reason, detail)
                 }
             />
         </FormControl>
