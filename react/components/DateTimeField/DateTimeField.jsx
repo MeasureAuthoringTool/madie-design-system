@@ -41,7 +41,6 @@ export const dateTimeTextFieldStyle = {
 };
 
 const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange,disabled }) => {
-    console.log(disabled)
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
