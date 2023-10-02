@@ -36,10 +36,8 @@ launch.json
 react/storybook-static
 shared/storybook-static
 
-# post-build files in react dir, previously copied from shared. deprecating.
-# react/fonts
-# react/images
-# react/styles
+# post-build files in react dir
+react/node_modules
 
 # temporary script to build and deploy chromatic locally w/ project token
 shared/deploy-chromatic.sh
