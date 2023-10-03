@@ -10,16 +10,15 @@ export default {
 
 export const TimeDateFieldComponent = (args) => {
     const [value, setValue] = useState("");
-    const handlDateTimeChange = (e) => {
-        console.log("Handle change triggered", e.target.value);
-        setValue(e.target.value);
+    const handleDateTimeChange = (e) => {
+        setValue(e.target.value)
     };
     return (
         <div className="qpp-u-padding--16">
             <DateTimeField
-                disabled={true}
+                // disabled={true}
                 label="Status Date/Time"
-                handlDateTimeChange={handlDateTimeChange}
+                handleDateTimeChange={handleDateTimeChange}
                 dateTimeValue={value}
             />
         </div>

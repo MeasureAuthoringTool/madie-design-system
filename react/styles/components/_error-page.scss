@@ -1,0 +1,56 @@
+.page-error {
+	text-align: center;
+
+	.collapsible-container {
+		margin: 0 auto;
+		width: 350px;
+	}
+
+	.collapsible-summary {
+		background: transparent;
+		border: 0 none;
+		color: $color-teal;
+		display: block;
+		font-size: initial;
+		margin: 2em auto 1em;
+		padding: 0;
+
+		&::before {
+			margin-right: 0.25em;
+		}
+
+		&[aria-expanded='false'] {
+			&::before {
+				content: '+';
+			}
+
+			.collapsible-hide-label {
+				display: none;
+			}
+		}
+
+		&[aria-expanded='true'] {
+			&::before {
+				content: '-';
+			}
+
+			.collapsible-show-label:not(:last-child) {
+				display: none;
+			}
+
+			.collapsible-hide-label {
+				display: initial;
+			}
+		}
+	}
+
+	.collapsible-details {
+		font-size: initial;
+		padding: 0 1em;
+		text-align: left;
+
+		p {
+			margin: 0.5em 0;
+		}
+	}
+}

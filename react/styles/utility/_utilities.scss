@@ -1,0 +1,73 @@
+.is-hidden {
+	display: none !important;
+}
+
+.is-rotated-right {
+	transform: rotate(90deg);
+}
+
+.text-pad-both {
+	padding: 0 0.3em;
+}
+
+.text-pad-right {
+	padding: 0 0.3em 0 0;
+}
+
+.text-pad-left {
+	padding: 0 0 0 0.3em;
+}
+
+.graphic-spaced-both {
+	padding: 20px 0 40px;
+	@include breakpoint(sm) {
+		padding: 30px 0 40px;
+	}
+}
+
+.flex-centered-vertical {
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+		margin-top: 0;
+	}
+	@include breakpoint(sm) {
+		// TODO: fix for any height
+		height: 288px;
+		justify-content: center;
+		margin-bottom: 3em;
+	}
+}
+
+.flex-centered-horizontal {
+	display: flex;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1em 0;
+	@include breakpoint(sm) {
+		flex-direction: row;
+	}
+
+	.panel,
+	.well {
+		@include breakpoint(sm) {
+			width: calc(50% - 10px);
+		}
+	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
