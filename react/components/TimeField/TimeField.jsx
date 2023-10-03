@@ -6,7 +6,7 @@ import InputLabel from "../InputLabel";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 
-export const timeFieldStyle = {
+const timeFieldStyle = {
     width: "134px",
     borderRadius: "3px",
     height: 40,
