@@ -10,9 +10,8 @@ export default {
 
 export const TimeDateFieldComponent = (args) => {
     const [value, setValue] = useState("");
-    console.log('value is', value)
     const handleDateTimeChange = (e) => {
-        console.log("Handle change triggered", e);
+        setValue(e.target.value)
     };
     return (
         <div className="qpp-u-padding--16">
