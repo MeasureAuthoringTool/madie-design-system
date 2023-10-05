@@ -46,6 +46,7 @@ const TimeField = ({
     disabled,
     required,
     error,
+    ...rest
 }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -75,7 +76,6 @@ const TimeField = ({
             </InputLabel>
             <TimePicker
                 sx={timeFieldStyle}
-                disableOpenPicker
                 disabled={disabled}
                 value={value ? value : null}
                 onChange={handleTimeChange}
@@ -84,6 +84,7 @@ const TimeField = ({
                         id: "time",
                     },
                 }}
+                {...rest}
             />
         </LocalizationProvider>
     );
