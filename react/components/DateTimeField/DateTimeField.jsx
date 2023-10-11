@@ -11,6 +11,7 @@ import { FormControl } from "@mui/material";
 import { kebabCase } from "lodash";
 
 dayjs.extend(utc)
+dayjs.utc();
 export const dateTimeTextFieldStyle = {
     width: "240px",
     borderRadius: "3px",
@@ -55,7 +56,7 @@ const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange,disabled }) 
                     {`${label}`}
                 </InputLabel>
                 <DateTimePicker
-                    value={dateTimeValue ? dateTimeValue : null}
+                    value={dateTimeValue ? dayjs.utc(dateTimeValue) : null}
                     onChange={handleDateTimeChange}
                     views={["year", "day", "hours", "minutes"]}
                     disabled={disabled}
