@@ -6,7 +6,7 @@ import InputLabel from "../InputLabel";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 
-export const timeFieldStyle = {
+const timeFieldStyle = {
     width: "134px",
     borderRadius: "3px",
     height: 40,
@@ -46,6 +46,7 @@ const TimeField = ({
     disabled,
     required,
     error,
+    ...rest
 }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -75,7 +76,6 @@ const TimeField = ({
             </InputLabel>
             <TimePicker
                 sx={timeFieldStyle}
-                disableOpenPicker
                 disabled={disabled}
                 value={value ? value : null}
                 onChange={handleTimeChange}
@@ -84,6 +84,7 @@ const TimeField = ({
                         id: "time",
                     },
                 }}
+                {...rest}
             />
         </LocalizationProvider>
     );

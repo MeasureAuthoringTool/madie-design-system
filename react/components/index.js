@@ -27,6 +27,7 @@ import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import Tab from "./Tabs/Tab";
 import TextField from "./TextField";
+import TimeField from "./TimeField/TimeField";
 import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
 import Toast from "./Toast";
@@ -151,6 +152,7 @@ export {
     Tab,
     TextButton,
     TextInput,
+    TimeField,
     TextField,
     TextArea,
     Toast,

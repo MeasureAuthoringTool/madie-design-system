@@ -1,0 +1,47 @@
+.ds-c-autocomplete {
+	.ds-u-float--right {
+		float: right;
+	}
+
+	.ds-u-padding-right--0 {
+		padding-right: 0;
+	}
+
+	.ds-c-autocomplete__list {
+		border: 1px solid $color-gray-medium;
+		padding: 8px;
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.ds-c-autocomplete__list-item {
+			color: $color-teal;
+			padding: 8px;
+
+			&.ds-c-autocomplete__list-item--active {
+				background-color: $color-teal;
+				color: $color-white;
+			}
+		}
+	}
+
+	input {
+		padding: 0.9rem 3.75rem 0.9rem 0.75rem;
+	}
+
+	button {
+		color: $color-teal;
+	}
+
+	svg {
+		bottom: 13px;
+		fill: $color-teal;
+		height: 20px;
+		position: absolute;
+		right: 20px;
+		width: 20px;
+	}
+}

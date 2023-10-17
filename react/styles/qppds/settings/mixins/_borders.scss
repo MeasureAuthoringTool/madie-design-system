@@ -1,0 +1,6 @@
+@import '../variables/index';
+
+@mixin raised-border {
+  border-radius: 3px;
+  box-shadow: 0 rem(2px) rem(8px) rgba(0, 0, 0, 0.1);
+}

@@ -63,27 +63,6 @@ const plugins = [
     new MiniCssExtractPlugin({
         filename: "default.css",
     }),
-    //   new ESLintPlugin({
-    //       files: '/\.(js|jsx)?$/',
-    //       exclude: '/node_modules/'
-    //   }),
-    // copy styles, images, fonts from shared directory
-    new CopyWebpackPlugin([
-        {
-            from: path.join(__dirname, "..", "shared", "styles"),
-            to: path.resolve(__dirname, "styles"),
-        },
-        {
-            from: path.join(__dirname, "..", "shared", "images"),
-            to: path.resolve(__dirname, "images"),
-            force: true,
-        },
-        {
-            from: path.join(__dirname, "..", "shared", "fonts"),
-            to: path.resolve(__dirname, "fonts"),
-            force: true,
-        },
-    ]),
     new webpack.DefinePlugin({
         "process.env": {
             NODE_ENV: JSON.stringify("production"),

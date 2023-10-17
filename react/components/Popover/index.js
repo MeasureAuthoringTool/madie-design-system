@@ -7,9 +7,9 @@ const MadiePopover = ({
     anchorEl,
     handleClose,
     canEdit,
-    editViewSelectOptionProps,
-    additionalSelectOptionProps,
-    otherSelectOptionProps,
+    editViewSelectOptionProps = {},
+    additionalSelectOptionProps = [],
+    otherSelectOptionProps = [],
 }) => {
     return (
         <Popover
@@ -35,7 +35,7 @@ const MadiePopover = ({
                         marginLeft: "-70px",
                         borderRadius: "6px",
                         background: "#F7F7F7",
-                        width: "115px",
+                        width: "fit-content",
                         "&::before": {
                             borderWidth: "thin",
                             position: "absolute",
