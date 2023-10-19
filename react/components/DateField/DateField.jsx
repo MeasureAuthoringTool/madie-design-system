@@ -71,7 +71,6 @@ const DateField = ({ label, value, handleDateChange, disabled }) => {
                 value={value ? dayjs.utc(value) : null}
                 onChange={handleDateChange}
                 disabled={disabled}
-                views={["year", "day", "hours"]}
                 slotProps={{
                     textField: {
                         id: "date",
