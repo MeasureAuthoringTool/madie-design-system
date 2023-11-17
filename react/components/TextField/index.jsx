@@ -94,11 +94,11 @@ const TextField = ({
                     {
                         borderRadius: "3px",
                         height: 40, //there's a .13 coming from somewhere.
-                        border: "1px solid #DDDDDD",
+                        border: "none",
                         marginTop: "8px",
-                        // remove weird line break from legend
                         "& .MuiOutlinedInput-notchedOutline": {
                             borderRadius: "3px",
+                            borderColor: "#8C8C8C",
                             "& legend": {
                                 width: 0,
                             },

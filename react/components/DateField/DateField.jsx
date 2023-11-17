@@ -12,11 +12,10 @@ dayjs.extend(utc)
 dayjs.utc();
 export const dateTextFieldStyle = {
     width: "170px",
-    borderRadius: "3px",
     height: 40,
-    border: "1px solid #B0B0B0",
     marginTop: "8px",
     "& .MuiOutlinedInput-notchedOutline": {
+        border: "1px solid #8C8C8C",
         borderRadius: "3px",
         "& legend": {
             width: 0,

@@ -8,12 +8,11 @@ import PropTypes from "prop-types";
 
 const timeFieldStyle = {
     width: "134px",
-    borderRadius: "3px",
     height: 40,
-    border: "1px solid #B0B0B0",
     marginTop: "8px",
     "& .MuiOutlinedInput-notchedOutline": {
         borderRadius: "3px",
+        borderColor: "#8C8C8C",
         "& legend": {
             width: 0,
         },

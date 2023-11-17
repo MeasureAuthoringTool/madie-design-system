@@ -35,6 +35,7 @@ const TextArea = ({
                 sx={[
                     {
                         backgroundColor: "transparent",
+                        borderColor: "#8C8C8C",
                         display: "flex",
                         flexDirection: "row-reverse",
                         alignSelf: "baseline",

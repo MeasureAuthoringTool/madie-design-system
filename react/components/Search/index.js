@@ -17,6 +17,7 @@ const Search = ({
 }) => {
     const inputStyle = {
         width: inputWidth,
+        borderColor: "#8C8C8C"
     };
     return (
         <form role="search" className="qpp-c-search qpp-c-search--compact">

@@ -106,11 +106,12 @@ const Select = ({
             <MUISelect
                 sx={[
                     {
+                        border: "none",
                         borderRadius: "3px",
                         height: 40,
-                        border: "1px solid #DDDDDD",
                         marginTop: "8px",
                         "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#8C8C8C",
                             borderRadius: "3px",
                             "& legend": {
                                 width: 0,

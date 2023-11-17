@@ -8,7 +8,7 @@
 .qppds .qpp-c-button,
 .qppds .qpp-c-button:visited {
   background-color: $blue-60;
-  border: 2px solid $blue-60;
+  border: 1px solid $blue-60;
   border-radius: 4px;
   box-sizing: border-box;
   color: $white;
@@ -190,7 +190,7 @@
     &:hover,
     &.qpp-c-button--hover {
       background-color: $cyan-60;
-      border: 2px solid $cyan-60;
+      border-color: $cyan-60;
     }
   
     &:active,
@@ -222,7 +222,7 @@
     &:hover,
     &.qpp-c-button--hover {
       background-color: $gray-04;
-      border: 2px solid $blue-60;
+      border-color: $blue-60;
     }
 
     &:active,
@@ -253,7 +253,7 @@
     &:hover,
     &.qpp-c-button--hover {
       background-color: $gray-04;
-      border: 2px solid $blue-60;
+      border-color: $blue-60;
     }
 
     &:active,
