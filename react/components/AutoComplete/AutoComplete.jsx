@@ -15,7 +15,6 @@ const autoCompleteStyles = {
     marginTop: "8px",
     borderRadius: "3px",
     height: 40,
-    border: "1px solid #DDDDDD",
     "& .MuiOutlinedInput-notchedOutline": {
         borderRadius: "3px",
         "& legend": {
@@ -183,6 +182,14 @@ const AutoComplete = ({
                     return (
                         <TextField
                             sx={{
+                                border: "none",
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderRadius: "3px",
+                                    borderColor: "#8C8C8C",
+                                    "& legend": {
+                                        width: 0,
+                                    },
+                                },
                                 "& .MuiInputBase-input": {
                                     opacity: 1,
                                     color: "#333",
@@ -205,6 +212,11 @@ const AutoComplete = ({
                         ? renderOptionMultiple(props, option, selected)
                         : renderOptionSingle(props, option);
                 }}
+                ChipProps={{sx:{
+                    '& .MuiChip-deleteIcon': {
+                        color: "#757575",
+                    },
+                }}}
                 {...rest}
                 onChange={(_event, selectedVal, reason, detail ) =>
                     onChange(id, selectedVal || "", reason, detail)
