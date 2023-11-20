@@ -34,6 +34,9 @@ const autoCompleteStyles = {
         backgroundColor: "#EDEDED",
         border: "#EDEDED",
     },
+    '& .MuiChip-deleteIcon': {
+        color: "#757575",
+    },
 };
 
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -212,11 +215,6 @@ const AutoComplete = ({
                         ? renderOptionMultiple(props, option, selected)
                         : renderOptionSingle(props, option);
                 }}
-                ChipProps={{sx:{
-                    '& .MuiChip-deleteIcon': {
-                        color: "#757575",
-                    },
-                }}}
                 {...rest}
                 onChange={(_event, selectedVal, reason, detail ) =>
                     onChange(id, selectedVal || "", reason, detail)
