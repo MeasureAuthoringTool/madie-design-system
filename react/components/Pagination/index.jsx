@@ -77,6 +77,7 @@ const Pagination = ({
                     sx={{
                         margin: "0 11px",
                         "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#8C8C8C",
                             "& legend": {
                                 width: 0,
                             },
@@ -123,7 +124,7 @@ const Pagination = ({
                     "& .MuiPagination-ul": {
                         "& .MuiPaginationItem-root": {
                             color: "#0073C8",
-                            border: "solid 1px #CACACA",
+                            border: "solid 1px #8c8c8c",
                             "&:focus": {
                                 border: "0.0625rem solid #125496",
                                 borderRadius: "0.1875rem",

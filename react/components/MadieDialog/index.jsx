@@ -107,7 +107,7 @@ const MadieDialog = ({
                             </IconButton>
                         </div>
                     </Box>
-                    <Divider />
+                    <Divider sx={{borderColor: "#8c8c8c"}}/>
                     <DialogContent sx={{ padding: "32px" }}>
                         {showRequiredFieldMessage && (
                             <Box
@@ -141,7 +141,7 @@ const MadieDialog = ({
 
                         {children}
                     </DialogContent>
-                    <Divider />
+                    <Divider sx={{borderColor: "#8c8c8c"}}/>
                     <DialogActions
                         sx={{
                             padding: "16px",
@@ -204,11 +204,11 @@ const MadieDialog = ({
                             </IconButton>
                         </div>
                     </Box>
-                    <Divider />
+                    <Divider sx={{borderColor: "#8c8c8c"}}/>
                     <DialogContent sx={{ padding: "32px" }}>
                         {children}
                     </DialogContent>
-                    <Divider />
+                    <Divider sx={{borderColor: "#8c8c8c"}}/>
                     <DialogActions
                         sx={{
                             padding: "16px",
