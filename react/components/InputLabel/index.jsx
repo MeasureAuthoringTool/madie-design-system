@@ -35,7 +35,7 @@ const Label = ({ required, disabled, error, ...rest }) => {
                     },
                 },
                 disabled && {
-                    color: "rgba(0,0,0,0.6)",
+                    color: "#333333 !important",
                 },
                 error && {
                     color: "#AE1C1C !important",

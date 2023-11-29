@@ -1,5 +1,7 @@
 import React from "react";
-import { FormControl, TextField as MUITextField } from "@mui/material";
+import { FormControl, TextField as MUITextField,
+    FormHelperText,
+ } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
 
@@ -23,6 +25,26 @@ const ReadOnlyTextField = ({
             >
                 {label}
             </InputLabel>
+            {helperText && (
+                <FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    sx={[
+                        {
+                            margin: "4px 0px 0px 0px",
+                            color: "#515151",
+                            lineHeight: 1,
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
+                        },
+                    ]}
+                >
+                    {helperText}
+                </FormHelperText>
+            )}
             <MUITextField
                 sx={{
                     height: 40, //there's a .13 coming from somewhere.
@@ -39,8 +61,10 @@ const ReadOnlyTextField = ({
                         disableUnderline: true,
                         fontSize: 16,
                         padding: "9px 0px",
+                        color: "#333",
                         "&::placeholder": {
-                            opacity: 0.6,
+                            opacity: 1,
+                            color: "#333",
                         },
                         "&:focus": {
                             border: "none",
@@ -59,7 +83,6 @@ const ReadOnlyTextField = ({
                 id={id}
                 {...rest}
             />
-            {helperText && helperText}
         </FormControl>
     );
 };
