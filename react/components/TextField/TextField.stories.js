@@ -53,13 +53,12 @@ export const Disabled = () => (
     <Wrapper>
         <TextField
             placeholder="Placeholder"
-            label="Text Label"
+            label="Disabled Text Label"
             id="measureName"
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
             disabled
-            required
         />
     </Wrapper>
 );
