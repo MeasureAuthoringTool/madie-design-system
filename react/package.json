@@ -117,7 +117,7 @@
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/user-event": "^13.5.0",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
-        "axios": "^0.24.0",
+        "axios": "^1.6.3",
         "cookie": "^0.4.1",
         "cross-env": "^7.0.3",
         "d3-selection": "^1.4.2",
