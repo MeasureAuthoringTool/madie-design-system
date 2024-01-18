@@ -36,6 +36,7 @@ const MadieDialog = ({
         }
     */
     form,
+    required,
     title,
     dialogProps,
     cancelButtonProps,
@@ -96,11 +97,28 @@ const MadieDialog = ({
                         >
                             {title}
                         </DialogTitle>
+                        {required && (
+                            <Box sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                flexGrow: 1,
+                                alignSelf: 'center',
+                                marginBottom: '-4px',
+                                marginLeft: '15px'
+                            }}>
+                                <Typography
+                                style={{ fontSize: 16, fontWeight: 400, fontFamily: "Rubik" }}
+                                >
+                                <span style={{ color: "#D92F2F", marginRight: 3 }}>*</span>
+                                Indicates required field
+                                </Typography>
+                            </Box>
+                        )}
                         <div>
                             <IconButton onClick={onClose} aria-label="Close">
                                 <CloseIcon
                                     sx={{
-                                        color: "#242424",
+                                        color: "#D92F2F",
                                     }}
                                     data-testid="close-button"
                                 />
@@ -197,7 +215,7 @@ const MadieDialog = ({
                             <IconButton onClick={onClose} aria-label="Close">
                                 <CloseIcon
                                     sx={{
-                                        color: "#242424",
+                                        color: "#D92F2F",
                                     }}
                                     data-testid="close-button"
                                 />
@@ -246,6 +264,7 @@ const MadieDialog = ({
 };
 
 MadieDialog.propTypes = {
+    required: PropTypes.bool,
     form: PropTypes.bool,
     title: PropTypes.string,
     dialogProps: PropTypes.object,
