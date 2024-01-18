@@ -93,7 +93,6 @@ const TextField = ({
                 sx={[
                     {
                         borderRadius: "3px",
-                        height: 40, //there's a .13 coming from somewhere.
                         border: "none",
                         marginTop: "8px",
                         "& .MuiOutlinedInput-notchedOutline": {
@@ -102,6 +101,9 @@ const TextField = ({
                             "& legend": {
                                 width: 0,
                             },
+                        },
+                        "& .MuiInputBase-root": {
+                            height: '40px',
                         },
                         "& .MuiOutlinedInput-root": {
                             "&&": {

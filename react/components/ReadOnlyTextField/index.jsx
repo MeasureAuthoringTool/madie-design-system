@@ -16,12 +16,54 @@ const ReadOnlyTextField = ({
 }) => {
     return (
         <FormControl fullWidth error={error}>
+            <div
+                style={{
+                    width: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                }}
+            />
             <InputLabel
                 disabled={disabled}
                 shrink
                 required={required}
                 error={error}
                 htmlFor={id}
+                sx={[
+                    {
+                        backgroundColor: "transparent",
+                        display: "flex",
+                        flexDirection: "row-reverse",
+                        alignSelf: "baseline",
+                        textTransform: "none",
+                        // force it outside the select box
+                        position: "initial",
+                        transform: "translateX(0px) translateY(0px)",
+                        fontFamily: "Rubik",
+                        fontWeight: 500,
+                        fontSize: 14,
+                        color: "#333",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#AE1C1C !important",
+                            marginRight: "3px !important",
+                        },
+                    },
+                    required && {
+                        transform: "translateX(-12px) translateY(0px)",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#D92F2",
+                            marginRight: "3px !important", //this was
+                        },
+                    },
+                    disabled && {
+                        color: "rgba(0,0,0,0.6)",
+                    },
+                    error && {
+                        color: "#AE1C1C !important",
+                    },
+                ]}
+                
             >
                 {label}
             </InputLabel>
@@ -47,14 +89,15 @@ const ReadOnlyTextField = ({
             )}
             <MUITextField
                 sx={{
-                    height: 40, //there's a .13 coming from somewhere.
                     border: "none",
                     "& .MuiOutlinedInput-root": {
                         "& > fieldset": {
                             border: "none",
                         },
                     },
-                    // input base selector
+                    "& .MuiInputBase-root": {
+                        height: '40px',
+                    },
                     "& .MuiInputBase-input": {
                         lineHeight: "19px",
                         fontFamily: "Rubik",
