@@ -109,7 +109,7 @@ const MadieDialog = ({
                                 <Typography
                                 style={{ fontSize: 16, fontWeight: 400, fontFamily: "Rubik" }}
                                 >
-                                <span style={{ color: "#D92F2F", marginRight: 3 }}>*</span>
+                                <span style={{ color: "#515151", marginRight: 3 }}>*</span>
                                 Indicates required field
                                 </Typography>
                             </Box>
