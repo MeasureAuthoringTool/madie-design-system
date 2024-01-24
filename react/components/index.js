@@ -16,6 +16,8 @@ import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
 import MadieSpinner from "./MadieSpinner";
+import MadieTooltip from "./MadieTooltip";
+import MadieTooltipIcon from "./MadieTooltipIcon";
 import Modal from "./Modal";
 import Popover from "./Popover";
 import { Pagination } from "./Pagination";
@@ -140,6 +142,8 @@ export {
     MadieDiscardDialog,
     MadieDeleteDialog,
     MadieSpinner,
+    MadieTooltipIcon,
+    MadieTooltip,
     Pagination,
     Popover,
     RadioButton,

@@ -5,10 +5,10 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { kebabCase } from "lodash";
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 dayjs.utc();
 export const dateTextFieldStyle = {
     width: "170px",
@@ -84,7 +84,7 @@ DateField.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
-    disabled:PropTypes.bool
+    disabled: PropTypes.bool,
 };
 
 export default DateField;

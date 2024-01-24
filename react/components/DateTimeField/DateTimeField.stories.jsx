@@ -11,7 +11,7 @@ export default {
 export const TimeDateFieldComponent = (args) => {
     const [value, setValue] = useState("");
     const handleDateTimeChange = (e) => {
-        setValue(e.target.value)
+        setValue(e.target.value);
     };
     return (
         <div className="qpp-u-padding--16">

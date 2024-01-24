@@ -1,7 +1,9 @@
 import React from "react";
-import { FormControl, TextField as MUITextField,
+import {
+    FormControl,
+    TextField as MUITextField,
     FormHelperText,
- } from "@mui/material";
+} from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
 
@@ -63,7 +65,6 @@ const ReadOnlyTextField = ({
                         color: "#AE1C1C !important",
                     },
                 ]}
-                
             >
                 {label}
             </InputLabel>
@@ -96,7 +97,7 @@ const ReadOnlyTextField = ({
                         },
                     },
                     "& .MuiInputBase-root": {
-                        height: '40px',
+                        height: "40px",
                     },
                     "& .MuiInputBase-input": {
                         lineHeight: "19px",

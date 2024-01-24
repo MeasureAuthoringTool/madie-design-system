@@ -93,6 +93,26 @@ export const Error = () => (
     </Wrapper>
 );
 
+export const WithToolTipText = () => (
+    <Wrapper>
+        <TextField
+            placeholder="Placeholder"
+            label="Confirm New Version #"
+            data-testid="measure-name-text-field"
+            size="small"
+            tooltipText="Input the new version # located to the left to confirm."
+            helperText="test"
+            id="measure-name"
+            // previously this was how it was done. it could make more sense to only pass it an id and progrematically determine it. Example:
+            // inputProps={{
+            //     "data-testid": "measure-name-input",
+            //     "aria-describedby":
+            //         "measure-name-helper-text measure-name-tooltip",
+            // }}
+        />
+    </Wrapper>
+);
+
 export const VariedHeights = () => (
     <div
         className="qpp-u-padding--16"
