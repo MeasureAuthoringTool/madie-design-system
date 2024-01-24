@@ -16,8 +16,29 @@ const TextField = ({
     disabled = false,
     label,
     tooltipText,
+    inputProps,
     ...rest
 }) => {
+    // get a copy of input props
+    const newInputProps = { ...inputProps } || {};
+
+    if (!newInputProps["data-testid"]) {
+        newInputProps["data-testid"] = `${id}-input`;
+    }
+    // if aria-describedBy is not provided, add it depending on helper-text and tooltip presence
+    if (!newInputProps["aria-describedby"]) {
+        let newDescribedBy = "";
+        if (helperText) {
+            newDescribedBy += `${id}-helper-text `;
+        }
+        if (tooltipText) {
+            newDescribedBy += `${id}-tooltip`;
+        }
+        if (newDescribedBy) {
+            newInputProps["aria-describedby"] = newDescribedBy;
+        }
+    }
+
     return (
         <FormControl fullWidth error={error}>
             <div
@@ -143,6 +164,7 @@ const TextField = ({
                 error={error}
                 disabled={disabled}
                 id={id}
+                inputProps={newInputProps}
                 {...rest}
             />
         </FormControl>

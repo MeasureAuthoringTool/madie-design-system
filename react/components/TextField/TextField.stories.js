@@ -101,13 +101,14 @@ export const WithToolTipText = () => (
             data-testid="measure-name-text-field"
             size="small"
             tooltipText="Input the new version # located to the left to confirm."
-            // previously this was how it was done. it could make more sense to only pass it an id and progrematically determine it.
+            helperText="test"
             id="measure-name"
-            inputProps={{
-                "data-testid": "measure-name-input",
-                "aria-describedby":
-                    "measure-name-helper-text measure-name-tooltip",
-            }}
+            // previously this was how it was done. it could make more sense to only pass it an id and progrematically determine it. Example:
+            // inputProps={{
+            //     "data-testid": "measure-name-input",
+            //     "aria-describedby":
+            //         "measure-name-helper-text measure-name-tooltip",
+            // }}
         />
     </Wrapper>
 );

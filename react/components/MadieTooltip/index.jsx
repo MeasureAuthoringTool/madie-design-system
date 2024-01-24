@@ -43,6 +43,7 @@ const MadieToolTip = ({ tooltipText = "informational text", id }) => {
 
 MadieToolTip.propTypes = {
     tooltipText: PropTypes.string,
+    id: PropTypes.string,
 };
 
 export default MadieToolTip;
