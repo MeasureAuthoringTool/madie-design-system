@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import TooltipIcon from "../MadieTooltipIcon";
 import PropTypes from "prop-types";
-import "./index.scss";
 
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
 const MadieToolTip = ({ tooltipText = "informational text", id }) => {
