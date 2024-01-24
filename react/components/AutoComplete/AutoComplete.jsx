@@ -34,7 +34,7 @@ const autoCompleteStyles = {
         backgroundColor: "#EDEDED",
         border: "#EDEDED",
     },
-    '& .MuiChip-deleteIcon': {
+    "& .MuiChip-deleteIcon": {
         color: "#757575",
     },
 };
@@ -216,7 +216,7 @@ const AutoComplete = ({
                         : renderOptionSingle(props, option);
                 }}
                 {...rest}
-                onChange={(_event, selectedVal, reason, detail ) =>
+                onChange={(_event, selectedVal, reason, detail) =>
                     onChange(id, selectedVal || "", reason, detail)
                 }
             />

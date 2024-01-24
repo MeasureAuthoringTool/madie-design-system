@@ -44,8 +44,9 @@ const MadiePopover = ({
                             height: "16px",
                             width: "16px",
                             background: "#F7F7F7",
-                            border: 'solid 1px #8c8c8c',
-                            borderColor: "#8c8c8c transparent transparent #8c8c8c",
+                            border: "solid 1px #8c8c8c",
+                            borderColor:
+                                "#8c8c8c transparent transparent #8c8c8c",
                             content: '""',
                             transform: "rotate(45deg)",
                         },

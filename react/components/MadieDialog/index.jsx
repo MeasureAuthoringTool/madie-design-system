@@ -98,19 +98,33 @@ const MadieDialog = ({
                             {title}
                         </DialogTitle>
                         {required && (
-                            <Box sx={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                flexGrow: 1,
-                                alignSelf: 'center',
-                                marginBottom: '-4px',
-                                marginLeft: '15px'
-                            }}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    flexGrow: 1,
+                                    alignSelf: "center",
+                                    marginBottom: "-4px",
+                                    marginLeft: "15px",
+                                }}
+                            >
                                 <Typography
-                                style={{ fontSize: 16, fontWeight: 400, fontFamily: "Rubik", color: "#515151" }}
+                                    style={{
+                                        fontSize: 16,
+                                        fontWeight: 400,
+                                        fontFamily: "Rubik",
+                                        color: "#515151",
+                                    }}
                                 >
-                                <span style={{ color: "#D92F2F", marginRight: 3 }}>*</span>
-                                Indicates required field
+                                    <span
+                                        style={{
+                                            color: "#D92F2F",
+                                            marginRight: 3,
+                                        }}
+                                    >
+                                        *
+                                    </span>
+                                    Indicates required field
                                 </Typography>
                             </Box>
                         )}
@@ -125,7 +139,7 @@ const MadieDialog = ({
                             </IconButton>
                         </div>
                     </Box>
-                    <Divider sx={{borderColor: "#8c8c8c"}}/>
+                    <Divider sx={{ borderColor: "#8c8c8c" }} />
                     <DialogContent sx={{ padding: "32px" }}>
                         {showRequiredFieldMessage && (
                             <Box
@@ -159,7 +173,7 @@ const MadieDialog = ({
 
                         {children}
                     </DialogContent>
-                    <Divider sx={{borderColor: "#8c8c8c"}}/>
+                    <Divider sx={{ borderColor: "#8c8c8c" }} />
                     <DialogActions
                         sx={{
                             padding: "16px",
@@ -222,11 +236,11 @@ const MadieDialog = ({
                             </IconButton>
                         </div>
                     </Box>
-                    <Divider sx={{borderColor: "#8c8c8c"}}/>
+                    <Divider sx={{ borderColor: "#8c8c8c" }} />
                     <DialogContent sx={{ padding: "32px" }}>
                         {children}
                     </DialogContent>
-                    <Divider sx={{borderColor: "#8c8c8c"}}/>
+                    <Divider sx={{ borderColor: "#8c8c8c" }} />
                     <DialogActions
                         sx={{
                             padding: "16px",

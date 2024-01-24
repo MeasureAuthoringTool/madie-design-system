@@ -4,13 +4,13 @@ import InputLabel from "../InputLabel";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 
 import { FormControl } from "@mui/material";
 import { kebabCase } from "lodash";
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 dayjs.utc();
 export const dateTimeTextFieldStyle = {
     width: "240px",
@@ -44,7 +44,12 @@ export const dateTimeTextFieldStyle = {
     },
 };
 
-const DateTimeField = ({ label, dateTimeValue, handleDateTimeChange,disabled }) => {
+const DateTimeField = ({
+    label,
+    dateTimeValue,
+    handleDateTimeChange,
+    disabled,
+}) => {
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -74,7 +79,7 @@ DateTimeField.propTypes = {
     dateTimeValue: PropTypes.object,
     handleDateTimeChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
-    disabled:PropTypes.bool
+    disabled: PropTypes.bool,
 };
 
 export default DateTimeField;

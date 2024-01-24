@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextField from "../../components/TextField/index";
 import { act, Simulate } from "react-dom/test-utils";
-import { render } from "@testing-library/react";
+import { findByTestId, render, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import * as React from "react";
@@ -81,6 +81,60 @@ describe("TextField", () => {
             );
             const helperText = await findByText("helper text");
             expect(helperText).toBeInTheDocument();
+        });
+    });
+
+    test("tooltip text renders, can be seen and removed.", async () => {
+        await act(async () => {
+            const { getByTestId, findByTestId, getByText } = render(
+                <TextField
+                    placeholder="test Name"
+                    helperText="helper text"
+                    label="test Name"
+                    id="testName"
+                    tooltipText="tooltip text"
+                    inputProps={{ "data-testid": "test-name-input" }}
+                    data-testid="test-name-text-field"
+                    size="small"
+                />
+            );
+            const tooltipTrigger = await findByTestId("testName-tooltip-button")
+
+            // click and escape
+            act(() => {
+                fireEvent.click(tooltipTrigger);
+            })
+            expect(getByText("tooltip text")).toBeInTheDocument();
+            act(() => {
+                fireEvent.keyDown(getByText(/tooltip text/i), {
+                    key: "Escape",
+                    code: "Escape",
+                    keyCode: 27,
+                    charCode: 27
+              });
+            })
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
+
+            // enter and leave
+            act(() => {
+                fireEvent.mouseEnter(getByTestId("testName-tooltip-button"));
+            })
+            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden")
+            act(() => {
+                fireEvent.mouseLeave(getByTestId("testName-tooltip-button"));
+            })
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
+
+            // focus, blur
+            act(() => {
+                fireEvent.focus(getByTestId("testName-tooltip-button"));
+            })
+            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden")
+
+            act(() => {
+                fireEvent.blur(getByTestId("testName-tooltip-button"));
+            })
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
         });
     });
 });

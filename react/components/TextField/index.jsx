@@ -5,6 +5,7 @@ import {
     FormHelperText,
 } from "@mui/material";
 import InputLabel from "../InputLabel";
+import MadieToolTip from "../MadieTooltip";
 import PropTypes from "prop-types";
 
 const TextField = ({
@@ -14,6 +15,7 @@ const TextField = ({
     required = false,
     disabled = false,
     label,
+    tooltipText,
     ...rest
 }) => {
     return (
@@ -26,49 +28,57 @@ const TextField = ({
                     flexGrow: 1,
                 }}
             />
-            <InputLabel
-                disabled={disabled}
-                shrink
-                required={required}
-                error={error}
-                htmlFor={id}
-                style={{ marginBottom: 0, height: 16 }} // force a heignt
-                sx={[
-                    {
-                        backgroundColor: "transparent",
-                        display: "flex",
-                        flexDirection: "row-reverse",
-                        alignSelf: "baseline",
-                        textTransform: "none",
-                        // force it outside the select box
-                        position: "initial",
-                        transform: "translateX(0px) translateY(0px)",
-                        fontFamily: "Rubik",
-                        fontWeight: 500,
-                        fontSize: 14,
-                        color: "#333",
-                        "& .MuiInputLabel-asterisk": {
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                <InputLabel
+                    disabled={disabled}
+                    shrink
+                    required={required}
+                    error={error}
+                    htmlFor={id}
+                    style={{ marginBottom: 0, height: 16 }} // force a heignt
+                    sx={[
+                        {
+                            backgroundColor: "transparent",
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                            alignSelf: "baseline",
+                            textTransform: "none",
+                            // force it outside the select box
+                            position: "initial",
+                            transform: "translateX(0px) translateY(0px)",
+                            fontFamily: "Rubik",
+                            fontWeight: 500,
+                            fontSize: 14,
+                            color: "#333",
+                            "& .MuiInputLabel-asterisk": {
+                                color: "#AE1C1C !important",
+                                marginRight: "3px !important", //this was
+                            },
+                        },
+                        required && {
+                            transform: "translateX(-12px) translateY(0px)",
+                            "& .MuiInputLabel-asterisk": {
+                                color: "#D92F2",
+                                marginRight: "3px !important", //this was
+                            },
+                        },
+                        disabled && {
+                            color: "rgba(0,0,0,0.6)",
+                        },
+                        error && {
                             color: "#AE1C1C !important",
-                            marginRight: "3px !important", //this was
                         },
-                    },
-                    required && {
-                        transform: "translateX(-12px) translateY(0px)",
-                        "& .MuiInputLabel-asterisk": {
-                            color: "#D92F2",
-                            marginRight: "3px !important", //this was
-                        },
-                    },
-                    disabled && {
-                        color: "rgba(0,0,0,0.6)",
-                    },
-                    error && {
-                        color: "#AE1C1C !important",
-                    },
-                ]}
-            >
-                {label}
-            </InputLabel>
+                    ]}
+                >
+                    {label}
+                </InputLabel>
+                {tooltipText && (
+                    <MadieToolTip
+                        tooltipText={tooltipText}
+                        id={`${id}-tooltip`}
+                    />
+                )}
+            </div>
             {helperText && (
                 <FormHelperText
                     tabIndex={0}
@@ -103,7 +113,7 @@ const TextField = ({
                             },
                         },
                         "& .MuiInputBase-root": {
-                            height: '40px',
+                            height: "40px",
                         },
                         "& .MuiOutlinedInput-root": {
                             "&&": {
@@ -147,5 +157,6 @@ TextField.propTypes = {
     disabled: PropTypes.bool,
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
+    tooltipText: PropTypes.string,
 };
 export default TextField;
