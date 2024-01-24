@@ -180,5 +180,6 @@ TextField.propTypes = {
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
     tooltipText: PropTypes.string,
+    inputProps: PropTypes.object,
 };
 export default TextField;
