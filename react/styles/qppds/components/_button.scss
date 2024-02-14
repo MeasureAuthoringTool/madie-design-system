@@ -65,6 +65,7 @@
   &.qpp-c-button--text {
     background-color: transparent;
     border: 1px solid transparent;
+	  color: #4D7E23;
     padding: 1px;
   }
 
@@ -186,18 +187,18 @@
       color: $gray-60;
       border-color: $gray-10;
     }
-  
+
     &:hover,
     &.qpp-c-button--hover {
       background-color: $cyan-60;
       border-color: $cyan-60;
     }
-  
+
     &:active,
     &.qpp-c-button--active {
       background-color: fade-out($cyan-40, 0.2);
     }
-  
+
     &:focus,
     &.qpp-c-button--focus {
       background-color: $cyan-60;
@@ -442,6 +443,35 @@
       border: 1px solid $blue-60;
     }
   }
+
+	&.qpp-c-button--information {
+		color: #555555;
+
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: transparent;
+			color: $gray-60;
+		}
+
+		&:hover,
+		&.qpp-c-button--hover {
+			color: $gray-60;
+		}
+
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: transparent;
+			border: 1px solid $gray-60;
+		}
+
+		&.qpp-c-button--large {
+			font-size: 1.125rem;
+		}
+
+		&.qpp-c-button--small {
+			font-size: 0.875rem;
+		}
+	}
 }
 
 // TODO: Text buttons (https://zeroheight.com/079543162/p/56ad70-button/t/17855d)

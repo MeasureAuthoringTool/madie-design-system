@@ -11,8 +11,9 @@ const VARIANTS = [
     "danger",
     "danger-primary",
     "white",
+    "information",
 ];
-const SIZES = ["big"];
+const SIZES = ["big", "large", "small"];
 
 const Button = ({
     children,
