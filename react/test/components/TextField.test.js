@@ -98,43 +98,45 @@ describe("TextField", () => {
                     size="small"
                 />
             );
-            const tooltipTrigger = await findByTestId("testName-tooltip-button")
+            const tooltipTrigger = await findByTestId(
+                "testName-tooltip-button"
+            );
 
             // click and escape
             act(() => {
                 fireEvent.click(tooltipTrigger);
-            })
+            });
             expect(getByText("tooltip text")).toBeInTheDocument();
             act(() => {
                 fireEvent.keyDown(getByText(/tooltip text/i), {
                     key: "Escape",
                     code: "Escape",
                     keyCode: 27,
-                    charCode: 27
-              });
-            })
-            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
+                    charCode: 27,
+                });
+            });
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden");
 
             // enter and leave
             act(() => {
                 fireEvent.mouseEnter(getByTestId("testName-tooltip-button"));
-            })
-            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden")
+            });
+            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden");
             act(() => {
                 fireEvent.mouseLeave(getByTestId("testName-tooltip-button"));
-            })
-            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
+            });
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden");
 
             // focus, blur
             act(() => {
                 fireEvent.focus(getByTestId("testName-tooltip-button"));
-            })
-            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden")
+            });
+            expect(getByTestId("testName-tooltip")).not.toHaveClass("hidden");
 
             act(() => {
                 fireEvent.blur(getByTestId("testName-tooltip-button"));
-            })
-            expect(getByTestId("testName-tooltip")).toHaveClass("hidden")
+            });
+            expect(getByTestId("testName-tooltip")).toHaveClass("hidden");
         });
     });
 });

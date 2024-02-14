@@ -5,80 +5,80 @@ $red-50: #d92f2f;
 $green-30: #7cb342;
 
 .toast {
-  border: solid 2px #fff;
-  border-radius: 4px;
-  min-height: 52px;
-  min-width: 858px;
-  padding: 0px 8px;
-  color: #333;
-  font-family: Rubik, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  position: relative;
-  gap: 8px;
+	border: solid 2px #fff;
+	border-radius: 4px;
+	min-height: 52px;
+	min-width: 858px;
+	padding: 0px 8px;
+	color: #333;
+	font-family: Rubik, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	position: relative;
+	gap: 8px;
 
-  &.inactive {
-    display: none;
-  }
-  > svg {
-    margin-right: 8px;
-  }
-  &.warning {
-    border-color: $gold-20;
-    &:before {
-      background-color: $gold-20;
-    }
-    > svg {
-      color: #df711c;
-    }
-  }
-  &.info {
-    border-color: $performance-blue;
-    &:before {
-      background-color: $performance-blue;
-    }
-    > svg {
-      color: #125496;
-    }
-  }
-  &.danger {
-    border-color: $red-50;
-    &:before {
-      background-color: $red-50;
-    }
-    > svg {
-      color: #ae1c1c;
-    }
-  }
-  &.success {
-    border-color: $green-30;
-    &:before {
-      background-color: $green-30;
-    }
-    > svg {
-      color: #4d7e23;
-    }
-  }
-  #content {
-    > ol,
-    > ul,
-    > li,
-    > p,
-    > a,
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5 {
-      margin: 0;
-      > li {
-        // get rid of the unnecessary natural list gaps
-        line-height: 1;
-        margin: 0;
-      }
-    }
-  }
+	&.inactive {
+		display: none;
+	}
+	> svg {
+		margin-right: 8px;
+	}
+	&.warning {
+		border-color: $gold-20;
+		&:before {
+			background-color: $gold-20;
+		}
+		> svg {
+			color: #df711c;
+		}
+	}
+	&.info {
+		border-color: $performance-blue;
+		&:before {
+			background-color: $performance-blue;
+		}
+		> svg {
+			color: #125496;
+		}
+	}
+	&.danger {
+		border-color: $red-50;
+		&:before {
+			background-color: $red-50;
+		}
+		> svg {
+			color: #ae1c1c;
+		}
+	}
+	&.success {
+		border-color: $green-30;
+		&:before {
+			background-color: $green-30;
+		}
+		> svg {
+			color: #4d7e23;
+		}
+	}
+	#content {
+		> ol,
+		> ul,
+		> li,
+		> p,
+		> a,
+		> h1,
+		> h2,
+		> h3,
+		> h4,
+		> h5 {
+			margin: 0;
+			> li {
+				// get rid of the unnecessary natural list gaps
+				line-height: 1;
+				margin: 0;
+			}
+		}
+	}
 }

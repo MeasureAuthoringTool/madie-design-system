@@ -1,112 +1,112 @@
-@import '../settings/index';
+@import "../settings/index";
 
 @mixin search-icon {
-  background: transparent;
-  border: rem(1px) solid transparent;
-  position: absolute;
-  margin: rem(4px);
-  padding: rem(5px);
-  line-height: 0;
-  color: $gray-80;
-  border-radius: 50%;
+	background: transparent;
+	border: rem(1px) solid transparent;
+	position: absolute;
+	margin: rem(4px);
+	padding: rem(5px);
+	line-height: 0;
+	color: $gray-80;
+	border-radius: 50%;
 
-  > svg {
-    margin-top: 0;
-    margin-bottom: 0;
-    width: rem(20px);
-    height: rem(20px);
-  }
+	> svg {
+		margin-top: 0;
+		margin-bottom: 0;
+		width: rem(20px);
+		height: rem(20px);
+	}
 }
 
 @mixin search-icon-button {
-  @include search-icon;
+	@include search-icon;
 
-  &:disabled {
-    color: $gray-70;
-  }
+	&:disabled {
+		color: $gray-70;
+	}
 
-  &:hover {
-    color: $gray-80;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
+	&:hover {
+		color: $gray-80;
+		background-color: rgba(0, 0, 0, 0.05);
+	}
 
-  &:active {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+	&:active {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
 
-  &:focus {
-    @include focus-ring;
-    box-shadow: 0 0 0 3px $blue-10;
-    border-radius: 50%;
-    color: $gray-80;
-  }
+	&:focus {
+		@include focus-ring;
+		box-shadow: 0 0 0 3px $blue-10;
+		border-radius: 50%;
+		color: $gray-80;
+	}
 }
 
 .qpp-c-search {
-  position: relative;
+	position: relative;
 
-  .qpp-c-search__submit {
-    display: inline-block;
-    margin-top: 0;
-  }
+	.qpp-c-search__submit {
+		display: inline-block;
+		margin-top: 0;
+	}
 
-  .qpp-c-text-input {
-    display: inline-block;
-    padding-left: $spacing-40;
-    margin-right: $spacing-12;
+	.qpp-c-text-input {
+		display: inline-block;
+		padding-left: $spacing-40;
+		margin-right: $spacing-12;
 
-    &:placeholder-shown ~ button,
-    &:placeholder-shown ~ .qpp-c-search__icon {
-      color: $gray-70;
-    }
+		&:placeholder-shown ~ button,
+		&:placeholder-shown ~ .qpp-c-search__icon {
+			color: $gray-70;
+		}
 
-    &:placeholder-shown ~ .qpp-c-search__clear {
-      display: none;
-    }
+		&:placeholder-shown ~ .qpp-c-search__clear {
+			display: none;
+		}
 
-    &::-webkit-search-cancel-button {
-      display: none;
-      appearance: none;
-      height: 16px;
-      width: 16px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-x'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    }
+		&::-webkit-search-cancel-button {
+			display: none;
+			appearance: none;
+			height: 16px;
+			width: 16px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-x'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+		}
 
-    &::-ms-clear {
-      display: none;
-    }
-  }
+		&::-ms-clear {
+			display: none;
+		}
+	}
 
-  .qpp-c-search__icon {
-    @include search-icon;
-    display: inline-block;
-    top: 0;
-    left: 0;
-  }
+	.qpp-c-search__icon {
+		@include search-icon;
+		display: inline-block;
+		top: 0;
+		left: 0;
+	}
 
-  .qpp-c-search__wrap {
-    position: relative;
-    display: inline-block;
-    margin-right: $spacing-12;
+	.qpp-c-search__wrap {
+		position: relative;
+		display: inline-block;
+		margin-right: $spacing-12;
 
-    .qpp-c-text-input {
-      display: inline-block;
-      margin-right: 0;
-    }
-  }
+		.qpp-c-text-input {
+			display: inline-block;
+			margin-right: 0;
+		}
+	}
 }
 
 .qpp-c-search.qpp-c-search--compact {
-  .qpp-c-search__submit {
-    @include search-icon-button;
-    top: 0;
-    right: 0;
-  }
+	.qpp-c-search__submit {
+		@include search-icon-button;
+		top: 0;
+		right: 0;
+	}
 
-  .qpp-c-text-input {
-    display: inline-block;
-    padding-left: $spacing-16;
-    padding-right: $spacing-40;
-    margin-right: 0;
-  }
+	.qpp-c-text-input {
+		display: inline-block;
+		padding-left: $spacing-16;
+		padding-right: $spacing-40;
+		margin-right: 0;
+	}
 }

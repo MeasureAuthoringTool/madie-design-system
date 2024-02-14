@@ -1,67 +1,71 @@
-@import '../settings/index';
+@import "../settings/index";
 
 .qpp-c-page-header {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 
-  .qpp-c-page-header__main-content {
-    background: linear-gradient(-45deg, rgb(46, 116, 187) 0%, $blue-80 100%);
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    padding-top: $spacing-32;
-    padding-bottom: $spacing-32;
-  }
+	.qpp-c-page-header__main-content {
+		background: linear-gradient(
+			-45deg,
+			rgb(46, 116, 187) 0%,
+			$blue-80 100%
+		);
+		border-radius: 0;
+		display: flex;
+		flex-direction: column;
+		padding-top: $spacing-32;
+		padding-bottom: $spacing-32;
+	}
 
-  // TODO: responsively adjust padding for small screens
+	// TODO: responsively adjust padding for small screens
 
-  // TODO: figure out way to adjust padding for various page layouts
-  // e.g. with and without sidenav
+	// TODO: figure out way to adjust padding for various page layouts
+	// e.g. with and without sidenav
 
-  .qpp-c-breadcrumbs {
-    flex: auto;
-    order: -1;
-    margin-bottom: $spacing-40;
-  }
+	.qpp-c-breadcrumbs {
+		flex: auto;
+		order: -1;
+		margin-bottom: $spacing-40;
+	}
 
-  .qpp-c-page-header__title {
-    color: $white;
-    flex: auto;
-    font-family: $font-rubik;
-    margin-bottom: 0;
-    margin-top: $spacing-8;
-  }
+	.qpp-c-page-header__title {
+		color: $white;
+		flex: auto;
+		font-family: $font-rubik;
+		margin-bottom: 0;
+		margin-top: $spacing-8;
+	}
 
-  .qpp-c-page-header__eyebrow {
-    color: $white;
-    flex: auto;
-    font-family: $font-rubik;
-    font-size: $font-size-14;
-    font-weight: $font-regular;
-    line-height: $line-height-md;
-    order: -1;
-    margin-bottom: 0;
-    margin-top: $spacing-8;
-    text-transform: uppercase;
-  }
+	.qpp-c-page-header__eyebrow {
+		color: $white;
+		flex: auto;
+		font-family: $font-rubik;
+		font-size: $font-size-14;
+		font-weight: $font-regular;
+		line-height: $line-height-md;
+		order: -1;
+		margin-bottom: 0;
+		margin-top: $spacing-8;
+		text-transform: uppercase;
+	}
 
-  .qpp-c-page-header__description {
-    color: $white;
-    flex: auto;
-    font-family: $font-rubik;
-    font-size: $font-size-16;
-    margin-bottom: $spacing-16;
-    margin-top: $spacing-16;
+	.qpp-c-page-header__description {
+		color: $white;
+		flex: auto;
+		font-family: $font-rubik;
+		font-size: $font-size-16;
+		margin-bottom: $spacing-16;
+		margin-top: $spacing-16;
 
-    &--no-margin:not(:last-of-type) {
-      margin-bottom: 0;
-    }
-  }
+		&--no-margin:not(:last-of-type) {
+			margin-bottom: 0;
+		}
+	}
 
-  .qpp-c-page-header__subheader {
-    border-bottom: 1px solid $gray-10;
-    background-color: $white;
-    padding-top: $spacing-24;
-    padding-bottom: $spacing-24;
-  }
+	.qpp-c-page-header__subheader {
+		border-bottom: 1px solid $gray-10;
+		background-color: $white;
+		padding-top: $spacing-24;
+		padding-bottom: $spacing-24;
+	}
 }

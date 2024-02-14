@@ -7,10 +7,10 @@
 		display: inline-block;
 
 		+ li::before {
-			$nbsp: '\00a0';
-			$breadcrumb-separator: '\003e';
+			$nbsp: "\00a0";
+			$breadcrumb-separator: "\003e";
 			color: $color-gray-dark;
-			content: '#{$breadcrumb-separator}#{$nbsp}';
+			content: "#{$breadcrumb-separator}#{$nbsp}";
 			padding: 0 5px 0 10px;
 		}
 	}
@@ -44,16 +44,16 @@
 
 			+ li::before {
 				color: $color-white;
-				content: '';
+				content: "";
 				padding: 0;
 			}
 		}
 
 		li::after {
-			$nbsp: '\00a0';
-			$breadcrumb-separator: '\003e';
+			$nbsp: "\00a0";
+			$breadcrumb-separator: "\003e";
 			color: $color-white;
-			content: '#{$breadcrumb-separator}#{$nbsp}';
+			content: "#{$breadcrumb-separator}#{$nbsp}";
 			padding: 0 5px 0 10px;
 		}
 

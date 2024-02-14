@@ -19,9 +19,9 @@
 			margin-right: 0.25em;
 		}
 
-		&[aria-expanded='false'] {
+		&[aria-expanded="false"] {
 			&::before {
-				content: '+';
+				content: "+";
 			}
 
 			.collapsible-hide-label {
@@ -29,9 +29,9 @@
 			}
 		}
 
-		&[aria-expanded='true'] {
+		&[aria-expanded="true"] {
 			&::before {
-				content: '-';
+				content: "-";
 			}
 
 			.collapsible-show-label:not(:last-child) {

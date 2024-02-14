@@ -12,7 +12,7 @@ $blue-80: #003366;
 $cyan-20: #bbede9;
 $cyan-40: #209fa6;
 $cyan-50: #048087;
-$cyan-60: #035E63;
+$cyan-60: #035e63;
 
 $green-05: #eff5eb;
 $green-30: #7cb342;
@@ -45,45 +45,45 @@ $quality-blue: $blue-60;
 
 /* stylelint-disable property-case */
 :export {
-  white: $white;
-  black: $black;
+	white: $white;
+	black: $black;
 
-  blue05: $blue-05;
-  blue10: $blue-10;
-  blue30: $blue-30; // deprecated
-  blue40: $blue-40;
-  blue60: $blue-60;
-  blue70: $blue-70;
-  blue80: $blue-80;
+	blue05: $blue-05;
+	blue10: $blue-10;
+	blue30: $blue-30; // deprecated
+	blue40: $blue-40;
+	blue60: $blue-60;
+	blue70: $blue-70;
+	blue80: $blue-80;
 
-  cyan20: $cyan-20;
-  cyan40: $cyan-40;
-  cyan50: $cyan-50;
+	cyan20: $cyan-20;
+	cyan40: $cyan-40;
+	cyan50: $cyan-50;
 
-  green05: $green-05;
-  green30: $green-30;
-  green50: $green-50;
+	green05: $green-05;
+	green30: $green-30;
+	green50: $green-50;
 
-  gold05: $gold-05;
-  gold20: $gold-20;
-  gold40: $gold-40;
+	gold05: $gold-05;
+	gold20: $gold-20;
+	gold40: $gold-40;
 
-  red10: $red-10;
-  red50: $red-50;
-  red60: $red-60;
+	red10: $red-10;
+	red50: $red-50;
+	red60: $red-60;
 
-  gray02: $gray-02;
-  gray04: $gray-04;
-  gray10: $gray-10;
-  gray20: $gray-20;
-  gray60: $gray-60;
-  gray70: $gray-70;
-  gray80: $gray-80;
-  gray90: $gray-90;
+	gray02: $gray-02;
+	gray04: $gray-04;
+	gray10: $gray-10;
+	gray20: $gray-20;
+	gray60: $gray-60;
+	gray70: $gray-70;
+	gray80: $gray-80;
+	gray90: $gray-90;
 
-  costGreen: $cost-green;
-  iaGold: $ia-gold;
-  piMagenta: $pi-magenta;
-  qualityBlue: $quality-blue;
+	costGreen: $cost-green;
+	iaGold: $ia-gold;
+	piMagenta: $pi-magenta;
+	qualityBlue: $quality-blue;
 }
 /* stylelint-enable property-case */

@@ -1,63 +1,62 @@
-@import '../../styles/qppds/settings/index';
+@import "../../styles/qppds/settings/index";
 
 .madie-tooltip-button {
-    padding: 0;
-    background-color: transparent;
-    border:none;
-    display: flex;
-    flex-direction: row;
-    height: 14px;
-    align-self: flex-end;
-    margin-right: 1px;
-    margin-left: 4px;
-    margin-bottom: -1px;
-    position: relative;
-    overflow: visible;
-    
-    &:focus {
-        outline-color: $cyan-50
-    }
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	display: flex;
+	flex-direction: row;
+	height: 14px;
+	align-self: flex-end;
+	margin-right: 1px;
+	margin-left: 4px;
+	margin-bottom: -1px;
+	position: relative;
+	overflow: visible;
 
-    > svg {
-        display: flex;
-        align-self: center;
-    }
+	&:focus {
+		outline-color: $cyan-50;
+	}
 
-    > .madie-tooltip {
-        z-index: 1;
-        border-radius: 4px;
-        color: #fff;
-        background: $grey-80;
-        max-width: 250px;
-        min-width: 250px;
-        width: max-content;
-        padding: 8px 16px;
-        position: absolute;
-        top: 24px;
-        overflow: visible;
-        left: -125px;
+	> svg {
+		display: flex;
+		align-self: center;
+	}
 
-        &.hidden {
-            visibility: hidden;
-        }
+	> .madie-tooltip {
+		z-index: 1;
+		border-radius: 4px;
+		color: #fff;
+		background: $grey-80;
+		max-width: 250px;
+		min-width: 250px;
+		width: max-content;
+		padding: 8px 16px;
+		position: absolute;
+		top: 24px;
+		overflow: visible;
+		left: -125px;
 
-        > p {
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            margin: 0;
-        }
+		&.hidden {
+			visibility: hidden;
+		}
 
-        &:after {
-            content: "";
-            position: absolute;
-            top: -8px;
-            height: 16px;
-            width: 16px;
-            background-color: $grey-80;
-            rotate: 45deg;
-            left: calc(50% - 1px)
-        }
-    }
+		> p {
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 400;
+			margin: 0;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: -8px;
+			height: 16px;
+			width: 16px;
+			background-color: $grey-80;
+			rotate: 45deg;
+			left: calc(50% - 1px);
+		}
+	}
 }
-

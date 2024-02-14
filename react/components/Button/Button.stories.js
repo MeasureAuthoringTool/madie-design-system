@@ -200,22 +200,24 @@ export const Link = () => (
 export const TextButtonStory = () => (
     <Container>
         <TextButton>Button</TextButton>
-        <hr/>
+        <hr />
         <TextButton variant="danger">Button</TextButton>
-        <hr/>
+        <hr />
         <div className="qpp-u-fill--gray-60 qpp-u-padding--8">
             <TextButton variant="white">Button</TextButton>
         </div>
-        <hr/>
+        <hr />
         <TextButton>
-            <FeatherIcon icon="download"/> Icon Button
+            <FeatherIcon icon="download" /> Icon Button
         </TextButton>
-        <hr/>
+        <hr />
         <TextButton>
-            Icon Button <FeatherIcon icon="chevron-right"/>
+            Icon Button <FeatherIcon icon="chevron-right" />
         </TextButton>
-        <hr/>
-        <TextButton variant="information" size="large">Information Text</TextButton>
+        <hr />
+        <TextButton variant="information" size="large">
+            Information Text
+        </TextButton>
     </Container>
 );
 

@@ -1,240 +1,240 @@
 // stylelint-disable declaration-no-important
-@import '../settings/index.scss';
+@import "../settings/index.scss";
 
 $_flex-direction-values: (
-  row: row,
-  column: column,
-  row-reverse: row-reverse,
-  column-reverse: column-reverse
+	row: row,
+	column: column,
+	row-reverse: row-reverse,
+	column-reverse: column-reverse,
 );
 
 @each $name in map-keys($_flex-direction-values) {
-  $value: map-get($_flex-direction-values, $name);
-  // Example: .qpp-u-flex-direction--column
-  .qpp-u-flex-direction--#{$name} {
-    // Example: flex-direction: column
-    flex-direction: $value !important;
-  }
+	$value: map-get($_flex-direction-values, $name);
+	// Example: .qpp-u-flex-direction--column
+	.qpp-u-flex-direction--#{$name} {
+		// Example: flex-direction: column
+		flex-direction: $value !important;
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($_flex-direction-values) {
-      $value: map-get($_flex-direction-values, $name);
-      // Example: .qpp-u-lg-flex-direction--column
-      .qpp-u-#{$breakpoint}-flex-direction--#{$name} {
-        // Example: flex-direction: column
-        flex-direction: $value !important;
-      }
-    }
-  }
+	@media (min-width: $viewport) {
+		@each $name in map-keys($_flex-direction-values) {
+			$value: map-get($_flex-direction-values, $name);
+			// Example: .qpp-u-lg-flex-direction--column
+			.qpp-u-#{$breakpoint}-flex-direction--#{$name} {
+				// Example: flex-direction: column
+				flex-direction: $value !important;
+			}
+		}
+	}
 }
 
 $_justify-content-values: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  between: space-between,
-  around: space-around
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	between: space-between,
+	around: space-around,
 );
 
 @each $name in map-keys($_justify-content-values) {
-  $value: map-get($_justify-content-values, $name);
-  // Example: .qpp-u-justify-content--start
-  .qpp-u-justify-content--#{$name} {
-    // Example: justify-content: flex-start
-    justify-content: $value !important;
-  }
+	$value: map-get($_justify-content-values, $name);
+	// Example: .qpp-u-justify-content--start
+	.qpp-u-justify-content--#{$name} {
+		// Example: justify-content: flex-start
+		justify-content: $value !important;
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($_justify-content-values) {
-      $value: map-get($_justify-content-values, $name);
-      // Example: .qpp-u-lg-justify-content--start
-      .qpp-u-#{$breakpoint}-justify-content--#{$name} {
-        // Example: justify-content: flex-start
-        justify-content: $value !important;
-      }
-    }
-  }
+	@media (min-width: $viewport) {
+		@each $name in map-keys($_justify-content-values) {
+			$value: map-get($_justify-content-values, $name);
+			// Example: .qpp-u-lg-justify-content--start
+			.qpp-u-#{$breakpoint}-justify-content--#{$name} {
+				// Example: justify-content: flex-start
+				justify-content: $value !important;
+			}
+		}
+	}
 }
 
 $_align-items-values: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  baseline: baseline,
-  stretch: stretch
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	baseline: baseline,
+	stretch: stretch,
 );
 
 @each $name in map-keys($_align-items-values) {
-  $value: map-get($_align-items-values, $name);
-  // Example: .qpp-u-align-items--start
-  .qpp-u-align-items--#{$name} {
-    // Example: align-items: flex-start
-    align-items: $value !important;
-  }
+	$value: map-get($_align-items-values, $name);
+	// Example: .qpp-u-align-items--start
+	.qpp-u-align-items--#{$name} {
+		// Example: align-items: flex-start
+		align-items: $value !important;
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($_align-items-values) {
-      $value: map-get($_align-items-values, $name);
-      // Example: .qpp-u-lg-align-items--start
-      .qpp-u-#{$breakpoint}-align-items--#{$name} {
-        // Example: align-items: flex-start
-        align-items: $value !important;
-      }
-    }
-  }
+	@media (min-width: $viewport) {
+		@each $name in map-keys($_align-items-values) {
+			$value: map-get($_align-items-values, $name);
+			// Example: .qpp-u-lg-align-items--start
+			.qpp-u-#{$breakpoint}-align-items--#{$name} {
+				// Example: align-items: flex-start
+				align-items: $value !important;
+			}
+		}
+	}
 }
 
 $_flex-wrap-values: (
-  nowrap: nowrap,
-  wrap: wrap,
-  reverse: wrap-reverse
+	nowrap: nowrap,
+	wrap: wrap,
+	reverse: wrap-reverse,
 );
 
 @each $name in map-keys($_flex-wrap-values) {
-  $value: map-get($_flex-wrap-values, $name);
-  // Example: .qpp-u-flex-wrap--start
-  .qpp-u-flex-wrap--#{$name} {
-    // Example: flex-wrap: flex-start
-    flex-wrap: $value !important;
-  }
+	$value: map-get($_flex-wrap-values, $name);
+	// Example: .qpp-u-flex-wrap--start
+	.qpp-u-flex-wrap--#{$name} {
+		// Example: flex-wrap: flex-start
+		flex-wrap: $value !important;
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($_flex-wrap-values) {
-      $value: map-get($_flex-wrap-values, $name);
-      // Example: .qpp-u-lg-flex-wrap--start
-      .qpp-u-#{$breakpoint}-flex-wrap--#{$name} {
-        // Example: flex-wrap: flex-start
-        flex-wrap: $value !important;
-      }
-    }
-  }
+	@media (min-width: $viewport) {
+		@each $name in map-keys($_flex-wrap-values) {
+			$value: map-get($_flex-wrap-values, $name);
+			// Example: .qpp-u-lg-flex-wrap--start
+			.qpp-u-#{$breakpoint}-flex-wrap--#{$name} {
+				// Example: flex-wrap: flex-start
+				flex-wrap: $value !important;
+			}
+		}
+	}
 }
 
 @each $name in map-keys($spacers) {
-  $value: map-get($spacers, $name);
-  .qpp-u-flex-gap--#{$name} {
-    margin: -#{$value} 0 0 -#{$value};
-    width: calc(100% + #{$value});
+	$value: map-get($spacers, $name);
+	.qpp-u-flex-gap--#{$name} {
+		margin: -#{$value} 0 0 -#{$value};
+		width: calc(100% + #{$value});
 
-    > * {
-      padding: $value 0 0 $value;
-      width: 100%; // needed for IE11 support
-    }
-  }
+		> * {
+			padding: $value 0 0 $value;
+			width: 100%; // needed for IE11 support
+		}
+	}
 
-  .qpp-u-flex-gap-col--#{$name} {
-    margin: 0;
-    margin-left: -#{$value} !important;
-    width: calc(100% + #{$value});
+	.qpp-u-flex-gap-col--#{$name} {
+		margin: 0;
+		margin-left: -#{$value} !important;
+		width: calc(100% + #{$value});
 
-    > * {
-      padding: 0;
-      padding-left: $value !important;
-      width: 100%;
-    }
-  }
+		> * {
+			padding: 0;
+			padding-left: $value !important;
+			width: 100%;
+		}
+	}
 
-  .qpp-u-flex-gap-row--#{$name} {
-    margin: 0;
-    margin-top: -#{$value} !important;
+	.qpp-u-flex-gap-row--#{$name} {
+		margin: 0;
+		margin-top: -#{$value} !important;
 
-    > * {
-      padding: 0;
-      padding-top: $value !important;
-      width: 100%;
-    }
-  }
+		> * {
+			padding: 0;
+			padding-top: $value !important;
+			width: 100%;
+		}
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($spacers) {
-      $value: map-get($spacers, $name);
-      // Example: .qpp-u-lg-flex-gap--12
-      .qpp-u-#{$breakpoint}-flex-gap--#{$name} {
-        margin: -#{$value} 0 0 -#{$value};
-        width: calc(100% + #{$value});
+	@media (min-width: $viewport) {
+		@each $name in map-keys($spacers) {
+			$value: map-get($spacers, $name);
+			// Example: .qpp-u-lg-flex-gap--12
+			.qpp-u-#{$breakpoint}-flex-gap--#{$name} {
+				margin: -#{$value} 0 0 -#{$value};
+				width: calc(100% + #{$value});
 
-        > * {
-          padding: $value 0 0 $value;
-          width: 100%;
-        }
-      }
+				> * {
+					padding: $value 0 0 $value;
+					width: 100%;
+				}
+			}
 
-      .qpp-u-#{$breakpoint}-flex-gap-col--#{$name} {
-        margin: 0;
-        margin-left: -#{$value} !important;
-        width: calc(100% + #{$value});
+			.qpp-u-#{$breakpoint}-flex-gap-col--#{$name} {
+				margin: 0;
+				margin-left: -#{$value} !important;
+				width: calc(100% + #{$value});
 
-        > * {
-          padding: 0;
-          padding-left: $value !important;
-          width: 100%;
-        }
-      }
+				> * {
+					padding: 0;
+					padding-left: $value !important;
+					width: 100%;
+				}
+			}
 
-      .qpp-u-#{$breakpoint}-flex-gap-row--#{$name} {
-        margin: 0;
-        margin-top: -#{$value} !important;
+			.qpp-u-#{$breakpoint}-flex-gap-row--#{$name} {
+				margin: 0;
+				margin-top: -#{$value} !important;
 
-        > * {
-          padding: 0;
-          padding-top: $value !important;
-          width: 100%;
-        }
-      }
-    }
-  }
+				> * {
+					padding: 0;
+					padding-top: $value !important;
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 $_flex-values: (
-  '1': 1,
-  'fifth': 20% 0,
-  'quarter': 25% 0,
-  'third': 33.333333333% 0,
-  'half': 50% 0,
-  'full': 100% 0,
-  'initial': initial,
-  'auto': auto,
-  'none': none
+	"1": 1,
+	"fifth": 20% 0,
+	"quarter": 25% 0,
+	"third": 33.333333333% 0,
+	"half": 50% 0,
+	"full": 100% 0,
+	"initial": initial,
+	"auto": auto,
+	"none": none,
 );
 
 @each $name in map-keys($_flex-values) {
-  $value: map-get($_flex-values, $name);
-  // Example: .qpp-u-flex--1
-  .qpp-u-flex--#{$name} {
-    flex: $value !important;
-  }
+	$value: map-get($_flex-values, $name);
+	// Example: .qpp-u-flex--1
+	.qpp-u-flex--#{$name} {
+		flex: $value !important;
+	}
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    @each $name in map-keys($_flex-values) {
-      $value: map-get($_flex-values, $name);
-      // Example: .qpp-u-lg-flex--1
-      .qpp-u-#{$breakpoint}-flex--#{$name} {
-        flex: $value !important;
-      }
-    }
-  }
+	@media (min-width: $viewport) {
+		@each $name in map-keys($_flex-values) {
+			$value: map-get($_flex-values, $name);
+			// Example: .qpp-u-lg-flex--1
+			.qpp-u-#{$breakpoint}-flex--#{$name} {
+				flex: $value !important;
+			}
+		}
+	}
 }
