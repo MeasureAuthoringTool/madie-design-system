@@ -90,7 +90,7 @@ const TextArea = ({
                 </FormHelperText>
             )}
             <TextareaAutosize
-                style={{ marginTop: "8px" }}
+                style={{ marginTop: "8px", maxWidth: "100%" }}
                 className={
                     error ? "text-area-variable error" : "text-area-variable"
                 }
