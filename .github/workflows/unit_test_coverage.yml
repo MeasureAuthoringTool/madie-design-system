@@ -29,15 +29,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Use Node.js (matrix)
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.version }}
 
       - name: Cache node modules
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -67,13 +67,13 @@ jobs:
         run: npm run-script coverage
 
       - name: Store the coverage report as an artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: react/coverage/lcov.info
 
       - name: Upload code coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           file: lcov.info
           fail_ci_if_error: true
