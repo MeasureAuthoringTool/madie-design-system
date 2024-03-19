@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [16, 18, 20]
+        version: [18, 20]
     name: Checkout, install, lint, build and test with coverage
     runs-on: ubuntu-latest
     defaults:
@@ -71,34 +71,6 @@ jobs:
         with:
           name: coverage
           path: react/coverage/lcov.info
-
-  upload-codacy-coverage:
-    name: Upload code coverage to Codacy
-    needs: node_matrix
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-
-      - name: Upload code coverage to Codacy
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: lcov.info
-
-  upload-codecov-coverage:
-    name: Upload code coverage to Codecov
-    needs: node_matrix
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
 
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v3
