@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
+import TextField from "../TextField";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -70,6 +71,7 @@ const DateTimeField = ({
                             sx: dateTimeTextFieldStyle,
                         },
                     }}
+                    slots={{ textField: TextField }}
                 />
             </LocalizationProvider>
         </FormControl>

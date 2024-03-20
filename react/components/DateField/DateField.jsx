@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
+import TextField from "../TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -42,7 +43,15 @@ export const dateTextFieldStyle = {
     },
 };
 
-const DateField = ({ label, value, handleDateChange, disabled }) => {
+const DateField = ({
+    id="",
+    label,
+    value,
+    handleDateChange,
+    disabled,
+    error = false,
+    helperText = "",
+}) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <InputLabel
@@ -71,11 +80,22 @@ const DateField = ({ label, value, handleDateChange, disabled }) => {
                 onChange={handleDateChange}
                 disabled={disabled}
                 slotProps={{
-                    textField: {
-                        id: "date",
-                        sx: dateTextFieldStyle,
+                    textField: (params) => {
+                        const { InputProps } = params;
+                        InputProps["data-testid"] = id;
+                        InputProps["aria-required"] = true;
+
+                        return {
+                            id: id,
+                            sx: dateTextFieldStyle,
+                            value: value ? dayjs.utc(value) : null,
+                            onChange: handleDateChange,
+                            error: error,
+                            helperText: helperText,
+                        };
                     },
                 }}
+                slots={{ textField: TextField }}
             />
         </LocalizationProvider>
     );
@@ -85,6 +105,9 @@ DateField.propTypes = {
     value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
+    id: PropTypes.string,
+    error: PropTypes.bool,
+    helperText: PropTypes.string
 };
 
 export default DateField;
