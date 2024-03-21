@@ -13,7 +13,7 @@ describe("DateTimeField", () => {
             const { findByText, findByTestId, getByDisplayValue } = render(
                 <DateTimeField
                     label="Active Date/Time"
-                    dateTimeValue={dayjs("2022-04-17T15:30")}
+                    dateTimeValue={dayjs("2022-04-17T15:30Z")}
                     handleDateTimeChange={() => {
                         return;
                     }}

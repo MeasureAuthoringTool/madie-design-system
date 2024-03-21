@@ -27,4 +27,26 @@ describe("DateField", () => {
             ).toBeInTheDocument();
         });
     });
+
+    test("DateField Exists, with empty value", async () => {
+        await act(async () => {
+            const { findByText, findByTestId, container } = render(
+                <DateField
+                    label="Status Date"
+                    
+                    handleDateChange={() => console.log("Status Date")}
+                    disabled={false}
+                />
+            );
+            
+            const labelText = await findByText("Status Date");
+            expect(labelText).toBeInTheDocument();
+            expect(await findByTestId("status-date")).toBeInTheDocument();
+            
+                const dateDisplay =  container.querySelector('[value="04/17/2022"]');
+                expect(dateDisplay).toBeNull();
+
+            
+        });
+    });
 });
