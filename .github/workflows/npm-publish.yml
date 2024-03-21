@@ -53,6 +53,8 @@ jobs:
       - name: Publish if version has been updated
         env:
           PUBLISH_COMMAND: npm
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         uses: pascalgn/npm-publish-action@master
         with: # All of theses inputs are optional
           tag_name: "v%s"
@@ -61,6 +63,5 @@ jobs:
           publish_args: " --access public"
           workspace: "./react"
           publish_command: "npm"
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
