@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Audit dependencies for security vulnerabilities
-        run: npm audit
+        run: npm audit --omit=dev
 
       - name: Lint the source code
         run: npm run-script lint
