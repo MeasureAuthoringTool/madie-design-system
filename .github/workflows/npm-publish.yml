@@ -56,10 +56,12 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         uses: pascalgn/npm-publish-action@master
         with: # All of theses inputs are optional
+          publish_command: "npm"
+          publish_args: "--non-interactive"
           tag_name: "v%s"
           tag_message: "v%s"
           commit_pattern: "[\\s\\S]*Release (\\S+)"
-          workspace: "./react"
+          workspace: "./react"  
           
 
 
