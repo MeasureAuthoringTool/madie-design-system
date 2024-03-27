@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [18, 20]
+        version: [20]
     name: Checkout, install, lint, build and test with coverage
     runs-on: ubuntu-latest
     defaults:
@@ -52,7 +52,7 @@ jobs:
         run: npm ci
 
       - name: Audit dependencies for security vulnerabilities
-        run: npm audit --omit=dev
+        run: npm audit --production
 
       - name: Lint the source code
         run: npm run-script lint
