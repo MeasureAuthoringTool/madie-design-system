@@ -44,7 +44,7 @@ export const dateTextFieldStyle = {
 };
 
 const DateField = ({
-    id="",
+    id = "",
     label,
     value,
     handleDateChange,
@@ -107,7 +107,7 @@ DateField.propTypes = {
     disabled: PropTypes.bool,
     id: PropTypes.string,
     error: PropTypes.bool,
-    helperText: PropTypes.string
+    helperText: PropTypes.string,
 };
 
 export default DateField;
