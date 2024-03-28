@@ -134,7 +134,7 @@ const TextField = ({
                             },
                         },
                         "& .MuiInputBase-root": {
-                            height: "40px",
+                            height: "auto",
                         },
                         "& .MuiOutlinedInput-root": {
                             "&&": {

@@ -97,7 +97,7 @@ const ReadOnlyTextField = ({
                         },
                     },
                     "& .MuiInputBase-root": {
-                        height: "40px",
+                        height: "auto",
                     },
                     "& .MuiInputBase-input": {
                         lineHeight: "19px",
