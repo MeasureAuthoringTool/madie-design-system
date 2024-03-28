@@ -53,7 +53,7 @@ jobs:
       - name: Publish if version has been updated
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.TEMP_NPM_TOKEN }}
         uses: pascalgn/npm-publish-action@master
         with: # All of theses inputs are optional
           publish_command: "npm"
