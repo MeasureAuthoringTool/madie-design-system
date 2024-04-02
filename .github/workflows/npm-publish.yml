@@ -50,18 +50,16 @@ jobs:
       - name: Execute test coverage
         run: npm run-script coverage
 
-      - name: Publish if version has been updated
+      - name: Publish if version has been updated  
+        uses: JS-DevTools/npm-publish@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-          NPM_AUTH_TOKEN: ${{ secrets.TEMP_NPM_TOKEN }}
-        uses: pascalgn/npm-publish-action@master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated          
         with: # All of theses inputs are optional
-          publish_command: "npm"
-          publish_args: "--non-interactive"
-          tag_name: "v%s"
-          tag_message: "v%s"
-          commit_pattern: "[\\s\\S]*Release (\\S+)"
-          workspace: "./react"  
+          TOKEN: ${{ secrets.TEMP_NPM_TOKEN }}
+          tag: "v%s"
+          access: "public"        
+          package: "./react" 
+          dry-run: true 
           
 
 
