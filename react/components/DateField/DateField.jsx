@@ -44,13 +44,14 @@ export const dateTextFieldStyle = {
 };
 
 const DateField = ({
-    id = "",
+    id,
     label,
     value,
     handleDateChange,
     disabled,
-    error = false,
-    helperText = "",
+    error,
+    helperText,
+    ...rest
 }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -90,6 +91,7 @@ const DateField = ({
                             sx: dateTextFieldStyle,
                             value: value ? dayjs.utc(value) : null,
                             onChange: handleDateChange,
+                            //...rest,
                             error: error,
                             helperText: helperText,
                         };
