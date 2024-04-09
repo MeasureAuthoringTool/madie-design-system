@@ -52,6 +52,7 @@ const DateField = ({
     disabled,
     error,
     helperText,
+    required = false,
     containerSx = {},
     textFieldSx = {},
     ...rest
@@ -72,19 +73,38 @@ const DateField = ({
                     sx={[
                         {
                             backgroundColor: "transparent",
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                            alignSelf: "baseline",
+                            justifyContent: "left",
                             textTransform: "none",
-                            height: 17,
-                            left: 0,
-                            right: 0,
-                            top: 0,
+                            // force it outside the select box
+                            position: "initial",
+                            transform: "translateX(0px) translateY(0px)",
                             fontFamily: "Rubik",
-                            fontStyle: "normal",
                             fontWeight: 500,
                             fontSize: 14,
-                            color: "#333333",
+                            color: "#333",
+                            "& .MuiInputLabel-asterisk": {
+                                color: "#AE1C1C !important",
+                                marginRight: "3px !important", //this was
+                            },
+                        },
+                        required && {
+                            transform: "translateX(-12px) translateY(0px)",
+                            "& .MuiInputLabel-asterisk": {
+                                color: "#D92F2",
+                                marginRight: "3px !important", //this was
+                            },
+                        },
+                        disabled && {
+                            color: "rgba(0,0,0,0.6)",
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
                         },
                     ]}
-                    required={rest?.required}
+                    required={required}
                 >
                     {`${label}`}
                 </InputLabel>
@@ -97,7 +117,7 @@ const DateField = ({
                         textField: (params) => {
                             const { InputProps } = params;
                             InputProps["data-testid"] = id;
-                            InputProps["aria-required"] = true;
+                            InputProps["aria-required"] = required;
 
                             return {
                                 id: id,
