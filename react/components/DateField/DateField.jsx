@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
 import TextField from "../TextField";
+import { Box } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -51,54 +52,68 @@ const DateField = ({
     disabled,
     error,
     helperText,
+    containerSx = {},
+    textFieldSx = {},
     ...rest
 }) => {
+    if (containerSx === undefined || containerSx === null) {
+        containerSx = {};
+    }
+    if (textFieldSx === undefined || textFieldSx === null) {
+        textFieldSx = {};
+    }
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <InputLabel
-                data-testid={`${kebabCase(label)}`}
-                style={{ marginBottom: 0, height: 16 }}
-                sx={[
-                    {
-                        backgroundColor: "transparent",
-                        textTransform: "none",
-                        height: 17,
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        fontFamily: "Rubik",
-                        fontStyle: "normal",
-                        fontWeight: 500,
-                        fontSize: 14,
-                        color: "#333333",
-                    },
-                ]}
-            >
-                {`${label}`}
-            </InputLabel>
-            <DatePicker
-                value={value ? dayjs.utc(value) : null}
-                onChange={handleDateChange}
-                disabled={disabled}
-                slotProps={{
-                    textField: (params) => {
-                        const { InputProps } = params;
-                        InputProps["data-testid"] = id;
-                        InputProps["aria-required"] = true;
+            <Box sx={{ ...containerSx }}>
+                <InputLabel
+                    data-testid={`${kebabCase(label)}`}
+                    style={{ marginBottom: 0, height: 16 }}
+                    sx={[
+                        {
+                            backgroundColor: "transparent",
+                            textTransform: "none",
+                            height: 17,
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            fontFamily: "Rubik",
+                            fontStyle: "normal",
+                            fontWeight: 500,
+                            fontSize: 14,
+                            color: "#333333",
+                        },
+                    ]}
+                    required={rest?.required}
+                >
+                    {`${label}`}
+                </InputLabel>
+                <DatePicker
+                    value={value ? dayjs.utc(value) : null}
+                    onChange={handleDateChange}
+                    disabled={disabled}
+                    onClose={() => rest?.onBlur()}
+                    slotProps={{
+                        textField: (params) => {
+                            const { InputProps } = params;
+                            InputProps["data-testid"] = id;
+                            InputProps["aria-required"] = true;
 
-                        return {
-                            id: id,
-                            sx: dateTextFieldStyle,
-                            value: value ? dayjs.utc(value) : null,
-                            onChange: handleDateChange,
-                            //...rest,
-                            error: error,
-                            helperText: helperText,
-                        };
-                    },
-                }}
-                slots={{ textField: TextField }}
-            />
+                            return {
+                                id: id,
+                                sx: { ...dateTextFieldStyle, ...textFieldSx },
+                                value: value ? dayjs.utc(value) : null,
+                                onChange: handleDateChange,
+                                //...rest,
+                                error: error,
+                                helperText: helperText,
+                                onBlur: rest?.onBlur,
+                            };
+                        },
+                    }}
+                    slots={{ textField: TextField }}
+                />
+            </Box>
         </LocalizationProvider>
     );
 };
