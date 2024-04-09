@@ -145,6 +145,9 @@ DateField.propTypes = {
     id: PropTypes.string,
     error: PropTypes.bool,
     helperText: PropTypes.string,
+    required: PropTypes.bool,
+    containerSx: PropTypes.object,
+    textFieldSx: PropTypes.object,
 };
 
 export default DateField;
