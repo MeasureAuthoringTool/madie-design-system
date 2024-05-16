@@ -108,7 +108,7 @@
         "url": "https://github.com/MeasureAuthoringTool/madie-design-system/issues"
     },
     "dependencies": {
-        "@cmsgov/design-system": "^5.0.2",
+        "@cmsgov/design-system": "^7.0.0",
         "@emotion/react": "^11.8.2",
         "@emotion/styled": "^11.8.1",
         "@mui/icons-material": "^5.10.6",
