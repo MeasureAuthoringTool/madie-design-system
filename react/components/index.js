@@ -38,6 +38,7 @@ import Search from "./Search";
 import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import DSLink from "./Link";
+import NumberInput from "./NumberInput";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -144,6 +145,7 @@ export {
     MadieSpinner,
     MadieTooltipIcon,
     MadieTooltip,
+    NumberInput,
     Pagination,
     Popover,
     RadioButton,
