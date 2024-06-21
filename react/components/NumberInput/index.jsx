@@ -48,7 +48,7 @@ export default function NumberInput({
             placeholder={`Enter ${label}`}
             data-testid={`integer-field-${id}`}
             onKeyDown={(e) => {
-                if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === ".") {
                     e.preventDefault();
                 }
             }}
