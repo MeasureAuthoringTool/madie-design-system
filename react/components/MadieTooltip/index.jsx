@@ -25,6 +25,7 @@ const MadieToolTip = ({ tooltipText = "informational text", id }) => {
                 }
             }}
             className="madie-tooltip-button"
+            onClick={(e)=>e.preventDefault()}
         >
             <TooltipIcon />
             <div
