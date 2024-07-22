@@ -45,7 +45,7 @@ export const dateTextFieldStyle = {
 };
 
 const DateField = ({
-    id,
+    id="default_id",
     label,
     value,
     handleDateChange,
@@ -130,6 +130,10 @@ const DateField = ({
                                 onBlur: rest?.onBlur,
                             };
                         },
+                        openPickerButton: {
+                            id: `${id}-open-picker-button`,
+                            dataTestId: `${id}-open-picker-button`
+                        }
                     }}
                     slots={{ textField: TextField }}
                 />
