@@ -17,6 +17,7 @@ export const TimeDateFieldComponent = (args) => {
         <div className="qpp-u-padding--16">
             <DateTimeField
                 // disabled={true}
+                id="status_date_time"
                 label="Status Date/Time"
                 handleDateTimeChange={handleDateTimeChange}
                 dateTimeValue={value}

@@ -50,6 +50,7 @@ const DateTimeField = ({
     dateTimeValue,
     handleDateTimeChange,
     disabled,
+    id = "default_dateTime-input",
 }) => {
     return (
         <FormControl>
@@ -67,9 +68,13 @@ const DateTimeField = ({
                     disabled={disabled}
                     slotProps={{
                         textField: {
-                            id: "dateTime",
+                            id: id, // textfield will delegate an input data-testid based off id
                             sx: dateTimeTextFieldStyle,
                         },
+                        openPickerButton: {
+                            id: `${id}-open-picker-button`,
+                            dataTestId: `${id}-open-picker-button`
+                        }
                     }}
                     slots={{ textField: TextField }}
                 />
@@ -78,6 +83,7 @@ const DateTimeField = ({
     );
 };
 DateTimeField.propTypes = {
+    id: PropTypes.string,
     dateTimeValue: PropTypes.object,
     handleDateTimeChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
