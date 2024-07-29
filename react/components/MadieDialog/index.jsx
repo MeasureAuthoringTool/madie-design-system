@@ -308,4 +308,8 @@ MadieDialog.propTypes = {
     children: PropTypes.object,
 };
 
+DraggablePaper.propTypes ={
+    children: PropTypes.object
+}
+
 export default MadieDialog;
