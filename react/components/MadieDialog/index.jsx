@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Draggable from "react-draggable"
 import CloseIcon from "@mui/icons-material/Close";
 import {
     Dialog,
@@ -12,7 +13,6 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Button from "../Button";
-import Draggable from "react-draggable"
 
 
 const DraggablePaper = (props) => {
