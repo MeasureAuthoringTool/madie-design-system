@@ -45,16 +45,16 @@ const MadieAlert = ({
             } else if (React.isValidElement(contentNode)) {
                 result += traversal(contentNode, false);
             }
-    
             return result;
         };
     
-        return traversal(content);
+        return traversal(content).trim();
     };
 
     useEffect(() => {
         if(content && copyButton){
-    copyText=copyButtonBuilder(content);}
+            copyText=copyButtonBuilder(content)
+        }
     }, [content]);
     // we have four states to render for
     const typeSelect = {
