@@ -118,7 +118,7 @@
         "@mui/x-date-pickers": "^6.19.7",
         "@reach/portal": "^0.16.2",
         "@reach/tooltip": "^0.16.2",
-        "axios": "^1.6.8",
+        "axios": "^1.7.3",
         "cookie": "^0.4.1",
         "cross-env": "^7.0.3",
         "d3-selection": "^1.4.2",
