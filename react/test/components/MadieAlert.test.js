@@ -31,9 +31,10 @@ describe("MadieAlert Component", () => {
     });
 
     it("renders with copy button and copies text correctly", async () => {
-        const expectedReturn = `Following issues were found within the CQL
+        const expectedReturn = 
+`Following issues were found within the CQL
 
-(3) Errors: 
+(3) Errors:
 
 
 Row: 5, Col:0: VSAC: 0:89 | Request failed with status code 404 for oid = 1.16.840.1.113762.1.4.1222.1334 location = 5:0-5:89
