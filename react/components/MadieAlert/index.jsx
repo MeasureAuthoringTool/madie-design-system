@@ -54,8 +54,7 @@ const MadieAlert = ({
 
     useEffect(() => {
         if(content && copyButton){
-    copyText=copyButtonBuilder(content);
-    console.log(copyText)}
+    copyText=copyButtonBuilder(content);}
     }, [content]);
     // we have four states to render for
     const typeSelect = {
@@ -94,7 +93,6 @@ const MadieAlert = ({
                     <ContentCopyIcon onClick={(e)=>{
                         e.preventDefault()
                         navigator.clipboard.writeText(copyText);
-                        
                     }} sx={{ color: "#242424" }} />
                 </IconButton>
                 )}
