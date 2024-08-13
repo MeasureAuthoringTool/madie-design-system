@@ -40,8 +40,6 @@ const MadieAlert = ({
                 });
             } else if (typeof contentNode.props?.children === 'string' || typeof contentNode.props?.children === 'number') {
                 result += contentNode.props.children.toString();
-            } else if (typeof contentNode === 'string' || typeof contentNode === 'number') {
-                result += contentNode.toString();
             } else if (React.isValidElement(contentNode)) {
                 result += traversal(contentNode, false);
             }
