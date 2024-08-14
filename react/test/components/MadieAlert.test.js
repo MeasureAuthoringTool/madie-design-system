@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import MadieAlert from "../../components/MadieAlert";
-const util = require('util')
+
 describe("MadieAlert Component", () => {
     it("renders with basic props and triggers on Close on click", async () => {
         const onClose = jest.fn();
