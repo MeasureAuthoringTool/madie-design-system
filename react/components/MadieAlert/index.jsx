@@ -25,7 +25,6 @@ const MadieAlert = ({
 }) => {
     const [copyText, setCopyText] = useState("");
 
-
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
             if (!contentNode) return '';
@@ -65,7 +64,6 @@ const MadieAlert = ({
         success: CheckCircleIcon,
     };
     const Icon = typeSelect[type];
-
     const alertClass = classNames("madie-alert", type);
     const iconClass = classNames("alert-icon", type);
 
