@@ -26,26 +26,26 @@ const MadieAlert = ({
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
             if (!contentNode) return '';
-            
             let result = '';
-    
-            if (Array.isArray(contentNode.props?.children)) {
+
+            if (Array.isArray(contentNode.props?.children )) {
                 contentNode.props.children.forEach((child, index) => {
                     result += traversal(child, false);
-                    if (parentNode && index < contentNode.props.children.length - 1) {
+                    if (parentNode && index ==1) {
                         result += '\n';
                     }else if(contentNode.type ==="ul" ){
                         result = '\n'+result+'\n'
                     }
                 });
+            } else if(typeof contentNode.props?.children ==='object'){
+                result += traversal(contentNode.props.children, false);
             } else if (typeof contentNode.props?.children === 'string' || typeof contentNode.props?.children === 'number') {
                 result += contentNode.props.children.toString();
-            } else if (React.isValidElement(contentNode)) {
-                result += traversal(contentNode, false);
-            }
+            } else if (typeof contentNode === 'string' || typeof contentNode === 'number') {
+                result += contentNode.toString();
+            } 
             return result;
         };
-    
         return traversal(content).trim();
     };
 
