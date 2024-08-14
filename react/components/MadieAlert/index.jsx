@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import ErrorIcon from "@mui/icons-material/Error"; // warning
 import InfoIcon from "@mui/icons-material/Info"; // info
@@ -23,6 +23,9 @@ const MadieAlert = ({
     copyButton
 
 }) => {
+    const [copyText, setCopyText] = useState("");
+
+
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
             if (!contentNode) return '';
@@ -51,7 +54,7 @@ const MadieAlert = ({
 
     useEffect(() => {
         if(content && copyButton){
-            copyText=copyButtonBuilder(content)
+            setCopyText(copyButtonBuilder(content))
         }
     }, [content]);
     // we have four states to render for
@@ -61,7 +64,6 @@ const MadieAlert = ({
         error: CancelIcon,
         success: CheckCircleIcon,
     };
-    let copyText = ""
     const Icon = typeSelect[type];
 
     const alertClass = classNames("madie-alert", type);
