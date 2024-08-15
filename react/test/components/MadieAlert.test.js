@@ -3,8 +3,8 @@ import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import MadieAlert from "../../components/MadieAlert";
 
-describe("MadieAlert Component", () => {
-    it("renders with basic props and triggers on Close on click", async () => {
+describe("Madie Alert", () => {
+    it("It renders as expected with basic props and triggers on Close on click", async () => {
         const onClose = jest.fn();
         const { getByTestId } = render(
             <MadieAlert
