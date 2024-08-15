@@ -147,8 +147,8 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
     });
     
 
-    it("does not render when invisible", () => {
-        const { queryByTestId } = render(
+    it("It does not render when inivislbe", async () => {
+        render(
             <MadieAlert
                 type="warning"
                 visible={false}
@@ -162,6 +162,6 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 }}
             />
         );
-        expect(queryByTestId("alert-dialog")).toBeNull();
+        expect(screen.findByTestId("alert-dialog")).toBeNull;
     });
 });
