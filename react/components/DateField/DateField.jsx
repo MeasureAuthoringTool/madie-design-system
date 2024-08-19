@@ -45,7 +45,7 @@ export const dateTextFieldStyle = {
 };
 
 const DateField = ({
-    id="default_id",
+    id = "default_id",
     label,
     value,
     handleDateChange,
@@ -132,8 +132,8 @@ const DateField = ({
                         },
                         openPickerButton: {
                             id: `${id}-open-picker-button`,
-                            dataTestId: `${id}-open-picker-button`
-                        }
+                            dataTestId: `${id}-open-picker-button`,
+                        },
                     }}
                     slots={{ textField: TextField }}
                 />

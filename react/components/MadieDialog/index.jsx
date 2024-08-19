@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Draggable from "react-draggable"
+import Draggable from "react-draggable";
 import CloseIcon from "@mui/icons-material/Close";
 import {
     Dialog,
@@ -14,17 +14,15 @@ import {
 import { Box } from "@mui/system";
 import Button from "../Button";
 
-
 const DraggablePaper = (props) => {
     const { children, ...rest } = props;
 
     return (
         <Draggable
-        
             handle="#draggable-dialog-title"
             cancel={'[class*="MuiDialogContent-root"]'} // Prevent dragging when interacting with content
         >
-            <div style={{backgroundColor:"#fff"}} {...rest}>
+            <div style={{ backgroundColor: "#fff" }} {...rest}>
                 {children}
             </div>
         </Draggable>
@@ -99,7 +97,7 @@ const MadieDialog = ({
                     style={{ overflow: "scroll" }}
                 >
                     <Box
-                    id="draggable-dialog-title"
+                        id="draggable-dialog-title"
                         sx={{
                             display: "flex",
                             flexDirection: "row",
@@ -308,8 +306,8 @@ MadieDialog.propTypes = {
     children: PropTypes.object,
 };
 
-DraggablePaper.propTypes ={
-    children: PropTypes.object
-}
+DraggablePaper.propTypes = {
+    children: PropTypes.object,
+};
 
 export default MadieDialog;

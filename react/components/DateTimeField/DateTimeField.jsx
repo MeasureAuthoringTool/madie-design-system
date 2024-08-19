@@ -73,8 +73,8 @@ const DateTimeField = ({
                         },
                         openPickerButton: {
                             id: `${id}-open-picker-button`,
-                            dataTestId: `${id}-open-picker-button`
-                        }
+                            dataTestId: `${id}-open-picker-button`,
+                        },
                     }}
                     slots={{ textField: TextField }}
                 />
