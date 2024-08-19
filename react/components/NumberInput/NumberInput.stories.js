@@ -22,12 +22,9 @@ Wrapper.propTypes = {
 export const BasicNumberInput = () => {
     return (
         <Wrapper>
-            <NumberInput
-                id="basic-number-input"
-                label="Demo number input"
-            />
+            <NumberInput id="basic-number-input" label="Demo number input" />
         </Wrapper>
-    )
+    );
 };
 
 export const NumberInputWithNoNegativeNumbers = () => {
@@ -41,7 +38,7 @@ export const NumberInputWithNoNegativeNumbers = () => {
                 allowNegative={false}
             />
         </Wrapper>
-    )
+    );
 };
 
 export const NumberInputWithErrorAndHelperText = () => {
@@ -56,7 +53,7 @@ export const NumberInputWithErrorAndHelperText = () => {
                 helperText={"Please Enter a valid integer"}
             />
         </Wrapper>
-    )
+    );
 };
 
 export const NumberInputDisabled = () => {
@@ -70,7 +67,7 @@ export const NumberInputDisabled = () => {
                 disabled={true}
             />
         </Wrapper>
-    )
+    );
 };
 
 export const NumberInputWithTooltip = () => {
@@ -84,5 +81,5 @@ export const NumberInputWithTooltip = () => {
                 tooltipText={"Provides information"}
             />
         </Wrapper>
-    )
+    );
 };
