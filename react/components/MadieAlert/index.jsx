@@ -5,10 +5,10 @@ import InfoIcon from "@mui/icons-material/Info"; // info
 import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
-
+import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-
+import Toast from "../Toast/index";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
@@ -23,6 +23,7 @@ const MadieAlert = ({
     copyButton,
 }) => {
     const [copyText, setCopyText] = useState("");
+    const [toastOpen, setToastOpen] = useState(false);
 
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
@@ -75,31 +76,49 @@ const MadieAlert = ({
     return (
         visible && (
             <div className={alertClass} {...alertProps}>
+                <Toast
+                    toastKey="copy-success-toast"
+                    data-testid="copy-success"
+                    toastType="success"
+                    open={toastOpen}
+                    message="Copied to clipboard!"
+                    onClose={() => {
+                        setToastOpen(false);
+                    }}
+                    autoHideDuration={1500}
+                />
                 <Icon className={iconClass} />
                 <div id="content">{content && content}</div>
                 {copyButton && (
-                    <IconButton
-                        sx={{
-                            marginLeft: "auto",
-                            "&:after": {
-                                content: `''`,
-                                position: "absolute",
-                                left: "0px",
-                                width: "1px",
-                                height: "40px",
-                                backgroundColor: "#B0B0B0",
-                                pointerEvents: "none",
-                            },
-                        }}
+                    <Tooltip
+                        data-testid="copy_button_tooltip"
+                        title={"Copy Text"}
+                        arrow
                     >
-                        <ContentCopyIcon
-                            onClick={(e) => {
-                                e.preventDefault();
-                                navigator.clipboard.writeText(copyText);
+                        <IconButton
+                            sx={{
+                                marginLeft: "auto",
+                                "&:after": {
+                                    content: `''`,
+                                    position: "absolute",
+                                    left: "0px",
+                                    width: "1px",
+                                    height: "40px",
+                                    backgroundColor: "#B0B0B0",
+                                    pointerEvents: "none",
+                                },
                             }}
-                            sx={{ color: "#242424" }}
-                        />
-                    </IconButton>
+                        >
+                            <ContentCopyIcon
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigator.clipboard.writeText(copyText);
+                                    setToastOpen(true);
+                                }}
+                                sx={{ color: "#242424" }}
+                            />
+                        </IconButton>
+                    </Tooltip>
                 )}
                 {canClose && (
                     <IconButton
