@@ -91,7 +91,7 @@ const MadieAlert = ({
                 <div id="content">{content && content}</div>
                 {copyButton && (
                     <Tooltip
-                        data-testid="copy_button_tooltip"
+                        data-testid="copy-button-tooltip"
                         title={"Copy Text"}
                         arrow
                     >
