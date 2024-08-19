@@ -144,7 +144,12 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
             expect(mockedWriteText).toHaveBeenCalledTimes(1);
             expect(mockedWriteText).toHaveBeenCalledWith(expectedReturn);
         });
+        const copySuccess = getByTestId("copy-success");
+        expect(copySuccess).toBeInTheDocument();
+        await new Promise((r) => setTimeout(r, 2000));
+        expect(copySuccess).not.toBeInTheDocument();
     });
+
     
 
     it("It does not render when inivislbe", async () => {
