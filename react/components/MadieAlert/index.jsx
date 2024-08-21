@@ -24,7 +24,7 @@ const MadieAlert = ({
 }) => {
     const [copyText, setCopyText] = useState("");
     const [toastOpen, setToastOpen] = useState(false);
-    let aa = 0;
+
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
             if (!contentNode) return "";
