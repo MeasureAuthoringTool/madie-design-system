@@ -24,19 +24,19 @@ const MadieAlert = ({
 }) => {
     const [copyText, setCopyText] = useState("");
     const [toastOpen, setToastOpen] = useState(false);
-
+    let aa = 0;
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
             if (!contentNode) return "";
-            let result = "";
-
+            let result = contentNode.type === "ul" ? "\n" : "";
             if (Array.isArray(contentNode.props?.children)) {
                 contentNode.props.children.forEach((child, index) => {
                     result += traversal(child, false);
-                    if (parentNode && index == 1) {
+                    if (
+                        (parentNode && index == 1) ||
+                        contentNode.type === "ul"
+                    ) {
                         result += "\n";
-                    } else if (contentNode.type === "ul") {
-                        result = "\n" + result + "\n";
                     }
                 });
             } else if (typeof contentNode.props?.children === "object") {
@@ -54,7 +54,7 @@ const MadieAlert = ({
             }
             return result;
         };
-        return traversal(content).trim();
+        return traversal(content, false).trim();
     };
 
     useEffect(() => {
