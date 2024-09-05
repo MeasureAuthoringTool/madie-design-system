@@ -15,7 +15,7 @@ dayjs.extend(utc);
 dayjs.utc();
 export const dateTimeTextFieldStyle = {
     width: "240px",
-    height: 40,
+    height: "40px",
     marginTop: "8px",
     "& .MuiOutlinedInput-notchedOutline": {
         border: "1px solid #8C8C8C",
@@ -43,6 +43,9 @@ export const dateTimeTextFieldStyle = {
             fontSize: 14,
         },
     },
+    "& .MuiInputBase-root": {
+        height: "40px",
+    }
 };
 
 const DateTimeField = ({
