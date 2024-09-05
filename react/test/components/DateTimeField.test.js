@@ -13,6 +13,7 @@ describe("DateTimeField", () => {
             const { findByText, findByTestId, getByDisplayValue } = render(
                 <DateTimeField
                     label="Active Date/Time"
+                    id="active-date-time"
                     dateTimeValue={dayjs("2022-04-17T15:30Z")}
                     handleDateTimeChange={() => {
                         return;
@@ -23,7 +24,7 @@ describe("DateTimeField", () => {
 
             const labelText = await findByText("Active Date/Time");
             expect(labelText).toBeInTheDocument();
-            expect(await findByTestId("active-date-time")).toBeInTheDocument();
+            expect(await findByTestId("active-date-time-input")).toBeInTheDocument();
             expect(
                 getByDisplayValue("04/17/2022 03:30 PM")
             ).toBeInTheDocument();

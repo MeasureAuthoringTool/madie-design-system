@@ -55,12 +55,6 @@ const DateTimeField = ({
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <InputLabel
-                    style={{ marginBottom: 0, height: 16 }}
-                    data-testId={`${kebabCase(label)}`}
-                >
-                    {`${label}`}
-                </InputLabel>
                 <DateTimePicker
                     value={dateTimeValue ? dayjs.utc(dateTimeValue) : null}
                     onChange={handleDateTimeChange}
@@ -70,6 +64,7 @@ const DateTimeField = ({
                         textField: {
                             id: id, // textfield will delegate an input data-testid based off id
                             sx: dateTimeTextFieldStyle,
+                            label,
                         },
                         openPickerButton: {
                             id: `${id}-open-picker-button`,
