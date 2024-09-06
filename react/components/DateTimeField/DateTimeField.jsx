@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import InputLabel from "../InputLabel";
 import TextField from "../TextField";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -9,13 +8,12 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
 import { FormControl } from "@mui/material";
-import { kebabCase } from "lodash";
 
 dayjs.extend(utc);
 dayjs.utc();
 export const dateTimeTextFieldStyle = {
     width: "240px",
-    height: 40,
+    height: "40px",
     marginTop: "8px",
     "& .MuiOutlinedInput-notchedOutline": {
         border: "1px solid #8C8C8C",
@@ -43,6 +41,9 @@ export const dateTimeTextFieldStyle = {
             fontSize: 14,
         },
     },
+    "& .MuiInputBase-root": {
+        height: "40px",
+    }
 };
 
 const DateTimeField = ({
@@ -55,12 +56,6 @@ const DateTimeField = ({
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <InputLabel
-                    style={{ marginBottom: 0, height: 16 }}
-                    data-testId={`${kebabCase(label)}`}
-                >
-                    {`${label}`}
-                </InputLabel>
                 <DateTimePicker
                     value={dateTimeValue ? dayjs.utc(dateTimeValue) : null}
                     onChange={handleDateTimeChange}
@@ -70,6 +65,7 @@ const DateTimeField = ({
                         textField: {
                             id: id, // textfield will delegate an input data-testid based off id
                             sx: dateTimeTextFieldStyle,
+                            label,
                         },
                         openPickerButton: {
                             id: `${id}-open-picker-button`,
