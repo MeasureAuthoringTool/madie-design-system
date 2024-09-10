@@ -135,8 +135,6 @@ describe("Madie Dialog", () => {
                         onClose: onDialogCancel,
                         maxWidth: "sm",
                     }}
-                    cancelButtonProps={undefined}
-                    continueButtonProps={undefined}
                 >
                     <div>this is a form dialog</div>
                 </MadieDialog>
