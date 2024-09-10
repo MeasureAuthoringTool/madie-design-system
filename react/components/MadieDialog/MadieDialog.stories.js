@@ -36,13 +36,10 @@ export const Dialog = () => {
     const [required, setRequired] = useState(false);
     const [showDialogActions, setShowDialogActions] = useState(false);
 
-    console.log(showDialogActions)
-
     const cancelButtonProps = showDialogActions? {
         cancelText: "Discard Changes",
         "data-testid": "cancel-button",
     }: undefined;
-
     const continueButtonProps = showDialogActions? {
         continueText: "Save",
         "data-testid": "save-button",
