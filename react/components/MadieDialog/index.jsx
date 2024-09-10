@@ -45,27 +45,31 @@ const Actions = ({onClose, cancelButtonProps, continueButtonProps}) => {
                     },
                 }}
             >
-                <Button
-                    variant="secondary"
-                    onClick={onClose}
-                    {...otherCancelButtonProps}
-                >
-                <span>
-                    {cancelText}
-                    {cancelIcon}
-                </span>
-                </Button>
-                <Button
-                    className="qpp-c-button--cyan"
-                    type="submit"
-                    style={{marginTop: 0}}
-                    {...otherContinueButtonProps}
-                >
-                <span>
-                    {continueText}
-                    {continueIcon}
-                </span>
-                </Button>
+                {cancelButtonProps && (
+                    <Button
+                        variant="secondary"
+                        onClick={onClose}
+                        {...otherCancelButtonProps}
+                    >
+                        <span>
+                            {cancelText}
+                            {cancelIcon}
+                        </span>
+                    </Button>
+                )}
+                {continueButtonProps && (
+                    <Button
+                        className="qpp-c-button--cyan"
+                        type="submit"
+                        style={{marginTop: 0}}
+                        {...otherContinueButtonProps}
+                    >
+                        <span>
+                            {continueText}
+                            {continueIcon}
+                        </span>
+                    </Button>
+                )}
             </DialogActions>
         </>
     )
@@ -273,7 +277,7 @@ const MadieDialog = ({
                     <DialogContent sx={{ padding: "32px" }}>
                         {children}
                     </DialogContent>
-                    {(cancelButtonProps && continueButtonProps) && (
+                    {(cancelButtonProps || continueButtonProps) && (
                         <Actions
                             onClose={onClose}
                             continueButtonProps={continueButtonProps}
