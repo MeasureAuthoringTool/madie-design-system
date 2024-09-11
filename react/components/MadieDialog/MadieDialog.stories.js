@@ -34,6 +34,17 @@ export const Dialog = () => {
 
     const [form, setForm] = useState(false);
     const [required, setRequired] = useState(false);
+    const [showDialogActions, setShowDialogActions] = useState(false);
+
+    const cancelButtonProps = showDialogActions? {
+        cancelText: "Discard Changes",
+        "data-testid": "cancel-button",
+    }: undefined;
+    const continueButtonProps = showDialogActions? {
+        continueText: "Save",
+        "data-testid": "save-button",
+    }: undefined;
+
     return (
         <div className="qpp-u-padding--16" style={{ width: 300 }}>
             <FormGroup>
@@ -57,6 +68,16 @@ export const Dialog = () => {
                     }
                     label="Required"
                 />
+                <FormControlLabel
+                    control={
+                        <Switch
+                            checked={showDialogActions}
+                            onChange={(e) => setShowDialogActions(e.target.checked)}
+                            name="actions"
+                        />
+                    }
+                    label="actions"
+                />
             </FormGroup>
             <Button variant="cyan" onClick={() => setOpen(true)}>
                 open Dialog
@@ -70,14 +91,8 @@ export const Dialog = () => {
                     onClose,
                     onSubmit: onContinue,
                 }}
-                cancelButtonProps={{
-                    cancelText: "Discard Changes",
-                    "data-testid": "cancel-button",
-                }}
-                continueButtonProps={{
-                    continueText: "Save",
-                    "data-testid": "save-button",
-                }}
+                cancelButtonProps={cancelButtonProps}
+                continueButtonProps={continueButtonProps}
             >
                 <div>
                     <Select

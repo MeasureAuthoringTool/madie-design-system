@@ -29,6 +29,52 @@ const DraggablePaper = (props) => {
     );
 };
 
+const Actions = ({onClose, cancelButtonProps, continueButtonProps}) => {
+    const {cancelText, cancelIcon, ...otherCancelButtonProps} =
+        cancelButtonProps;
+    const {continueText, continueIcon, ...otherContinueButtonProps} =
+        continueButtonProps;
+    return (
+        <>
+            <Divider sx={{ borderColor: "#8c8c8c" }} />
+            <DialogActions
+                sx={{
+                    padding: "16px",
+                    "& >:not(:first-of-type)": {
+                        marginLeft: "16px",
+                    },
+                }}
+            >
+                {cancelButtonProps && (
+                    <Button
+                        variant="secondary"
+                        onClick={onClose}
+                        {...otherCancelButtonProps}
+                    >
+                        <span>
+                            {cancelText}
+                            {cancelIcon}
+                        </span>
+                    </Button>
+                )}
+                {continueButtonProps && (
+                    <Button
+                        className="qpp-c-button--cyan"
+                        type="submit"
+                        style={{marginTop: 0}}
+                        {...otherContinueButtonProps}
+                    >
+                        <span>
+                            {continueText}
+                            {continueIcon}
+                        </span>
+                    </Button>
+                )}
+            </DialogActions>
+        </>
+    )
+}
+
 const MadieDialog = ({
     /*
         Lets make a reusable component
@@ -66,10 +112,6 @@ const MadieDialog = ({
         showRequiredFieldMessage,
         ...otherDialogProps
     } = dialogProps;
-    const { cancelText, cancelIcon, ...otherCancelButtonProps } =
-        cancelButtonProps;
-    const { continueText, continueIcon, ...otherContinueButonProps } =
-        continueButtonProps;
 
     return (
         <Dialog
@@ -192,37 +234,13 @@ const MadieDialog = ({
 
                         {children}
                     </DialogContent>
-                    <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogActions
-                        sx={{
-                            padding: "16px",
-                            "& >:not(:first-of-type)": {
-                                marginLeft: "16px",
-                            },
-                        }}
-                    >
-                        <Button
-                            variant="secondary"
-                            onClick={onClose}
-                            {...otherCancelButtonProps}
-                        >
-                            <span>
-                                {cancelText}
-                                {cancelIcon}
-                            </span>
-                        </Button>
-                        <Button
-                            className="qpp-c-button--cyan"
-                            type="submit"
-                            style={{ marginTop: 0 }}
-                            {...otherContinueButonProps}
-                        >
-                            <span>
-                                {continueText}
-                                {continueIcon}
-                            </span>
-                        </Button>
-                    </DialogActions>
+                    {(cancelButtonProps || continueButtonProps) && (
+                        <Actions
+                            onClose={onClose}
+                            continueButtonProps={continueButtonProps}
+                            cancelButtonProps={cancelButtonProps}
+                        />
+                    )}
                 </form>
             ) : (
                 <>
@@ -259,37 +277,13 @@ const MadieDialog = ({
                     <DialogContent sx={{ padding: "32px" }}>
                         {children}
                     </DialogContent>
-                    <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogActions
-                        sx={{
-                            padding: "16px",
-                            "& >:not(:first-of-type)": {
-                                marginLeft: "16px",
-                            },
-                        }}
-                    >
-                        <Button
-                            variant="secondary"
-                            onClick={onClose}
-                            {...otherCancelButtonProps}
-                        >
-                            <span>
-                                {cancelText}
-                                {cancelIcon}
-                            </span>
-                        </Button>
-                        <Button
-                            variant="cyan"
-                            type="submit"
-                            style={{ marginTop: 0 }}
-                            {...otherContinueButonProps}
-                        >
-                            <span>
-                                {continueText}
-                                {continueIcon}
-                            </span>
-                        </Button>
-                    </DialogActions>
+                    {(cancelButtonProps || continueButtonProps) && (
+                        <Actions
+                            onClose={onClose}
+                            continueButtonProps={continueButtonProps}
+                            cancelButtonProps={cancelButtonProps}
+                        />
+                    )}
                 </>
             )}
         </Dialog>
@@ -310,4 +304,9 @@ DraggablePaper.propTypes = {
     children: PropTypes.object,
 };
 
+Actions.propTypes = {
+    onClose: PropTypes.any,
+    cancelButtonProps: PropTypes.object,
+    continueButtonProps: PropTypes.object,
+}
 export default MadieDialog;
