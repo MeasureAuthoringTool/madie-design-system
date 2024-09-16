@@ -21,15 +21,6 @@ Wrapper.propTypes = {
     children: PropTypes.node,
 };
 
-const searchInputProps = {
-    input: {
-        startAdornment: (
-            <InputAdornment position="start">
-                <SearchIcon />
-            </InputAdornment>
-        ),
-    }
-};
 export const Textfield = () => (
     <Wrapper>
         <TextField
