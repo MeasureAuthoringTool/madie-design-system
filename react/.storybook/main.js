@@ -1,11 +1,9 @@
 module.exports = {
-    core: {
-        builder: "webpack5",
-    },
     stories: [
-        "../components/**/*.stories.@(js|jsx|mdx)",
-        "../lib/**/*.stories.@(js|jsx|mdx)",
+        "../components/**/*.@(mdx|stories.@(js|jsx))",
+        "../lib/**/*.@(mdx|stories.@(js|jsx))"
     ],
+
     addons: [
         "@storybook/addon-actions",
         "@storybook/addon-links",
@@ -16,7 +14,9 @@ module.exports = {
         "@storybook/addon-backgrounds",
         "@storybook/addon-viewport",
         "@storybook/addon-postcss",
+        "@storybook/addon-webpack5-compiler-babel"
     ],
+
     webpackFinal: async (config) => {
         // do mutation to the config
 
@@ -42,4 +42,15 @@ module.exports = {
 
         return config;
     },
+
+    framework: {
+        name: "@storybook/react-webpack5",
+        options: {}
+    },
+
+    docs: {},
+
+    typescript: {
+        reactDocgen: "react-docgen-typescript"
+    }
 };

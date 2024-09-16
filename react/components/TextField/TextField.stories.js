@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withKnobs } from "@storybook/addon-knobs";
 import TextField from "./index";
-import { FormHelperText } from "@mui/material";
+import {FormHelperText, IconButton, InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import ClearIcon from "@mui/icons-material/Clear";
 export default {
     title: "TextField",
     component: TextField,
@@ -18,6 +20,7 @@ Wrapper.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
 };
+
 export const Textfield = () => (
     <Wrapper>
         <TextField
@@ -151,4 +154,37 @@ export const VariedHeights = () => (
             />
         </div>
     </div>
+);
+
+
+export const WithLeftAndRightIcon = () => (
+    <Wrapper>
+        <TextField
+            id="search"
+            tw="w-full"
+            label="Search"
+            placeholder="Search"
+            inputProps={{
+                "data-testid": "test-case-list-search-input",
+            }}
+            data-testid="test-case-list-search"
+            slotProps={{
+                input: {
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon />
+                        </InputAdornment>
+                    ),
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <IconButton onClick="">
+                                <ClearIcon />
+                            </IconButton>
+                        </InputAdornment>
+                    ),
+                },
+            }}
+            name="test-case-list-search"
+        />
+    </Wrapper>
 );

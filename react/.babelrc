@@ -1,4 +1,4 @@
 {
     "presets": ["@babel/preset-react", "@babel/preset-env"],
-    "plugins": ["transform-es2015-modules-umd", "transform-class-properties"]
+    "plugins": ["@babel/plugin-transform-modules-umd", "@babel/plugin-transform-class-properties"]
 }
