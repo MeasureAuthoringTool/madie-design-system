@@ -77,10 +77,10 @@ const DateField = ({
                             InputProps["aria-required"] = required;
                             return {
                                 id: id,
+                                label,
                                 sx: { ...dateTextFieldStyle, ...textFieldSx },
                                 value: value ? dayjs.utc(value) : null,
                                 onChange: handleDateChange,
-                                label,
                                 //...rest,
                                 error: error,
                                 helperText: helperText,

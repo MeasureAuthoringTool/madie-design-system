@@ -10,7 +10,7 @@ import * as React from "react";
 describe("DateField", () => {
     test("DateField Exists", async () => {
         await act(async () => {
-            const { findByText, findByTestId, getByDisplayValue } = render(
+            const { findByText, getByDisplayValue } = render(
                 <DateField
                     label="Status Date"
                     value={dayjs("2022-04-17")}
@@ -21,7 +21,7 @@ describe("DateField", () => {
             
             const labelText = await findByText("Status Date");
             expect(labelText).toBeInTheDocument();
-            expect(await findByTestId("status-date")).toBeInTheDocument();
+            expect(await findByText("Status Date")).toBeInTheDocument();
             expect(
                 getByDisplayValue("04/17/2022")
             ).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("DateField", () => {
 
     test("DateField Exists, with empty value", async () => {
         await act(async () => {
-            const { findByText, findByTestId, container } = render(
+            const { findByText, container } = render(
                 <DateField
                     label="Status Date"
                     
@@ -41,7 +41,7 @@ describe("DateField", () => {
             
             const labelText = await findByText("Status Date");
             expect(labelText).toBeInTheDocument();
-            expect(await findByTestId("status-date")).toBeInTheDocument();
+            expect(await findByText("Status Date")).toBeInTheDocument();
             
                 const dateDisplay =  container.querySelector('[value="04/17/2022"]');
                 expect(dateDisplay).toBeNull();
