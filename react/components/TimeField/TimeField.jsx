@@ -7,7 +7,7 @@ import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 
 const timeFieldStyle = {
-    width: "134px",
+    width: "170px",
     height: 40,
     marginTop: "8px",
     "& .MuiOutlinedInput-notchedOutline": {
