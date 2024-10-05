@@ -188,3 +188,17 @@ export const WithLeftAndRightIcon = () => (
         />
     </Wrapper>
 );
+
+export const TextfieldDifferentLabel = () => (
+    <Wrapper>
+        <TextField
+            placeholder="Placeholder"
+            label="Text Label with different color"
+            labelColor={"#1976d2"}
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+        />
+    </Wrapper>
+);

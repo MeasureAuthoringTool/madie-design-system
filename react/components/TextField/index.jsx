@@ -17,6 +17,7 @@ const TextField = ({
     label,
     tooltipText,
     inputProps,
+    labelColor = undefined,
     ...rest
 }) => {
     // get a copy of input props
@@ -70,7 +71,13 @@ const TextField = ({
                             fontFamily: "Rubik",
                             fontWeight: 500,
                             fontSize: 14,
-                            color: "#333",
+                            color: () => {
+                                if (labelColor) {
+                                    return labelColor;
+                                } else {
+                                    return "#333";
+                                }
+                            },
                             "& .MuiInputLabel-asterisk": {
                                 color: "#AE1C1C !important",
                                 marginRight: "3px !important", //this was
@@ -181,5 +188,6 @@ TextField.propTypes = {
     label: PropTypes.string,
     tooltipText: PropTypes.string,
     inputProps: PropTypes.object,
+    labelColor: PropTypes.string,
 };
 export default TextField;
