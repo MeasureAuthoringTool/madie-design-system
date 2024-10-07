@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TextField from "../TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -54,6 +55,7 @@ const Instant = ({
     error = false,
     helperText,
     datePickerProps = {},
+    onBlur, 
     ...rest
 }) => {
     const textFieldStyles = {
@@ -134,7 +136,7 @@ const Instant = ({
                             }
                             onChange={onDateChange}
                             disabled={disabled}
-                            onClose={() => rest?.onBlur ? onBlur() : undefined}
+                            onClose={() => onBlur ? onBlur() : undefined}
                             slotProps={{
                                 textField: (params) => {
                                     const { InputProps } = params;
@@ -153,7 +155,7 @@ const Instant = ({
                                         onChange: onDateChange,
                                         error,
                                         helperText: helperText,
-                                        onBlur: rest?.onBlur,
+                                        onBlur: onBlur,
                                         ...rest,
                                     };
                                 },
@@ -232,5 +234,21 @@ const Instant = ({
         </FormControl>
     );
 };
+
+Instant.propTypes = {
+    id: PropTypes.string,
+    placeholder: PropTypes.string,
+    disabled: PropTypes.bool,
+    required: PropTypes.bool,
+    dateTimeValue: PropTypes.any,
+    handleDateTimeChange: PropTypes.function,
+    textFieldSx: PropTypes.any,
+    dateFieldSx: PropTypes.any,
+    error: PropTypes.bool,
+    helperText: PropTypes.string,
+    datePickerProps: PropTypes.any,
+    onBlur: PropTypes.any
+};
+
 
 export default Instant;
