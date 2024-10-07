@@ -9,6 +9,7 @@ import DateField from "./DateField/DateField";
 import DateTimeField from "./DateTimeField/DateTimeField";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
+import Instant from "./Instant";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
 import MadieAlert from "./MadieAlert";
@@ -137,6 +138,7 @@ export {
     InputLabel,
     Icons,
     Infotip,
+    Instant,
     Modal,
     MadieAlert,
     MadieDialog,

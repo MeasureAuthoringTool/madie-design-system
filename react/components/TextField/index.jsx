@@ -18,6 +18,7 @@ const TextField = ({
     tooltipText,
     inputProps,
     labelColor = undefined,
+    textFieldStyles = {},
     ...rest
 }) => {
     // get a copy of input props
@@ -40,6 +41,39 @@ const TextField = ({
         }
     }
 
+    const extendedTextFieldStyles = {
+        borderRadius: "3px",
+        border: "none",
+        marginTop: "8px",
+        "& .MuiOutlinedInput-notchedOutline": {
+            borderRadius: "3px",
+            borderColor: "#8C8C8C",
+            "& legend": {
+                width: 0,
+            },
+        },
+        "& .MuiInputBase-root": {
+            height: "auto",
+        },
+        "& .MuiOutlinedInput-root": {
+            "&&": {
+                borderRadius: "3px",
+            },
+        },
+        // input base selector
+        "& .MuiInputBase-input": {
+            color: "#333",
+            fontFamily: "Rubik",
+            fontSize: 14,
+            borderRadius: "3px",
+            padding: "9px 14px",
+            "&::placeholder": {
+                opacity: 1,
+                color: "#717171",
+            },
+        },
+        ...textFieldStyles,
+    };
     return (
         <FormControl fullWidth error={error}>
             <div
@@ -128,45 +162,7 @@ const TextField = ({
                 </FormHelperText>
             )}
             <MUITextField
-                sx={[
-                    {
-                        borderRadius: "3px",
-                        border: "none",
-                        marginTop: "8px",
-                        "& .MuiOutlinedInput-notchedOutline": {
-                            borderRadius: "3px",
-                            borderColor: "#8C8C8C",
-                            "& legend": {
-                                width: 0,
-                            },
-                        },
-                        "& .MuiInputBase-root": {
-                            height: "auto",
-                        },
-                        "& .MuiOutlinedInput-root": {
-                            "&&": {
-                                borderRadius: "3px",
-                            },
-                        },
-                        // input base selector
-                        "& .MuiInputBase-input": {
-                            color: "#333",
-                            fontFamily: "Rubik",
-                            fontSize: 14,
-                            borderRadius: "3px",
-                            padding: "9px 14px",
-                            "&::placeholder": {
-                                opacity: 1,
-                                color: "#717171",
-                            },
-                        },
-                    },
-                    error && {
-                        "& .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "#AE1C1C !important",
-                        },
-                    },
-                ]}
+                sx={extendedTextFieldStyles}
                 label={null}
                 error={error}
                 disabled={disabled}
@@ -180,6 +176,7 @@ const TextField = ({
 
 TextField.propTypes = {
     id: PropTypes.string,
+    textFieldStyles: PropTypes.object,
     error: PropTypes.bool,
     helperText: PropTypes.string,
     required: PropTypes.bool,

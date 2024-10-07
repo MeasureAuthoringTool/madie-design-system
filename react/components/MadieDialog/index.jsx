@@ -29,10 +29,10 @@ const DraggablePaper = (props) => {
     );
 };
 
-const Actions = ({onClose, cancelButtonProps, continueButtonProps}) => {
-    const {cancelText, cancelIcon, ...otherCancelButtonProps} =
+const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
+    const { cancelText, cancelIcon, ...otherCancelButtonProps } =
         cancelButtonProps;
-    const {continueText, continueIcon, ...otherContinueButtonProps} =
+    const { continueText, continueIcon, ...otherContinueButtonProps } =
         continueButtonProps;
     return (
         <>
@@ -61,7 +61,7 @@ const Actions = ({onClose, cancelButtonProps, continueButtonProps}) => {
                     <Button
                         className="qpp-c-button--cyan"
                         type="submit"
-                        style={{marginTop: 0}}
+                        style={{ marginTop: 0 }}
                         {...otherContinueButtonProps}
                     >
                         <span>
@@ -72,8 +72,8 @@ const Actions = ({onClose, cancelButtonProps, continueButtonProps}) => {
                 )}
             </DialogActions>
         </>
-    )
-}
+    );
+};
 
 const MadieDialog = ({
     /*
@@ -308,5 +308,5 @@ Actions.propTypes = {
     onClose: PropTypes.any,
     cancelButtonProps: PropTypes.object,
     continueButtonProps: PropTypes.object,
-}
+};
 export default MadieDialog;

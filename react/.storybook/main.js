@@ -40,6 +40,12 @@ module.exports = {
             ],
         });
 
+        config.watchOptions = {
+            aggregateTimeout: 300, // Delay before rebuilding after the first change
+            poll: 1000,            // Check for changes every second
+            ignored: /node_modules/, // Ignore node_modules to improve performance
+        };
+
         return config;
     },
 
