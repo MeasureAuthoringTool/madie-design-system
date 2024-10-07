@@ -80,18 +80,19 @@ module.exports = {
         libraryTarget: "umd",
         globalObject: "this",
     },
-    watch: true,
-    watchOptions: {
-        ignored: /node_modules/, // Don't watch files in node_modules
-        aggregateTimeout: 300,
-        poll: 1000, 
-      },
-      devServer: {
-        // static: path.join(__dirname, "dist/react"),
-        // compress: true,
-        hot: true, // Enable hot module replacement
-        watchFiles: ["src/**/*", "components/**/*"], // Watch these files
-    },
+    // below lines fix hot reload but put CI/CD into a hanging state
+    // watch: true,
+    // watchOptions: {
+    //     ignored: /node_modules/, // Don't watch files in node_modules
+    //     aggregateTimeout: 300,
+    //     poll: 1000, 
+    //   },
+    //   devServer: {
+    //     // static: path.join(__dirname, "dist/react"),
+    //     // compress: true,
+    //     hot: true, // Enable hot module replacement
+    //     watchFiles: ["src/**/*", "components/**/*"], // Watch these files
+    // },
     devtool: "source-map",
     module: _module,
     plugins,
