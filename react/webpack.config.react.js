@@ -83,13 +83,12 @@ module.exports = {
     watch: true,
     watchOptions: {
         ignored: /node_modules/, // Don't watch files in node_modules
-        aggregateTimeout: 300, // Delay before rebuilding after the first change (in ms)
-        poll: 1000, // Check for changes every second (useful for environments that don't notify changes)
+        aggregateTimeout: 300,
+        poll: 1000, 
       },
       devServer: {
         // static: path.join(__dirname, "dist/react"),
         // compress: true,
-        // port: 3000, // Set the desired port
         hot: true, // Enable hot module replacement
         watchFiles: ["src/**/*", "components/**/*"], // Watch these files
     },
