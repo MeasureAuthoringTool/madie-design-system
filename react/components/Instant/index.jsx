@@ -107,16 +107,15 @@ const Instant = ({
         }
     };
     const onDateChange = (newDate) => {
-        if (isNaN(newDate)){
-            return
-        }
-        if (dateTimeValue){
-            const updatedDate = dayjs.utc(newDate);
-            handleDateTimeChange(formatDateTime(updatedDate));
-        } 
-        else {
-            const updatedDate = newDate.utc(newDate);
-            handleDateTimeChange(formatDateTime(updatedDate));
+        if (!isNaN(newDate)){
+            if (dateTimeValue){
+                const updatedDate = dayjs.utc(newDate);
+                handleDateTimeChange(formatDateTime(updatedDate));
+            } 
+            else {
+                const updatedDate = newDate.utc(newDate);
+                handleDateTimeChange(formatDateTime(updatedDate));
+            }
         }
     }
     return (
@@ -167,10 +166,9 @@ const Instant = ({
                             slots={{ textField: TextField }}
                         />
                     </Box>
-
                     <TextField
-                        id={`${id}-hour-input`}
-                        data-testid={`${id}-hour-input`}
+                        id={`${id}-hour`}
+                        data-testid={`${id}-hour`}
                         value={dateTimeValue ? dayjs.utc(dateTimeValue).hour() : 0}
                         onChange={handleHoursChange}
                         label="Hr"
@@ -184,8 +182,8 @@ const Instant = ({
                         required={required}
                     />
                     <TextField
-                        id={`${id}-minute-input`}
-                        data-testid={`${id}-minute-input`}
+                        id={`${id}-minute`}
+                        data-testid={`${id}-minute`}
                         value={dateTimeValue ? dayjs.utc(dateTimeValue).minute() : 0}
                         onChange={handleMinutesChange}
                         label="Min"
@@ -199,8 +197,8 @@ const Instant = ({
                         required={required}
                     />
                     <TextField
-                        id={`${id}-second-input`}
-                        data-testid={`${id}-second-input`}
+                        id={`${id}-second`}
+                        data-testid={`${id}-second`}
                         value={dateTimeValue ? dayjs.utc(dateTimeValue).second() : 0}
                         onChange={handleSecondsChange}
                         label="Sec"
@@ -214,8 +212,8 @@ const Instant = ({
                         required={required}
                     />
                     <TextField
-                        id={`${id}-millisecond-input`}
-                        data-testid={`${id}-millisecond-input`}
+                        id={`${id}-millisecond`}
+                        data-testid={`${id}-millisecond`}
                         value={dateTimeValue ? dayjs.utc(dateTimeValue).millisecond() : 0}
                         onChange={handleMillisecondsChange}
                         label="MS"
