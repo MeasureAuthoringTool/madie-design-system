@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withKnobs } from "@storybook/addon-knobs";
 import TextField from "./index";
-import {FormHelperText, IconButton, InputAdornment} from "@mui/material";
+import { FormHelperText, IconButton, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 export default {
@@ -155,7 +155,6 @@ export const VariedHeights = () => (
         </div>
     </div>
 );
-
 
 export const WithLeftAndRightIcon = () => (
     <Wrapper>

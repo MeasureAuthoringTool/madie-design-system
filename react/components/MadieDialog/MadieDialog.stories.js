@@ -36,14 +36,18 @@ export const Dialog = () => {
     const [required, setRequired] = useState(false);
     const [showDialogActions, setShowDialogActions] = useState(false);
 
-    const cancelButtonProps = showDialogActions? {
-        cancelText: "Discard Changes",
-        "data-testid": "cancel-button",
-    }: undefined;
-    const continueButtonProps = showDialogActions? {
-        continueText: "Save",
-        "data-testid": "save-button",
-    }: undefined;
+    const cancelButtonProps = showDialogActions
+        ? {
+              cancelText: "Discard Changes",
+              "data-testid": "cancel-button",
+          }
+        : undefined;
+    const continueButtonProps = showDialogActions
+        ? {
+              continueText: "Save",
+              "data-testid": "save-button",
+          }
+        : undefined;
 
     return (
         <div className="qpp-u-padding--16" style={{ width: 300 }}>
@@ -72,7 +76,9 @@ export const Dialog = () => {
                     control={
                         <Switch
                             checked={showDialogActions}
-                            onChange={(e) => setShowDialogActions(e.target.checked)}
+                            onChange={(e) =>
+                                setShowDialogActions(e.target.checked)
+                            }
                             name="actions"
                         />
                     }

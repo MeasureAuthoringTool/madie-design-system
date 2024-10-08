@@ -43,7 +43,7 @@ export const dateTimeTextFieldStyle = {
     },
     "& .MuiInputBase-root": {
         height: "40px",
-    }
+    },
 };
 
 const DateTimeField = ({
