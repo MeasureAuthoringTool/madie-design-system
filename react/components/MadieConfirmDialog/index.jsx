@@ -35,7 +35,7 @@ const MadieConfirmDialog = ({
             onClick: onContinue,
         }}
     >
-        <div id="delete-dialog-body">
+        <div id="confirm-dialog-body">
             <section className="dialog-warning-body">
                 <p>
                     Are you sure you want to{" "}
