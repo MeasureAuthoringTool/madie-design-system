@@ -7,6 +7,7 @@ const MadieConfirmDialog = ({
     open,
     onClose,
     onContinue,
+    action,
     warning,
     ...otherDialogProps
 }) => (
@@ -15,7 +16,7 @@ const MadieConfirmDialog = ({
         dialogProps={{
             open: open,
             onClose,
-            "data-testid": "confirm-dialog",
+            "data-testid": `${action}-dialog`,
         }}
         cancelButtonProps={{
             variant: "secondary",
@@ -23,12 +24,12 @@ const MadieConfirmDialog = ({
             cancelText: otherDialogProps.cancelText
                 ? otherDialogProps.cancelText
                 : "Cancel",
-            "data-testid": "confirm-dialog-cancel-button",
+            "data-testid": `${action}-dialog-cancel-button`,
         }}
         continueButtonProps={{
             variant: "danger-primary",
             type: "submit",
-            "data-testid": "confirm-dialog-continue-button",
+            "data-testid": `${action}-dialog-continue-button`,
             continueText: otherDialogProps.continueText
                 ? otherDialogProps.continueText
                 : "Continue",
@@ -37,6 +38,9 @@ const MadieConfirmDialog = ({
     >
         <div id="confirm-dialog-body">
             <section className="dialog-warning-body">
+                {action?.includes("discard") && (
+                    <p>You have unsaved changes.</p>
+                )}
                 <p>
                     Are you sure you want to{" "}
                     <span className="strong">{otherDialogProps.name}</span>?
@@ -49,11 +53,11 @@ const MadieConfirmDialog = ({
         </div>
     </MadieDialog>
 );
-
 MadieConfirmDialog.propTypes = {
     open: PropTypes.bool,
     onClose: PropTypes.func,
     onContinue: PropTypes.func,
+    action: PropTypes.string,
     warning: PropTypes.string,
 };
 

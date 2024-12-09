@@ -28,11 +28,47 @@ export const ConfirmDialog = () => {
         setOpen(false);
     };
 
+    const [openDiscardDialog, setOpenDiscardDialog] = useState(false);
+    const onDiscardDialogClose = () => {
+        setOpenDiscardDialog(false);
+    };
+    const onDiscardDialogContinue = () => {
+        setOpenDiscardDialog(false);
+    };
+
+    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+    const onDeleteDialogClose = () => {
+        setOpenDeleteDialog(false);
+    };
+    const onDeleteDialogContinue = () => {
+        setOpenDeleteDialog(false);
+    };
+
     return (
         <div className="qpp-u-padding--16" style={{ width: 300 }}>
-            <Button variant="cyan" onClick={() => setOpen(true)}>
-                open Dialog
-            </Button>
+            <p>
+                <Button variant="cyan" onClick={() => setOpen(true)}>
+                    open Confirm Dialog
+                </Button>
+            </p>
+            <p>
+                <Button
+                    variant="cyan"
+                    onClick={() => setOpenDiscardDialog(true)}
+                >
+                    open Discard Dialog
+                </Button>
+            </p>
+            <p>
+                <Button
+                    variant="cyan"
+                    onClick={() => {
+                        setOpenDeleteDialog(true);
+                    }}
+                >
+                    open Delete Dialog
+                </Button>
+            </p>
             <MadieConfirmDialog
                 open={open}
                 onContinue={onContinue}
@@ -40,6 +76,32 @@ export const ConfirmDialog = () => {
                 warning="You are about to Sign Out from UMLS. You will need to enter your UMLS API key to log back in."
                 dialogTitle="Are you sure?"
                 name="log out of UMLS"
+                action="confirm"
+            />
+            <MadieConfirmDialog
+                open={openDiscardDialog}
+                onContinue={onDiscardDialogContinue}
+                onClose={onDiscardDialogClose}
+                warning="This Action cannot be undone."
+                dialogTitle="Discard Changes"
+                name="discard your changes"
+                action="discard"
+                otherDialogProps={{
+                    continueText: "Yes, Discard All Changes",
+                    cancelText: "No, Keep Working",
+                }}
+            />
+            <MadieConfirmDialog
+                open={openDeleteDialog}
+                onContinue={onDeleteDialogContinue}
+                onClose={onDeleteDialogClose}
+                warning="This Action cannot be undone."
+                dialogTitle="Are You Sure"
+                name="delete this Definition"
+                action="delete"
+                otherDialogProps={{
+                    continueText: "Yes, Delete",
+                }}
             />
         </div>
     );
