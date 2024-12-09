@@ -45,10 +45,8 @@ const DialogTesterForDiscard = () => {
                 action="discard"
                 dialogTitle="Discard Changes"
                 name="discard your changes"
-                otherDialogProps={{
-                    continueText: "Yes, Discard All Changes",
-                    cancelText: "No, Keep Working",
-                }}
+                continueText= "Yes, Discard All Changes"
+                cancelText="No, Keep Working"
             />
         </div>
     );
@@ -71,9 +69,7 @@ const DialogTesterForDelete = () => {
                 action="delete"
                 dialogTitle="Are You Sure"
                 name="delete this Definition"
-                otherDialogProps={{
-                    continueText: "Yes, Delete",
-                }}
+                continueText="Yes, Delete"
             />
         </div>
     );

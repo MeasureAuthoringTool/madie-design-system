@@ -86,10 +86,8 @@ export const ConfirmDialog = () => {
                 dialogTitle="Discard Changes"
                 name="discard your changes"
                 action="discard"
-                otherDialogProps={{
-                    continueText: "Yes, Discard All Changes",
-                    cancelText: "No, Keep Working",
-                }}
+                continueText="Yes, Discard All Changes"
+                cancelText="No, Keep Working"
             />
             <MadieConfirmDialog
                 open={openDeleteDialog}
@@ -99,9 +97,7 @@ export const ConfirmDialog = () => {
                 dialogTitle="Are You Sure"
                 name="delete this Definition"
                 action="delete"
-                otherDialogProps={{
-                    continueText: "Yes, Delete",
-                }}
+                continueText="Yes, Delete"
             />
         </div>
     );
