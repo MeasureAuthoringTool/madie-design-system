@@ -16,6 +16,7 @@ import MadieAlert from "./MadieAlert";
 import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
+import MadieConfirmDialog from "./MadieConfirmDialog";
 import MadieSpinner from "./MadieSpinner";
 import MadieTooltip from "./MadieTooltip";
 import MadieTooltipIcon from "./MadieTooltipIcon";
@@ -144,6 +145,7 @@ export {
     MadieDialog,
     MadieDiscardDialog,
     MadieDeleteDialog,
+    MadieConfirmDialog,
     MadieSpinner,
     MadieTooltipIcon,
     MadieTooltip,
