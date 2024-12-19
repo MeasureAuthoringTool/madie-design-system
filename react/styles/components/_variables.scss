@@ -86,7 +86,7 @@ $border-radius-large: 4px;
 $border-radius-small: 4px;
 // ============================================================================= FONTS SETUP
 $font-size-base: 16px;
-$font-family-base: Rubik, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$font-family-base: Rubik, Arial, "Helvetica Neue", Helvetica, sans-serif;
 
 // ============================================================================= TEXT
 $color-text-main: $color-gray-darker;
@@ -134,22 +134,22 @@ $rubik-bold: 700;
 // Text style based on https://confluence.cms.gov/pages/viewpage.action?spaceKey=QPPPRACTICE&title=Design+Specifications
 // Structure: (font-size(desktop), font-size(mobile), line-height(desktop), line-height(mobile), font-weight)
 $headings: (
-  (44, 32, 48, 38, $rubik-regular),
-  (32, 26, 38, 30, $rubik-regular),
-  (24, 20, 29, 24, $rubik-medium),
-  (18, 18, 22, 22, $rubik-medium),
-  (16, 16, 21, 21, $rubik-medium),
-  (14, 14, 19, 19, $rubik-medium)
+	(44, 32, 48, 38, $rubik-regular),
+	(32, 26, 38, 30, $rubik-regular),
+	(24, 20, 29, 24, $rubik-medium),
+	(18, 18, 22, 22, $rubik-medium),
+	(16, 16, 21, 21, $rubik-medium),
+	(14, 14, 19, 19, $rubik-medium)
 );
 
 // Structure: (Desktop (px), Tablet(px), Mobile(px), Font Weight, Transform)
 $content-headings: (
-  (56, 34, 34, $rubik-light, initial),
-  (46, 28, 28, $rubik-light, initial),
-  (36, 24, 24, $rubik-regular, initial),
-  (30, 20, 20, $rubik-medium, initial),
-  (24, 18, 18, $rubik-medium, initial),
-  (18, 18, 16, $rubik-bold, uppercase)
+	(56, 34, 34, $rubik-light, initial),
+	(46, 28, 28, $rubik-light, initial),
+	(36, 24, 24, $rubik-regular, initial),
+	(30, 20, 20, $rubik-medium, initial),
+	(24, 18, 18, $rubik-medium, initial),
+	(18, 18, 16, $rubik-bold, uppercase)
 );
 // ============================================================================= SCREEN SIZE
 $screen-sm: 768px;

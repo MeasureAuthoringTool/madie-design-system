@@ -24,7 +24,9 @@ describe("DateTimeField", () => {
 
             const labelText = await findByText("Active Date/Time");
             expect(labelText).toBeInTheDocument();
-            expect(await findByTestId("active-date-time-input")).toBeInTheDocument();
+            expect(
+                await findByTestId("active-date-time-input")
+            ).toBeInTheDocument();
             expect(
                 getByDisplayValue("04/17/2022 03:30 PM")
             ).toBeInTheDocument();

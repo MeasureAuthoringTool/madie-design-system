@@ -7,13 +7,13 @@ CMS specific styles
 		padding: 25px 25px 0;
 
 		.quality-title {
-			@include typography('Rubik', 14px, 16px, $color-white);
+			@include typography("Rubik", 14px, 16px, $color-white);
 			font-weight: 500;
 			text-transform: uppercase;
 		}
 
 		.quality-subtitle {
-			@include typography('Rubik', 14px, 16px, $color-white);
+			@include typography("Rubik", 14px, 16px, $color-white);
 			padding: 10px 0 0;
 		}
 	}
@@ -26,7 +26,7 @@ CMS specific styles
 		.completed,
 		.trial-period {
 			@include typography(
-				'Rubik',
+				"Rubik",
 				14px,
 				20px,
 				transparentize($color-white, 0.2)
@@ -34,13 +34,13 @@ CMS specific styles
 
 			& span {
 				color: $color-white;
-				font-family: 'Rubik', sans-serif;
+				font-family: "Rubik", sans-serif;
 				font-weight: 500;
 			}
 		}
 
 		a.button {
-			@include typography('Rubik', 14px, 20px, $color-teal-light);
+			@include typography("Rubik", 14px, 20px, $color-teal-light);
 			background: transparent;
 			border: 2px solid $color-teal-light;
 			border-radius: 28px;

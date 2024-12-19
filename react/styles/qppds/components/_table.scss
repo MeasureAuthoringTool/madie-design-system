@@ -1,139 +1,139 @@
-@import '../settings/index';
+@import "../settings/index";
 
 $table-margin: 0;
 
 .qpp-c-table {
-  color: $gray-80;
-  box-sizing: border-box;
+	color: $gray-80;
+	box-sizing: border-box;
 
-  &::after,
-  &::before {
-    box-sizing: inherit;
-  }
+	&::after,
+	&::before {
+		box-sizing: inherit;
+	}
 
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 
-  font-family: $font-rubik;
-  font-size: $font-size-16;
-  font-weight: $font-regular;
-  line-height: $line-height-lg;
-  margin: $table-margin;
+	font-family: $font-rubik;
+	font-size: $font-size-16;
+	font-weight: $font-regular;
+	line-height: $line-height-lg;
+	margin: $table-margin;
 
-  thead {
-    th,
-    td {
-      background-color: $gray-04;
-    }
-  }
+	thead {
+		th,
+		td {
+			background-color: $gray-04;
+		}
+	}
 
-  th {
-    font-weight: $font-medium;
-  }
+	th {
+		font-weight: $font-medium;
+	}
 
-  td {
-    font-weight: $font-regular;
-  }
+	td {
+		font-weight: $font-regular;
+	}
 
-  th,
-  td {
-    border-bottom: rem(1px) solid $gray-10;
-    background-color: $white;
-    padding: $spacing-16 $spacing-12;
-    text-align: left;
-    vertical-align: top;
-  }
+	th,
+	td {
+		border-bottom: rem(1px) solid $gray-10;
+		background-color: $white;
+		padding: $spacing-16 $spacing-12;
+		text-align: left;
+		vertical-align: top;
+	}
 
-  th:first-child,
-  td:first-child {
-    padding-left: $spacing-16;
-  }
+	th:first-child,
+	td:first-child {
+		padding-left: $spacing-16;
+	}
 
-  th:last-child,
-  td:last-child {
-    padding-right: $spacing-16;
-  }
+	th:last-child,
+	td:last-child {
+		padding-right: $spacing-16;
+	}
 
-  caption {
-    background-color: $blue-80;
-    color: $white;
-    font-size: $font-size-20;
-    font-weight: $font-regular;
-    padding: $spacing-16;
-    text-align: left;
-  }
+	caption {
+		background-color: $blue-80;
+		color: $white;
+		font-size: $font-size-20;
+		font-weight: $font-regular;
+		padding: $spacing-16;
+		text-align: left;
+	}
 
-  ol,
-  ul {
-    margin: $spacing-8 0;
-  }
+	ol,
+	ul {
+		margin: $spacing-8 0;
+	}
 
-  @include media-breakpoint(xs) {
-    th:first-child,
-    td:first-child {
-      padding-left: $spacing-40;
-    }
+	@include media-breakpoint(xs) {
+		th:first-child,
+		td:first-child {
+			padding-left: $spacing-40;
+		}
 
-    th:last-child,
-    td:last-child {
-      padding-right: $spacing-40;
-    }
+		th:last-child,
+		td:last-child {
+			padding-right: $spacing-40;
+		}
 
-    caption {
-      padding: $spacing-24 $spacing-40;
-    }
-  }
+		caption {
+			padding: $spacing-24 $spacing-40;
+		}
+	}
 
-  &--secondary {
-    caption {
-      background-color: $gray-04;
-      color: $gray-90;
-      border-bottom: rem(1px) solid $gray-10;
+	&--secondary {
+		caption {
+			background-color: $gray-04;
+			color: $gray-90;
+			border-bottom: rem(1px) solid $gray-10;
 
-      @include media-breakpoint(xs) {
-        padding: $spacing-16 $spacing-40;
-      }
-    }
-  }
+			@include media-breakpoint(xs) {
+				padding: $spacing-16 $spacing-40;
+			}
+		}
+	}
 
-  /* stylelint-disable selector-no-qualifying-type */
-  &--stacked {
-    @include at-media-max(xs) {
-      @include table-stacked-styles;
-    }
+	/* stylelint-disable selector-no-qualifying-type */
+	&--stacked {
+		@include at-media-max(xs) {
+			@include table-stacked-styles;
+		}
 
-    @include at-media(xs) {
-      th[data-label] {
-        font-weight: $font-regular;
-      }
-    }
-  }
+		@include at-media(xs) {
+			th[data-label] {
+				font-weight: $font-regular;
+			}
+		}
+	}
 
-  &--stacked-header {
-    @include at-media-max(xs) {
-      @include table-stacked-styles;
-      @include table-stacked-header-styles;
-    }
+	&--stacked-header {
+		@include at-media-max(xs) {
+			@include table-stacked-styles;
+			@include table-stacked-header-styles;
+		}
 
-    @include at-media(xs) {
-      th[data-label] {
-        font-weight: $font-regular;
-      }
-    }
-  }
-  /* stylelint-enable selector-no-qualifying-type */
+		@include at-media(xs) {
+			th[data-label] {
+				font-weight: $font-regular;
+			}
+		}
+	}
+	/* stylelint-enable selector-no-qualifying-type */
 }
 
 .qpp-c-table-container--scrollable {
-  overflow-y: hidden;
-  margin: $table-margin; // swap global margin to container
+	overflow-y: hidden;
+	margin: $table-margin; // swap global margin to container
 
-  .qpp-c-table {
-    margin: 0;
-  }
+	.qpp-c-table {
+		margin: 0;
+	}
 
-  th,
-  td {
-    white-space: nowrap;
-  }
+	th,
+	td {
+		white-space: nowrap;
+	}
 }

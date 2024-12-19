@@ -8,7 +8,7 @@ $detailsMaxHeight: 130px;
 		0% {
 			max-height: $maxHeight;
 		}
-	
+
 		100% {
 			max-height: 0;
 			padding-top: 0;
@@ -22,16 +22,16 @@ $detailsMaxHeight: 130px;
 			padding-top: 0;
 			padding-bottom: 0;
 		}
-	
+
 		100% {
 			max-height: $maxHeight;
 		}
 	}
 }
-@include delayKeyframes('Drawer', $drawerMaxHeight);
-@include delayKeyframes('Simple', $simpleMaxHeight);
-@include delayKeyframes('Chart', $chartMaxHeight);
-@include delayKeyframes('Details', $detailsMaxHeight);
+@include delayKeyframes("Drawer", $drawerMaxHeight);
+@include delayKeyframes("Simple", $simpleMaxHeight);
+@include delayKeyframes("Chart", $chartMaxHeight);
+@include delayKeyframes("Details", $detailsMaxHeight);
 
 .animation-group {
 	transition: opacity 0.5s ease-in-out;
@@ -69,7 +69,7 @@ $detailsMaxHeight: 130px;
 	animation-name: delayAddDetails;
 }
 
-.animation-group-details.animation-group-exit {	
+.animation-group-details.animation-group-exit {
 	animation-name: delayRemoveDetails;
 }
 
@@ -77,7 +77,7 @@ $detailsMaxHeight: 130px;
 	animation-name: delayAddChart;
 }
 
-.animation-group-chart.animation-group-exit {	
+.animation-group-chart.animation-group-exit {
 	animation-name: delayRemoveChart;
 }
 
@@ -86,7 +86,7 @@ $detailsMaxHeight: 130px;
 		animation-name: delayAddDrawer;
 	}
 
-	.animation-group-exit {	
+	.animation-group-exit {
 		animation-name: delayRemoveDrawer;
 	}
 }

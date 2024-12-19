@@ -68,7 +68,7 @@
 	}
 
 	.chart-tooltip {
-		@include typography('Rubik', 14px, 20px, $color-text-main);
+		@include typography("Rubik", 14px, 20px, $color-text-main);
 		background-color: rgba(255, 255, 255, 0.85);
 		border-radius: 10px;
 		box-shadow: 4px 4px 10px rbga(0, 0, 0, 0.4);
@@ -90,7 +90,7 @@
 		flex-direction: row;
 
 		& button {
-			@include typography('Rubik', 14px, 20px, $color-teal-light);
+			@include typography("Rubik", 14px, 20px, $color-teal-light);
 			cursor: pointer;
 			fill: $color-teal-light;
 			margin: 20px 0;
@@ -119,7 +119,7 @@
 		text-align: left;
 
 		& button {
-			@include typography('Rubik', 14px, 20px, $color-white);
+			@include typography("Rubik", 14px, 20px, $color-white);
 			margin-bottom: 7px;
 		}
 

@@ -1,29 +1,29 @@
 // stylelint-disable length-zero-no-unit
-@import '../functions';
+@import "../functions";
 
 $spacers: (
-  '0': rem(0px),
-  '4': rem(4px),
-  '8': rem(8px),
-  '12': rem(12px),
-  '16': rem(16px),
-  '24': rem(24px),
-  '32': rem(32px),
-  '40': rem(40px),
-  '48': rem(48px),
-  '96': rem(96px)
+	"0": rem(0px),
+	"4": rem(4px),
+	"8": rem(8px),
+	"12": rem(12px),
+	"16": rem(16px),
+	"24": rem(24px),
+	"32": rem(32px),
+	"40": rem(40px),
+	"48": rem(48px),
+	"96": rem(96px),
 );
 
-$spacing-0: map-get($spacers, '0');
-$spacing-4: map-get($spacers, '4');  // deprecated
-$spacing-8: map-get($spacers, '8');
-$spacing-12: map-get($spacers, '12'); // deprecated
-$spacing-16: map-get($spacers, '16');
-$spacing-24: map-get($spacers, '24');
-$spacing-32: map-get($spacers, '32');
-$spacing-40: map-get($spacers, '40');
-$spacing-48: map-get($spacers, '48');
-$spacing-96: map-get($spacers, '96');
+$spacing-0: map-get($spacers, "0");
+$spacing-4: map-get($spacers, "4"); // deprecated
+$spacing-8: map-get($spacers, "8");
+$spacing-12: map-get($spacers, "12"); // deprecated
+$spacing-16: map-get($spacers, "16");
+$spacing-24: map-get($spacers, "24");
+$spacing-32: map-get($spacers, "32");
+$spacing-40: map-get($spacers, "40");
+$spacing-48: map-get($spacers, "48");
+$spacing-96: map-get($spacers, "96");
 
 // Breakpoint widths
 $width-xxs: 0;
@@ -35,33 +35,33 @@ $width-xl: 1400px;
 
 // Breakpoints
 $breakpoints: (
-  xxs: $width-xxs,
-  xs: $width-xs,
-  sm: $width-sm,
-  md: $width-md,
-  lg: $width-lg,
-  xl: $width-xl
+	xxs: $width-xxs,
+	xs: $width-xs,
+	sm: $width-sm,
+	md: $width-md,
+	lg: $width-lg,
+	xl: $width-xl,
 );
 
 // JS Variable Exports
 /* stylelint-disable property-case */
 :export {
-  // spacing variables
-  spacing0: $spacing-0;
-  spacing8: $spacing-8;
-  spacing16: $spacing-16;
-  spacing24: $spacing-24;
-  spacing32: $spacing-32;
-  spacing40: $spacing-40;
-  spacing48: $spacing-48;
-  spacing96: $spacing-96;
+	// spacing variables
+	spacing0: $spacing-0;
+	spacing8: $spacing-8;
+	spacing16: $spacing-16;
+	spacing24: $spacing-24;
+	spacing32: $spacing-32;
+	spacing40: $spacing-40;
+	spacing48: $spacing-48;
+	spacing96: $spacing-96;
 
-  // breakpoints
-  breakpointXXS: $width-xxs;
-  breakpointXS: $width-xs;
-  breakpointSM: $width-sm;
-  breakpointMD: $width-md;
-  breakpointLG: $width-lg;
-  breakpointXL: $width-xl;
+	// breakpoints
+	breakpointXXS: $width-xxs;
+	breakpointXS: $width-xs;
+	breakpointSM: $width-sm;
+	breakpointMD: $width-md;
+	breakpointLG: $width-lg;
+	breakpointXL: $width-xl;
 }
 /* stylelint-enable property-case */

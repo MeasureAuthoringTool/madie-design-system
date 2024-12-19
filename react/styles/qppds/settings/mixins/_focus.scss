@@ -1,28 +1,28 @@
 $none: none;
 
 @mixin focus-ring {
-  border: 1px solid $blue-70;
-  border-radius: 3px;
-  box-shadow: 0 0 0 4px $blue-10;
-  outline: none;
+	border: 1px solid $blue-70;
+	border-radius: 3px;
+	box-shadow: 0 0 0 4px $blue-10;
+	outline: none;
 }
 
 @mixin link-focus {
-  border: 1px solid $blue-70;
-  border-radius: 3px;
-  box-shadow: 0 0 0 4px $blue-10;
-  outline: none;
-  padding: 2px;
-  margin-left: -3px;
-  margin-right: -3px;
+	border: 1px solid $blue-70;
+	border-radius: 3px;
+	box-shadow: 0 0 0 4px $blue-10;
+	outline: none;
+	padding: 2px;
+	margin-left: -3px;
+	margin-right: -3px;
 
-  @media screen and (-ms-high-contrast: $none) {
-    // IE10+ specific styles go here
-    border: 0 solid transparent;
-    border-radius: 0;
-    outline: 1px solid $blue-70;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-  }
+	@media screen and (-ms-high-contrast: $none) {
+		// IE10+ specific styles go here
+		border: 0 solid transparent;
+		border-radius: 0;
+		outline: 1px solid $blue-70;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+	}
 }

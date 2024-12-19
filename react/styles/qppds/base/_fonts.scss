@@ -1,26 +1,26 @@
-@import '../settings/index';
+@import "../settings/index";
 
 @font-face {
-  font-family: Rubik;
-  font-style: normal;
-  font-weight: 300;
-  src: url('#{$font-path}Rubik-Light.ttf');
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 300;
+	src: url("#{$font-path}Rubik-Light.ttf");
 }
 @font-face {
-  font-family: Rubik;
-  font-style: normal;
-  font-weight: 400;
-  src: url('#{$font-path}Rubik-Regular.ttf');
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 400;
+	src: url("#{$font-path}Rubik-Regular.ttf");
 }
 @font-face {
-  font-family: Rubik;
-  font-style: normal;
-  font-weight: 500;
-  src: url('#{$font-path}Rubik-Medium.ttf');
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 500;
+	src: url("#{$font-path}Rubik-Medium.ttf");
 }
 @font-face {
-  font-family: Rubik;
-  font-style: normal;
-  font-weight: 700;
-  src: url('#{$font-path}Rubik-Bold.ttf');
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 700;
+	src: url("#{$font-path}Rubik-Bold.ttf");
 }

@@ -1,40 +1,40 @@
 // stylelint-disable declaration-no-important
-@import '../settings/index.scss';
+@import "../settings/index.scss";
 
 .qpp-u-text-align--center {
-  text-align: center !important;
+	text-align: center !important;
 }
 
 .qpp-u-text-align--left {
-  text-align: left !important;
+	text-align: left !important;
 }
 
 .qpp-u-text-align--right {
-  text-align: right !important;
+	text-align: right !important;
 }
 
 .qpp-u-text-align--justify {
-  text-align: justify !important;
+	text-align: justify !important;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    .qpp-u-#{$breakpoint}-text-align--center {
-      text-align: center !important;
-    }
+	@media (min-width: $viewport) {
+		.qpp-u-#{$breakpoint}-text-align--center {
+			text-align: center !important;
+		}
 
-    .qpp-u-#{$breakpoint}-text-align--left {
-      text-align: left !important;
-    }
+		.qpp-u-#{$breakpoint}-text-align--left {
+			text-align: left !important;
+		}
 
-    .qpp-u-#{$breakpoint}-text-align--right {
-      text-align: right !important;
-    }
+		.qpp-u-#{$breakpoint}-text-align--right {
+			text-align: right !important;
+		}
 
-    .qpp-u-#{$breakpoint}-text-align--justify {
-      text-align: justify !important;
-    }
-  }
+		.qpp-u-#{$breakpoint}-text-align--justify {
+			text-align: justify !important;
+		}
+	}
 }

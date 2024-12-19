@@ -1,136 +1,136 @@
 // stylelint-disable declaration-no-important
-@import '../settings/variables/index';
+@import "../settings/variables/index";
 
 @each $key, $value in $spacers {
-  .qpp-u-margin--#{$key} {
-    margin: #{$value} !important;
-  }
+	.qpp-u-margin--#{$key} {
+		margin: #{$value} !important;
+	}
 
-  .qpp-u-margin-top--#{$key} {
-    margin-top: #{$value} !important;
-  }
+	.qpp-u-margin-top--#{$key} {
+		margin-top: #{$value} !important;
+	}
 
-  .qpp-u-margin-right--#{$key} {
-    margin-right: #{$value} !important;
-  }
+	.qpp-u-margin-right--#{$key} {
+		margin-right: #{$value} !important;
+	}
 
-  .qpp-u-margin-bottom--#{$key} {
-    margin-bottom: #{$value} !important;
-  }
+	.qpp-u-margin-bottom--#{$key} {
+		margin-bottom: #{$value} !important;
+	}
 
-  .qpp-u-margin-left--#{$key} {
-    margin-left: #{$value} !important;
-  }
+	.qpp-u-margin-left--#{$key} {
+		margin-left: #{$value} !important;
+	}
 
-  .qpp-u-margin-x--#{$key} {
-    margin-left: #{$value} !important;
-    margin-right: #{$value} !important;
-  }
+	.qpp-u-margin-x--#{$key} {
+		margin-left: #{$value} !important;
+		margin-right: #{$value} !important;
+	}
 
-  .qpp-u-margin-y--#{$key} {
-    margin-top: #{$value} !important;
-    margin-bottom: #{$value} !important;
-  }
+	.qpp-u-margin-y--#{$key} {
+		margin-top: #{$value} !important;
+		margin-bottom: #{$value} !important;
+	}
 }
 
 .qpp-u-margin--auto {
-  margin: auto !important;
+	margin: auto !important;
 }
 
 .qpp-u-margin-top--auto {
-  margin-top: auto !important;
+	margin-top: auto !important;
 }
 
 .qpp-u-margin-right--auto {
-  margin-right: auto !important;
+	margin-right: auto !important;
 }
 
 .qpp-u-margin-bottom--auto {
-  margin-bottom: auto !important;
+	margin-bottom: auto !important;
 }
 
 .qpp-u-margin-left--auto {
-  margin-left: auto !important;
+	margin-left: auto !important;
 }
 
 .qpp-u-margin-x--auto {
-  margin-left: auto !important;
-  margin-right: auto !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 
 .qpp-u-margin-y--auto {
-  margin-bottom: auto !important;
-  margin-top: auto !important;
+	margin-bottom: auto !important;
+	margin-top: auto !important;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+	$value: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $value) {
-    @each $spacer in map-keys($spacers) {
-      $size: map-get($spacers, $spacer);
+	@media (min-width: $value) {
+		@each $spacer in map-keys($spacers) {
+			$size: map-get($spacers, $spacer);
 
-      // Example: qpp-u-sm-margin--0
-      .qpp-u-#{$breakpoint}-margin--#{$spacer} {
-        // Example: margin: 0 !important;
-        margin: #{$size} !important;
-      }
+			// Example: qpp-u-sm-margin--0
+			.qpp-u-#{$breakpoint}-margin--#{$spacer} {
+				// Example: margin: 0 !important;
+				margin: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-top--#{$spacer} {
-        margin-top: #{$size} !important;
-      }
+			.qpp-u-#{$breakpoint}-margin-top--#{$spacer} {
+				margin-top: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-right--#{$spacer} {
-        margin-right: #{$size} !important;
-      }
+			.qpp-u-#{$breakpoint}-margin-right--#{$spacer} {
+				margin-right: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-bottom--#{$spacer} {
-        margin-bottom: #{$size} !important;
-      }
+			.qpp-u-#{$breakpoint}-margin-bottom--#{$spacer} {
+				margin-bottom: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-left--#{$spacer} {
-        margin-left: #{$size} !important;
-      }
+			.qpp-u-#{$breakpoint}-margin-left--#{$spacer} {
+				margin-left: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-x--#{$spacer} {
-        margin-left: #{$size} !important;
-        margin-right: #{$size} !important;
-      }
+			.qpp-u-#{$breakpoint}-margin-x--#{$spacer} {
+				margin-left: #{$size} !important;
+				margin-right: #{$size} !important;
+			}
 
-      .qpp-u-#{$breakpoint}-margin-y--#{$spacer} {
-        margin-bottom: #{$size} !important;
-        margin-top: #{$size} !important;
-      }
-    }
+			.qpp-u-#{$breakpoint}-margin-y--#{$spacer} {
+				margin-bottom: #{$size} !important;
+				margin-top: #{$size} !important;
+			}
+		}
 
-    .qpp-u-#{$breakpoint}-margin--auto {
-      margin: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin--auto {
+			margin: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-top--auto {
-      margin-top: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin-top--auto {
+			margin-top: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-right--auto {
-      margin-right: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin-right--auto {
+			margin-right: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-bottom--auto {
-      margin-bottom: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin-bottom--auto {
+			margin-bottom: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-left--auto {
-      margin-left: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin-left--auto {
+			margin-left: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-x--auto {
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
+		.qpp-u-#{$breakpoint}-margin-x--auto {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
 
-    .qpp-u-#{$breakpoint}-margin-y--auto {
-      margin-bottom: auto !important;
-      margin-top: auto !important;
-    }
-  }
+		.qpp-u-#{$breakpoint}-margin-y--auto {
+			margin-bottom: auto !important;
+			margin-top: auto !important;
+		}
+	}
 }

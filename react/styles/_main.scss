@@ -1,15 +1,15 @@
 @charset "utf-8";
 
 // TODO: Remove @cmsgov/design-system dependancies from shared package
-$font-path: '~@cmsgov/design-system/dist/fonts';
-$image-path: '~@cmsgov/design-system/dist/images';
+$font-path: "~@cmsgov/design-system/dist/fonts";
+$image-path: "~@cmsgov/design-system/dist/images";
 
-@import '@cmsgov/design-system/dist/scss/index';
+@import "@cmsgov/design-system/dist/scss/index";
 
-@import 'paths';
+@import "paths";
 
-@import 'third-party/legacy-bootstrap';
+@import "third-party/legacy-bootstrap";
 
-@import 'qpp-style';
+@import "qpp-style";
 
-@import 'qppds';
+@import "qppds";

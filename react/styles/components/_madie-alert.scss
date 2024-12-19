@@ -1,74 +1,83 @@
 // alert vars
-$gold-20: #FFC438;
-$performance-blue: #1D6987;
-$red-50: #D92F2F;
-$green-30: #7CB342;
+$gold-20: #ffc438;
+$performance-blue: #1d6987;
+$red-50: #d92f2f;
+$green-30: #7cb342;
 
 .madie-alert {
-    border: solid 1px #fff;
-    border-left-width: 4px;
-    min-height: 54px;
-    padding: 0 8px;
-    color: #333;
-    font-family: Rubik, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    align-items: center;
-    background-color: #FFF;
-    position: relative;
-    &.inactive {
-        display: none;
-    } 
-    > svg {
-        margin-right: 8px;
-    }
-    &.warning {
-        border-color: $gold-20;
-    &:before {
-        background-color: $gold-20;
-    }
-        > svg {
-            color: #DF711C;
-        }
-    }
-    &.info {
-        border-color: $performance-blue;
-        &:before {
-            background-color: $performance-blue;
-        }
-        > svg {
-            color: #125496;
-        }
-    }
-    &.error {
-        border-color: $red-50;
-        &:before {
-            background-color: $red-50;
-        }
-        > svg {
-            color: #AE1C1C;
-        }
-    }
-    &.success {
-        border-color: $green-30;
-        &:before {
-            background-color: $green-30;
-        }
-        > svg {
-            color: #4D7E23;
-        }
-    }
-    #content {
-        > ol, > ul, > li, > p, > a, > h1, > h2, > h3, > h4, > h5 {
-            margin: 0;
-            > li {
-                // get rid of the unnecessary natural list gaps
-                line-height: 1;
-                margin: 0;
-            }
-        }
-    }
+	border: solid 1px #fff;
+	border-left-width: 4px;
+	min-height: 54px;
+	padding: 0 8px;
+	color: #333;
+	font-family: Rubik, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	align-items: center;
+	background-color: #fff;
+	position: relative;
+	&.inactive {
+		display: none;
+	}
+	> svg {
+		margin-right: 8px;
+	}
+	&.warning {
+		border-color: $gold-20;
+		&:before {
+			background-color: $gold-20;
+		}
+		> svg {
+			color: #df711c;
+		}
+	}
+	&.info {
+		border-color: $performance-blue;
+		&:before {
+			background-color: $performance-blue;
+		}
+		> svg {
+			color: #125496;
+		}
+	}
+	&.error {
+		border-color: $red-50;
+		&:before {
+			background-color: $red-50;
+		}
+		> svg {
+			color: #ae1c1c;
+		}
+	}
+	&.success {
+		border-color: $green-30;
+		&:before {
+			background-color: $green-30;
+		}
+		> svg {
+			color: #4d7e23;
+		}
+	}
+	#content {
+		> ol,
+		> ul,
+		> li,
+		> p,
+		> a,
+		> h1,
+		> h2,
+		> h3,
+		> h4,
+		> h5 {
+			margin: 0;
+			> li {
+				// get rid of the unnecessary natural list gaps
+				line-height: 1;
+				margin: 0;
+			}
+		}
+	}
 }

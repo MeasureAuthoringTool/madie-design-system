@@ -4,10 +4,11 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 
 const TruncateText = ({
-                          text,
-                          maxLength = 120,
-                          dataTestId,
-                      }) => {
+    text,
+    maxLength = 120,
+    dataTestId,
+    fontSize = "1rem",
+}) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     if (!text || _.trim(text) === "") {
@@ -19,19 +20,19 @@ const TruncateText = ({
     const displayedText = isExpanded ? text : _.slice(text, 0, maxLength);
 
     return (
-        <div data-testid={`${dataTestId}-content`}>
+        <div data-testid={`${dataTestId}-content`} style={{ fontSize }}>
             <span>{displayedText}</span>
             {text.length > maxLength && (
                 <IconButton
                     onClick={toggleExpanded}
                     data-testid={`${dataTestId}-toggle-button`}
-                    color={"primary"}
+                    color="primary"
                     sx={{
                         marginLeft: "5px",
                         padding: "0",
                         cursor: "pointer",
                         textDecoration: "underline",
-                        fontSize: "0.9rem",
+                        fontSize: "inherit",
                     }}
                 >
                     {isExpanded ? "Show less" : "Show more"}
@@ -45,6 +46,7 @@ TruncateText.propTypes = {
     text: PropTypes.string,
     maxLength: PropTypes.number,
     dataTestId: PropTypes.string,
+    fontSize: PropTypes.string,
 };
 
 export default TruncateText;
