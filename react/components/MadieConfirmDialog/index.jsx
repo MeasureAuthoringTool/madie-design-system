@@ -47,7 +47,7 @@ const MadieConfirmDialog = ({
                 </p>
             </section>
             <section className="dialog-warning-action">
-                <ErrorIcon/>
+                <ErrorIcon />
                 <p>{warning}</p>
             </section>
         </div>
