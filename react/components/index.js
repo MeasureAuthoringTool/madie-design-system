@@ -41,6 +41,7 @@ import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
+import TruncateText from "./TruncateText";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -169,4 +170,5 @@ export {
     Dropdown,
     Tooltip,
     DSLink,
+    TruncateText,
 };
