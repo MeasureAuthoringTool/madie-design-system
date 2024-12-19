@@ -3,144 +3,144 @@ General sidebar styles
  */
 
 .sidebar {
-  background: $color-slate;
-  box-shadow: 4px 0 10px 0 transparentize($color-black, 0.7);
-  color: $color-white;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  transition: width 0.6s ease-in-out;
-  width: $side-nav-expanded-width;
+	background: $color-slate;
+	box-shadow: 4px 0 10px 0 transparentize($color-black, 0.7);
+	color: $color-white;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	transition: width 0.6s ease-in-out;
+	width: $side-nav-expanded-width;
 
-  a {
-    text-decoration: none;
+	a {
+		text-decoration: none;
 
-    &:hover {
-      text-decoration: none;
-    }
+		&:hover {
+			text-decoration: none;
+		}
 
-    &.unstyled {
-      color: inherit;
-    }
-  }
+		&.unstyled {
+			color: inherit;
+		}
+	}
 
-  hr {
-    border-top: 1px solid transparentize($color-white, 0.8);
-    height: 1px;
-    margin: 25px $side-nav-horizontal-padding;
-    width: auto;
+	hr {
+		border-top: 1px solid transparentize($color-white, 0.8);
+		height: 1px;
+		margin: 25px $side-nav-horizontal-padding;
+		width: auto;
 
-    &.hr-smaller-vertical-spacing {
-      padding: 0px 22px 14px;
-      margin: 0;
-    }
-  }
+		&.hr-smaller-vertical-spacing {
+			padding: 0px 22px 14px;
+			margin: 0;
+		}
+	}
 
-  ul {
-    line-height: 1.7;
-    list-style-type: none;
-    margin: 0;
-    padding: 2px 0;
-  }
+	ul {
+		line-height: 1.7;
+		list-style-type: none;
+		margin: 0;
+		padding: 2px 0;
+	}
 
-  svg {
-    position: relative;
-  }
+	svg {
+		position: relative;
+	}
 
-  .SVGInline {
-    display: none;
-  }
+	.SVGInline {
+		display: none;
+	}
 
-  &.closed {
-    width: $side-nav-closed-width;
-  }
+	&.closed {
+		width: $side-nav-closed-width;
+	}
 
-  .alt-style {
-    background: $color-slate-dark;
+	.alt-style {
+		background: $color-slate-dark;
 
-    .alt-style-header {
-      background: $color-slate;
-      padding-bottom: 25px;
-    }
+		.alt-style-header {
+			background: $color-slate;
+			padding-bottom: 25px;
+		}
 
-    .alt-style-nav {
-      padding-bottom: 25px;
-    }
-  }
+		.alt-style-nav {
+			padding-bottom: 25px;
+		}
+	}
 
-  /* Sidebar content */
+	/* Sidebar content */
 
-  .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    overflow-x: hidden;
-    transition: overflow-x 0.6s;
+	.sidebar-content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		overflow-x: hidden;
+		transition: overflow-x 0.6s;
 
-    .label {
-      @include typography('Rubik', 20px, 26px, $color-white);
-      display: block;
-      font-weight: normal;
-      padding: 30px 25px 20px;
-      text-align: left;
-      white-space: inherit;
-    }
+		.label {
+			@include typography("Rubik", 20px, 26px, $color-white);
+			display: block;
+			font-weight: normal;
+			padding: 30px 25px 20px;
+			text-align: left;
+			white-space: inherit;
+		}
 
-    .level-one-nav {
-      background-color: $color-slate;
-    }
-  }
+		.level-one-nav {
+			background-color: $color-slate;
+		}
+	}
 
-  /* Sidebar chart */
+	/* Sidebar chart */
 
-  .chart-title {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	.chart-title {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
-    p {
-      margin: 0;
-    }
+		p {
+			margin: 0;
+		}
 
-    .title {
-      @include typography('Rubik', 16px, 22px, $color-white);
-      text-transform: uppercase;
-    }
+		.title {
+			@include typography("Rubik", 16px, 22px, $color-white);
+			text-transform: uppercase;
+		}
 
-    .disclaimer {
-      @include typography(
-        'Rubik',
-        14px,
-        20px,
-        transparentize($color-white, 0.2)
-      );
-      align-items: center;
-      display: flex;
-      padding: 5px 0 10px;
+		.disclaimer {
+			@include typography(
+				"Rubik",
+				14px,
+				20px,
+				transparentize($color-white, 0.2)
+			);
+			align-items: center;
+			display: flex;
+			padding: 5px 0 10px;
 
-      svg {
-        height: 20px;
-        width: 20px;
-      }
+			svg {
+				height: 20px;
+				width: 20px;
+			}
 
-      .left-icon {
-        fill: transparentize($color-white, 0.2);
-        margin-right: 10px;
-      }
+			.left-icon {
+				fill: transparentize($color-white, 0.2);
+				margin-right: 10px;
+			}
 
-      .right-icon {
-        fill: $color-teal-light;
-        margin-left: 10px;
-      }
-    }
+			.right-icon {
+				fill: $color-teal-light;
+				margin-left: 10px;
+			}
+		}
 
-    .timestamp {
-      @include typography('Rubik', 13px, 20px, $color-white);
-      padding: 5px 0 20px;
-      text-transform: uppercase;
-    }
-  }
+		.timestamp {
+			@include typography("Rubik", 13px, 20px, $color-white);
+			padding: 5px 0 20px;
+			text-transform: uppercase;
+		}
+	}
 }

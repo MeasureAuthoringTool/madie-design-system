@@ -32,13 +32,13 @@
 		text-decoration: none;
 		text-transform: uppercase;
 
-		&[aria-selected='true'] {
+		&[aria-selected="true"] {
 			border-bottom-color: $color-white;
 			color: $color-text-main;
 			font-weight: $rubik-medium;
 		}
 
-		&[aria-disabled='true'] {
+		&[aria-disabled="true"] {
 			background: $color-gray-very-light;
 			color: $color-gray-darker-medium;
 			cursor: not-allowed;
@@ -52,7 +52,7 @@
 			display: none;
 		}
 
-		&[aria-hidden='true'] {
+		&[aria-hidden="true"] {
 			display: none;
 		}
 	}

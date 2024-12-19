@@ -12,7 +12,8 @@ import { FormControl, Box } from "@mui/material";
 dayjs.extend(utc);
 dayjs.utc();
 dayjs.extend(timezone);
-const formatDateTime = (dateTime) => dayjs.utc(dateTime).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+const formatDateTime = (dateTime) =>
+    dayjs.utc(dateTime).format("YYYY-MM-DDTHH:mm:ss.SSSZ");
 export const defaultDateFieldStyles = {
     width: "170px",
     height: 40,
@@ -55,7 +56,7 @@ const Instant = ({
     error = false,
     helperText,
     datePickerProps = {},
-    onBlur, 
+    onBlur,
     ...rest
 }) => {
     const textFieldStyles = {
@@ -75,49 +76,51 @@ const Instant = ({
     };
     const handleHoursChange = (e) => {
         const newHours = parseInt(e.target.value, 10);
-        if (dateTimeValue){
-            const updatedDateTime = dayjs.utc(dateTimeValue)
-            .set('hour', newHours)
+        if (dateTimeValue) {
+            const updatedDateTime = dayjs
+                .utc(dateTimeValue)
+                .set("hour", newHours);
             handleDateTimeChange(formatDateTime(updatedDateTime));
-
         }
     };
     const handleMinutesChange = (e) => {
         const newMinutes = parseInt(e.target.value, 10);
-        if (dateTimeValue){
-            const updatedDateTime = dayjs.utc(dateTimeValue)
-            .set('minute', newMinutes)
+        if (dateTimeValue) {
+            const updatedDateTime = dayjs
+                .utc(dateTimeValue)
+                .set("minute", newMinutes);
             handleDateTimeChange(formatDateTime(updatedDateTime));
         }
     };
     const handleSecondsChange = (e) => {
         const newSeconds = parseInt(e.target.value, 10);
         if (dateTimeValue) {
-            const updatedDateTime = dayjs.utc(dateTimeValue)
-            .set('second', newSeconds)
+            const updatedDateTime = dayjs
+                .utc(dateTimeValue)
+                .set("second", newSeconds);
             handleDateTimeChange(formatDateTime(updatedDateTime));
         }
     };
     const handleMillisecondsChange = (e) => {
         const newMilliseconds = parseInt(e.target.value, 10);
         if (dateTimeValue) {
-            const updatedDateTime = dayjs.utc(dateTimeValue)
-            .set('millisecond', newMilliseconds)
+            const updatedDateTime = dayjs
+                .utc(dateTimeValue)
+                .set("millisecond", newMilliseconds);
             handleDateTimeChange(formatDateTime(updatedDateTime));
         }
     };
     const onDateChange = (newDate) => {
-        if (!isNaN(newDate)){
-            if (dateTimeValue){
+        if (!isNaN(newDate)) {
+            if (dateTimeValue) {
                 const updatedDate = dayjs.utc(newDate);
                 handleDateTimeChange(formatDateTime(updatedDate));
-            } 
-            else {
+            } else {
                 const updatedDate = newDate.utc(newDate);
                 handleDateTimeChange(formatDateTime(updatedDate));
             }
         }
-    }
+    };
     return (
         <FormControl error={error}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -135,7 +138,7 @@ const Instant = ({
                             }
                             onChange={onDateChange}
                             disabled={disabled}
-                            onClose={() => onBlur ? onBlur() : undefined}
+                            onClose={() => (onBlur ? onBlur() : undefined)}
                             slotProps={{
                                 textField: (params) => {
                                     const { InputProps } = params;
@@ -169,7 +172,9 @@ const Instant = ({
                     <TextField
                         id={`${id}-hour`}
                         data-testid={`${id}-hour`}
-                        value={dateTimeValue ? dayjs.utc(dateTimeValue).hour() : 0}
+                        value={
+                            dateTimeValue ? dayjs.utc(dateTimeValue).hour() : 0
+                        }
                         onChange={handleHoursChange}
                         label="Hr"
                         type="number"
@@ -184,7 +189,11 @@ const Instant = ({
                     <TextField
                         id={`${id}-minute`}
                         data-testid={`${id}-minute`}
-                        value={dateTimeValue ? dayjs.utc(dateTimeValue).minute() : 0}
+                        value={
+                            dateTimeValue
+                                ? dayjs.utc(dateTimeValue).minute()
+                                : 0
+                        }
                         onChange={handleMinutesChange}
                         label="Min"
                         type="number"
@@ -199,7 +208,11 @@ const Instant = ({
                     <TextField
                         id={`${id}-second`}
                         data-testid={`${id}-second`}
-                        value={dateTimeValue ? dayjs.utc(dateTimeValue).second() : 0}
+                        value={
+                            dateTimeValue
+                                ? dayjs.utc(dateTimeValue).second()
+                                : 0
+                        }
                         onChange={handleSecondsChange}
                         label="Sec"
                         type="number"
@@ -214,7 +227,11 @@ const Instant = ({
                     <TextField
                         id={`${id}-millisecond`}
                         data-testid={`${id}-millisecond`}
-                        value={dateTimeValue ? dayjs.utc(dateTimeValue).millisecond() : 0}
+                        value={
+                            dateTimeValue
+                                ? dayjs.utc(dateTimeValue).millisecond()
+                                : 0
+                        }
                         onChange={handleMillisecondsChange}
                         label="MS"
                         type="number"
@@ -225,7 +242,6 @@ const Instant = ({
                         }}
                         textFieldStyles={textFieldStyles}
                         required={required}
-
                     />
                 </Box>
             </LocalizationProvider>
@@ -245,8 +261,7 @@ Instant.propTypes = {
     error: PropTypes.bool,
     helperText: PropTypes.string,
     datePickerProps: PropTypes.any,
-    onBlur: PropTypes.any
+    onBlur: PropTypes.any,
 };
-
 
 export default Instant;

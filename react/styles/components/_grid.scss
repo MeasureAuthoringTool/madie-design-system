@@ -2,28 +2,28 @@
 // phasing out bootstrap's default containers to make it more responsive
 
 .responsive-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
 
-  @include breakpoint(sm) {
-    max-width: $screen-sm;
-  }
-  @include breakpoint(md) {
-    max-width: $screen-md;
-  }
-  @include breakpoint(lg) {
-    max-width: $screen-lg;
-  }
+	@include breakpoint(sm) {
+		max-width: $screen-sm;
+	}
+	@include breakpoint(md) {
+		max-width: $screen-md;
+	}
+	@include breakpoint(lg) {
+		max-width: $screen-lg;
+	}
 
-  &.tight {
-    max-width: 800px;
-  }
+	&.tight {
+		max-width: 800px;
+	}
 
-  &.tighter {
-    max-width: 500px;
-  }
+	&.tighter {
+		max-width: 500px;
+	}
 }
 
 // The bootstrap container class causes issues with our
@@ -31,7 +31,7 @@
 // to legacy containers.
 
 .container {
-  &.tight {
-    max-width: 800px;
-  }
+	&.tight {
+		max-width: 800px;
+	}
 }

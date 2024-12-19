@@ -1,27 +1,27 @@
-@import '../functions';
+@import "../functions";
 
 // Font Sizes (in rem units)
 $font-sizes: (
-  '12': rem(12px),
-  '14': rem(14px),
-  '16': rem(16px),
-  '18': rem(18px),
-  '20': rem(20px),
-  '24': rem(24px),
-  '32': rem(32px),
-  '40': rem(40px),
-  '48': rem(48px),
+	"12": rem(12px),
+	"14": rem(14px),
+	"16": rem(16px),
+	"18": rem(18px),
+	"20": rem(20px),
+	"24": rem(24px),
+	"32": rem(32px),
+	"40": rem(40px),
+	"48": rem(48px),
 );
 
-$font-size-12: map-get($font-sizes, '12');
-$font-size-14: map-get($font-sizes, '14');
-$font-size-16: map-get($font-sizes, '16');
-$font-size-18: map-get($font-sizes, '18');
-$font-size-20: map-get($font-sizes, '20');
-$font-size-24: map-get($font-sizes, '24');
-$font-size-32: map-get($font-sizes, '32');
-$font-size-40: map-get($font-sizes, '40');
-$font-size-48: map-get($font-sizes, '48');
+$font-size-12: map-get($font-sizes, "12");
+$font-size-14: map-get($font-sizes, "14");
+$font-size-16: map-get($font-sizes, "16");
+$font-size-18: map-get($font-sizes, "18");
+$font-size-20: map-get($font-sizes, "20");
+$font-size-24: map-get($font-sizes, "24");
+$font-size-32: map-get($font-sizes, "32");
+$font-size-40: map-get($font-sizes, "40");
+$font-size-48: map-get($font-sizes, "48");
 
 // Line Heights (unitless)
 $line-height-xs: 1;
@@ -39,7 +39,7 @@ $letter-spacing-md: 0.25;
 $letter-spacing-lg: 0.5;
 
 // Font Family
-$font-rubik: Rubik, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$font-rubik: Rubik, Arial, "Helvetica Neue", Helvetica, sans-serif;
 $font-monospace: monospace;
 
 // Font Weight
@@ -50,83 +50,83 @@ $font-medium: 500;
 // Structure: (font-size(desktop), font-size(mobile), line-height(desktop), line-height(mobile), font-weight)
 // TODO: get designs for responsive heading sizes
 $headings: (
-  (
-    $font-size-48,
-    $font-size-32,
-    $line-height-heading,
-    $line-height-subheading,
-    $font-regular
-  ),
-  (
-    $font-size-32,
-    $font-size-24,
-    $line-height-subheading,
-    $line-height-subheading,
-    $font-regular
-  ),
-  (
-    $font-size-24,
-    $font-size-20,
-    $line-height-subheading,
-    $line-height-subheading,
-    $font-medium
-  ),
-  (
-    $font-size-18,
-    $font-size-16,
-    $line-height-subheading,
-    $line-height-subheading,
-    $font-medium
-  ),
-  (
-    $font-size-16,
-    $font-size-14,
-    $line-height-subheading,
-    $line-height-subheading,
-    $font-medium
-  ),
-  (
-    $font-size-14,
-    $font-size-12,
-    $line-height-subheading,
-    $line-height-subheading,
-    $font-medium
-  )
+	(
+		$font-size-48,
+		$font-size-32,
+		$line-height-heading,
+		$line-height-subheading,
+		$font-regular
+	),
+	(
+		$font-size-32,
+		$font-size-24,
+		$line-height-subheading,
+		$line-height-subheading,
+		$font-regular
+	),
+	(
+		$font-size-24,
+		$font-size-20,
+		$line-height-subheading,
+		$line-height-subheading,
+		$font-medium
+	),
+	(
+		$font-size-18,
+		$font-size-16,
+		$line-height-subheading,
+		$line-height-subheading,
+		$font-medium
+	),
+	(
+		$font-size-16,
+		$font-size-14,
+		$line-height-subheading,
+		$line-height-subheading,
+		$font-medium
+	),
+	(
+		$font-size-14,
+		$font-size-12,
+		$line-height-subheading,
+		$line-height-subheading,
+		$font-medium
+	)
 );
 
 /* stylelint-disable property-case */
 :export {
-  // Font Sizes (in rem units)
-  fontSize12: $font-size-12;
-  fontSize14: $font-size-14;
-  fontSize16: $font-size-16;
-  fontSize18: $font-size-18;
-  fontSize20: $font-size-20;
-  fontSize24: $font-size-24;
-  fontSize32: $font-size-32;
-  fontSize40: $font-size-40;
-  fontSize48: $font-size-48;
+	// Font Sizes (in rem units)
+	fontSize12: $font-size-12;
+	fontSize14: $font-size-14;
+	fontSize16: $font-size-16;
+	fontSize18: $font-size-18;
+	fontSize20: $font-size-20;
+	fontSize24: $font-size-24;
+	fontSize32: $font-size-32;
+	fontSize40: $font-size-40;
+	fontSize48: $font-size-48;
 
-  // Line Heights (unitless)
-  lineHeightXS: $line-height-xs;
-  lineHeightSM: $line-height-sm;
-  lineHeightMD: $line-height-md;
-  lineHeightLG: $line-height-lg;
-  lineHeightReset: $line-height-reset;
-  lineHeightBase: $line-height-base;
-  lineHeightHeading: $line-height-heading;
-  lineHeightSubheading: $line-height-subheading;
+	// Line Heights (unitless)
+	lineHeightXS: $line-height-xs;
+	lineHeightSM: $line-height-sm;
+	lineHeightMD: $line-height-md;
+	lineHeightLG: $line-height-lg;
+	lineHeightReset: $line-height-reset;
+	lineHeightBase: $line-height-base;
+	lineHeightHeading: $line-height-heading;
+	lineHeightSubheading: $line-height-subheading;
 
-  // Letter Spacing
-  letterSpacingSM: $letter-spacing-sm;
-  letterSpacingMD: $letter-spacing-md;
-  letterSpacingLG: $letter-spacing-lg;
+	// Letter Spacing
+	letterSpacingSM: $letter-spacing-sm;
+	letterSpacingMD: $letter-spacing-md;
+	letterSpacingLG: $letter-spacing-lg;
 
-  // Font Family
-  fontRubik: $font-rubik;
+	// Font Family
+	fontRubik: $font-rubik;
 
-  // Font Weight
-  fontRegular: $font-regular;
-  fontMedium: $font-medium;
+	// Font Weight
+	fontRegular: $font-regular;
+	fontMedium: $font-medium;
 }
 /* stylelint-enable property-case */

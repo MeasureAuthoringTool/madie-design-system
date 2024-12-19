@@ -11,7 +11,7 @@ export default {
 export const InstantComponent = (args) => {
     const [value, setValue] = useState("");
     const handleDateTimeChange = (v) => {
-        setValue(v)
+        setValue(v);
     };
     return (
         <div className="qpp-u-padding--16">

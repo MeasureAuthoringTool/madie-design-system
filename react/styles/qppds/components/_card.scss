@@ -1,175 +1,175 @@
-@import '../settings/index';
+@import "../settings/index";
 
 .qpp-c-card {
-  flex-direction: column;
-  display: flex;
-  position: relative;
+	flex-direction: column;
+	display: flex;
+	position: relative;
 
-  .qpp-c-card__content {
-    flex-direction: column;
-    display: flex;
-    position: relative;
-  }
+	.qpp-c-card__content {
+		flex-direction: column;
+		display: flex;
+		position: relative;
+	}
 
-  .qpp-c-card__header {
-    border-top: 4px solid $blue-60;
-    box-shadow: none;
-    height: auto;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 0;
-    padding: 0;
-  }
+	.qpp-c-card__header {
+		border-top: 4px solid $blue-60;
+		box-shadow: none;
+		height: auto;
+		background: transparent;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		z-index: 0;
+		padding: 0;
+	}
 
-  .qpp-c-card__eyebrow {
-    color: $gray-80;
-    padding: $spacing-16 0 0;
-    margin: 0;
-    display: block;
-    order: -1;
-  }
+	.qpp-c-card__eyebrow {
+		color: $gray-80;
+		padding: $spacing-16 0 0;
+		margin: 0;
+		display: block;
+		order: -1;
+	}
 
-  .qpp-c-card__title {
-    color: $gray-80;
-    padding: $spacing-16 0 $spacing-8;
-    margin: 0;
-    font-weight: $font-regular;
-  }
+	.qpp-c-card__title {
+		color: $gray-80;
+		padding: $spacing-16 0 $spacing-8;
+		margin: 0;
+		font-weight: $font-regular;
+	}
 
-  .qpp-c-card__body {
-    display: block;
-    padding: 0 0 $spacing-8;
-    margin: 0;
+	.qpp-c-card__body {
+		display: block;
+		padding: 0 0 $spacing-8;
+		margin: 0;
 
-    p {
-      color: $gray-80;
-      font-size: $font-size-16;
-      padding: 0;
-      margin: 0;
-    }
-  }
+		p {
+			color: $gray-80;
+			font-size: $font-size-16;
+			padding: 0;
+			margin: 0;
+		}
+	}
 
-  .qpp-c-card__cta {
-    display: block;
-    margin: 0;
-    padding-top: rem(7px);
-    line-height: $line-height-xs;
+	.qpp-c-card__cta {
+		display: block;
+		margin: 0;
+		padding-top: rem(7px);
+		line-height: $line-height-xs;
 
-    .qpp-c-button {
-      margin: -1px;
-    }
-  }
+		.qpp-c-button {
+			margin: -1px;
+		}
+	}
 
-  .qpp-c-card__media {
-    display: block;
-    width: 100%;
-    order: -1;
-    padding: 0 0 $spacing-8;
+	.qpp-c-card__media {
+		display: block;
+		width: 100%;
+		order: -1;
+		padding: 0 0 $spacing-8;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 
-    [role='img'] {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-    }
-  }
+		[role="img"] {
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			position: relative;
+		}
+	}
 
-  &.qpp-c-card--image {
-    .qpp-c-card__header {
-      border-top: 0;
-    }
-  }
+	&.qpp-c-card--image {
+		.qpp-c-card__header {
+			border-top: 0;
+		}
+	}
 
-  &.qpp-c-card--flag {
-    flex-direction: row;
+	&.qpp-c-card--flag {
+		flex-direction: row;
 
-    .qpp-c-card__media {
-      flex: 0 50%;
-      padding: 0 $spacing-24 0 0;
-    }
+		.qpp-c-card__media {
+			flex: 0 50%;
+			padding: 0 $spacing-24 0 0;
+		}
 
-    .qpp-c-card__content {
-      flex: 0 50%;
-    }
-  }
+		.qpp-c-card__content {
+			flex: 0 50%;
+		}
+	}
 
-  /* stylelint-disable max-nesting-depth */
-  @each $breakpoint in map-keys($breakpoints) {
-    $value: map-get($breakpoints, $breakpoint);
+	/* stylelint-disable max-nesting-depth */
+	@each $breakpoint in map-keys($breakpoints) {
+		$value: map-get($breakpoints, $breakpoint);
 
-    @media (min-width: $value) {
-      &.qpp-c-#{$breakpoint}-card--flag {
-        flex-direction: row;
+		@media (min-width: $value) {
+			&.qpp-c-#{$breakpoint}-card--flag {
+				flex-direction: row;
 
-        .qpp-c-card__media {
-          flex: 0 50%;
-          padding: 0 $spacing-24 0 0;
-        }
+				.qpp-c-card__media {
+					flex: 0 50%;
+					padding: 0 $spacing-24 0 0;
+				}
 
-        .qpp-c-card__content {
-          flex: 0 50%;
-        }
-      }
-      &.qpp-c-#{$breakpoint}-card--default {
-        flex-direction: column;
+				.qpp-c-card__content {
+					flex: 0 50%;
+				}
+			}
+			&.qpp-c-#{$breakpoint}-card--default {
+				flex-direction: column;
 
-        .qpp-c-card__media {
-          flex: 0 1 auto;
-          padding: 0 0 $spacing-8;
-        }
+				.qpp-c-card__media {
+					flex: 0 1 auto;
+					padding: 0 0 $spacing-8;
+				}
 
-        .qpp-c-card__content {
-          flex: 0 1 auto;
-        }
-      }
-    }
-  }
-  /* stylelint-enable max-nesting-depth */
+				.qpp-c-card__content {
+					flex: 0 1 auto;
+				}
+			}
+		}
+	}
+	/* stylelint-enable max-nesting-depth */
 
-  // "fixed image height" helper variants to match existing FE design.
-  // Required when using "background-image" cards, but not for img element media cards
-  &.qpp-c-card--small {
-    .qpp-c-card__media {
-      > img,
-      > [role='img'] {
-        height: 175px;
-      }
-    }
+	// "fixed image height" helper variants to match existing FE design.
+	// Required when using "background-image" cards, but not for img element media cards
+	&.qpp-c-card--small {
+		.qpp-c-card__media {
+			> img,
+			> [role="img"] {
+				height: 175px;
+			}
+		}
 
-    .qpp-c-card__title {
-      font-size: $font-size-18;
+		.qpp-c-card__title {
+			font-size: $font-size-18;
 
-      @media (min-width: $width-xs) {
-        font-size: $font-size-20;
-      }
-    }
-  }
+			@media (min-width: $width-xs) {
+				font-size: $font-size-20;
+			}
+		}
+	}
 
-  &.qpp-c-card--medium {
-    .qpp-c-card__media {
-      > img,
-      > [role='img'] {
-        height: 220px;
-      }
-    }
-  }
+	&.qpp-c-card--medium {
+		.qpp-c-card__media {
+			> img,
+			> [role="img"] {
+				height: 220px;
+			}
+		}
+	}
 
-  &.qpp-c-card--large {
-    .qpp-c-card__media {
-      > img,
-      > [role='img'] {
-        height: 286px;
-      }
-    }
-  }
+	&.qpp-c-card--large {
+		.qpp-c-card__media {
+			> img,
+			> [role="img"] {
+				height: 286px;
+			}
+		}
+	}
 }

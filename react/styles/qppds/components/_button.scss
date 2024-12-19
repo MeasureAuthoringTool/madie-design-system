@@ -1,4 +1,4 @@
-@import '../settings/index';
+@import "../settings/index";
 
 /* stylelint-disable selector-max-specificity */
 
@@ -7,457 +7,457 @@
 .qpp-c-button:visited,
 .qppds .qpp-c-button,
 .qppds .qpp-c-button:visited {
-  background-color: $blue-60;
-  border: 1px solid $blue-60;
-  border-radius: 4px;
-  box-sizing: border-box;
-  color: $white;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $font-rubik;
-  font-size: $font-size-14;
-  font-weight: $font-medium;
-  letter-spacing: $letter-spacing-sm;
-  line-height: $line-height-xs;
-  padding: $spacing-12 $spacing-16;
-  text-align: center;
-  text-decoration: none;
+	background-color: $blue-60;
+	border: 1px solid $blue-60;
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: $white;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $font-rubik;
+	font-size: $font-size-14;
+	font-weight: $font-medium;
+	letter-spacing: $letter-spacing-sm;
+	line-height: $line-height-xs;
+	padding: $spacing-12 $spacing-16;
+	text-align: center;
+	text-decoration: none;
 
-  &:hover,
-  &.qpp-c-button--hover {
-    background-color: $blue-70;
-    border: 1px solid $blue-70;
-    color: $white;
-  }
+	&:hover,
+	&.qpp-c-button--hover {
+		background-color: $blue-70;
+		border: 1px solid $blue-70;
+		color: $white;
+	}
 
-  &:focus,
-  &.qpp-c-button--focus {
-    border: 1px solid $blue-70;
-    border-radius: 3px;
-    box-shadow: 0 0 0 4px $blue-10;
-    outline: none;
-    text-decoration: none;
-    color: $white;
-    padding: $spacing-12 $spacing-16;
-    margin-left: 0;
-    margin-right: 0;
-  }
+	&:focus,
+	&.qpp-c-button--focus {
+		border: 1px solid $blue-70;
+		border-radius: 3px;
+		box-shadow: 0 0 0 4px $blue-10;
+		outline: none;
+		text-decoration: none;
+		color: $white;
+		padding: $spacing-12 $spacing-16;
+		margin-left: 0;
+		margin-right: 0;
+	}
 
-  &:active,
-  &.qpp-c-button--active {
-    background-color: darken($blue-70, 3%);
-    border: 1px solid darken($blue-70, 3%);
-    color: $white;
-  }
+	&:active,
+	&.qpp-c-button--active {
+		background-color: darken($blue-70, 3%);
+		border: 1px solid darken($blue-70, 3%);
+		color: $white;
+	}
 
-  &:disabled,
-  &.qpp-c-button--disabled {
-    background-color: $gray-10;
-    border: 1px solid $gray-10;
-    color: $gray-60;
-    pointer-events: none;
-  }
+	&:disabled,
+	&.qpp-c-button--disabled {
+		background-color: $gray-10;
+		border: 1px solid $gray-10;
+		color: $gray-60;
+		pointer-events: none;
+	}
 
-  &.qpp-c-button--big {
-    padding: $spacing-16 $spacing-24;
-  }
+	&.qpp-c-button--big {
+		padding: $spacing-16 $spacing-24;
+	}
 
-  &.qpp-c-button--text {
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 1px;
-  }
+	&.qpp-c-button--text {
+		background-color: transparent;
+		border: 1px solid transparent;
+		padding: 1px;
+	}
 
-  // Secondary Button
-  &.qpp-c-button--secondary {
-    background-color: $white;
-    border: 2px solid #8c8c8c;
-    color: $gray-80;
-    font-size: $font-size-14;
+	// Secondary Button
+	&.qpp-c-button--secondary {
+		background-color: $white;
+		border: 2px solid #8c8c8c;
+		color: $gray-80;
+		font-size: $font-size-14;
 
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: $gray-04;
-      color: $gray-80;
-    }
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $gray-04;
+			color: $gray-80;
+		}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: darken($gray-04, 3%);
-      color: $gray-80;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: darken($gray-04, 3%);
+			color: $gray-80;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+		}
 
-    &:focus,
-    &.qpp-c-button--focus {
-      border: 1px solid $blue-60;
-    }
-  }
-  &.qpp-c-button--action {
-    color: $blue-60;
-    background-color: $white;
-    border: 1px solid $blue-60;
-    $font-size: $font-size-14;
+		&:focus,
+		&.qpp-c-button--focus {
+			border: 1px solid $blue-60;
+		}
+	}
+	&.qpp-c-button--action {
+		color: $blue-60;
+		background-color: $white;
+		border: 1px solid $blue-60;
+		$font-size: $font-size-14;
 
-    &:hover,
-    &.qpp-c-button--hover {
-      border: 1px solid $gray-10;
-      background-color: $gray-10;
-      color: $gray-80;
-    }
+		&:hover,
+		&.qpp-c-button--hover {
+			border: 1px solid $gray-10;
+			background-color: $gray-10;
+			color: $gray-80;
+		}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: darken($gray-10, 3%);
-      color: $gray-80;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: darken($gray-10, 3%);
+			color: $gray-80;
+		}
 
-    &:focus,
-    &.qpp-c-button--focus {
-      border: 1px solid $blue-60;
-      box-shadow: 0 0 0 4px $blue-10;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			border: 1px solid $blue-60;
+			box-shadow: 0 0 0 4px $blue-10;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-    &.qpp-c-button--text {
-      background-color: transparent;
-      border: 1px solid transparent;
-      padding: 1px;
-    }
-  }
-  // White Button
-  &.qpp-c-button--white {
-    background-color: $white;
-    border: 1px solid $white;
-    color: $gray-80;
-    font-size: $font-size-14;
+		&.qpp-c-button--text {
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 1px;
+		}
+	}
+	// White Button
+	&.qpp-c-button--white {
+		background-color: $white;
+		border: 1px solid $white;
+		color: $gray-80;
+		font-size: $font-size-14;
 
-    &:hover,
-    &.qpp-c-button--hover {
-      border: 1px solid $gray-10;
-      background-color: $gray-10;
-      color: $gray-80;
-    }
+		&:hover,
+		&.qpp-c-button--hover {
+			border: 1px solid $gray-10;
+			background-color: $gray-10;
+			color: $gray-80;
+		}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: darken($gray-10, 3%);
-      color: $gray-80;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: darken($gray-10, 3%);
+			color: $gray-80;
+		}
 
-    &:focus,
-    &.qpp-c-button--focus {
-      border: 1px solid $blue-60;
-      box-shadow: 0 0 0 4px $blue-10;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			border: 1px solid $blue-60;
+			box-shadow: 0 0 0 4px $blue-10;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-    &.qpp-c-button--text {
-      background-color: transparent;
-      border: 1px solid transparent;
-      padding: 1px;
-    }
-  }
-  // cyan
-  &.qpp-c-button--cyan {
-    background-color: $cyan-50;
-    border-color: $cyan-50;
+		&.qpp-c-button--text {
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 1px;
+		}
+	}
+	// cyan
+	&.qpp-c-button--cyan {
+		background-color: $cyan-50;
+		border-color: $cyan-50;
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
-  
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: $cyan-60;
-      border-color: $cyan-60;
-    }
-  
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($cyan-40, 0.2);
-    }
-  
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: $cyan-60;
-      border: 1px solid $cyan-60;
-      box-sizing: border-box;
-      box-shadow: 0 0 0 4px rgba(32, 159, 166, 0.2);
-    }
-  }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-  // Outline Button
-  &.qpp-c-button--outline {
-    background-color: transparent;
-    color: $blue-60;
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $cyan-60;
+			border-color: $cyan-60;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($cyan-40, 0.2);
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: $gray-04;
-      border-color: $blue-60;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: $cyan-60;
+			border: 1px solid $cyan-60;
+			box-sizing: border-box;
+			box-shadow: 0 0 0 4px rgba(32, 159, 166, 0.2);
+		}
+	}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($black, 0.7);
-    }
+	// Outline Button
+	&.qpp-c-button--outline {
+		background-color: transparent;
+		color: $blue-60;
 
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: $gray-04;
-      border: 1px solid $blue-60;
-      box-shadow: 0 0 0 4px $blue-10;
-    }
-  }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-  // background color is filled to white
-  &.qpp-c-button--outline-filled {
-    background-color: white;
-    color: $blue-60;
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $gray-04;
+			border-color: $blue-60;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($black, 0.7);
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: $gray-04;
-      border-color: $blue-60;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: $gray-04;
+			border: 1px solid $blue-60;
+			box-shadow: 0 0 0 4px $blue-10;
+		}
+	}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($black, 0.7);
-    }
+	// background color is filled to white
+	&.qpp-c-button--outline-filled {
+		background-color: white;
+		color: $blue-60;
 
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: $gray-04;
-      border: 1px solid $blue-60;
-      box-shadow: 0 0 0 4px $blue-10;
-    }
-  }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-  // same as outline, but the color is gray
-  &.qpp-c-button--outline-secondary {
-    background-color: transparent;
-    color: $gray-90;
-    border: 1px solid #8c8c8c;
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $gray-04;
+			border-color: $blue-60;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($black, 0.7);
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: $gray-04;
-      border: 1px solid $gray-20;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: $gray-04;
+			border: 1px solid $blue-60;
+			box-shadow: 0 0 0 4px $blue-10;
+		}
+	}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($black, 0.7);
-    }
+	// same as outline, but the color is gray
+	&.qpp-c-button--outline-secondary {
+		background-color: transparent;
+		color: $gray-90;
+		border: 1px solid #8c8c8c;
 
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: $gray-04;
-      border: 1px solid $gray-20;
-      box-shadow: 0 0 0 4px $blue-10;
-    }
-  }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-  // Danger / Destructive Button
-  &.qpp-c-button--danger {
-    background-color: transparent;
-    border: 1px solid $red-60;
-    color: $red-60;
-    font-size: $font-size-14;
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $gray-04;
+			border: 1px solid $gray-20;
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      border: 1px solid $gray-10;
-      color: $gray-60;
-    }
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($black, 0.7);
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      background-color: fade-out($red-50, 0.9);
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: $gray-04;
+			border: 1px solid $gray-20;
+			box-shadow: 0 0 0 4px $blue-10;
+		}
+	}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($red-50, 0.85);
-    }
+	// Danger / Destructive Button
+	&.qpp-c-button--danger {
+		background-color: transparent;
+		border: 1px solid $red-60;
+		color: $red-60;
+		font-size: $font-size-14;
 
-    &:focus,
-    &.qpp-c-button--focus {
-      border: 1px solid $red-50;
-      box-shadow: 0 0 0 4px $red-10;
-      outline: none;
-      text-decoration: none;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			border: 1px solid $gray-10;
+			color: $gray-60;
+		}
 
-    &.qpp-c-button--text {
-      background-color: transparent;
-      border: 1px solid transparent;
-      padding: 1px;
-    }
-  }
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: fade-out($red-50, 0.9);
+		}
 
-  // Danger-Primary / Destructive Button
-  &.qpp-c-button--danger-primary {
-    border: 1px solid $red-50;
-    background-color: $red-50;
-	  color: $white;
-    font-size: $font-size-14;
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($red-50, 0.85);
+		}
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: $gray-10;
-      color: $gray-60;
-      border-color: $gray-10;
-    }
+		&:focus,
+		&.qpp-c-button--focus {
+			border: 1px solid $red-50;
+			box-shadow: 0 0 0 4px $red-10;
+			outline: none;
+			text-decoration: none;
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-		background-color: $red-60;
-		border-color: $red-60;
-    }
+		&.qpp-c-button--text {
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 1px;
+		}
+	}
 
-    &:active,
-    &.qpp-c-button--active {
-      background-color: fade-out($red-50, 0.2);
-    }
+	// Danger-Primary / Destructive Button
+	&.qpp-c-button--danger-primary {
+		border: 1px solid $red-50;
+		background-color: $red-50;
+		color: $white;
+		font-size: $font-size-14;
 
-    &:focus,
-    &.qpp-c-button--focus {
-      border: 1px solid $red-50;
-      box-shadow: 0 0 0 4px $red-10;
-      outline: none;
-      text-decoration: none;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+			border-color: $gray-10;
+		}
 
-    &.qpp-c-button--text {
-      background-color: transparent;
-      border: 1px solid transparent;
-      padding: 1px;
-    }
-  }
+		&:hover,
+		&.qpp-c-button--hover {
+			background-color: $red-60;
+			border-color: $red-60;
+		}
+
+		&:active,
+		&.qpp-c-button--active {
+			background-color: fade-out($red-50, 0.2);
+		}
+
+		&:focus,
+		&.qpp-c-button--focus {
+			border: 1px solid $red-50;
+			box-shadow: 0 0 0 4px $red-10;
+			outline: none;
+			text-decoration: none;
+		}
+
+		&.qpp-c-button--text {
+			background-color: transparent;
+			border: 1px solid transparent;
+			padding: 1px;
+		}
+	}
 }
 
 .qpp-c-button.qpp-c-button--text,
 .qppds .qpp-c-button.qpp-c-button--text {
-  color: $blue-60;
+	color: $blue-60;
 
-  &:disabled,
-  &.qpp-c-button--disabled {
-    color: $gray-60;
-  }
+	&:disabled,
+	&.qpp-c-button--disabled {
+		color: $gray-60;
+	}
 
-  &:focus,
-  &.qpp-c-button--focus {
-    border: 1px solid $blue-60;
-    color: $blue-60;
-  }
+	&:focus,
+	&.qpp-c-button--focus {
+		border: 1px solid $blue-60;
+		color: $blue-60;
+	}
 
-  &:hover,
-  &.qpp-c-button--hover {
-    color: $blue-70;
-  }
+	&:hover,
+	&.qpp-c-button--hover {
+		color: $blue-70;
+	}
 
-  &.qpp-c-button--danger {
-    color: $red-50;
+	&.qpp-c-button--danger {
+		color: $red-50;
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: transparent;
-      color: $gray-60;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: transparent;
+			color: $gray-60;
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      color: $red-60;
-    }
+		&:hover,
+		&.qpp-c-button--hover {
+			color: $red-60;
+		}
 
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: transparent;
-      border: 1px solid $red-50;
-    }
-  }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: transparent;
+			border: 1px solid $red-50;
+		}
+	}
 
-  &.qpp-c-button--white {
-    color: $white;
+	&.qpp-c-button--white {
+		color: $white;
 
-    &:disabled,
-    &.qpp-c-button--disabled {
-      background-color: transparent;
-      color: $gray-10;
-    }
+		&:disabled,
+		&.qpp-c-button--disabled {
+			background-color: transparent;
+			color: $gray-10;
+		}
 
-    &:hover,
-    &.qpp-c-button--hover {
-      color: $gray-10;
-    }
+		&:hover,
+		&.qpp-c-button--hover {
+			color: $gray-10;
+		}
 
-    &:focus,
-    &.qpp-c-button--focus {
-      background-color: transparent;
-      border: 1px solid $blue-60;
-    }
-  }
+		&:focus,
+		&.qpp-c-button--focus {
+			background-color: transparent;
+			border: 1px solid $blue-60;
+		}
+	}
 }
 
 // TODO: Text buttons (https://zeroheight.com/079543162/p/56ad70-button/t/17855d)
 
 .qpp-c-button > svg {
-  @include inline-icon-md;
-  height: 1rem;
-  width: 1rem;
+	@include inline-icon-md;
+	height: 1rem;
+	width: 1rem;
 }
 
 .qpp-c-button--icon-before > svg {
-  margin-right: $spacing-8;
+	margin-right: $spacing-8;
 }
 
 .qpp-c-button--icon-after > svg {
-  margin-left: $spacing-8;
+	margin-left: $spacing-8;
 }
 
 /* stylelint-enable selector-max-specificity */

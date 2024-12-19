@@ -25,7 +25,7 @@ Inline and back links
 	.link-inline,
 	.link-back,
 	.account-home-link {
-		@include typography('Rubik', 16px, 22px, $color-teal-light);
+		@include typography("Rubik", 16px, 22px, $color-teal-light);
 		@include hover($color-white);
 		align-items: center;
 		display: flex;
@@ -103,7 +103,7 @@ Inline and back links
 	}
 
 	.link-collapse {
-		@include typography('Rubik', 14px, 0, $color-gray-medium);
+		@include typography("Rubik", 14px, 0, $color-gray-medium);
 		padding: 20px 0;
 
 		.left-icon {
@@ -116,7 +116,7 @@ Inline and back links
 	}
 
 	.link-expand {
-		@include typography('Rubik', 14px, 14px, $color-gray-medium);
+		@include typography("Rubik", 14px, 14px, $color-gray-medium);
 		flex-direction: column;
 		padding: 6px 0 20px;
 
@@ -178,7 +178,7 @@ Inline and back links
 	/* Collapsed links (when the sidebar is collapsed) */
 
 	.link-collapsed {
-		@include typography('Rubik', 16px, 22px, $color-teal-light);
+		@include typography("Rubik", 16px, 22px, $color-teal-light);
 		align-items: center;
 		display: flex;
 		fill: $color-teal-light;
@@ -194,7 +194,7 @@ Inline and back links
 		}
 
 		&[disabled] {
-			@include typography('Rubik', 16px, 22px, $color-gray-dark);
+			@include typography("Rubik", 16px, 22px, $color-gray-dark);
 
 			.left-icon {
 				fill: $color-white;
@@ -203,11 +203,11 @@ Inline and back links
 	}
 
 	.link-drawer .drawer a {
-		@include typography('Rubik', 14px, 22px, $color-teal-light);
+		@include typography("Rubik", 14px, 22px, $color-teal-light);
 	}
 
 	.link-slide-out .switcher-content li a {
-		@include typography('Rubik', 16px, 22px, $color-teal-light);
+		@include typography("Rubik", 16px, 22px, $color-teal-light);
 	}
 
 	.link-drawer .drawer .active-link > a,
@@ -328,7 +328,7 @@ Inline and back links
 
 	.link-slide-out {
 		.switcher {
-			@include typography('Rubik', 14px, 16px, $color-gray-medium);
+			@include typography("Rubik", 14px, 16px, $color-gray-medium);
 			align-items: center;
 			display: flex;
 			fill: $color-gray-medium;
@@ -357,7 +357,7 @@ Inline and back links
 		}
 
 		.switcher-content {
-			@include typography('Rubik', 16px, 22px, $color-teal-light);
+			@include typography("Rubik", 16px, 22px, $color-teal-light);
 			background: $color-slate-dark;
 			height: 100%;
 			left: 0;
@@ -365,7 +365,8 @@ Inline and back links
 			padding: 0 25px;
 			position: absolute;
 			top: 0;
-			transition: z-index 0.6s step-start, opacity 0.6s step-end, left 0.6s;
+			transition: z-index 0.6s step-start, opacity 0.6s step-end,
+				left 0.6s;
 			width: $side-nav-expanded-width;
 			z-index: -1;
 
@@ -374,7 +375,7 @@ Inline and back links
 			}
 
 			.practices-title {
-				@include typography('Rubik', 18px, 26px, $color-white);
+				@include typography("Rubik", 18px, 26px, $color-white);
 				font-weight: 500;
 				padding: 23px 0;
 			}

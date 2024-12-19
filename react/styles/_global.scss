@@ -3,104 +3,104 @@
 * https://github.com/ten1seven/what-input
 */
 
-[data-whatintent='mouse'] *:focus {
-  outline: none;
+[data-whatintent="mouse"] *:focus {
+	outline: none;
 }
 
-[data-whatintent='keyboard'] *:focus {
-  box-shadow: 0 0 0 3px orange !important;
-  outline: none;
+[data-whatintent="keyboard"] *:focus {
+	box-shadow: 0 0 0 3px orange !important;
+	outline: none;
 }
 
-a[href^='http'] span {
-  margin-left: 0;
+a[href^="http"] span {
+	margin-left: 0;
 }
 
 #panel {
-  section:first-of-type {
-    margin-top: 2rem;
-  }
+	section:first-of-type {
+		margin-top: 2rem;
+	}
 }
 
 svg.icon {
-  height: $font-size-base;
-  width: $font-size-base;
+	height: $font-size-base;
+	width: $font-size-base;
 }
 
 .glyphicon {
-  display: inline-block;
-  position: relative;
-  top: 1px;
+	display: inline-block;
+	position: relative;
+	top: 1px;
 }
 
 .glyphicon-chevron-up::before {
-  content: '\f077';
-  font-family: 'FontAwesome';
+	content: "\f077";
+	font-family: "FontAwesome";
 }
 
 .back-to-top .glyphicon-chevron-up {
-  color: $color-teal;
+	color: $color-teal;
 }
 
 .back-to-top:hover .glyphicon-chevron-up {
-  color: $color-white;
+	color: $color-white;
 }
 
 .link-large {
-  color: #006693;
-  font-size: 24px;
-  line-height: 1;
-  text-decoration: none;
+	color: #006693;
+	font-size: 24px;
+	line-height: 1;
+	text-decoration: none;
 }
 
 .boxes {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  @include breakpoint(md) {
-    flex-direction: row;
-  }
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	@include breakpoint(md) {
+		flex-direction: row;
+	}
 
-  .box {
-    border: 1px solid $color-gray-light;
-    margin: 0 1.5rem 1.5rem 0;
-    padding: 1.5rem;
+	.box {
+		border: 1px solid $color-gray-light;
+		margin: 0 1.5rem 1.5rem 0;
+		padding: 1.5rem;
 
-    &:last-of-type {
-      margin-right: 0;
-    }
-    @include breakpoint(md) {
-      margin-bottom: 0;
-    }
-  }
+		&:last-of-type {
+			margin-right: 0;
+		}
+		@include breakpoint(md) {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .skip {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  height: 1px;
-  left: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-  width: 1px;
-  z-index: 9999;
-  background-color: white;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	height: 1px;
+	left: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	white-space: nowrap;
+	width: 1px;
+	z-index: 9999;
+	background-color: white;
 
-  &:active,
-  &:focus {
-    clip: auto;
-    clip-path: none;
-    height: auto;
-    overflow: visible;
-    white-space: normal;
-    width: auto;
-  }
+	&:active,
+	&:focus {
+		clip: auto;
+		clip-path: none;
+		height: auto;
+		overflow: visible;
+		white-space: normal;
+		width: auto;
+	}
 }
 
 .hide {
-  display: none;
+	display: none;
 }

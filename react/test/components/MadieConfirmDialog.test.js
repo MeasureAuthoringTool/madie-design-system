@@ -45,7 +45,7 @@ const DialogTesterForDiscard = () => {
                 action="discard"
                 dialogTitle="Discard Changes"
                 name="discard your changes"
-                continueText= "Yes, Discard All Changes"
+                continueText="Yes, Discard All Changes"
                 cancelText="No, Keep Working"
             />
         </div>

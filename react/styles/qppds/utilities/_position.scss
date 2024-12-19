@@ -1,24 +1,24 @@
 // stylelint-disable declaration-no-important
-@import '../settings/index.scss';
+@import "../settings/index.scss";
 
 .qpp-u-position--relative {
-  position: relative !important;
+	position: relative !important;
 }
 
 .qpp-u-position--absolute {
-  position: absolute !important;
+	position: absolute !important;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+	$viewport: map-get($breakpoints, $breakpoint);
 
-  @media (min-width: $viewport) {
-    .qpp-u-#{$breakpoint}-position--relative {
-      position: relative !important;
-    }
+	@media (min-width: $viewport) {
+		.qpp-u-#{$breakpoint}-position--relative {
+			position: relative !important;
+		}
 
-    .qpp-u-#{$breakpoint}-position--absolute {
-      position: absolute !important;
-    }
-  }
+		.qpp-u-#{$breakpoint}-position--absolute {
+			position: absolute !important;
+		}
+	}
 }

@@ -1,33 +1,33 @@
 @mixin inline-icon {
-  position: relative;
-  vertical-align: middle;
-  margin-bottom: -0.1em; // apply negative margin so icon doesn't affect height
-  margin-top: -0.1em;
-  height: 1em;
-  width: 1em;
+	position: relative;
+	vertical-align: middle;
+	margin-bottom: -0.1em; // apply negative margin so icon doesn't affect height
+	margin-top: -0.1em;
+	height: 1em;
+	width: 1em;
 }
 
 @mixin inline-icon-md {
-  @include inline-icon;
-  margin-bottom: -0.2em;
-  margin-top: -0.3em;
-  height: 1.25em;
-  width: 1.25em;
+	@include inline-icon;
+	margin-bottom: -0.2em;
+	margin-top: -0.3em;
+	height: 1.25em;
+	width: 1.25em;
 }
 
 @mixin inline-icon-lg {
-  @include inline-icon;
-  margin-bottom: -0.3em;
-  margin-top: -0.4em;
-  height: 1.5em;
-  width: 1.5em;
+	@include inline-icon;
+	margin-bottom: -0.3em;
+	margin-top: -0.4em;
+	height: 1.5em;
+	width: 1.5em;
 }
 
 @mixin mat-icon {
-  fill: currentColor;
+	fill: currentColor;
 }
 
 @mixin feather-icon {
-  stroke: currentColor;
-  fill: none;
+	stroke: currentColor;
+	fill: none;
 }

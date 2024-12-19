@@ -1,74 +1,74 @@
-@import '../variables/layout';
+@import "../variables/layout";
 
-$at-media-error-message: 'breakpoint mixin supports: xxs, xs, sm, md, lg, xl';
+$at-media-error-message: "breakpoint mixin supports: xxs, xs, sm, md, lg, xl";
 
 /*
 NOTE: named this "media-breakpoint" so as not to conflict with existing qpp-style
 mixin "breakpoint" used for legacy css.
 */
 @mixin media-breakpoint($class) {
-  @if $class == xxs {
-    @media all and (min-width: $width-xxs) {
-      @content;
-    }
-  } @else if $class == xs {
-    @media all and (min-width: $width-xs) {
-      @content;
-    }
-  } @else if $class == sm {
-    @media all and (min-width: $width-sm) {
-      @content;
-    }
-  } @else if $class == md {
-    @media all and (min-width: $width-md) {
-      @content;
-    }
-  } @else if $class == lg {
-    @media all and (min-width: $width-lg) {
-      @content;
-    }
-  } @else if $class == xl {
-    @media all and (min-width: $width-xl) {
-      @content;
-    }
-  } @else {
-    @warn $at-media-error-message;
-  }
+	@if $class == xxs {
+		@media all and (min-width: $width-xxs) {
+			@content;
+		}
+	} @else if $class == xs {
+		@media all and (min-width: $width-xs) {
+			@content;
+		}
+	} @else if $class == sm {
+		@media all and (min-width: $width-sm) {
+			@content;
+		}
+	} @else if $class == md {
+		@media all and (min-width: $width-md) {
+			@content;
+		}
+	} @else if $class == lg {
+		@media all and (min-width: $width-lg) {
+			@content;
+		}
+	} @else if $class == xl {
+		@media all and (min-width: $width-xl) {
+			@content;
+		}
+	} @else {
+		@warn $at-media-error-message;
+	}
 }
 
 // alias to old mixin name, updated to match uswds
 @mixin at-media($bp) {
-  @include media-breakpoint($bp) {
-    @content;
-  }
+	@include media-breakpoint($bp) {
+		@content;
+	}
 }
 
 @mixin at-media-max($bp) {
-  @if $bp == xxs {
-    @media all and (max-width: $width-xxs) {
-      @content;
-    }
-  } @else if $bp == xs {
-    @media all and (max-width: $width-xs) {
-      @content;
-    }
-  } @else if $bp == sm {
-    @media all and (max-width: $width-sm) {
-      @content;
-    }
-  } @else if $bp == md {
-    @media all and (max-width: $width-md) {
-      @content;
-    }
-  } @else if $bp == lg {
-    @media all and (max-width: $width-lg) {
-      @content;
-    }
-  } @else if $bp == xl {
-    @media all and (max-width: $width-xl) {
-      @content;
-    }
-  } @else {
-    @warn $at-media-error-message;
-  }
+	@if $bp == xxs {
+		@media all and (max-width: $width-xxs) {
+			@content;
+		}
+	} @else if $bp == xs {
+		@media all and (max-width: $width-xs) {
+			@content;
+		}
+	} @else if $bp == sm {
+		@media all and (max-width: $width-sm) {
+			@content;
+		}
+	} @else if $bp == md {
+		@media all and (max-width: $width-md) {
+			@content;
+		}
+	} @else if $bp == lg {
+		@media all and (max-width: $width-lg) {
+			@content;
+		}
+	} @else if $bp == xl {
+		@media all and (max-width: $width-xl) {
+			@content;
+		}
+	} @else {
+		@warn $at-media-error-message;
+	}
 }

@@ -18,13 +18,11 @@ describe("DateField", () => {
                     disabled={false}
                 />
             );
-            
+
             const labelText = await findByText("Status Date");
             expect(labelText).toBeInTheDocument();
             expect(await findByText("Status Date")).toBeInTheDocument();
-            expect(
-                getByDisplayValue("04/17/2022")
-            ).toBeInTheDocument();
+            expect(getByDisplayValue("04/17/2022")).toBeInTheDocument();
         });
     });
 
@@ -33,20 +31,17 @@ describe("DateField", () => {
             const { findByText, container } = render(
                 <DateField
                     label="Status Date"
-                    
                     handleDateChange={() => console.log("Status Date")}
                     disabled={false}
                 />
             );
-            
+
             const labelText = await findByText("Status Date");
             expect(labelText).toBeInTheDocument();
             expect(await findByText("Status Date")).toBeInTheDocument();
-            
-                const dateDisplay =  container.querySelector('[value="04/17/2022"]');
-                expect(dateDisplay).toBeNull();
 
-            
+            const dateDisplay = container.querySelector('[value="04/17/2022"]');
+            expect(dateDisplay).toBeNull();
         });
     });
 });
