@@ -9,7 +9,6 @@ const MadieConfirmDialog = ({
     onContinue,
     action,
     warning,
-    children,
     ...otherDialogProps
 }) => (
     <MadieDialog
@@ -42,10 +41,13 @@ const MadieConfirmDialog = ({
                 {action?.includes("discard") && (
                     <p>You have unsaved changes.</p>
                 )}
-                {children}
+                <p>
+                    Are you sure you want to{" "}
+                    <span className="strong">{otherDialogProps.name}</span>?
+                </p>
             </section>
             <section className="dialog-warning-action">
-                <ErrorIcon />
+                <ErrorIcon/>
                 <p>{warning}</p>
             </section>
         </div>
@@ -57,7 +59,6 @@ MadieConfirmDialog.propTypes = {
     onContinue: PropTypes.func,
     action: PropTypes.string,
     warning: PropTypes.string,
-    children: PropTypes.any,
 };
 
 export default MadieConfirmDialog;

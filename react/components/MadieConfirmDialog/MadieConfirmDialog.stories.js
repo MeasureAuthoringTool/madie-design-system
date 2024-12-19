@@ -77,12 +77,7 @@ export const ConfirmDialog = () => {
                 dialogTitle="Are you sure?"
                 name="log out of UMLS"
                 action="confirm"
-            >
-                <p>
-                    Are you sure you want to{" "}
-                    <span className="strong">Delete</span>?
-                </p>
-            </MadieConfirmDialog>
+            />
             <MadieConfirmDialog
                 open={openDiscardDialog}
                 onContinue={onDiscardDialogContinue}
