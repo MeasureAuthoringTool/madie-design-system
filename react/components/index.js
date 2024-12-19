@@ -41,7 +41,7 @@ import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
-import TruncateText from "./TruncateText";
+import TruncateText from "./TruncateText/index";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
