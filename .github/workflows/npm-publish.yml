@@ -6,9 +6,7 @@ on:
 jobs:
   npm-publish:
     name: npm-publish
-    if: >
-      github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.title, 'Release ')
+    if: contains(github.event.head_commit.message, 'Release')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -54,16 +52,6 @@ jobs:
         run: npm run coverage
 
       - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.TEMP_NPM_TOKEN }}
-        run: |
-          # Extract the current version from package.json
-          VERSION=$(node -p "require('./package.json').version")
-
-          # Check if the version already exists on npm
-          if npm show @madie/madie-design-system@${VERSION} > /dev/null 2>&1; then
-            echo "Version ${VERSION} already exists on npm. Skipping publish."
-          else
-            echo "Publishing version ${VERSION} to npm..."
-            npm publish --access public
-          fi
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
