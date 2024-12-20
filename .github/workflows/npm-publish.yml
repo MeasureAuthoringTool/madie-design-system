@@ -6,6 +6,7 @@ on:
 jobs:
   npm-publish:
     name: npm-publish
+    if: contains(github.event.pull_request.title || github.event.head_commit.message, 'Release')
     runs-on: ubuntu-latest
     defaults:
       run:
