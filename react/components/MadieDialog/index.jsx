@@ -103,6 +103,7 @@ const MadieDialog = ({
     dialogProps,
     cancelButtonProps,
     continueButtonProps,
+    maxWidth = "sm",
     children,
 }) => {
     const {
@@ -124,7 +125,7 @@ const MadieDialog = ({
                     marginTop: "-20px",
                 },
             }}
-            maxWidth="sm"
+            maxWidth={maxWidth}
             fullWidth
             PaperComponent={DraggablePaper}
             {...otherDialogProps}
@@ -298,6 +299,7 @@ MadieDialog.propTypes = {
     cancelButtonProps: PropTypes.object,
     continueButtonProps: PropTypes.object,
     children: PropTypes.object,
+    maxWidth: PropTypes.string,
 };
 
 DraggablePaper.propTypes = {
