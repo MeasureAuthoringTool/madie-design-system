@@ -43,7 +43,7 @@ const Tab = ({ type, orientation, size, ...rest }) => {
         height: size === "standard" ? "48px" : "60px",
         fontFamily: "Rubik, sans serif",
         fontWeight: 400,
-        padding: size === "standard" ? "14.5px 24.5px" : "20.5px 24px",
+        padding: size === "standard" ? "14.5px 24px" : "20.5px 24px",
         textTransform: "none",
         fontSize: "16px",
         alignItems: orientation === "vertical" && "flex-start",
