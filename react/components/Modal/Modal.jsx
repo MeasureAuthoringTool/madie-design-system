@@ -141,6 +141,7 @@ Modal.propTypes = {
     onRequestClose: PropTypes.func,
     appElement: PropTypes.string,
     isOpen: PropTypes.bool,
+    width: PropTypes.string,
 };
 
 Modal.defaultProps = {
