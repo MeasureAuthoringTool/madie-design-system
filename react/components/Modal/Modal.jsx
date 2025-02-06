@@ -22,6 +22,18 @@ const Modal = ({
         ReactModal.setAppElement(appElement);
     }, []);
 
+    const getWidth = () => {
+        if (props.width) {
+            return {
+                width: props.width,
+                maxWidth: "calc(100vw - 2rem)",
+                maxHeight: "calc(100vh - 2rem)",
+            };
+        } else {
+            return {};
+        }
+    };
+
     return (
         <ReactModal
             onRequestClose={onRequestClose}
@@ -30,6 +42,9 @@ const Modal = ({
             overlayClassName="qpp-c-modal__overlay"
             bodyOpenClassName="qpp-c-modal__body-open"
             isOpen={isOpen}
+            style={{
+                content: getWidth(),
+            }}
             onAfterOpen={() => {
                 // Add heading separator based on overflow
                 if (
@@ -126,6 +141,7 @@ Modal.propTypes = {
     onRequestClose: PropTypes.func,
     appElement: PropTypes.string,
     isOpen: PropTypes.bool,
+    width: PropTypes.string,
 };
 
 Modal.defaultProps = {
