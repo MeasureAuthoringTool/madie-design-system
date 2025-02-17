@@ -42,6 +42,7 @@ import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
+import useFormikResetOnEvent from "./useFormikResetOnEvent.jsx";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -171,4 +172,5 @@ export {
     Tooltip,
     DSLink,
     TruncateText,
+    useFormikResetOnEvent
 };
