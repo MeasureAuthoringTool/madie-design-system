@@ -81,6 +81,7 @@ const AutoComplete = ({
     error = false,
     helperText,
     onChange,
+    value,
     ...rest
 }) => {
     return (
@@ -165,6 +166,7 @@ const AutoComplete = ({
                 disabled={disabled}
                 multiple={multiple}
                 disableCloseOnSelect={multiple}
+                disableClearable={!value?.length || value?.[0] === "" || value?.[0] === "-"}
                 sx={
                     multiple
                         ? {
