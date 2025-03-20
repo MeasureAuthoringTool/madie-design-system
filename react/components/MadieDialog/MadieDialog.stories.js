@@ -6,6 +6,7 @@ import TextArea from "../TextArea/index";
 import Select from "../Select/index";
 import Button from "../Button";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
+import { DialogContent, Typography, Backdrop } from "@mui/material";
 
 export default {
     title: "MadieDialog",
@@ -130,5 +131,123 @@ export const Dialog = () => {
                 </div>
             </MadieDialog>
         </div>
+    );
+};
+
+export const DialogWithActionButtons = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <>
+            <Button variant="cyan" onClick={() => setOpen(true)}>
+                open Dialog
+            </Button>
+            <MadieDialog
+                title="Human Readable"
+                sx={{
+                    "#modal-body": {
+                        h2: {
+                            borderTop: "1px solid black",
+                        },
+                    },
+                }}
+                dialogProps={{
+                    onClose,
+                    open,
+                    maxWidth: "lg",
+                    fullWidth: true,
+                }}
+                cancelButtonProps={{
+                    variant: "secondary",
+                    cancelText: "Cancel",
+                    "data-testid": "cancel-button",
+                }}
+                continueButtonProps={{
+                    variant: "cyan",
+                    type: "submit",
+                    "data-testid": "continue-button",
+                    continueText: "Continue",
+                }}
+            >
+                <DialogContent>
+                    <div data-testid="view-modal">
+                        <Typography>
+                            <div>Some Text</div>
+                        </Typography>
+                    </div>
+                </DialogContent>
+            </MadieDialog>
+        </>
+    );
+};
+
+export const DialogWithPopoverActionButtons = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <>
+            <Button variant="cyan" onClick={() => setOpen(true)}>
+                open Dialog
+            </Button>
+            <MadieDialog
+                title="Dialog with popover action buttons"
+                sx={{
+                    "#modal-body": {
+                        h2: {
+                            borderTop: "1px solid black",
+                        },
+                    },
+                }}
+                dialogProps={{
+                    onClose,
+                    open,
+                    maxWidth: "lg",
+                    fullWidth: true,
+                    onSubmit: () => {
+                        console.log("Submitted");
+                        setOpen(false);
+                    },
+                }}
+                cancelButtonProps={{
+                    variant: "secondary",
+                    cancelText: "Cancel",
+                    "data-testid": "cancel-button",
+                }}
+                continueButtonProps={{
+                    variant: "cyan",
+                    type: "submit",
+                    "data-testid": "continue-button",
+                    continueText: "Continue",
+                    popoverOptions: [
+                        {
+                            label: "Export",
+                            dataTestId: "export-option",
+                            toImplementFunction: () =>
+                                console.log("Export clicked"),
+                        },
+                        {
+                            label: "Export for Publishing",
+                            dataTestId: "export-publishing-option",
+                            toImplementFunction: () =>
+                                console.log("Export for Publishing clicked"),
+                        },
+                    ],
+                }}
+            >
+                <DialogContent>
+                    <div data-testid="view-modal">
+                        <Typography>
+                            <div>Some Text</div>
+                        </Typography>
+                    </div>
+                </DialogContent>
+            </MadieDialog>
+        </>
     );
 };
