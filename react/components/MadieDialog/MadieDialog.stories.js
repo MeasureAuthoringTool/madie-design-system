@@ -6,7 +6,7 @@ import TextArea from "../TextArea/index";
 import Select from "../Select/index";
 import Button from "../Button";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
-import { DialogContent, Typography, Backdrop } from "@mui/material";
+import { DialogContent, Typography } from "@mui/material";
 
 export default {
     title: "MadieDialog",
