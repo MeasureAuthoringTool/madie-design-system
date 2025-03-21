@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Draggable from "react-draggable";
 import CloseIcon from "@mui/icons-material/Close";
@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Button from "../Button";
+import Popover from "../Popover";
 
 const DraggablePaper = (props) => {
     const { children, ...rest } = props;
@@ -32,8 +33,23 @@ const DraggablePaper = (props) => {
 const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
     const { cancelText, cancelIcon, ...otherCancelButtonProps } =
         cancelButtonProps;
-    const { continueText, continueIcon, ...otherContinueButtonProps } =
-        continueButtonProps;
+    const {
+        continueText,
+        continueIcon,
+        popoverOptions,
+        ...otherContinueButtonProps
+    } = continueButtonProps;
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const openPopOverMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const closePopOverMenu = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
     return (
         <>
             <Divider sx={{ borderColor: "#8c8c8c" }} />
@@ -57,7 +73,27 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
                         </span>
                     </Button>
                 )}
-                {continueButtonProps && (
+                {popoverOptions ? (
+                    <>
+                        <Button
+                            className="qpp-c-button--cyan"
+                            onClick={openPopOverMenu}
+                            style={{ marginTop: 0 }}
+                            {...otherContinueButtonProps}
+                        >
+                            <span>
+                                {continueText}
+                                {continueIcon}
+                            </span>
+                        </Button>
+                        <Popover
+                            optionsOpen={open}
+                            anchorEl={anchorEl}
+                            handleClose={closePopOverMenu}
+                            additionalSelectOptionProps={popoverOptions}
+                        />
+                    </>
+                ) : (
                     <Button
                         className="qpp-c-button--cyan"
                         type="submit"
