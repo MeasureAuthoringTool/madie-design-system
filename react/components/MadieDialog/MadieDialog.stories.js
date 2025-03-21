@@ -243,7 +243,7 @@ export const DialogWithPopoverActionButtons = () => {
                 <DialogContent>
                     <div data-testid="view-modal">
                         <Typography>
-                            <div>Some Text</div>
+                            <div>Some Text displayed here</div>
                         </Typography>
                     </div>
                 </DialogContent>
