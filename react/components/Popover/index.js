@@ -22,10 +22,11 @@ const MadiePopover = ({
             }}
             transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "center",
             }}
             sx={{
                 ".MuiPopover-paper": {
+                    background: "none",
                     boxShadow: "none",
                     overflow: "visible",
                     ".popover-content": {
