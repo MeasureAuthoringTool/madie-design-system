@@ -168,8 +168,10 @@ const TextField = ({
                 error={error}
                 disabled={disabled}
                 id={id}
-                inputProps={newInputProps}
-                slotProps={{ htmlInput: { maxLength: maxLength } }}
+                inputProps={{
+                    ...newInputProps,
+                    maxLength: maxLength,
+                }}
                 {...rest}
             />
             {maxLength && !disabled && (
