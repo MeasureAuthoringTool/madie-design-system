@@ -19,6 +19,7 @@ const TextField = ({
     inputProps,
     labelColor = undefined,
     textFieldStyles = {},
+    maxLength = undefined,
     ...rest
 }) => {
     // get a copy of input props
@@ -168,8 +169,23 @@ const TextField = ({
                 disabled={disabled}
                 id={id}
                 inputProps={newInputProps}
+                slotProps={{ htmlInput: { maxLength: maxLength } }}
                 {...rest}
             />
+            {maxLength && !disabled && (
+                <span
+                    style={{
+                        fontFamily: "Rubik",
+                        fontSize: 12,
+                        color: "#333",
+                        position: "absolute",
+                        bottom: -20,
+                        right: 0,
+                    }}
+                >
+                    {rest.value?.length}/{maxLength} Characters
+                </span>
+            )}
         </FormControl>
     );
 };
@@ -186,5 +202,6 @@ TextField.propTypes = {
     tooltipText: PropTypes.string,
     inputProps: PropTypes.object,
     labelColor: PropTypes.string,
+    maxLength: PropTypes.number,
 };
 export default TextField;
