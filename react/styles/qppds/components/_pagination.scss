@@ -1,0 +1,227 @@
+// stylelint-disable declaration-no-important
+// stylelint-disable selector-no-qualifying-type
+
+.qpp-c-pagination {
+	margin: $spacing-8 0;
+	font-family: $font-rubik;
+	display: flex;
+	justify-content: center;
+}
+
+.qpp-c-pagination svg {
+	margin-bottom: -0.1em !important;
+	margin-top: -0.1em !important;
+	height: 1em !important;
+	width: 1em !important;
+}
+
+.qpp-c-pagination button,
+.qppds .qpp-c-pagination button {
+	background-color: $white;
+	border-radius: rem(3px);
+	padding: rem(2px);
+
+	&:focus {
+		border: rem(1px) solid $blue-70;
+		border-radius: rem(3px);
+		box-shadow: 0 0 0 rem(4px) $blue-10;
+		outline: none;
+	}
+}
+
+.qpp-c-pagination a,
+.qppds .qpp-c-pagination a {
+	text-decoration: none;
+	padding: rem(2px);
+
+	&:focus {
+		@include link-focus;
+		padding: rem(2px);
+		margin-left: 0;
+		margin-right: 0;
+		color: $blue-60;
+	}
+
+	&:hover {
+		color: $blue-60;
+	}
+}
+
+.qpp-c-pagination__list {
+	margin-top: 0;
+	margin-bottom: 0;
+	list-style-type: none;
+	padding-left: 0;
+
+	align-items: center;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	width: auto;
+
+	> li {
+		margin-bottom: 0;
+	}
+}
+
+// Pagination nav items
+// 1. Prevents chromium browsers from adding additional vertical whitespace
+.qpp-c-pagination__item {
+	display: inline-flex; // 1
+	height: $spacing-40;
+	justify-content: center;
+	line-height: 1;
+	margin-left: $spacing-8 / 2;
+	margin-right: $spacing-8 / 2;
+	min-width: $spacing-40;
+	max-width: $spacing-40;
+
+	@include at-media(sm) {
+		flex: 1 0 auto; // flex: 1 won't work in IE11
+	}
+
+	> a,
+	> button {
+		&:disabled {
+			background-color: $gray-10;
+			color: $gray-60;
+		}
+	}
+}
+
+// Don't show previous and next at mobile.
+// Functionality exists with page buttons.
+.qpp-c-pagination__arrow {
+	display: none;
+	max-width: unset;
+	@include at-media(sm) {
+		display: inherit;
+	}
+}
+
+.qpp-c-pagination__link {
+	align-items: center;
+	color: $blue-60;
+	display: inline-flex;
+	text-decoration: none;
+
+	&[disabled] {
+		opacity: 0.4 !important;
+		pointer-events: none;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: underline !important;
+	}
+
+	&:visited {
+		color: $blue-60;
+	}
+}
+
+.qpp-c-pagination__button {
+	align-items: center;
+	border-color: $gray-10;
+	border-radius: rem(3px);
+	border-style: solid;
+	border-width: rem(1px);
+	color: $blue-60;
+	display: inline-flex;
+	justify-content: center;
+	padding: $spacing-16;
+	text-decoration: none;
+	width: 100%;
+
+	&:hover,
+	&.qpp-c-button--hover {
+		background-color: $gray-04;
+	}
+
+	&:active,
+	&.qpp-c-button--active {
+		background-color: darken($gray-04, 3%);
+	}
+}
+
+.qppds .qpp-c-pagination__link,
+.qppds .qpp-c-pagination__button {
+	color: $blue-60;
+}
+
+.qpp-c-pagination .qpp-c-pagination__current,
+.qppds .qpp-c-pagination .qpp-c-pagination__current {
+	background-color: $blue-60;
+	border-color: transparent;
+	color: $white;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $blue-60;
+		color: $white;
+	}
+}
+
+.qpp-c-pagination__overflow {
+	align-items: center;
+	align-self: stretch;
+	display: inherit;
+	user-select: none;
+	padding: $spacing-16;
+	opacity: 0.5;
+	color: $blue-60;
+}
+
+.qpp-c-pagination__previous {
+	@include at-media(sm) {
+		margin-right: $spacing-40 / 2;
+	}
+	border: rem(1px) solid transparent;
+	svg {
+		margin-right: rem(6px) !important;
+		margin-left: 0 !important;
+	}
+}
+
+.qpp-c-pagination button.qpp-c-pagination__previous {
+	&:focus {
+		border: rem(1px) solid $blue-70;
+		margin-right: $spacing-40 / 2;
+	}
+}
+
+.qpp-c-pagination__item a.qpp-c-pagination__previous {
+	&:focus {
+		border: rem(1px) solid $blue-70;
+		margin-right: ($spacing-40 / 2);
+		margin-left: 0;
+	}
+}
+
+.qpp-c-pagination__next {
+	@include at-media(sm) {
+		margin-left: $spacing-40 / 2;
+	}
+	border: rem(1px) solid transparent;
+	svg {
+		margin-left: rem(6px) !important;
+		margin-right: 0 !important;
+	}
+}
+
+.qpp-c-pagination button.qpp-c-pagination__next {
+	border: 1px solid transparent;
+	&:focus {
+		border: rem(1px) solid $blue-70;
+	}
+}
+
+.qpp-c-pagination__item a.qpp-c-pagination__next {
+	&:focus {
+		border: rem(1px) solid $blue-70;
+		margin-left: $spacing-40 / 2;
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,32 @@
+// stylelint-disable declaration-no-important
+@import "../settings/index";
+
+.qpp-u-color--white {
+	color: $white !important;
+}
+
+.qpp-u-color--black {
+	color: $black !important;
+}
+
+.qpp-u-color--gray-60 {
+	color: $gray-60 !important;
+}
+
+.qpp-u-color--gray-80 {
+	color: $gray-80 !important;
+}
+
+.qpp-u-color--gray-90 {
+	color: $gray-90 !important;
+}
+
+.qpp-u-color--blue-70 {
+	color: $blue-70 !important;
+}
+
+.qpp-u-color--red-60 {
+	color: $red-60 !important;
+}
+
+// TODO: determine all colors that are intended to be used for text in design

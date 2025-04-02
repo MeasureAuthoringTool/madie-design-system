@@ -110,4 +110,41 @@ describe("Select", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
+
+    test("Select renders disabled", async () => {
+        await act(async () => {
+            const { findByText } = render(
+                <Select
+                    disabled
+                    helperText="helper text"
+                    label="Test"
+                    value=""
+                    id="test-select"
+                    inputProps={{ "data-testid": "test-input" }}
+                    data-testid="test-select"
+                    size="small"
+                />
+            );
+            const helperText = await findByText("helper text");
+            expect(helperText).toBeInTheDocument();
+        });
+    });
+    test("Select renders error", async () => {
+        await act(async () => {
+            const { findByText } = render(
+                <Select
+                    error
+                    helperText="helper text"
+                    label="Test"
+                    value=""
+                    id="test-select"
+                    inputProps={{ "data-testid": "test-input" }}
+                    data-testid="test-select"
+                    size="small"
+                />
+            );
+            const helperText = await findByText("helper text");
+            expect(helperText).toBeInTheDocument();
+        });
+    });
 });

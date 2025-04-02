@@ -1,14 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import LegacyModal from "./LegacyModal";
 import DsModal from "./Modal";
 
 const Modal = ({ useDesignSystem, ...rest }) => {
-    if (useDesignSystem) {
-        return <DsModal {...rest} />;
-    }
-    return <LegacyModal {...rest} />;
+    return <DsModal {...rest} />;
 };
 
 Modal.propTypes = {

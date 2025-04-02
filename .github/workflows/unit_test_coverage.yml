@@ -20,21 +20,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [14, 16]
+        version: [20]
     name: Checkout, install, lint, build and test with coverage
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./react
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js (matrix)
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.version }}
 
       - name: Cache node modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -46,65 +49,32 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install node dependencies
-        working-directory: ./react
         run: npm ci
 
       - name: Audit dependencies for security vulnerabilities
-        working-directory: ./react
         run: npm audit --production
 
       - name: Lint the source code
-        working-directory: ./react
         run: npm run-script lint
 
       - name: Check prettier formatting
-        working-directory: ./react
         run: npm run-script check-format
 
       - name: Build the source code
-        working-directory: ./react
         run: npm run build
 
       - name: Execute test coverage
-        working-directory: ./react
         run: npm run-script coverage
 
       - name: Store the coverage report as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: react/coverage/lcov.info
 
-  upload-codacy-coverage:
-    name: Upload code coverage to Codacy
-    needs: node_matrix
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-
-      - name: Upload code coverage to Codacy
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: lcov.info
-
-  upload-codecov-coverage:
-    name: Upload code coverage to Codecov
-    needs: node_matrix
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-
       - name: Upload code coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
         with:
           file: lcov.info
           fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }} # required

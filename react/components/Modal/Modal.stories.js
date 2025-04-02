@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./index";
 import { withKnobs, boolean, text } from "@storybook/addon-knobs";
+import { humanReadable } from "./HumanReadable";
 
 export default {
     title: "Modal",
@@ -162,6 +163,46 @@ export const WithDesignSystemOverflow = () => {
                     et. Proin tincidunt porta pellentesque.
                 </p>
             </Modal>
+        </div>
+    );
+};
+
+export const WithDesignSystemOverflowForHR = () => {
+    const [open, openModal, closeModal] = useModal();
+    const knobIsOpen = boolean("isOpen", false);
+
+    const hr = humanReadable();
+
+    return (
+        <div className="qpp-u-padding--12">
+            <button className="qpp-c-button" onClick={openModal}>
+                Open Modal
+            </button>
+
+            <div data-testid="view-hr-modal">
+                <Modal
+                    useDesignSystem
+                    isOpen={open || knobIsOpen}
+                    title="Human Readable"
+                    onRequestClose={closeModal}
+                    width="75rem"
+                    primary={{
+                        title: "Yes, go for it",
+                        onClick: () => {
+                            console.log("submit");
+                            closeModal();
+                        },
+                    }}
+                    secondary={{
+                        title: "No, take me back",
+                    }}
+                >
+                    <div
+                        className="modal-body"
+                        dangerouslySetInnerHTML={{ __html: hr }}
+                    />
+                </Modal>
+            </div>
         </div>
     );
 };

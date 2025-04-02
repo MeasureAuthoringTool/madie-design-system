@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withKnobs } from "@storybook/addon-knobs";
-import MUISelect from "./index";
-import { MenuItem, FormHelperText } from "@mui/material";
+import Select from "./index";
+import { MenuItem, Box } from "@mui/material";
 
 export default {
     title: "Select",
@@ -11,7 +11,10 @@ export default {
 };
 
 const Wrapper = ({ children }) => (
-    <div className="qpp-u-padding--16" style={{ width: 300 }}>
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 300, marginBottom: "16px" }}
+    >
         {children}
     </div>
 );
@@ -25,9 +28,9 @@ const options = [
     { key: "key2", value: "value2", testId: "testid2", name: "name2" },
     { key: "key3", value: "value2", testId: "testid3", name: "name3" },
 ];
-export const Select = () => (
+export const SelectWithLabel = () => (
     <Wrapper>
-        <MUISelect
+        <Select
             defaultValue=""
             placeHolder={{ name: "placeholder", value: "" }}
             label="Text Label"
@@ -52,7 +55,7 @@ export const Select = () => (
 
 export const WithHelperText = () => (
     <Wrapper>
-        <MUISelect
+        <Select
             placeHolder={{ name: "placeholder", value: "" }}
             defaultValue=""
             label="Text Label"
@@ -60,12 +63,7 @@ export const WithHelperText = () => (
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    {" "}
-                    A descriptive message
-                </FormHelperText>
-            }
+            helperText="A descriptive message"
             options={options.map(({ key, value, testId, name }) => {
                 return (
                     <MenuItem
@@ -83,7 +81,7 @@ export const WithHelperText = () => (
 
 export const Disabled = () => (
     <Wrapper>
-        <MUISelect
+        <Select
             placeHolder={{ name: "placeholder", value: "" }}
             defaultValue=""
             label="Text Label"
@@ -109,7 +107,7 @@ export const Disabled = () => (
 
 export const Required = () => (
     <Wrapper>
-        <MUISelect
+        <Select
             required
             placeHolder={{ name: "placeholder", value: "" }}
             defaultValue=""
@@ -135,7 +133,7 @@ export const Required = () => (
 
 export const Error = () => (
     <Wrapper>
-        <MUISelect
+        <Select
             error
             placeHolder={{ name: "placeholder", value: "" }}
             defaultValue=""
@@ -144,11 +142,7 @@ export const Error = () => (
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={true}>
-                    An error message
-                </FormHelperText>
-            }
+            helperText="An error message An error message An error message"
             options={options.map(({ key, value, testId, name }) => {
                 return (
                     <MenuItem
@@ -162,4 +156,80 @@ export const Error = () => (
             })}
         />
     </Wrapper>
+);
+
+export const VariedHeights = () => (
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px" }}
+    >
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+            <Select
+                error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message"
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
+            <Select
+                // error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText=""
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
+            <Select
+                // error
+                placeHolder={{ name: "placeholder", value: "" }}
+                defaultValue=""
+                label="Text Label"
+                id="measureName"
+                inputProps={{ "data-testid": "measure-name-input" }}
+                data-testid="measure-name-text-field"
+                size="small"
+                helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
+                options={options.map(({ key, value, testId, name }) => {
+                    return (
+                        <MenuItem
+                            key={key}
+                            value={value}
+                            data-testid={`option-${testId}`}
+                        >
+                            {name}
+                        </MenuItem>
+                    );
+                })}
+            />
+        </Box>
+    </div>
 );

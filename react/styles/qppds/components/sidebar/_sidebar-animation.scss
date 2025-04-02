@@ -1,0 +1,125 @@
+$drawerMaxHeight: 225px;
+$simpleMaxHeight: 105px;
+$chartMaxHeight: 306px;
+$detailsMaxHeight: 130px;
+
+@mixin delayKeyframes($name, $maxHeight) {
+	@keyframes delayRemove#{$name} {
+		0% {
+			max-height: $maxHeight;
+		}
+
+		100% {
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	@keyframes delayAdd#{$name} {
+		0% {
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		100% {
+			max-height: $maxHeight;
+		}
+	}
+}
+@include delayKeyframes("Drawer", $drawerMaxHeight);
+@include delayKeyframes("Simple", $simpleMaxHeight);
+@include delayKeyframes("Chart", $chartMaxHeight);
+@include delayKeyframes("Details", $detailsMaxHeight);
+
+.animation-group {
+	transition: opacity 0.5s ease-in-out;
+	opacity: 0;
+	overflow: hidden;
+
+	&.background-highlight {
+		background-color: $color-slate-dark;
+	}
+}
+
+.animation-group-enter {
+	opacity: 1;
+	transition-delay: 0.5s;
+
+	animation-delay: 0s;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+	animation-name: delayAddSimple;
+	animation-timing-function: ease-in-out;
+}
+
+.animation-group-exit {
+	opacity: 0;
+
+	animation-delay: 0.3s;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+	animation-name: delayRemoveSimple;
+	animation-timing-function: ease-in-out;
+}
+
+// custom max heights
+.animation-group-details.animation-group-enter {
+	animation-name: delayAddDetails;
+}
+
+.animation-group-details.animation-group-exit {
+	animation-name: delayRemoveDetails;
+}
+
+.animation-group-chart.animation-group-enter {
+	animation-name: delayAddChart;
+}
+
+.animation-group-chart.animation-group-exit {
+	animation-name: delayRemoveChart;
+}
+
+.link-drawer {
+	.animation-group-enter {
+		animation-name: delayAddDrawer;
+	}
+
+	.animation-group-exit {
+		animation-name: delayRemoveDrawer;
+	}
+}
+
+.sidebar {
+	.animation-flat {
+		width: 100%;
+	}
+
+	&.closed {
+		transition-delay: 0.5s;
+
+		.animation-flat > nav > ul > li {
+			> a,
+			> .link-drawer > button {
+				transition: padding 0.7s ease-out 0.3s;
+				padding-left: 30px;
+			}
+		}
+	}
+
+	&:not(.closed) {
+		transition-delay: 0s;
+
+		.animation-flat {
+			transition-delay: 0s;
+
+			nav > ul > li {
+				> a,
+				> .link-drawer > button {
+					transition: padding 0.7s ease-out 0s;
+				}
+			}
+		}
+	}
+}

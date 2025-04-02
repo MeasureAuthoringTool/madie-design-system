@@ -1,0 +1,76 @@
+// stylelint-disable declaration-no-important
+@import "../settings/variables/index";
+
+@each $key, $value in $spacers {
+	.qpp-u-padding--#{$key} {
+		padding: #{$value} !important;
+	}
+
+	.qpp-u-padding-top--#{$key} {
+		padding-top: #{$value} !important;
+	}
+
+	.qpp-u-padding-right--#{$key} {
+		padding-right: #{$value} !important;
+	}
+
+	.qpp-u-padding-bottom--#{$key} {
+		padding-bottom: #{$value} !important;
+	}
+
+	.qpp-u-padding-left--#{$key} {
+		padding-left: #{$value} !important;
+	}
+
+	.qpp-u-padding-x--#{$key} {
+		padding-left: #{$value} !important;
+		padding-right: #{$value} !important;
+	}
+
+	.qpp-u-padding-y--#{$key} {
+		padding-top: #{$value} !important;
+		padding-bottom: #{$value} !important;
+	}
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+	$value: map-get($breakpoints, $breakpoint);
+
+	@media (min-width: $value) {
+		@each $spacer in map-keys($spacers) {
+			$size: map-get($spacers, $spacer);
+
+			// Example: qpp-u-sm-padding--0
+			.qpp-u-#{$breakpoint}-padding--#{$spacer} {
+				// Example: padding: 0 !important;
+				padding: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-top--#{$spacer} {
+				padding-top: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-right--#{$spacer} {
+				padding-right: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-bottom--#{$spacer} {
+				padding-bottom: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-left--#{$spacer} {
+				padding-left: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-x--#{$spacer} {
+				padding-left: #{$size} !important;
+				padding-right: #{$size} !important;
+			}
+
+			.qpp-u-#{$breakpoint}-padding-y--#{$spacer} {
+				padding-bottom: #{$size} !important;
+				padding-top: #{$size} !important;
+			}
+		}
+	}
+}

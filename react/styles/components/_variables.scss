@@ -1,0 +1,157 @@
+// ============================================================================= QPP COLOR DEFINITIONS
+// primary
+$color-navy: #036;
+$color-teal: #04838a;
+$color-green: #689f38;
+$color-orange: #df711c;
+
+// tones
+$color-navy-medium: #125496;
+$color-navy-dark: darken($color-navy, 7%);
+$color-teal-medium: #209fa6;
+$color-teal-dark: #106970;
+$color-green-medium: #7cb342;
+$color-orange-medium: #ffb300;
+
+$color-navy-light: #3f7dba;
+$color-teal-light: #80cbc4;
+$color-green-light: #aed581;
+$color-orange-light: #ffcc80;
+
+// data
+$color-blue: #0288d1;
+$color-blue-medium: #2eb1ed;
+$color-blue-light: #81d4fa;
+
+$color-magenta: #ad1457;
+$color-magenta-medium: #f06292;
+$color-magenta-light: #f8bbd0;
+
+$color-chartreuse: #c0ca33;
+$color-chartreuse-medium: #cddc39;
+$color-chartreuse-light: #e6ee9c;
+
+$color-green-data: #507d29;
+$color-green-data-medium: #70a03d;
+$color-green-data-light: #aed581;
+
+$color-orange-data: #e47500;
+$color-orange-data-medium: #ffa200;
+$color-orange-data-light: #ffc438;
+
+// Side Navigation
+$color-slate: #21344c;
+$color-slate-light: #3b5c82;
+$color-slate-dark: #0f2138;
+
+// neutral
+$color-white: #fff;
+$color-gray-light: #f8f8f8;
+$color-gray-very-light: #ddd;
+$color-gray-medium: #b0b0b0;
+$color-gray-dark: #686868;
+$color-gray-darker-medium: #767676;
+$color-gray-darker: #242424;
+$color-black: #000;
+
+// Error and Progress
+$color-red: #bc2828;
+$color-red-highlight: #f2dede;
+$color-warning: #ffc438;
+$color-success: #507d29;
+$color-disabled: #ddd;
+
+// MIPS Category Colors
+$color-quality: #0288d1;
+$color-aci: #f06292;
+$color-ia: #ffa200;
+$color-cost: #70a03d;
+
+//  Notification Banner
+$notification-banner-background: #f7f7f7;
+$notification-banner-label-color: #515151;
+
+// ============================================================================= COLOR VARIABLES
+$brand-primary-dark: $color-navy;
+$brand-primary-medium: $color-navy-medium;
+$brand-primary-light: $color-navy-light;
+$brand-secondary-dark: $color-teal;
+$brand-secondary-light: $color-teal-light;
+
+$text-selection-color: $color-orange-light;
+
+// ============================================================================= GLOBAL
+$border-radius-base: 4px;
+$border-radius-large: 4px;
+$border-radius-small: 4px;
+// ============================================================================= FONTS SETUP
+$font-size-base: 16px;
+$font-family-base: Rubik, Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+// ============================================================================= TEXT
+$color-text-main: $color-gray-darker;
+$text-color: $color-text-main;
+$lead-color: $brand-primary-dark;
+// ============================================================================= FORMS
+$form-label-color: $brand-secondary-dark;
+$form-border-color: $color-gray-medium;
+$form-border-color-focus: $brand-secondary-dark;
+$form-field-color: $color-gray-medium;
+$form-check-color: $brand-secondary-dark;
+$form-error-color: $color-red;
+// ============================================================================= LINKS
+$link-color: $color-teal;
+$link-decoration: underline;
+$link-hover-color: $color-navy-medium;
+$link-hover-decoration: none;
+// ============================================================================= BUTTONS
+$button-color-primary: $color-orange;
+$button-color-secondary: $color-green;
+// ============================================================================= TABLES
+$table-primary-color: $brand-secondary-dark;
+$table-border-color: $color-gray-medium;
+$table-stripe-color: $color-gray-light;
+// ============================================================================= NAV
+$nav-color-primary: $brand-primary-dark;
+$nav-color-secondary: $brand-secondary-dark;
+$nav-color-secondary-light: $brand-secondary-light;
+$nav-text-color: $color-white;
+// ============================================================================= HEADINGS
+$headings-font-family: $font-family-base;
+$headings-color: $color-gray-darker;
+$headings-color-content: $color-navy;
+// ============================================================================= SIDE NAV
+$side-nav-horizontal-padding: 22px;
+$side-nav-expanded-width: 300px;
+$side-nav-closed-width: 90px;
+
+// Font weights based on /styles/components/_fonts.scss
+$rubik-light: 300;
+$rubik-regular: 400;
+$rubik-medium: 500;
+$rubik-bold: 700;
+
+// Text style based on https://confluence.cms.gov/pages/viewpage.action?spaceKey=QPPPRACTICE&title=Design+Specifications
+// Structure: (font-size(desktop), font-size(mobile), line-height(desktop), line-height(mobile), font-weight)
+$headings: (
+	(44, 32, 48, 38, $rubik-regular),
+	(32, 26, 38, 30, $rubik-regular),
+	(24, 20, 29, 24, $rubik-medium),
+	(18, 18, 22, 22, $rubik-medium),
+	(16, 16, 21, 21, $rubik-medium),
+	(14, 14, 19, 19, $rubik-medium)
+);
+
+// Structure: (Desktop (px), Tablet(px), Mobile(px), Font Weight, Transform)
+$content-headings: (
+	(56, 34, 34, $rubik-light, initial),
+	(46, 28, 28, $rubik-light, initial),
+	(36, 24, 24, $rubik-regular, initial),
+	(30, 20, 20, $rubik-medium, initial),
+	(24, 18, 18, $rubik-medium, initial),
+	(18, 18, 16, $rubik-bold, uppercase)
+);
+// ============================================================================= SCREEN SIZE
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;

@@ -1,0 +1,118 @@
+@import "../settings/index";
+
+.qpp-c-modal {
+	&__content {
+		background: $white;
+		border: 0 none;
+		border-radius: 4px;
+		bottom: auto;
+		left: 50%;
+		max-width: 95%;
+		min-width: 300px;
+		width: 100%;
+		outline: none;
+		position: absolute;
+		right: auto;
+		top: 10%;
+		transform: translateX(-50%);
+
+		@include media-breakpoint(xs) {
+			max-width: 600px;
+		}
+	}
+
+	&__side-panel {
+		display: flex;
+	}
+
+	.qpp-c-modal__header {
+		padding: $spacing-32 $spacing-32 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		h3 {
+			margin: 0;
+		}
+
+		.closex {
+			background-color: transparent;
+			border: 0;
+			align-self: center;
+			height: $spacing-32;
+			width: $spacing-32;
+			line-height: 0;
+			margin: -$spacing-8 0 0;
+			padding: 0;
+			fill: $black;
+
+			&:focus {
+				@include focus-ring;
+			}
+		}
+	}
+
+	.qpp-c-modal__header-sep {
+		padding-bottom: 25px;
+		border-bottom: 1px solid $gray-10;
+
+		~ .qpp-c-modal__body {
+			padding: $spacing-24 $spacing-32 $spacing-32;
+		}
+	}
+
+	.qpp-c-modal__body {
+		max-height: 60vh;
+		overflow-y: auto;
+		padding: $spacing-16 $spacing-32 $spacing-32;
+
+		> p {
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&::-webkit-scrollbar {
+			-webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+		}
+
+		&::-webkit-scrollbar:vertical {
+			width: 11px;
+		}
+
+		&::-webkit-scrollbar:horizontal {
+			width: 11px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 8px;
+			border: 2px solid $white;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	.qpp-c-modal__footer {
+		display: flex;
+		justify-content: flex-end;
+		border-top: 1px solid $gray-10;
+		padding: $spacing-16 $spacing-32;
+	}
+}
+
+.qpp-c-modal__overlay {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 2000;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.qpp-c-modal__body-open {
+	overflow: hidden;
+}

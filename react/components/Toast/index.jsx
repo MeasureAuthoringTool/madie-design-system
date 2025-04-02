@@ -1,73 +1,86 @@
 import React from "react";
-import PropTypes from "prop-types";
+
+import ErrorIcon from "@mui/icons-material/Error"; // warning
+import InfoIcon from "@mui/icons-material/Info"; // info
+import CancelIcon from "@mui/icons-material/Cancel"; // error
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
+
 import { IconButton, Snackbar } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ClearIcon from "@mui/icons-material/Clear";
+
+import classNames from "classnames";
+import PropTypes from "prop-types";
 
 const Toast = ({
-    open,
+    toastType = "warning",
+    open = true,
     message,
-    toastType, // 'danger | success, more later when mockups come out
-    autoHideDuration,
+    canClose = true,
     onClose,
+    autoHideDuration,
     testId,
     toastKey,
+    toastProps, // props to pass to outer component
+    closeButtonProps, // props to pass to close button
     ...rest
 }) => {
-    const dangerColor = "#D92F2F";
-    const successColor = "#4d7e23";
-    // we can map our colors and icons to make this reusable for multiple info types.
-    const colorMap = {
-        danger: dangerColor,
-        success: successColor,
+    // we have four states to render for
+    const typeSelect = {
+        warning: ErrorIcon,
+        info: InfoIcon,
+        danger: CancelIcon,
+        success: CheckCircleIcon,
     };
-    const iconMap = {
-        danger: ErrorOutlineIcon,
-        success: CheckCircleOutlineIcon,
-    };
-    const selectedColor = colorMap[toastType];
-    const SelectedIcon = iconMap[toastType];
+    const Icon = typeSelect[toastType];
 
-    const Message = (
-        <div className="messageCont">
-            <div>
-                <div className="errorCont">
-                    {SelectedIcon && <SelectedIcon className="leftIcon" />}
-                </div>
-                <p className="messageText" data-testid={testId}>
-                    {message}
-                </p>
-            </div>
-            <div style={{ display: "block" }}>
-                <IconButton
-                    className="icon-button"
-                    aria-label="close"
-                    color="inherit"
-                    sx={{ p: 0 }}
-                    onClick={onClose}
-                    data-testId="close-error-button"
-                >
-                    <CloseIcon />
-                </IconButton>
-            </div>
-        </div>
-    );
+    const toastClass = classNames("toast", toastType);
+    const iconClass = classNames("alert-icon", toastType);
+
     return (
         <Snackbar
             key={toastKey ? toastKey : undefined}
-            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            autoHideDuration={autoHideDuration}
+            open={open}
+            onClose={onClose}
+            message={
+                <div className={toastClass} {...toastProps}>
+                    <Icon className={iconClass} />
+                    <div id="message" data-testid={testId}>
+                        {message}
+                    </div>
+                    {canClose && (
+                        <IconButton
+                            onClick={onClose}
+                            sx={{
+                                marginLeft: "auto",
+                                "&:after": {
+                                    content: `''`,
+                                    position: "absolute",
+                                    left: "0px",
+                                    width: "1px",
+                                    height: "40px",
+                                    backgroundColor: "#B0B0B0",
+                                    pointerEvents: "none",
+                                },
+                            }}
+                            {...closeButtonProps}
+                        >
+                            <ClearIcon sx={{ color: "#242424" }} />
+                        </IconButton>
+                    )}
+                </div>
+            }
             sx={{
                 overflow: "hidden",
-                color: selectedColor,
-                borderRadius: 1,
+                // borderRadius: 4,
                 "& .MuiPaper-root": {
                     backgroundColor: "#fff",
                     padding: 0,
-                    color: selectedColor,
                 },
-                "& .MuiSvgIcon-root": {
-                    color: "#242424",
+                "& .MuiSnackbar-root": {
+                    overflow: "hidden",
+                    borderRadius: 4,
                 },
                 "& .MuiSnackbarContent-message": {
                     padding: 0,
@@ -79,50 +92,26 @@ const Toast = ({
                         justifyContent: "space-between",
                         div: {
                             display: "flex",
-                            ".messageText": {
-                                m: 0,
-                                p: 2.375,
-                                fontFamily: "Rubik",
-                                fontWeight: 500,
-                                fontSize: 14,
-                            },
-                            ".errorCont": {
-                                backgroundColor: selectedColor,
-                                ".leftIcon": {
-                                    m: 2,
-                                    color: "#fff",
-                                },
-                            },
-                            ".icon-button": {
-                                m: 2,
-                                "&. MuiSvgIcon-root": {
-                                    color: "#242424",
-                                },
-                            },
                         },
-                    },
-                    "& .MuiSvgIcon-root": {
-                        color: "#242424",
                     },
                 },
             }}
-            autoHideDuration={autoHideDuration}
-            open={open}
-            onClose={onClose}
-            message={message ? Message : undefined}
             {...rest}
         />
     );
 };
 
 Toast.propTypes = {
+    toastType: PropTypes.string,
     open: PropTypes.bool,
-    message: PropTypes.string,
-    toastType: PropTypes.string, // 'danger | success, more later when mockups come out
-    autoHideDuration: PropTypes.number,
+    message: PropTypes.node,
+    canClose: PropTypes.bool,
     onClose: PropTypes.func,
+    autoHideDuration: PropTypes.number,
     testId: PropTypes.string,
     toastKey: PropTypes.string,
+    toastProps: PropTypes.object,
+    closeButtonProps: PropTypes.object,
 };
 
 export default Toast;

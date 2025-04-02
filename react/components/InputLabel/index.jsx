@@ -23,7 +23,7 @@ const Label = ({ required, disabled, error, ...rest }) => {
                     fontSize: 14,
                     color: "#333",
                     "& .MuiInputLabel-asterisk": {
-                        color: "#D92F2F",
+                        color: "#AE1C1C !important",
                         marginRight: "3px !important", //this was
                     },
                 },
@@ -35,10 +35,10 @@ const Label = ({ required, disabled, error, ...rest }) => {
                     },
                 },
                 disabled && {
-                    color: "rgba(0,0,0,0.6)",
+                    color: "#333333 !important",
                 },
                 error && {
-                    color: "#D92F2F",
+                    color: "#AE1C1C !important",
                 },
             ]}
             {...rest}
@@ -48,6 +48,6 @@ const Label = ({ required, disabled, error, ...rest }) => {
 Label.propTypes = {
     required: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
-    error: PropTypes.bool
-}
+    error: PropTypes.bool,
+};
 export default Label;

@@ -1,0 +1,70 @@
+@import "../settings/index";
+
+.qpp-c-breadcrumbs {
+	line-height: $line-height-lg;
+	font-size: $font-size-14;
+	font-family: $font-rubik;
+	color: $gray-80;
+
+	.qpp-c-breadcrumbs__list {
+		@include unstyled-list;
+		margin-left: 0;
+		display: block;
+	}
+
+	.qpp-c-breadcrumbs__list-item {
+		display: inline-block;
+		white-space: nowrap;
+
+		&::after {
+			display: inline-block;
+			margin-left: $spacing-8;
+			margin-right: $spacing-8;
+			transform: translateY(3px) rotate(20deg);
+			border-right: 0.1em solid fade-out($gray-80, 0.7);
+			height: 0.9em;
+			content: "";
+		}
+
+		&.qpp-c-breadcrumbs__list-item--current::after {
+			content: "";
+			margin-left: $spacing-0;
+			margin-right: $spacing-0;
+		}
+	}
+
+	.qpp-c-breadcrumbs__link {
+		color: $gray-80;
+		text-decoration: none;
+		text-underline-offset: rem(4px);
+		text-decoration-thickness: rem(1px);
+
+		&:focus {
+			@include link-focus;
+		}
+
+		&:hover {
+			> span {
+				text-decoration-thickness: rem(2px);
+			}
+		}
+
+		> span {
+			text-decoration: underline;
+		}
+	}
+}
+
+.qpp-c-breadcrumbs--light {
+	color: $white;
+
+	.qpp-c-breadcrumbs__link {
+		color: $white;
+	}
+
+	.qpp-c-breadcrumbs__list-item {
+		&::after {
+			border-right: 0.1em solid fade-out($white, 0.6);
+		}
+	}
+}

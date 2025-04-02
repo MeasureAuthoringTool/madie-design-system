@@ -1,0 +1,23 @@
+@import "../settings/variables/index";
+
+.qpp-icon-inline {
+	@include inline-icon;
+}
+
+.qpp-icon-inline--md {
+	@include inline-icon-md;
+}
+
+.qpp-icon-inline--lg {
+	@include inline-icon-lg;
+}
+
+.qpp-icon-mat {
+	@include mat-icon;
+}
+
+// Deprecated.  Will be removed once feather icons are
+// no longer used by applications.
+.qpp-icon-feather {
+	@include feather-icon;
+}

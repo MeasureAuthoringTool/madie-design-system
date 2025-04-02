@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 const VARIANTS = [
     "secondary",
     "outline",
+    "outline-secondary",
+    "outline-filled",
+    "action",
     "cyan",
     "danger",
     "danger-primary",

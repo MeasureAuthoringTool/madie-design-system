@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { visuallyHidden } from "@mui/utils";
+
 import {
     Pagination as PaginationComponent,
     PaginationItem,
@@ -57,6 +59,10 @@ const Pagination = ({
     return (
         <Container>
             <Row>
+                {/*this span is only for screen reader*/}
+                <span id="items-per-page" style={visuallyHidden}>
+                    Items per page {limit}.
+                </span>
                 <Typography
                     fontSize={14}
                     fontFamily="Rubik"
@@ -71,6 +77,7 @@ const Pagination = ({
                     sx={{
                         margin: "0 11px",
                         "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#8C8C8C",
                             "& legend": {
                                 width: 0,
                             },
@@ -85,6 +92,11 @@ const Pagination = ({
                     value={limit}
                     label={null}
                     onChange={handleLimitChange}
+                    inputProps={{
+                        "aria-labelledby": "items-per-page",
+                        "aria-describedby":
+                            "items-per-page offset-of-total-items",
+                    }}
                 >
                     {limitOptions.map((val) => (
                         <MenuItem
@@ -98,6 +110,7 @@ const Pagination = ({
                 </Select>
                 <Typography
                     fontSize={14}
+                    id="offset-of-total-items"
                     sx={{
                         color: "#757575",
                     }}
@@ -111,7 +124,7 @@ const Pagination = ({
                     "& .MuiPagination-ul": {
                         "& .MuiPaginationItem-root": {
                             color: "#0073C8",
-                            border: "solid 1px #CACACA",
+                            border: "solid 1px #8c8c8c",
                             "&:focus": {
                                 border: "0.0625rem solid #125496",
                                 borderRadius: "0.1875rem",

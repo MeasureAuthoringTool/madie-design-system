@@ -1,0 +1,33 @@
+.sidebar-tooltip {
+	display: none;
+	position: fixed;
+	left: 71px;
+	top: 0px;
+}
+
+.sidebar-tooltip-text {
+	position: relative;
+	display: block;
+	padding: 7px 10px;
+	background: $color-teal-light;
+	border-radius: 3px;
+	color: $color-slate-dark;
+	font-size: 13px;
+	font-weight: normal;
+	letter-spacing: 0px;
+}
+
+.sidebar-tooltip-text:after {
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	border-color: transparent;
+	border-right-color: $color-teal-light;
+	border-width: 6px;
+	margin-top: -6px;
+	pointer-events: none;
+}

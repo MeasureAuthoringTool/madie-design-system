@@ -24,7 +24,7 @@ const FooterUI = (props) => {
                 <img
                     className="qpp-logo"
                     src="/images/qpp_logo_rgb_color.png"
-                    alt="madie logo"
+                    alt="MADiE Measure Authoring Development Integrated Environment logo"
                 />
             ),
         },
@@ -41,7 +41,7 @@ const FooterUI = (props) => {
                 {!isIESupportPage && (
                     <div className="feedback-session-sign-up" />
                 )}
-                <footer className="global-footer">
+                <footer aria-label="Site footer" className="global-footer">
                     <div className="build-version" id="build-version">
                         {props.buildVersion}
                     </div>
