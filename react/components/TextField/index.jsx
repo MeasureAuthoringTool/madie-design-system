@@ -10,6 +10,7 @@ const TextField = ({
     required = false,
     disabled = false,
     label,
+    maxLength = undefined,
     ...rest
 }) => {
     return (
@@ -55,8 +56,23 @@ const TextField = ({
                 error={error}
                 disabled={disabled}
                 id={id}
+                slotProps={{ htmlInput: { maxLength: maxLength } }}
                 {...rest}
             />
+            {maxLength && !disabled && (
+                <span
+                    style={{
+                        fontFamily: "Rubik",
+                        fontSize: 12,
+                        color: "#333",
+                        position: "absolute",
+                        bottom: -20,
+                        right: 0,
+                    }}
+                >
+                    {rest.value?.length}/{maxLength} Characters
+                </span>
+            )}
             {helperText && helperText}
         </FormControl>
     );
@@ -70,5 +86,6 @@ TextField.propTypes = {
     disabled: PropTypes.bool,
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
+    maxLength: PropTypes.number,
 };
 export default TextField;
