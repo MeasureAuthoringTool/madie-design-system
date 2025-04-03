@@ -11,6 +11,7 @@ const TextArea = ({
     disabled = false,
     label,
     inputProps,
+    maxLength = undefined,
     ...rest
 }) => {
     // coerce this to avoid issue passing props to dom.
@@ -97,9 +98,24 @@ const TextArea = ({
                 label={null}
                 disabled={disabled}
                 id={id}
+                maxLength={maxLength}
                 {...inputProps}
                 {...rest}
-            />
+            />            
+            {maxLength && !disabled && (
+                <span
+                    style={{
+                        fontFamily: "Rubik",
+                        fontSize: 12,
+                        color: "#333",
+                        position: "absolute",
+                        bottom: -20,
+                        right: 0,
+                    }}
+                >
+                    {rest.value?.length}/{maxLength} Characters
+                </span>
+            )}
         </FormControl>
     );
 };
@@ -113,5 +129,6 @@ TextArea.propTypes = {
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
     inputProps: PropTypes.any,
+    maxLength: PropTypes.number,
 };
 export default TextArea;
