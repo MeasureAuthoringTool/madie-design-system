@@ -99,4 +99,28 @@ describe("TextArea", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
+    test("TextArea shows maxLength", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, findByText } = render(
+                <TextArea
+                    placeholder="test Name"
+                    required
+                    label="test Name"
+                    id="testName"
+                    data-testid="test-name-text-field"
+                    disabled={false}
+                    maxLength={10}
+                />
+            );
+            expect(
+                await findByTestId("test-name-text-field")
+            ).toBeInTheDocument();
+            const textNode = await getByTestId("test-name-text-field");
+            expect(textNode).toBeInTheDocument();
+            userEvent.type(textNode, "newVal");
+            Simulate.change(textNode);
+            const maxLength = await findByText("/10 Characters");
+            expect(maxLength).toBeInTheDocument();
+        });
+    });
 });
