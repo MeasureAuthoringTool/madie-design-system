@@ -169,4 +169,30 @@ describe("TextField", () => {
             expect(textNode.value).toBe("newVal");
         });
     });
+
+    test("Max Length renders", async () => {
+        await act(async () => {
+            const { findByTestId, getByTestId, findByText } = render(
+                <TextField
+                    placeholder="test Name"
+                    required
+                    label="test Name"
+                    id="testName"
+                    inputProps={{ "data-testid": "test-name-input" }}
+                    data-testid="test-name-text-field"
+                    size="small"
+                    maxLength={10}
+                />
+            );
+            expect(
+                await findByTestId("test-name-text-field")
+            ).toBeInTheDocument();
+            const textNode = await getByTestId("test-name-input");
+            userEvent.type(textNode, "newVal");
+            Simulate.change(textNode);
+            expect(textNode.value).toBe("newVal");
+            const maxLength = await findByText("/10 Characters");
+            expect(maxLength).toBeInTheDocument();
+        });
+    });
 });
