@@ -44,6 +44,7 @@ const TextField = ({
 
     const extendedTextFieldStyles = {
         borderRadius: "3px",
+        
         border: "none",
         marginTop: "8px",
         "& .MuiOutlinedInput-notchedOutline": {
@@ -170,7 +171,6 @@ const TextField = ({
                 id={id}
                 inputProps={{
                     ...newInputProps,
-                    maxLength: maxLength,
                 }}
                 {...rest}
             />
@@ -179,9 +179,9 @@ const TextField = ({
                     style={{
                         fontFamily: "Rubik",
                         fontSize: 12,
-                        color: "#333",
+                        color: "#717171",
                         position: "absolute",
-                        bottom: -20,
+                        bottom: -26,
                         right: 0,
                     }}
                 >
