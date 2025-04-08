@@ -91,14 +91,13 @@ const TextArea = ({
                 </FormHelperText>
             )}
             <TextareaAutosize
-                style={{ marginTop: "8px", maxWidth: "100%" }}
+                style={{ marginTop: "8px", maxWidth: "100%", }}
                 className={
                     error ? "text-area-variable error" : "text-area-variable"
                 }
                 label={null}
                 disabled={disabled}
                 id={id}
-                maxLength={maxLength}
                 {...inputProps}
                 {...rest}
             />            
@@ -107,9 +106,9 @@ const TextArea = ({
                     style={{
                         fontFamily: "Rubik",
                         fontSize: 12,
-                        color: "#333",
+                        color: "#717171",
                         position: "absolute",
-                        bottom: -20,
+                        bottom: -26,
                         right: 0,
                     }}
                 >
