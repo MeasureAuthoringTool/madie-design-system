@@ -47,9 +47,9 @@ const Tab = ({ type, orientation, size, ...rest }) => {
         textTransform: "none",
         fontSize: "16px",
         alignItems: orientation === "vertical" && "flex-start",
-        "& .Mui-disabled": {
+        "&.Mui-disabled": {
             background: "#DDDDDD",
-            color: "#717171",
+            color: "#717171 !important",
         },
     };
     const style = ((type) => {
