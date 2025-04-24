@@ -42,7 +42,7 @@ import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
-import theme from "../themes/ActionCenterTheme.js"; 
+import theme from "../themes/actionCenterTheme.js"; 
 import {
     MyApplicationsIcon,
     UserSignInIcon,
