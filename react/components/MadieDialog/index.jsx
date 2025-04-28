@@ -37,6 +37,7 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
         continueText,
         continueIcon,
         popoverOptions,
+        continueButtonHide,
         ...otherContinueButtonProps
     } = continueButtonProps;
     const [anchorEl, setAnchorEl] = useState(null);
@@ -93,7 +94,7 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
                             additionalSelectOptionProps={popoverOptions}
                         />
                     </>
-                ) : (
+                ) : continueButtonHide ? null : (
                     <Button
                         className="qpp-c-button--cyan"
                         type="submit"
