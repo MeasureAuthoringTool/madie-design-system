@@ -215,13 +215,7 @@ export const DialogWithActionButtonsHideContinueButton = () => {
                     cancelText: "Cancel",
                     "data-testid": "cancel-button",
                 }}
-                continueButtonProps={{
-                    variant: "cyan",
-                    type: "submit",
-                    "data-testid": "continue-button",
-                    continueText: "Continue",
-                    continueButtonHide: true,
-                }}
+                continueButtonProps={""}
             >
                 <DialogContent>
                     <div data-testid="view-modal">
