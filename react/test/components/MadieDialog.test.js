@@ -143,4 +143,37 @@ describe("Madie Dialog", () => {
         // only one button should be there i.e. cancel model icon at top right corner
         expect(queryAllByRole("button")).toHaveLength(1);
     });
+
+    it("It renders of type form with required components and hides the continue button", async () => {
+        const { getByTestId, queryByText, queryByTestId } = render(
+            <div>
+                <MadieDialog
+                    form={true}
+                    title="Basic Form"
+                    dialogProps={{
+                        open: true,
+                        onClose: onFormCancel,
+                        onSubmit: onFormSubmit,
+                        maxWidth: "sm",
+                        showRequiredFieldMessage: true,
+                    }}
+                    cancelButtonProps={{
+                        id: "cancelBtn",
+                        "data-testid": "form-cancel-button",
+                        variant: "secondary",
+                        cancelText: "Cancel",
+                    }}
+                    continueButtonProps={""}
+                >
+                    <div>this is a form message</div>
+                </MadieDialog>
+            </div>
+        );
+        expect(getByTestId("dialog-form")).toBeInTheDocument();
+        expect(queryByText("Indicates required field")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        const submitButton = queryByTestId("form-continue-button");
+        expect(cancelButton).toBeInTheDocument();
+        expect(submitButton).not.toBeInTheDocument();
+    });
 });
