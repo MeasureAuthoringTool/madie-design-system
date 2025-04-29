@@ -6,7 +6,7 @@ import TextArea from "../TextArea/index";
 import Select from "../Select/index";
 import Button from "../Button";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
-import { DialogContent, Typography, Tooltip } from "@mui/material";
+import { DialogContent, Typography } from "@mui/material";
 
 export default {
     title: "MadieDialog",
@@ -267,7 +267,6 @@ export const DialogWithActionButtonsContinueButtonDisabledWithTooltip = () => {
                     continueText: "Continue",
                     disabled: true,
                     tooltipText: "Continue button is disabled",
-
                 }}
             >
                 <DialogContent>
