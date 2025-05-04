@@ -10,6 +10,7 @@ import {
     Divider,
     IconButton,
     Typography,
+    Tooltip,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Button from "../Button";
@@ -37,6 +38,8 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
         continueText,
         continueIcon,
         popoverOptions,
+        disabled,
+        tooltipText,
         ...otherContinueButtonProps
     } = continueButtonProps;
     const [anchorEl, setAnchorEl] = useState(null);
@@ -94,17 +97,22 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
                         />
                     </>
                 ) : continueButtonProps ? (
-                    <Button
-                        className="qpp-c-button--cyan"
-                        type="submit"
-                        style={{ marginTop: 0 }}
-                        {...otherContinueButtonProps}
-                    >
+                    <Tooltip title={disabled && tooltipText ? tooltipText : ""}>
                         <span>
-                            {continueText}
-                            {continueIcon}
+                            <Button
+                                className="qpp-c-button--cyan"
+                                type="submit"
+                                style={{ marginTop: 0 }}
+                                {...otherContinueButtonProps}
+                                disabled={disabled}
+                            >
+                                <span>
+                                    {continueText}
+                                    {continueIcon}
+                                </span>
+                            </Button>
                         </span>
-                    </Button>
+                    </Tooltip>
                 ) : null}
             </DialogActions>
         </>

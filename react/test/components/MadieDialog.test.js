@@ -176,4 +176,212 @@ describe("Madie Dialog", () => {
         expect(cancelButton).toBeInTheDocument();
         expect(submitButton).not.toBeInTheDocument();
     });
+
+    it("It renders of type form with required components and tooltips for continue button when it's disabled", async () => {
+        const { getByTestId, queryByText, queryByTestId } = render(
+            <div>
+                <MadieDialog
+                    form={true}
+                    title="Basic Form"
+                    dialogProps={{
+                        open: true,
+                        onClose: onFormCancel,
+                        onSubmit: onFormSubmit,
+                        maxWidth: "sm",
+                        showRequiredFieldMessage: true,
+                    }}
+                    cancelButtonProps={{
+                        id: "cancelBtn",
+                        "data-testid": "form-cancel-button",
+                        variant: "secondary",
+                        cancelText: "Cancel",
+                    }}
+                    continueButtonProps={{
+                        type: "submit",
+                        "data-testid": "form-continue-button",
+                        disabled: true,
+                        continueText: "Continue",
+                        tooltipText: "Continue button is disabled",
+                    }}
+                >
+                    <div>this is a form message</div>
+                </MadieDialog>
+            </div>
+        );
+        expect(getByTestId("dialog-form")).toBeInTheDocument();
+        expect(queryByText("Indicates required field")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        const submitButton = queryByTestId("form-continue-button");
+        expect(cancelButton).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+
+        fireEvent.mouseOver(submitButton);
+        await waitFor(() => {
+            expect(
+                queryByText("Continue button is disabled")
+            ).toBeInTheDocument();
+        });
+    });
+
+    it("It does not show tooltips for continue button when it's enabled", async () => {
+        const { getByTestId, queryByText, queryByTestId } = render(
+            <div>
+                <MadieDialog
+                    form={true}
+                    title="Basic Form"
+                    dialogProps={{
+                        open: true,
+                        onClose: onFormCancel,
+                        onSubmit: onFormSubmit,
+                        maxWidth: "sm",
+                        showRequiredFieldMessage: true,
+                    }}
+                    cancelButtonProps={{
+                        id: "cancelBtn",
+                        "data-testid": "form-cancel-button",
+                        variant: "secondary",
+                        cancelText: "Cancel",
+                    }}
+                    continueButtonProps={{
+                        type: "submit",
+                        "data-testid": "form-continue-button",
+                        disabled: false,
+                        continueText: "Continue",
+                        tooltipText: "Continue button is disabled",
+                    }}
+                >
+                    <div>this is a form message</div>
+                </MadieDialog>
+            </div>
+        );
+        expect(getByTestId("dialog-form")).toBeInTheDocument();
+        expect(queryByText("Indicates required field")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        const submitButton = queryByTestId("form-continue-button");
+        expect(cancelButton).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+
+        fireEvent.mouseOver(submitButton);
+        await waitFor(() => {
+            expect(
+                queryByText("Continue button is disabled")
+            ).not.toBeInTheDocument();
+        });
+    });
+
+    it("It does not show tooltips for continue button when there is no tooltip text", async () => {
+        const { getByTestId, queryByText, queryByTestId } = render(
+            <div>
+                <MadieDialog
+                    form={true}
+                    title="Basic Form"
+                    dialogProps={{
+                        open: true,
+                        onClose: onFormCancel,
+                        onSubmit: onFormSubmit,
+                        maxWidth: "sm",
+                        showRequiredFieldMessage: true,
+                    }}
+                    cancelButtonProps={{
+                        id: "cancelBtn",
+                        "data-testid": "form-cancel-button",
+                        variant: "secondary",
+                        cancelText: "Cancel",
+                    }}
+                    continueButtonProps={{
+                        type: "submit",
+                        "data-testid": "form-continue-button",
+                        continueText: "Continue",
+                    }}
+                >
+                    <div>this is a form message</div>
+                </MadieDialog>
+            </div>
+        );
+        expect(getByTestId("dialog-form")).toBeInTheDocument();
+        expect(queryByText("Indicates required field")).toBeInTheDocument();
+        const cancelButton = getByTestId("close-button");
+        const submitButton = queryByTestId("form-continue-button");
+        expect(cancelButton).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+
+        fireEvent.mouseOver(submitButton);
+        await waitFor(() => {
+            expect(
+                queryByText("Continue button is disabled")
+            ).not.toBeInTheDocument();
+        });
+    });
+
+    it("It renders popover button", async () => {
+        const onClose = jest.fn();
+        const open = true;
+        const setOpen = jest.fn();
+        const { getByTestId, queryByText } = render(
+            <div>
+                <MadieDialog
+                    form={true}
+                    title="Basic Form"
+                    dialogProps={{
+                        onClose,
+                        open,
+                        maxWidth: "lg",
+                        fullWidth: true,
+                        onSubmit: () => {
+                            console.log("Submitted");
+                            setOpen(false);
+                        },
+                    }}
+                    cancelButtonProps={{
+                        variant: "secondary",
+                        cancelText: "Cancel",
+                        "data-testid": "cancel-button",
+                    }}
+                    continueButtonProps={{
+                        variant: "cyan",
+                        type: "submit",
+                        "data-testid": "continue-button",
+                        continueText: "Continue",
+                        popoverOptions: [
+                            {
+                                label: "Export",
+                                dataTestId: "export-option",
+                                toImplementFunction: () =>
+                                    console.log("Export clicked"),
+                            },
+                            {
+                                label: "Export for Publishing",
+                                dataTestId: "export-publishing-option",
+                                toImplementFunction: () =>
+                                    console.log(
+                                        "Export for Publishing clicked"
+                                    ),
+                            },
+                        ],
+                    }}
+                >
+                    <div>this is a form message</div>
+                </MadieDialog>
+            </div>
+        );
+
+        const cancelButton = getByTestId("cancel-button");
+        const submitButton = getByTestId("continue-button");
+        expect(cancelButton).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+
+        fireEvent.click(submitButton);
+        await waitFor(() => {
+            expect(queryByText("Export")).toBeInTheDocument();
+            expect(queryByText("Export for Publishing")).toBeInTheDocument();
+        });
+        const exportOption = getByTestId("export-option");
+        const exportPublishingOption = getByTestId("export-publishing-option");
+        expect(exportOption).toBeInTheDocument();
+        expect(exportPublishingOption).toBeInTheDocument();
+        fireEvent.click(exportOption);
+        await waitFor(() => {
+            expect(setOpen).toHaveBeenCalledTimes(1);
+        });
+    });
 });
