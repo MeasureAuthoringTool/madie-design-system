@@ -191,7 +191,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         expect(copySuccess).not.toBeInTheDocument();
     });
 
-    it("It does not render when inivislbe", async () => {
+    it("It does not render when invisible", async () => {
         render(
             <MadieAlert
                 type="warning"
@@ -206,6 +206,69 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 }}
             />
         );
-        expect(screen.findByTestId("alert-dialog")).toBeNull;
+        await waitFor(() => {
+            expect(screen.queryByTestId("alert-dialog")).toBeNull();
+        });
+    });
+
+    it("renders minimize button when MinimizeAlerts is true", () => {
+        const { getByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                MinimizeAlerts={true}
+                content={<h1>Test content</h1>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        expect(getByTestId("alert-dialog")).toBeInTheDocument();
+        expect(getByTestId("FullscreenExitRoundedIcon")).toBeInTheDocument();
+    });
+
+    it("hides alert when minimize button is clicked", async () => {
+            const { getByTestId, queryByTestId } = render(
+                <MadieAlert
+                    type="warning"
+                    visible={true}
+                    canClose={false}
+                    MinimizeAlerts={true}
+                    content={<h1>Test content</h1>}
+                    alertProps={{
+                        "data-testid": "alert-dialog",
+                    }}
+                />
+            );
+
+            expect(getByTestId("alert-dialog")).toBeInTheDocument();
+            const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+
+            fireEvent.click(minimizeButton);
+
+            // After clicking minimize, the alert should not be in the document
+            await waitFor(() => {
+                expect(queryByTestId("alert-dialog")).not.toBeInTheDocument();
+            });
+    });
+
+    it("does not render minimize button when MinimizeAlerts is false", () => {
+        const { getByTestId, queryByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                MinimizeAlerts={false}
+                content={<h1>Test content</h1>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        expect(getByTestId("alert-dialog")).toBeInTheDocument();
+        expect(queryByTestId("FullscreenExitRoundedIcon")).toBeNull();
     });
 });

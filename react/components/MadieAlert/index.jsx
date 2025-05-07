@@ -19,7 +19,7 @@ const MadieAlert = ({
     visible = true,
     content,
     canClose = true,
-    canMinimize = false, // pass the MinimizeAlerts featureflag for now, since it will be standard later
+    MinimizeAlerts = false, // pass the MinimizeAlerts featureflag for now, since it will be standard later
     alertProps, // props to pass to outer component
     closeButtonProps, // props to pass to close button
     copyButton,
@@ -93,9 +93,9 @@ const MadieAlert = ({
                 <Icon className={iconClass} />
                 <div id="content">{content && content}</div>
                 {
-                    // canMinimize is a feature flag for now, since it will be standard later
+                    // MinimizeAlerts is a feature flag for now, since it will be standard later
                 }
-                {canMinimize && (
+                {MinimizeAlerts && (
                     <Tooltip title={"Minimize"} arrow>
                         <IconButton sx={{
                                     marginLeft: "auto",
@@ -129,7 +129,7 @@ const MadieAlert = ({
                         <IconButton
                             sx={{
                                 marginLeft: "auto",
-                                ...(!canMinimize && {
+                                ...(!MinimizeAlerts && {
                                     "&:after": {
                                         content: `''`,
                                         position: "absolute",
@@ -186,11 +186,11 @@ MadieAlert.propTypes = {
     alertProps: PropTypes.object,
     closeButtonProps: PropTypes.object,
     copyButton: PropTypes.bool,
-    canMinimize: PropTypes.bool,
+    MinimizeAlerts: PropTypes.bool,
 };
 MadieAlert.defaultProps = {
     copyButton: false,
-    canMinimize: false,
+    MinimizeAlerts: false,
 };
 
 export default MadieAlert;
