@@ -5,6 +5,7 @@ import InfoIcon from "@mui/icons-material/Info"; // info
 import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
+import FullscreenExitRoundedIcon from '@mui/icons-material/FullscreenExitRounded';
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -18,12 +19,14 @@ const MadieAlert = ({
     visible = true,
     content,
     canClose = true,
+    canMinimize = false, // pass the MinimizeAlerts featureflag for now, since it will be standard later
     alertProps, // props to pass to outer component
     closeButtonProps, // props to pass to close button
     copyButton,
 }) => {
     const [copyText, setCopyText] = useState("");
     const [toastOpen, setToastOpen] = useState(false);
+    const [minimized, setMinimized] = useState(false);
 
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
@@ -74,7 +77,7 @@ const MadieAlert = ({
     const iconClass = classNames("alert-icon", type);
 
     return (
-        visible && (
+        visible && !minimized && (
             <div className={alertClass} {...alertProps}>
                 <Toast
                     toastKey="copy-success-toast"
@@ -89,6 +92,34 @@ const MadieAlert = ({
                 />
                 <Icon className={iconClass} />
                 <div id="content">{content && content}</div>
+                {
+                    // canMinimize is a feature flag for now, since it will be standard later
+                }
+                {canMinimize && (
+                    <Tooltip title={"Minimize"} arrow>
+                        <IconButton sx={{
+                                    marginLeft: "auto",
+                                    "&:after": {
+                                        content: `''`,
+                                        position: "absolute",
+                                        left: "0px",
+                                        width: "1px",
+                                        height: "40px",
+                                        backgroundColor: "#B0B0B0",
+                                        pointerEvents: "none",
+                                    },
+                                }}
+                            >
+                            <FullscreenExitRoundedIcon 
+                             onClick={(e) => {
+                                e.preventDefault();
+                                setMinimized(true);
+                            }}
+                                sx={{ color: "#242424" }}
+                            />
+                        </IconButton>
+                    </Tooltip>
+                )}
                 {copyButton && (
                     <Tooltip
                         data-testid="copy-button-tooltip"
@@ -98,15 +129,17 @@ const MadieAlert = ({
                         <IconButton
                             sx={{
                                 marginLeft: "auto",
-                                "&:after": {
-                                    content: `''`,
-                                    position: "absolute",
-                                    left: "0px",
-                                    width: "1px",
-                                    height: "40px",
-                                    backgroundColor: "#B0B0B0",
-                                    pointerEvents: "none",
-                                },
+                                ...(!canMinimize && {
+                                    "&:after": {
+                                        content: `''`,
+                                        position: "absolute",
+                                        left: "0px",
+                                        width: "1px",
+                                        height: "40px",
+                                        backgroundColor: "#B0B0B0",
+                                        pointerEvents: "none",
+                                    }
+                                })
                             }}
                         >
                             <ContentCopyIcon
@@ -120,6 +153,7 @@ const MadieAlert = ({
                         </IconButton>
                     </Tooltip>
                 )}
+
                 {canClose && (
                     <IconButton
                         sx={{
@@ -152,9 +186,11 @@ MadieAlert.propTypes = {
     alertProps: PropTypes.object,
     closeButtonProps: PropTypes.object,
     copyButton: PropTypes.bool,
+    canMinimize: PropTypes.bool,
 };
 MadieAlert.defaultProps = {
     copyButton: false,
+    canMinimize: false,
 };
 
 export default MadieAlert;
