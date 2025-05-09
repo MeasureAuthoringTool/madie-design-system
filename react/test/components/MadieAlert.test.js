@@ -211,13 +211,13 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         });
     });
 
-    it("renders minimize button when MinimizeAlerts is true", () => {
+    it("renders minimize button when minimizeAlerts is true", () => {
         const { getByTestId } = render(
             <MadieAlert
                 type="warning"
                 visible={true}
                 canClose={false}
-                MinimizeAlerts={true}
+                minimizeAlerts={true}
                 content={<h1>Test content</h1>}
                 alertProps={{
                     "data-testid": "alert-dialog",
@@ -235,7 +235,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     type="warning"
                     visible={true}
                     canClose={false}
-                    MinimizeAlerts={true}
+                    minimizeAlerts={true}
                     content={<h1>Test content</h1>}
                     alertProps={{
                         "data-testid": "alert-dialog",
@@ -254,13 +254,13 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
             });
     });
 
-    it("does not render minimize button when MinimizeAlerts is false", () => {
+    it("does not render minimize button when minimizeAlerts is false", () => {
         const { getByTestId, queryByTestId } = render(
             <MadieAlert
                 type="warning"
                 visible={true}
                 canClose={false}
-                MinimizeAlerts={false}
+                minimizeAlerts={false}
                 content={<h1>Test content</h1>}
                 alertProps={{
                     "data-testid": "alert-dialog",
