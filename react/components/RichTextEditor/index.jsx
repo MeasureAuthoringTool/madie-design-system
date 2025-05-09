@@ -8,14 +8,17 @@ import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
+import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { IconButton } from "@mui/material";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
+import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import TableChartIcon from "@mui/icons-material/TableChart";
+import { Tooltip } from "@mui/material";
 
 const MenuBar = ({ editor }) => {
     if (!editor) {
@@ -24,64 +27,139 @@ const MenuBar = ({ editor }) => {
     return (
         <div className="control-group">
             <div className="button-group">
-                <IconButton
-                    key={"bold"}
-                    onClick={() => editor.chain().focus().toggleBold().run()}
-                    className={editor.isActive("bold") ? "is-active" : ""}
+                <Tooltip
+                    data-testid="bold-tooltip"
+                    title="Bold"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <FormatBoldIcon />
-                </IconButton>
-                <IconButton
-                    key={"italic"}
-                    onClick={() => editor.chain().focus().toggleItalic().run()}
-                    className={editor.isActive("italic") ? "is-active" : ""}
+                    <IconButton
+                        key={"bold"}
+                        onClick={() =>
+                            editor.chain().focus().toggleBold().run()
+                        }
+                        className={editor.isActive("bold") ? "is-active" : ""}
+                    >
+                        <FormatBoldIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="italic-tooltip"
+                    title="Italic"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <FormatItalicIcon />
-                </IconButton>
-                <IconButton
-                    key={"strike"}
-                    onClick={() => editor.chain().focus().toggleStrike().run()}
-                    className={editor.isActive("strike") ? "is-active" : ""}
-                    style={{ borderRight: "solid 1px #9c9c9c" }}
+                    <IconButton
+                        key={"italic"}
+                        onClick={() =>
+                            editor.chain().focus().toggleItalic().run()
+                        }
+                        className={editor.isActive("italic") ? "is-active" : ""}
+                    >
+                        <FormatItalicIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="underline-tooltip"
+                    title="Underline"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <StrikethroughSIcon />
-                </IconButton>
-                <IconButton
-                    key={"bulletList"}
-                    onClick={() =>
-                        editor.chain().focus().toggleBulletList().run()
-                    }
-                    className={editor.isActive("bulletList") ? "is-active" : ""}
+                    <IconButton
+                        key={"underline"}
+                        onClick={() =>
+                            editor.chain().focus().toggleUnderline().run()
+                        }
+                        className={
+                            editor.isActive("underline") ? "is-active" : ""
+                        }
+                    >
+                        <FormatUnderlinedIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="strikethrough-tooltip"
+                    title="Strikethrough"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <FormatListBulletedIcon />
-                </IconButton>
-                <IconButton
-                    key={"orderedList"}
-                    onClick={() =>
-                        editor.chain().focus().toggleOrderedList().run()
-                    }
-                    className={
-                        editor.isActive("orderedList") ? "is-active" : ""
-                    }
-                    style={{ borderRight: "solid 1px #9c9c9c" }}
+                    <IconButton
+                        key={"strike"}
+                        onClick={() =>
+                            editor.chain().focus().toggleStrike().run()
+                        }
+                        className={editor.isActive("strike") ? "is-active" : ""}
+                        style={{ borderRight: "solid 1px #9c9c9c" }}
+                    >
+                        <StrikethroughSIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="orderedlist-tooltip"
+                    title="Ordered List"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <FormatListNumberedIcon />
-                </IconButton>
-                <IconButton
-                    key={"insertTable"}
-                    onClick={() =>
-                        editor.commands.insertTable({
-                            rows: 3,
-                            cols: 3,
-                            withHeaderRow: true,
-                        })
-                    }
-                    className={
-                        editor.isActive("insertTable") ? "is-active" : ""
-                    }
+                    <IconButton
+                        key={"orderedList"}
+                        onClick={() =>
+                            editor.chain().focus().toggleOrderedList().run()
+                        }
+                        className={
+                            editor.isActive("orderedList") ? "is-active" : ""
+                        }
+                    >
+                        <FormatListNumberedIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="bulletedlist-tooltip"
+                    title="Bulleted List"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
                 >
-                    <TableChartIcon />
-                </IconButton>
+                    <IconButton
+                        key={"bulletList"}
+                        onClick={() =>
+                            editor.chain().focus().toggleBulletList().run()
+                        }
+                        className={
+                            editor.isActive("bulletList") ? "is-active" : ""
+                        }
+                        style={{ borderRight: "solid 1px #9c9c9c" }}
+                    >
+                        <FormatListBulletedIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="table-tooltip"
+                    title="Table"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
+                >
+                    <IconButton
+                        key={"insertTable"}
+                        onClick={() =>
+                            editor.commands.insertTable({
+                                rows: 3,
+                                cols: 3,
+                                withHeaderRow: true,
+                            })
+                        }
+                        className={
+                            editor.isActive("insertTable") ? "is-active" : ""
+                        }
+                    >
+                        <TableChartIcon />
+                    </IconButton>
+                </Tooltip>
             </div>
         </div>
     );
@@ -99,6 +177,7 @@ const RichTextEditor = ({ onChange, content }) => {
                 TableRow,
                 TableHeader,
                 TableCell,
+                Underline,
             ],
             shouldRerenderOnTransaction: false,
             content,
