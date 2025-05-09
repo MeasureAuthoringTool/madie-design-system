@@ -1,8 +1,7 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { EditorContent, EditorProvider, useEditor } from "@tiptap/react";
-import { generateHTML } from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 
 import Gapcursor from "@tiptap/extension-gapcursor";
 import Table from "@tiptap/extension-table";
