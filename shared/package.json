@@ -14,7 +14,7 @@
   "author": "Centers for Medicare & Medicaid Services",
   "license": "CC0-1.0",
   "dependencies": {
-    "@cmsgov/design-system": "^2.9.0",
+    "@cmsgov/design-system": "^8.0.0",
     "@material-design-icons/svg": "^0.6.0",
     "feather-icons": "^4.28.0",
     "react-dom": "^16.14.0"
