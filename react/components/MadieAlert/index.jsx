@@ -123,7 +123,7 @@ const MadieAlert = ({
                 {copyButton && (
                     <Tooltip
                         data-testid="copy-button-tooltip"
-                        title={"Copy Text"}
+                        title={"Copy"}
                         arrow
                     >
                         <IconButton
