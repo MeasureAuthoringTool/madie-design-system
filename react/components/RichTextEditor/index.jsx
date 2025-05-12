@@ -2,6 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
+import InputLabel from "../InputLabel";
 
 import Gapcursor from "@tiptap/extension-gapcursor";
 import Table from "@tiptap/extension-table";
@@ -10,6 +11,7 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
+import { Markdown } from "tiptap-markdown";
 import { IconButton } from "@mui/material";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
@@ -165,7 +167,14 @@ const MenuBar = ({ editor }) => {
     );
 };
 
-const RichTextEditor = ({ onChange, content }) => {
+const RichTextEditor = ({
+    id,
+    error = false,
+    required = false,
+    label,
+    onChange,
+    content,
+}) => {
     const editor = useEditor(
         {
             extensions: [
@@ -178,18 +187,60 @@ const RichTextEditor = ({ onChange, content }) => {
                 TableHeader,
                 TableCell,
                 Underline,
+                Markdown,
             ],
             shouldRerenderOnTransaction: false,
             content,
             onUpdate: ({ editor }) => {
-                const newValue = editor.getHTML();
+                const newValue = editor.storage.markdown.getMarkdown();
                 onChange(newValue);
+                console.log(newValue);
             },
         },
         [content]
     );
     return (
         <>
+            <InputLabel
+                shrink
+                required={required}
+                error={error}
+                htmlFor={id}
+                style={{ marginBottom: 0, height: 16 }} // force a heignt
+                sx={[
+                    {
+                        backgroundColor: "transparent",
+                        borderColor: "#8C8C8C",
+                        display: "inline-flex",
+                        flexDirection: "row-reverse",
+                        alignSelf: "baseline",
+                        textTransform: "none",
+                        // force it outside the select box
+                        position: "initial",
+                        transform: "translateX(0px) translateY(0px)",
+                        fontFamily: "Rubik",
+                        fontWeight: 500,
+                        fontSize: 14,
+                        color: "#333",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#AE1C1C !important",
+                            marginRight: "3px !important", //this was
+                        },
+                    },
+                    required && {
+                        transform: "translateX(-12px) translateY(0px)",
+                        "& .MuiInputLabel-asterisk": {
+                            color: "#D92F2",
+                            marginRight: "3px !important", //this was
+                        },
+                    },
+                    error && {
+                        color: "#AE1C1C !important",
+                    },
+                ]}
+            >
+                {label}
+            </InputLabel>
             <MenuBar editor={editor} />
             <EditorContent editor={editor} />
         </>
@@ -197,6 +248,10 @@ const RichTextEditor = ({ onChange, content }) => {
 };
 
 RichTextEditor.propTypes = {
+    id: PropTypes.string,
+    error: PropTypes.bool,
+    required: PropTypes.bool,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     content: PropTypes.any,
 };

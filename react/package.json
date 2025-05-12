@@ -140,6 +140,7 @@
         "react-modal": "^3.14.4",
         "retry": "^0.13.1",
         "svgo": "^3.0.3",
+        "tiptap-markdown": "^0.8.10",
         "what-input": "^5.2.10",
         "xss": "^1.0.10"
     },

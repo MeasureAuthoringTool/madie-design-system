@@ -16,6 +16,13 @@ export const TextEditor = () => {
     const handleChange = (id, selectedVal) => {
         setValue(selectedVal);
     };
-    return <RichTextEditor onChange={handleChange} content={value} />;
+    return (
+        <RichTextEditor
+            label={"Test Text Editor"}
+            required={true}
+            onChange={handleChange}
+            content={value}
+        />
+    );
 };
 TextEditor.storyName = "Rich Text Editor";
