@@ -37,10 +37,12 @@ const MadieDeleteDialog = ({
                     <span className="strong">{otherDialogProps.name}</span>?
                 </p>
             </section>
-            <section className="dialog-warning-action">
-                <ErrorIcon />
-                <p>This Action cannot be undone.</p>
-            </section>
+            {otherDialogProps.hideWarning !== true && (
+                <section className="dialog-warning-action">
+                    <ErrorIcon />
+                    <p>This Action cannot be undone.</p>
+                </section>
+            )}
         </div>
     </MadieDialog>
 );
