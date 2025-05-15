@@ -71,7 +71,7 @@ const MadieAlert = ({
         }
         setMinimized(false);
     }, [content]);
-    // we have four states to render for
+    // we have four states to render for the alert
     const typeSelect = {
         warning: ErrorIcon,
         info: InfoIcon,
@@ -131,7 +131,10 @@ const MadieAlert = ({
                     // minimizeAlerts is a feature flag for now, since it will be standard later
                 }
                 {minimizeAlerts && (
-                    <Tooltip title={"Minimize"} arrow>
+                    <Tooltip title={"Minimize"} 
+                        data-testid="minimize-button-tooltip" 
+                        arrow
+                    >
                         <IconButton sx={{
                                     marginLeft: "auto",
                                     "&:after": {
@@ -158,7 +161,7 @@ const MadieAlert = ({
                 {copyButton && (
                     <Tooltip
                         data-testid="copy-button-tooltip"
-                        title={"Copy Text"}
+                        title={"Copy"}
                         arrow
                     >
                         <IconButton
@@ -218,11 +221,12 @@ const MadieAlert = ({
           right: "32px",
           top: "6px"
         }}
+        data-testid="minimized-alert"
         onClick={(e)=>{e.preventDefault();
                         setMinimized(false)}}
       >
         <WarningRoundedIcon sx={{ color: "yellow" }}/>
-        <span style={{ color: "white", fontSize: "16px", }}>Display Alerts {totalErrors>0?`(${totalErrors})`:""}</span>
+        <span data-testId="minimized-alert-text" style={{ color: "white", fontSize: "16px", }}>Display Alerts {totalErrors>0?`(${totalErrors})`:""}</span>
       </div>
     )}
     </div>

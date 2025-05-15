@@ -230,28 +230,28 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
     });
 
     it("hides alert when minimize button is clicked", async () => {
-            const { getByTestId, queryByTestId } = render(
-                <MadieAlert
-                    type="warning"
-                    visible={true}
-                    canClose={false}
-                    minimizeAlerts={true}
-                    content={<h1>Test content</h1>}
-                    alertProps={{
-                        "data-testid": "alert-dialog",
-                    }}
-                />
-            );
+        const { getByTestId, queryByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                minimizeAlerts={true}
+                content={<h1>Test content</h1>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
 
-            expect(getByTestId("alert-dialog")).toBeInTheDocument();
-            const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+        expect(getByTestId("alert-dialog")).toBeInTheDocument();
+        const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
 
-            fireEvent.click(minimizeButton);
+        fireEvent.click(minimizeButton);
 
-            // After clicking minimize, the alert should not be in the document
-            await waitFor(() => {
-                expect(queryByTestId("alert-dialog")).not.toBeInTheDocument();
-            });
+        // After clicking minimize, the alert should not be in the document
+        await waitFor(() => {
+            expect(queryByTestId("alert-dialog")).not.toBeInTheDocument();
+        });
     });
 
     it("does not render minimize button when minimizeAlerts is false", () => {
@@ -270,5 +270,122 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
 
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
         expect(queryByTestId("FullscreenExitRoundedIcon")).toBeNull();
+    });
+
+    it("shows minimized alert UI when minimized", async () => {
+        const { getByTestId, queryByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                minimizeAlerts={true}
+                content={<h1>Test content</h1>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        // Click minimize button
+        const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+        fireEvent.click(minimizeButton);
+
+        // After minimizing, check that minimized alert appears
+        await waitFor(() => {
+            expect(queryByTestId("alert-dialog")).not.toBeInTheDocument();
+            expect(getByTestId("minimized-alert")).toBeInTheDocument();
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts");
+        });
+    });
+
+    it("shows full alert when minimized alert is clicked", async () => {
+        const { getByTestId, queryByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                minimizeAlerts={true}
+                content={<h1>Test content</h1>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        // First minimize
+        const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+        fireEvent.click(minimizeButton);
+
+        // Wait for minimized alert to appear
+        await waitFor(() => {
+            expect(getByTestId("minimized-alert")).toBeInTheDocument();
+        });
+
+        // Click on minimized alert to restore
+        const minimizedAlert = getByTestId("minimized-alert");
+        fireEvent.click(minimizedAlert);
+
+        // Check that full alert is restored
+        await waitFor(() => {
+            expect(getByTestId("alert-dialog")).toBeInTheDocument();
+            expect(queryByTestId("minimized-alert")).not.toBeInTheDocument();
+        });
+    });
+
+    it("shows error count in minimized alert when errors are present", async () => {
+        const { getByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                minimizeAlerts={true}
+                content={
+                    <div>
+                        <ul>
+                            <li>Error 1</li>
+                            <li>Error 2</li>
+                            <li>Error 3</li>
+                        </ul>
+                    </div>
+                }
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        // Minimize alert
+        const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+        fireEvent.click(minimizeButton);
+
+        // Check for error count in minimized alert
+        await waitFor(() => {
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts (3)");
+        });
+    });
+
+    it("does not show error count when there are no errors", async () => {
+        const { getByTestId } = render(
+            <MadieAlert
+                type="warning"
+                visible={true}
+                canClose={false}
+                minimizeAlerts={true}
+                content={<div>Simple message with no errors</div>}
+                alertProps={{
+                    "data-testid": "alert-dialog",
+                }}
+            />
+        );
+
+        // Minimize alert
+        const minimizeButton = getByTestId("FullscreenExitRoundedIcon");
+        fireEvent.click(minimizeButton);
+
+        // Check that there's no error count
+        await waitFor(() => {
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts");
+            expect(getByTestId("minimized-alert-text")).not.toHaveTextContent("Display Alerts (");
+        });
     });
 });
