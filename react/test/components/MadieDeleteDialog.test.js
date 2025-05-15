@@ -39,6 +39,9 @@ describe("MadieDeleteDialog", () => {
                 expect(
                     queryByText("Are you sure you want to delete ?")
                 ).toBeVisible();
+                expect(
+                    queryByText("This Action cannot be undone.")
+                ).toBeVisible();
             });
         });
     });
@@ -78,6 +81,30 @@ describe("MadieDeleteDialog", () => {
                 expect(
                     queryByText("Are you sure you want to delete ?")
                 ).not.toBeVisible();
+            });
+        });
+    });
+
+    test("Dialog has not warning text", async () => {
+        await act(async () => {
+            const { getByTestId, queryByText } = await render(
+                <MadieDeleteDialog
+                    open={true}
+                    onClose={() => setDialogOpen(false)}
+                    onContinue={() => setDialogOpen(false)}
+                    hideWarning={true}
+                />
+            );
+
+            const deleteDialog = await getByTestId("delete-dialog");
+            expect(deleteDialog).toBeInTheDocument();
+            await waitFor(() => {
+                expect(
+                    queryByText("Are you sure you want to delete ?")
+                ).toBeVisible();
+                expect(
+                    queryByText("This Action cannot be undone.")
+                ).not.toBeInTheDocument();
             });
         });
     });
