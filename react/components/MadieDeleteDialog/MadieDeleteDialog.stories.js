@@ -41,3 +41,27 @@ export const DeleteDialog = () => {
         </div>
     );
 };
+
+export const DeleteDialogNoWarning = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => {
+        setOpen(false);
+    };
+    const onContinue = () => {
+        setOpen(false);
+    };
+
+    return (
+        <div className="qpp-u-padding--16" style={{ width: 300 }}>
+            <Button variant="cyan" onClick={() => setOpen(true)}>
+                open Dialog
+            </Button>
+            <MadieDeleteDialog
+                open={open}
+                onContinue={onContinue}
+                onClose={onClose}
+                hideWarning={true}
+            />
+        </div>
+    );
+};
