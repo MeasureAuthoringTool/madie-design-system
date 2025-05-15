@@ -6,6 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
 import FullscreenExitRoundedIcon from '@mui/icons-material/FullscreenExitRounded';
+import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -27,6 +28,7 @@ const MadieAlert = ({
     const [copyText, setCopyText] = useState("");
     const [toastOpen, setToastOpen] = useState(false);
     const [minimized, setMinimized] = useState(false);
+    const [totalErrors, setTotalErrors] = useState(0);
 
     const copyButtonBuilder = (content) => {
         const traversal = (contentNode, parentNode = true) => {
@@ -61,9 +63,13 @@ const MadieAlert = ({
     };
 
     useEffect(() => {
-        if (content && copyButton) {
-            setCopyText(copyButtonBuilder(content));
+        if (content) {
+            if(copyButton){
+                setCopyText(copyButtonBuilder(content));
+            }
+            setTotalErrors(countUlLiChildren(content))
         }
+        setMinimized(false);
     }, [content]);
     // we have four states to render for
     const typeSelect = {
@@ -75,9 +81,38 @@ const MadieAlert = ({
     const Icon = typeSelect[type];
     const alertClass = classNames("madie-alert", type);
     const iconClass = classNames("alert-icon", type);
+    
+    // Function to count children of ul and li elements in content
+    const countUlLiChildren = (element) => {
+      const counts = { ul: 0, li: 0 };
+      
+      const traverse = (el) => {
+        if (!el || typeof el !== 'object') return;
+        
+        // Count if element is ul or li
+        if (el.type === 'ul' || el.type === 'li') {
+          const children = el.props?.children;
+          const childCount = Array.isArray(children) ? children.length : (children ? 1 : 0);
+          counts[el.type] += childCount;
+        }
+        
+        // Recursively traverse children
+        const children = el.props?.children;
+        if (Array.isArray(children)) {
+          children.forEach(traverse);
+        } else if (children && typeof children === 'object') {
+          traverse(children);
+        }
+      };
+      
+      traverse(element);
+      
+      return counts.li>counts.ul? counts.li:counts.ul;
+    };
 
     return (
-        visible && !minimized && (
+        <div> 
+        {visible && !minimized && (
             <div className={alertClass} {...alertProps}>
                 <Toast
                     toastKey="copy-success-toast"
@@ -175,6 +210,22 @@ const MadieAlert = ({
                 )}
             </div>
         )
+    }
+    {minimized && (
+      <div 
+        style={{
+          position: "absolute",
+          right: "32px",
+          top: "6px"
+        }}
+        onClick={(e)=>{e.preventDefault();
+                        setMinimized(false)}}
+      >
+        <WarningRoundedIcon sx={{ color: "yellow" }}/>
+        <span style={{ color: "white", fontSize: "16px", }}>Display Alerts {totalErrors>0?`(${totalErrors})`:""}</span>
+      </div>
+    )}
+    </div>
     );
 };
 
