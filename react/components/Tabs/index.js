@@ -32,8 +32,8 @@ const typeC = {
 
 const typeCVerticalSelected = {
     "& .MuiTab-root.Mui-selected": {
-        borderTop: "solid 1px #333",
-        borderBottom: "solid 1px #333",
+        borderTop: "solid 1px #8C8C8C",
+        borderBottom: "solid 1px #8C8C8C",
         borderRight: "1px solid white",
         width: "calc(100% + 1px)",
     },
