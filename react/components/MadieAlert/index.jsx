@@ -5,7 +5,7 @@ import InfoIcon from "@mui/icons-material/Info"; // info
 import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
-import FullscreenExitRoundedIcon from '@mui/icons-material/FullscreenExitRounded';
+import FullscreenExitRoundedIcon from "@mui/icons-material/FullscreenExitRounded";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -77,7 +77,8 @@ const MadieAlert = ({
     const iconClass = classNames("alert-icon", type);
 
     return (
-        visible && !minimized && (
+        visible &&
+        !minimized && (
             <div className={alertClass} {...alertProps}>
                 <Toast
                     toastKey="copy-success-toast"
@@ -97,24 +98,25 @@ const MadieAlert = ({
                 }
                 {minimizeAlerts && (
                     <Tooltip title={"Minimize"} arrow>
-                        <IconButton sx={{
-                                    marginLeft: "auto",
-                                    "&:after": {
-                                        content: `''`,
-                                        position: "absolute",
-                                        left: "0px",
-                                        width: "1px",
-                                        height: "40px",
-                                        backgroundColor: "#B0B0B0",
-                                        pointerEvents: "none",
-                                    },
-                                }}
-                            >
-                            <FullscreenExitRoundedIcon 
-                             onClick={(e) => {
-                                e.preventDefault();
-                                setMinimized(true);
+                        <IconButton
+                            sx={{
+                                marginLeft: "auto",
+                                "&:after": {
+                                    content: `''`,
+                                    position: "absolute",
+                                    left: "0px",
+                                    width: "1px",
+                                    height: "40px",
+                                    backgroundColor: "#B0B0B0",
+                                    pointerEvents: "none",
+                                },
                             }}
+                        >
+                            <FullscreenExitRoundedIcon
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setMinimized(true);
+                                }}
                                 sx={{ color: "#242424" }}
                             />
                         </IconButton>
@@ -138,8 +140,8 @@ const MadieAlert = ({
                                         height: "40px",
                                         backgroundColor: "#B0B0B0",
                                         pointerEvents: "none",
-                                    }
-                                })
+                                    },
+                                }),
                             }}
                         >
                             <ContentCopyIcon

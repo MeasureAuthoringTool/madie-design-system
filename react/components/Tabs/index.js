@@ -1,6 +1,6 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { Tabs as MuiTabs } from "@mui/material";
-import React from "react";
 
 const typeA = {
     "& .MuiTabs-flexContainer": {
@@ -30,6 +30,15 @@ const typeC = {
     },
 };
 
+const typeCVerticalSelected = {
+    "& .MuiTab-root.Mui-selected": {
+        borderTop: "solid 1px #333",
+        borderBottom: "solid 1px #333",
+        borderRight: "1px solid white",
+        width: "calc(100% + 1px)",
+    },
+};
+
 const typeD = {
     backgroundColor: "#FFF",
     color: "#515151",
@@ -40,39 +49,51 @@ const typeD = {
     },
 };
 
-const Tabs = ({ type, size, ...rest }) => {
-    const baseStyle = {
+const baseStyle = {
+    outline: "none",
+    fontFamily: "Rubik, sans Sarif",
+    fontWeight: 400,
+    lineHeight: 19,
+    backgroundColor: "transparent",
+    "& .Mui-selected": {
         outline: "none",
-        fontFamily: "Rubik, sans Sarif",
-        fontWeight: 400,
-        lineHeight: 19,
-        backgroundColor: "transparent",
-        "& .Mui-selected": {
-            outline: "none",
-            fontWeight: 500,
-            color: "#333 !important",
-            backgroundColor: "#fff",
-        },
-    };
-    const style = ((type) => {
-        if (type === "A") {
-            return { ...baseStyle, ...typeA };
-        }
-        if (type === "B") {
-            return { ...baseStyle, ...typeB };
-        }
-        if (type === "C") {
-            return { ...baseStyle, ...typeC };
-        }
-        if (type === "D") {
-            return { ...baseStyle, ...typeD };
-        }
-    })(type);
-    return <MuiTabs disableRipple sx={style} {...rest} />;
+        fontWeight: 500,
+        color: "#333 !important",
+        backgroundColor: "#fff",
+    },
+};
+
+const Tabs = ({ type, size, orientation, ...rest }) => {
+    let style = { ...baseStyle };
+
+    switch (type) {
+        case "A":
+            style = { ...style, ...typeA };
+            break;
+        case "B":
+            style = { ...style, ...typeB };
+            break;
+        case "C":
+            if (orientation === "vertical") {
+                style = { ...style, ...typeC, ...typeCVerticalSelected };
+            } else {
+                style = { ...style, ...typeC };
+            }
+            break;
+        case "D":
+            style = { ...style, ...typeD };
+            break;
+        default:
+            break;
+    }
+
+    return (
+        <MuiTabs disableRipple orientation={orientation} sx={style} {...rest} />
+    );
 };
 
 Tabs.propTypes = {
-    orientatin: PropTypes.string,
+    orientation: PropTypes.string,
     type: PropTypes.oneOf(["A", "B", "C", "D"]),
     size: PropTypes.oneOf(["standard", "large"]),
     ariaLabel: PropTypes.string,

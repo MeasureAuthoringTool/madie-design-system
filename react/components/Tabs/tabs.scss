@@ -1,0 +1,13 @@
+// Required to have OverFlow visible for parent component of Tabs
+// in order to add styling for Mui.selected Tabs
+.vertical-standard-type-c-wrapper * {
+	overflow: visible !important;
+}
+
+.vertical-standard-type-c {
+	> h4 {
+		padding-top: 16px;
+	}
+	width: 300px;
+	border-right: solid 1px #333;
+}

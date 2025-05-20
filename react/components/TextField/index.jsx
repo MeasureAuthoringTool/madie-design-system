@@ -44,7 +44,7 @@ const TextField = ({
 
     const extendedTextFieldStyles = {
         borderRadius: "3px",
-        
+
         border: "none",
         marginTop: "8px",
         "& .MuiOutlinedInput-notchedOutline": {
