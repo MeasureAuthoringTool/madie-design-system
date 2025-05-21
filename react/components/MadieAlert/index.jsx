@@ -117,6 +117,28 @@ const processContent = (content) => {
   };
 };
 
+// Define ActionButton as a separate component outside MadieAlert
+const ActionButton = ({ tooltip, onClick, icon, testId, sx }) => (
+  <Tooltip title={tooltip} data-testid={`${testId}-tooltip`} arrow>
+    <IconButton
+      onClick={onClick}
+      sx={sx}
+      data-testid={testId}
+    >
+      {icon}
+    </IconButton>
+  </Tooltip>
+);
+
+// Add PropTypes for ActionButton
+ActionButton.propTypes = {
+  tooltip: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  icon: PropTypes.node.isRequired,
+  testId: PropTypes.string.isRequired,
+  sx: PropTypes.object
+};
+
 const MadieAlert = ({
   type = "warning",
   visible = true,
@@ -194,19 +216,6 @@ const MadieAlert = ({
     0
   );
   
-  // Render ActionButton component to reduce repetition
-  const ActionButton = ({ tooltip, onClick, icon, testId, sx }) => (
-    <Tooltip title={tooltip} data-testid={`${testId}-tooltip`} arrow>
-      <IconButton
-        onClick={onClick}
-        sx={sx}
-        data-testid={testId}
-      >
-        {icon}
-      </IconButton>
-    </Tooltip>
-  );
-
   // Render alert content
   const renderAlert = (alert, index) => {
     const { 
@@ -289,7 +298,7 @@ const MadieAlert = ({
           style={{
             position: "absolute",
             right: "32px",
-            top: "6px",
+            top: "10px",
             display: "flex",
             alignItems: "center",
             cursor: "pointer"
