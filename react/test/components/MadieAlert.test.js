@@ -487,22 +487,21 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         });
     });
 
-    it("maintains backward compatibility with original API", () => {
+    it("maintains backward compatibility with original style of alert", () => {
         const { getByTestId } = render(
             <MadieAlert
                 type="error"
                 visible={true}
                 canClose={false}
-                content={<h1>Legacy API</h1>}
+                content={<h1>Old Alert</h1>}
                 alertProps={{
-                    "data-testid": "legacy-alert",
+                    "data-testid": "old-alert",
                 }}
             />
         );
 
-        // Alert should render using the legacy API
-        expect(getByTestId("legacy-alert")).toBeInTheDocument();
-        expect(getByTestId("legacy-alert")).toHaveClass("error");
+        expect(getByTestId("old-alert")).toBeInTheDocument();
+        expect(getByTestId("old-alert")).toHaveClass("error");
     });
 
     it("shows error count in minimized alert when errors are present", async () => {
