@@ -437,7 +437,6 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
     });
 
     it("copies content from all alerts with copyButton enabled", async () => {
-        const expectedText = `Error 1\nError 2\n\nWarning 1`;
         const mockedWriteText = jest.fn();
         navigator.clipboard = {
             writeText: mockedWriteText,
