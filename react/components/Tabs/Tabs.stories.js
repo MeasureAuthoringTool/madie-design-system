@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withKnobs } from "@storybook/addon-knobs";
-
+import "./tabs.scss";
 import Tabs from "./index";
 import Tab from "./Tab";
 
@@ -147,44 +147,46 @@ export const TypeA = () => {
                     />
                 </Tabs>
             </div>
-            <div>
-                Vertical Standard: C
-                <Tabs
-                    type="C"
-                    value={selected}
-                    onChange={handleChange}
-                    orientation="vertical"
-                >
-                    <Tab
+            <div className={"vertical-standard-type-c-wrapper"}>
+                <div className={"vertical-standard-type-c"}>
+                    <h4>Vertical Standard: C</h4>
+                    <Tabs
                         type="C"
-                        size="standard"
-                        label="Item One"
-                        value={1}
+                        value={selected}
+                        onChange={handleChange}
                         orientation="vertical"
-                    />
-                    <Tab
-                        type="C"
-                        size="standard"
-                        label="Item Two"
-                        value={2}
-                        orientation="vertical"
-                    />
-                    <Tab
-                        type="C"
-                        size="standard"
-                        label="Item Three"
-                        value={3}
-                        orientation="vertical"
-                    />
-                    <Tab
-                        type="C"
-                        size="standard"
-                        label="disabled"
-                        value={4}
-                        disabled
-                        orientation="vertical"
-                    />
-                </Tabs>
+                    >
+                        <Tab
+                            type="C"
+                            size="standard"
+                            label="Item One"
+                            value={1}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="standard"
+                            label="Item Two"
+                            value={2}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="standard"
+                            label="Item Three"
+                            value={3}
+                            orientation="vertical"
+                        />
+                        <Tab
+                            type="C"
+                            size="standard"
+                            label="disabled"
+                            value={4}
+                            disabled
+                            orientation="vertical"
+                        />
+                    </Tabs>
+                </div>
             </div>
             <div style={{ width: "fit-content" }}>
                 Standard: D

@@ -165,7 +165,11 @@ const AutoComplete = ({
                 disabled={disabled}
                 multiple={multiple}
                 disableCloseOnSelect={multiple}
-                disableClearable={!rest.value?.length || rest.value?.[0] === "" || rest.value?.[0] === "-"}
+                disableClearable={
+                    !rest.value?.length ||
+                    rest.value?.[0] === "" ||
+                    rest.value?.[0] === "-"
+                }
                 sx={
                     multiple
                         ? {

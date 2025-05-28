@@ -281,22 +281,22 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     {
                         type: "error",
                         content: <h2>Error message</h2>,
-                        canClose: false
+                        canClose: false,
                     },
                     {
                         type: "warning",
                         content: <h2>Warning message</h2>,
-                        canClose: false
-                    }
+                        canClose: false,
+                    },
                 ]}
             />
         );
 
         // Should find two heading elements (one from each alert)
-        const headings = getAllByRole('heading', { level: 2 });
+        const headings = getAllByRole("heading", { level: 2 });
         expect(headings).toHaveLength(2);
-        expect(headings[0]).toHaveTextContent('Error message');
-        expect(headings[1]).toHaveTextContent('Warning message');
+        expect(headings[0]).toHaveTextContent("Error message");
+        expect(headings[1]).toHaveTextContent("Warning message");
     });
 
     it("minimizes individual alert when its minimize button is clicked", async () => {
@@ -307,13 +307,13 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     {
                         type: "error",
                         content: <h2>Error message</h2>,
-                        alertProps: { "data-testid": "alert-dialog-1" }
+                        alertProps: { "data-testid": "alert-dialog-1" },
                     },
                     {
                         type: "warning",
                         content: <h2>Warning message</h2>,
-                        alertProps: { "data-testid": "alert-dialog-2" }
-                    }
+                        alertProps: { "data-testid": "alert-dialog-2" },
+                    },
                 ]}
             />
         );
@@ -321,7 +321,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Both alerts should be visible
         const alerts = getAllByTestId(/alert-dialog-\d/);
         expect(alerts).toHaveLength(2);
-        
+
         // Minimize the first alert
         const minimizeButton = getByTestId("minimize-button-0");
         fireEvent.click(minimizeButton);
@@ -352,13 +352,13 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     {
                         type: "error",
                         content: <h2>Error message</h2>,
-                        alertProps: { "data-testid": "alert-dialog-1" }
+                        alertProps: { "data-testid": "alert-dialog-1" },
                     },
                     {
                         type: "warning",
                         content: <h2>Warning message</h2>,
-                        alertProps: { "data-testid": "alert-dialog-2" }
-                    }
+                        alertProps: { "data-testid": "alert-dialog-2" },
+                    },
                 ]}
             />
         );
@@ -399,7 +399,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                                 </ul>
                             </div>
                         ),
-                        alertProps: { "data-testid": "alert-dialog-1" }
+                        alertProps: { "data-testid": "alert-dialog-1" },
                     },
                     {
                         type: "warning",
@@ -410,8 +410,8 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                                 </ul>
                             </div>
                         ),
-                        alertProps: { "data-testid": "alert-dialog-2" }
-                    }
+                        alertProps: { "data-testid": "alert-dialog-2" },
+                    },
                 ]}
             />
         );
@@ -423,7 +423,9 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Since only the first alert with 2 errors is minimized,
         // check for a count of 2 instead of 3
         await waitFor(() => {
-            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts (2)");
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent(
+                "Display Alerts (2)"
+            );
         });
 
         // Also minimize the second alert
@@ -432,7 +434,9 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
 
         // Now both alerts are minimized, check for a count of 3
         await waitFor(() => {
-            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts (3)");
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent(
+                "Display Alerts (3)"
+            );
         });
     });
 
@@ -457,7 +461,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                             </div>
                         ),
                         copyButton: true,
-                        alertProps: { "data-testid": "alert-dialog-1" }
+                        alertProps: { "data-testid": "alert-dialog-1" },
                     },
                     {
                         type: "warning",
@@ -469,8 +473,8 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                             </div>
                         ),
                         copyButton: true,
-                        alertProps: { "data-testid": "alert-dialog-2" }
-                    }
+                        alertProps: { "data-testid": "alert-dialog-2" },
+                    },
                 ]}
             />
         );
@@ -483,7 +487,9 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Check that the combined text was copied
         await waitFor(() => {
             expect(mockedWriteText).toHaveBeenCalledTimes(1);
-            expect(mockedWriteText).toHaveBeenCalledWith(expect.stringContaining("Error"));
+            expect(mockedWriteText).toHaveBeenCalledWith(
+                expect.stringContaining("Error")
+            );
         });
     });
 
@@ -532,7 +538,9 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
 
         // Check for error count in minimized alert
         await waitFor(() => {
-            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts (3)");
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent(
+                "Display Alerts (3)"
+            );
         });
     });
 
@@ -556,8 +564,12 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
 
         // Check that there's no error count
         await waitFor(() => {
-            expect(getByTestId("minimized-alert-text")).toHaveTextContent("Display Alerts");
-            expect(getByTestId("minimized-alert-text")).not.toHaveTextContent("Display Alerts (");
+            expect(getByTestId("minimized-alert-text")).toHaveTextContent(
+                "Display Alerts"
+            );
+            expect(getByTestId("minimized-alert-text")).not.toHaveTextContent(
+                "Display Alerts ("
+            );
         });
     });
 });
