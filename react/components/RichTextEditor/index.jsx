@@ -20,6 +20,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import { Tooltip } from "@mui/material";
+import { kebabCase } from "lodash";
 
 const MenuBar = ({ editor }) => {
     if (!editor) {
@@ -197,7 +198,7 @@ const RichTextEditor = ({
         [content]
     );
     return (
-        <div className="rich-text-editor">
+        <div className="rich-text-editor" data-testid={`${kebabCase(label)}-rich-text-editor`}>
             <InputLabel
                 shrink
                 required={required}
