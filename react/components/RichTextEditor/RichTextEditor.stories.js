@@ -13,7 +13,7 @@ export default {
 export const TextEditor = () => {
     const [value, setValue] = useState("test");
 
-    const handleChange = (id, selectedVal) => {
+    const handleChange = (selectedVal) => {
         setValue(selectedVal);
     };
     return (

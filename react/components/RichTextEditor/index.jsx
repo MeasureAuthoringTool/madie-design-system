@@ -11,7 +11,6 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { Markdown } from "tiptap-markdown";
 import { IconButton } from "@mui/material";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
@@ -179,7 +178,6 @@ const RichTextEditor = ({
         {
             extensions: [
                 StarterKit,
-                Markdown,
                 Gapcursor,
                 Table.configure({
                     resizable: true,
@@ -192,9 +190,8 @@ const RichTextEditor = ({
             shouldRerenderOnTransaction: false,
             content,
             onUpdate: ({ editor }) => {
-                const newValue = editor.storage.markdown.getMarkdown();
+                const newValue = editor.getHTML();
                 onChange(newValue);
-                console.log(newValue);
             },
         },
         [content]
@@ -206,7 +203,7 @@ const RichTextEditor = ({
                 required={required}
                 error={error}
                 htmlFor={id}
-                style={{ marginBottom: 0, height: 16 }} // force a heignt
+                style={{ marginBottom: 0, height: 16 }} // force a height
                 sx={[
                     {
                         backgroundColor: "transparent",
