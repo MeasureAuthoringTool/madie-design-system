@@ -26,7 +26,7 @@ const MenuBar = ({ editor }) => {
         return null;
     }
     return (
-        <div className="control-group">
+        <div className="control-group" data-testid="rich-text-editor-toolbar">
             <div className="button-group">
                 <Tooltip
                     data-testid="bold-tooltip"
