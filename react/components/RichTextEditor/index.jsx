@@ -179,6 +179,7 @@ const RichTextEditor = ({
         {
             extensions: [
                 StarterKit,
+                Markdown,
                 Gapcursor,
                 Table.configure({
                     resizable: true,
@@ -187,7 +188,6 @@ const RichTextEditor = ({
                 TableHeader,
                 TableCell,
                 Underline,
-                Markdown,
             ],
             shouldRerenderOnTransaction: false,
             content,
@@ -200,7 +200,7 @@ const RichTextEditor = ({
         [content]
     );
     return (
-        <>
+        <div className="rich-text-editor">
             <InputLabel
                 shrink
                 required={required}
@@ -243,7 +243,7 @@ const RichTextEditor = ({
             </InputLabel>
             <MenuBar editor={editor} />
             <EditorContent editor={editor} />
-        </>
+        </div>
     );
 };
 
