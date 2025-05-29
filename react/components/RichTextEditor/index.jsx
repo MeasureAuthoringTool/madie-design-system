@@ -23,7 +23,6 @@ import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
 
-
 const MenuBar = ({ editor }) => {
     if (!editor) {
         return null;
@@ -201,7 +200,10 @@ const RichTextEditor = ({
         [content]
     );
     return (
-        <div className="rich-text-editor" data-testid={`${kebabCase(label)}-rich-text-editor`}>
+        <div
+            className="rich-text-editor"
+            data-testid={`${kebabCase(label)}-rich-text-editor`}
+        >
             <InputLabel
                 shrink
                 required={required}
@@ -242,14 +244,19 @@ const RichTextEditor = ({
             >
                 {label}
             </InputLabel>
-            { canEdit ? (
+            {canEdit ? (
                 <>
                     <MenuBar editor={editor} />
                     <EditorContent editor={editor} />
                 </>
-
-                ) : (
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+            ) : (
+                <p
+                    data-testid={`${id}-value`}
+                    aria-labelledby={label}
+                    dangerouslySetInnerHTML={{
+                        __html: content ? DOMPurify.sanitize(content) : "-",
+                    }}
+                />
             )}
         </div>
     );
