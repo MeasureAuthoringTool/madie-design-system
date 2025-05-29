@@ -22,6 +22,24 @@ export const TextEditor = () => {
             required={true}
             onChange={handleChange}
             content={value}
+            canEdit={true}
+        />
+    );
+};
+
+export const ReadOnlyTextEditor = () => {
+    const [value, setValue] = useState("<p><script>console.log('execute XSS')</script>This is <strong>readonly</strong> contents</p>");
+
+    const handleChange = (selectedVal) => {
+        setValue(selectedVal);
+    };
+    return (
+        <RichTextEditor
+            label={"Test Text Editor"}
+            required={true}
+            onChange={handleChange}
+            content={value}
+            canEdit={false}
         />
     );
 };

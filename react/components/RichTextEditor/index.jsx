@@ -21,6 +21,8 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
+import DOMPurify from "dompurify";
+
 
 const MenuBar = ({ editor }) => {
     if (!editor) {
@@ -174,6 +176,7 @@ const RichTextEditor = ({
     label,
     onChange,
     content,
+    canEdit,
 }) => {
     const editor = useEditor(
         {
@@ -239,8 +242,15 @@ const RichTextEditor = ({
             >
                 {label}
             </InputLabel>
-            <MenuBar editor={editor} />
-            <EditorContent editor={editor} />
+            { canEdit ? (
+                <>
+                    <MenuBar editor={editor} />
+                    <EditorContent editor={editor} />
+                </>
+
+                ) : (
+                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+            )}
         </div>
     );
 };
@@ -252,6 +262,7 @@ RichTextEditor.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
     content: PropTypes.any,
+    canEdit: PropTypes.bool,
 };
 
 MenuBar.propTypes = {
