@@ -177,28 +177,25 @@ const RichTextEditor = ({
     content,
     canEdit,
 }) => {
-    const editor = useEditor(
-        {
-            extensions: [
-                StarterKit,
-                Gapcursor,
-                Table.configure({
-                    resizable: true,
-                }),
-                TableRow,
-                TableHeader,
-                TableCell,
-                Underline,
-            ],
-            shouldRerenderOnTransaction: false,
-            content,
-            onUpdate: ({ editor }) => {
-                const newValue = editor.getHTML();
-                onChange(newValue);
-            },
+    const editor = useEditor({
+        extensions: [
+            StarterKit,
+            Gapcursor,
+            Table.configure({
+                resizable: true,
+            }),
+            TableRow,
+            TableHeader,
+            TableCell,
+            Underline,
+        ],
+        shouldRerenderOnTransaction: false,
+        content,
+        onUpdate: ({ editor }) => {
+            const newValue = editor.getHTML();
+            onChange(newValue);
         },
-        [content]
-    );
+    });
     return (
         <div
             className="rich-text-editor"
