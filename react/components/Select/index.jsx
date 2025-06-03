@@ -31,15 +31,6 @@ const Select = ({
     );
     return (
         <FormControl error={error} fullWidth>
-            {/* to deal with multiple height helper text in a single row*/}
-            <div
-                style={{
-                    width: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    flexGrow: 1,
-                }}
-            />
             <InputLabel
                 // {/* has init at .2rem/3.2 px bottom. passing sx breaks style. */}
                 id={`${id}-label`}
