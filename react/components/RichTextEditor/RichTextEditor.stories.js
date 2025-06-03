@@ -29,7 +29,7 @@ export const TextEditor = () => {
 
 export const ReadOnlyTextEditor = () => {
     const [value, setValue] = useState(
-        "<p>This is <strong>readonly</strong> contents</p>"
+        "<p>This is <strong>readonly</strong> content</p>"
     );
 
     const handleChange = (selectedVal) => {
@@ -37,7 +37,7 @@ export const ReadOnlyTextEditor = () => {
     };
     return (
         <RichTextEditor
-            label={"Test Text Editor"}
+            label="Test Text Editor"
             required={true}
             onChange={handleChange}
             content={value}
