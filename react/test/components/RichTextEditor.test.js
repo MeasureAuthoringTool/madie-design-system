@@ -12,7 +12,7 @@ describe("RichTextEditor Component", () => {
                 label="Test Label"
                 content="<p>Initial Content</p>"
                 onChange={mockOnChange}
-                canEdit={true}
+                disabled={false}
             />
         );
 
@@ -30,7 +30,7 @@ describe("RichTextEditor Component", () => {
                 label="Description"
                 content="Initial Content"
                 onChange={mockOnChange}
-                canEdit={true}
+                disabled={false}
             />
         );
 
@@ -51,7 +51,7 @@ describe("RichTextEditor Component", () => {
                 label="Test Label"
                 content="<script>alert('XSS')</script><p>Safe Content</p>"
                 onChange={mockOnChange}
-                canEdit={false}
+                disabled={true}
             />
         );
 

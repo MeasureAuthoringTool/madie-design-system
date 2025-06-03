@@ -22,7 +22,7 @@ export const TextEditor = () => {
             required={true}
             onChange={handleChange}
             content={value}
-            canEdit={true}
+            disabled={false}
         />
     );
 };
@@ -41,7 +41,7 @@ export const ReadOnlyTextEditor = () => {
             required={true}
             onChange={handleChange}
             content={value}
-            canEdit={false}
+            disabled={true}
         />
     );
 };

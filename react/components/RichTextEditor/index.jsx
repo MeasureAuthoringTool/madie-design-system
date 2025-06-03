@@ -175,7 +175,7 @@ const RichTextEditor = ({
     label,
     onChange,
     content,
-    canEdit,
+    disabled,
 }) => {
     const editor = useEditor(
         {
@@ -244,20 +244,21 @@ const RichTextEditor = ({
             >
                 {label}
             </InputLabel>
-            {canEdit ? (
-                <>
-                    <MenuBar editor={editor} />
-                    <EditorContent editor={editor} />
-                </>
-            ) : (
-                <p
-                    data-testid={`${id}-value`}
-                    aria-labelledby={label}
-                    dangerouslySetInnerHTML={{
-                        __html: content ? DOMPurify.sanitize(content) : "-",
-                    }}
-                />
-            )}
+            {disabled ? (
+                    <p
+                        data-testid={`${id}-value`}
+                        aria-labelledby={label}
+                        dangerouslySetInnerHTML={{
+                            __html: content ? DOMPurify.sanitize(content) : "-",
+                        }}
+                    />
+
+                ) : (
+                    <>
+                        <MenuBar editor={editor}/>
+                        <EditorContent editor={editor}/>
+                    </>
+                )}
         </div>
     );
 };
@@ -269,7 +270,7 @@ RichTextEditor.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
     content: PropTypes.any,
-    canEdit: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 MenuBar.propTypes = {
