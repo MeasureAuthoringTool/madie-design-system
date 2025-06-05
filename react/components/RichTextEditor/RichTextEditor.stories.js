@@ -13,7 +13,7 @@ export default {
 export const TextEditor = () => {
     const [value, setValue] = useState("test");
 
-    const handleChange = (id, selectedVal) => {
+    const handleChange = (selectedVal) => {
         setValue(selectedVal);
     };
     return (
@@ -22,6 +22,26 @@ export const TextEditor = () => {
             required={true}
             onChange={handleChange}
             content={value}
+            disabled={false}
+        />
+    );
+};
+
+export const ReadOnlyTextEditor = () => {
+    const [value, setValue] = useState(
+        "<p>This is <strong>readonly</strong> content</p>"
+    );
+
+    const handleChange = (selectedVal) => {
+        setValue(selectedVal);
+    };
+    return (
+        <RichTextEditor
+            label="Test Text Editor"
+            required={true}
+            onChange={handleChange}
+            content={value}
+            disabled={true}
         />
     );
 };
