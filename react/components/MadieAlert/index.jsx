@@ -346,6 +346,7 @@ const MadieAlert = ({
                         cursor: "pointer",
                     }}
                     data-testid="minimized-alert"
+                    className="minimized-alert"
                     onClick={(e) => {
                         e.preventDefault();
                         restoreAllAlerts();
