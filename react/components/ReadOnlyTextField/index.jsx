@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
+import _ from "lodash";
 
 const ReadOnlyTextField = ({
     id,
@@ -104,7 +105,7 @@ const ReadOnlyTextField = ({
                         fontFamily: "Rubik",
                         disableUnderline: true,
                         fontSize: 16,
-                        padding: "9px 0px",
+                        padding: "0px 0px",
                         color: "#333",
                         "&::placeholder": {
                             opacity: 1,
@@ -126,6 +127,7 @@ const ReadOnlyTextField = ({
                 disabled={disabled}
                 id={id}
                 {...rest}
+                value={_.isEmpty(rest?.value) ? "-" : rest.value}
             />
         </FormControl>
     );

@@ -27,7 +27,7 @@ describe("ReadOnlyTextField", () => {
             const textNode = await getByTestId("test-name-input");
             userEvent.type(textNode, "newVal");
             Simulate.change(textNode);
-            expect(textNode.value).toBe("");
+            expect(textNode.value).toBe("-");
         });
     });
     test("Textfield renders with helper text", async () => {

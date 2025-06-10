@@ -4,6 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../InputLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import PropTypes from "prop-types";
+import { ReadOnlyTextField } from "../index";
 
 const Select = ({
     placeHolder = undefined, // expects placeholder objects of { name: value } and inserts into the render item function.
@@ -24,6 +25,18 @@ const Select = ({
     ],
     ...rest
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+            />
+        )
+    }
+
     const placehold = (
         <span style={{ color: "#717171" }}>
             {placeHolder?.name || "placeholder"}

@@ -49,7 +49,23 @@ export const WithHelperText = () => (
     </Wrapper>
 );
 
-export const Disabled = () => (
+export const DisabledWithValue = () => (
+    <Wrapper>
+        <TextArea
+            placeholder="Placeholder"
+            label="Text Label"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            value="This is a disabled text area"
+            disabled
+            required
+        />
+    </Wrapper>
+);
+
+export const DisabledWithNoValue = () => (
     <Wrapper>
         <TextArea
             placeholder="Placeholder"

@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
 import { FormControl } from "@mui/material";
+import {ReadOnlyTextField} from "../index";
 
 dayjs.extend(utc);
 dayjs.utc();
@@ -53,6 +54,16 @@ const DateTimeField = ({
     disabled,
     id = "default_dateTime-input",
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                label={label}
+                value={dateTimeValue ? dayjs.utc(dateTimeValue).format("YYYY/MM/DD HH:mm A") : ""}
+                id={id}
+                size="small"
+            />
+        )
+    }
     return (
         <FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
