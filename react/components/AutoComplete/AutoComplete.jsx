@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import {ReadOnlyTextField} from "../index";
+import { ReadOnlyTextField } from "../index";
 import _ from "lodash";
 
 const autoCompleteStyles = {

@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import DateField from "../../components/DateField/DateField";
 import { act } from "react-dom/test-utils";
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import dayjs from "dayjs";
 
 import * as React from "react";
