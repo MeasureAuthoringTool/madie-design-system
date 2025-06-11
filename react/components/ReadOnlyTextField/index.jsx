@@ -19,14 +19,6 @@ const ReadOnlyTextField = ({
 }) => {
     return (
         <FormControl fullWidth error={error}>
-            <div
-                style={{
-                    width: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    flexGrow: 1,
-                }}
-            />
             <InputLabel
                 disabled={disabled}
                 shrink
