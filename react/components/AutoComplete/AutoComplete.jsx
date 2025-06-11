@@ -88,11 +88,11 @@ const AutoComplete = ({
     if (disabled) {
         return (
             <ReadOnlyTextField
-                {...rest}
                 required={required}
                 label={label}
                 id={id}
                 size="small"
+                {...rest}
                 value={_.isEmpty(rest.value) ? "-" : rest.value}
             />
         )
