@@ -1,3 +1,4 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextField from "../../components/TextField/index";
@@ -9,8 +10,6 @@ import {
     screen,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import * as React from "react";
 
 describe("TextField", () => {
     test("Textfield exists, and simulates input correctly", async () => {
@@ -67,8 +66,8 @@ describe("TextField", () => {
             />
         );
         const textField = await screen.findByRole("textbox");
-        expect(textField).toHaveValue("test value");
-        expect(textField).toHaveAttribute("readonly");
+        expect(textField).toHaveTextContent("test value");
+        expect(textField).toHaveAttribute("readOnly");
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

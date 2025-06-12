@@ -1,8 +1,8 @@
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import AutoComplete from "../../components/AutoComplete/AutoComplete";
-import { render, screen } from "@testing-library/react";
+import {render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("AutoComplete Component", () => {
@@ -32,7 +32,7 @@ describe("AutoComplete Component", () => {
         expect(mockOnChange).toHaveBeenCalledWith("autocomplete", "Option1", expect.any(String), expect.any(Object));
     });
 
-    it("renders AutoComplete in disabled mode", () => {
+    it("renders AutoComplete in disabled mode", async () => {
         render(
             <AutoComplete
                 id="autocomplete-disabled"
@@ -44,8 +44,8 @@ describe("AutoComplete Component", () => {
         );
 
         const readOnlyField = screen.getByRole("textbox");
-        expect(readOnlyField).toHaveValue("Option1");
-        expect(readOnlyField).toHaveAttribute("readonly");
+        expect(readOnlyField).toHaveTextContent("Option1");
+        expect(readOnlyField).toHaveAttribute("readOnly");
     });
 
     it("renders AutoComplete with helper text", () => {

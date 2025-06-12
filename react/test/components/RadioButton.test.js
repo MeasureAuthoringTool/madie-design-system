@@ -51,7 +51,8 @@ describe("RadioButton Component", () => {
         );
 
         const option1 = screen.getByRole("textbox");
-        expect(option1).toHaveAttribute("readonly");
+        expect(option1).toHaveTextContent("Option 1");
+        expect(option1).toHaveAttribute("readOnly");
     });
 
     it("renders helper text", () => {
@@ -101,6 +102,6 @@ describe("RadioButton Component", () => {
         );
 
         const readOnlyField = screen.getByRole("textbox");
-        expect(readOnlyField).toHaveValue("-");
+        expect(readOnlyField).toHaveTextContent("-");
     });
 });

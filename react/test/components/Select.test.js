@@ -1,10 +1,10 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import Select from "../../components/Select/index";
 import { act, Simulate } from "react-dom/test-utils";
-import { render, fireEvent, screen } from "@testing-library/react";
 
-import * as React from "react";
+import { render, fireEvent, screen } from "@testing-library/react";
 
 import { MenuItem } from "@mui/material";
 
@@ -125,8 +125,8 @@ describe("Select", () => {
             />
         );
         const value = screen.getByRole("textbox");
-        expect(value).toHaveValue("-");
-        expect(value).toHaveAttribute("readonly");
+        expect(value).toHaveTextContent("-");
+        expect(value).toHaveAttribute("readOnly");
     });
     test("Select renders error", async () => {
         await act(async () => {

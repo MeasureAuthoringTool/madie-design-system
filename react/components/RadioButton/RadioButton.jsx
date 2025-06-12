@@ -30,7 +30,7 @@ const RadioButton = ({
                 id={id}
                 size="small"
                 {...rest}
-                value={option?.label || "-"}
+                value={option?.label}
             />
         )
     }

@@ -1,11 +1,10 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import DateTimeField from "../../components/DateTimeField/DateTimeField";
 import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 import dayjs from "dayjs";
-
-import * as React from "react";
 
 describe("DateTimeField", () => {
     it("DateTimeField Exists", async () => {
@@ -50,7 +49,8 @@ describe("DateTimeField", () => {
 
         const readOnlyField = getByLabelText(label);
         expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveValue("2023/01/01 12:00 PM");
+        expect(readOnlyField).toHaveTextContent("2023/01/01 12:00 PM");
+        expect(readOnlyField).toHaveAttribute("readOnly");
     });
 
     it("renders empty value in ReadOnlyTextField when dateTimeValue is null", () => {
@@ -69,6 +69,6 @@ describe("DateTimeField", () => {
 
         const readOnlyField = getByLabelText(label);
         expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveValue("-");
+        expect(readOnlyField).toHaveTextContent("-");
     });
 });

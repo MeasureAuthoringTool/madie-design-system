@@ -1,3 +1,4 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextArea from "../../components/TextArea/index";
@@ -5,7 +6,6 @@ import { act, Simulate } from "react-dom/test-utils";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import * as React from "react";
 
 describe("TextArea", () => {
     test("TextArea exists, and simulates input correctly", async () => {
@@ -61,8 +61,8 @@ describe("TextArea", () => {
             />
         );
         const textArea = await screen.findByRole("textbox");
-        expect(textArea).toHaveValue("test value");
-        expect(textArea).toHaveAttribute("readonly");
+        expect(textArea).toHaveTextContent("test value");
+        expect(textArea).toHaveAttribute("readOnly");
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

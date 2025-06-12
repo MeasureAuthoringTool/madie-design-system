@@ -1,11 +1,10 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import DateField from "../../components/DateField/DateField";
 import { act } from "react-dom/test-utils";
 import { render, screen } from "@testing-library/react";
 import dayjs from "dayjs";
-
-import * as React from "react";
 
 describe("DateField", () => {
     it("DateField Exists", async () => {
@@ -58,7 +57,8 @@ describe("DateField", () => {
         const readOnlyField = screen.getByText("Test Label");
         expect(readOnlyField).toBeInTheDocument();
         const dateField = screen.getByRole("textbox");
-        expect(dateField).toHaveValue("2023/10/01");
+        expect(dateField).toHaveTextContent("2023/10/01");
+        expect(dateField).toHaveAttribute("readOnly");
     });
 
     it("renders placeholder '-' when value is null and disabled is true", () => {
@@ -74,6 +74,6 @@ describe("DateField", () => {
 
         const readOnlyField = getByLabelText("Test Label");
         expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveValue("-");
+        expect(readOnlyField).toHaveTextContent("-");
     });
 });
