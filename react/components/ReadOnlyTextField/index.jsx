@@ -1,9 +1,5 @@
 import React from "react";
-import {
-    FormControl,
-    TextField as MUITextField,
-    FormHelperText,
-} from "@mui/material";
+import { FormControl } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
 import _ from "lodash";
@@ -61,61 +57,22 @@ const ReadOnlyTextField = ({
             >
                 {label}
             </InputLabel>
-            {helperText && (
-                <FormHelperText
-                    tabIndex={0}
-                    aria-live="polite"
-                    id={`${id}-helper-text`}
-                    data-testid={`${id}-helper-text`}
-                    sx={[
-                        {
-                            margin: "4px 0px 0px 0px",
-                            color: "#515151",
-                            lineHeight: 1,
-                        },
-                        error && {
-                            color: "#AE1C1C !important",
-                        },
-                    ]}
-                >
-                    {helperText}
-                </FormHelperText>
-            )}
-            <MUITextField
-                sx={{
+            <textarea
+                style={{
                     border: "none",
-                    "& .MuiOutlinedInput-root": {
-                        "& > fieldset": {
-                            border: "none",
-                        },
-                    },
-                    "& .MuiInputBase-root": {
-                        height: "auto",
-                    },
-                    "& .MuiInputBase-input": {
-                        lineHeight: "19px",
-                        fontFamily: "Rubik",
-                        disableUnderline: true,
-                        fontSize: 16,
-                        padding: "0px 0px",
-                        color: "#333",
-                        "&::placeholder": {
-                            opacity: 1,
-                            color: "#333",
-                        },
-                        "&:focus": {
-                            border: "none",
-                            outline: "none",
-                            boxShadow: "none",
-                        },
-                    },
+                    resize: "none",
+                    outline: "none",
+                    boxShadow: "none",
+                    width: "100%",
+                    height: "auto",
+                    padding: "0px 0px",
+                    cursor: "default",
+                    lineHeight: "24px",
+                    fontFamily: "Rubik",
+                    fontSize: 14,
+                    color: "#333",
                 }}
-                InputProps={{
-                    readOnly: true,
-                }}
-                disableUnderline={true}
-                label={null}
-                error={error}
+                readOnly={true}
                 disabled={disabled}
                 id={id}
                 {...rest}

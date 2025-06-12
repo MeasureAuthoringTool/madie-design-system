@@ -27,24 +27,7 @@ export const Textfield = () => (
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
-        />
-    </Wrapper>
-);
-
-export const WithHelperText = () => (
-    <Wrapper>
-        <ReadOnlyTextField
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    a descriptive message
-                </FormHelperText>
-            }
+            value="This is a read-only text field"
         />
     </Wrapper>
 );

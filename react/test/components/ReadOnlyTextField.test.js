@@ -21,30 +21,11 @@ describe("ReadOnlyTextField", () => {
                     size="small"
                 />
             );
-            expect(
-                await findByTestId("test-name-text-field")
-            ).toBeInTheDocument();
-            const textNode = await getByTestId("test-name-input");
+            const textNode = await findByTestId("test-name-text-field");
+            expect(textNode).toBeInTheDocument();
             userEvent.type(textNode, "newVal");
             Simulate.change(textNode);
             expect(textNode.value).toBe("-");
-        });
-    });
-    test("Textfield renders with helper text", async () => {
-        await act(async () => {
-            const { findByText } = render(
-                <ReadOnlyTextField
-                    placeholder="test Name"
-                    helperText="helper text"
-                    label="test Name"
-                    id="testName"
-                    inputProps={{ "data-testid": "test-name-input" }}
-                    data-testid="test-name-text-field"
-                    size="small"
-                />
-            );
-            const helperText = await findByText("helper text");
-            expect(helperText).toBeInTheDocument();
         });
     });
 });
