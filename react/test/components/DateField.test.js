@@ -1,14 +1,13 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import DateField from "../../components/DateField/DateField";
 import { act } from "react-dom/test-utils";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import dayjs from "dayjs";
 
-import * as React from "react";
-
 describe("DateField", () => {
-    test("DateField Exists", async () => {
+    it("DateField Exists", async () => {
         await act(async () => {
             const { findByText, getByDisplayValue } = render(
                 <DateField
@@ -26,7 +25,7 @@ describe("DateField", () => {
         });
     });
 
-    test("DateField Exists, with empty value", async () => {
+    it("DateField Exists, with empty value", async () => {
         await act(async () => {
             const { findByText, container } = render(
                 <DateField
@@ -43,5 +42,38 @@ describe("DateField", () => {
             const dateDisplay = container.querySelector('[value="04/17/2022"]');
             expect(dateDisplay).toBeNull();
         });
+    });
+
+    it("renders ReadOnlyTextField when disabled is true", () => {
+        const mockProps = {
+            id: "test_id",
+            label: "Test Label",
+            value: dayjs.utc("2023-10-01"),
+            disabled: true,
+        };
+
+        render(<DateField {...mockProps} />);
+
+        const readOnlyField = screen.getByText("Test Label");
+        expect(readOnlyField).toBeInTheDocument();
+        const dateField = screen.getByRole("textbox");
+        expect(dateField).toHaveTextContent("2023/10/01");
+        expect(dateField).toHaveAttribute("readOnly");
+    });
+
+    it("renders placeholder '-' when value is null and disabled is true", () => {
+        const mockProps = {
+            id: "test_id",
+            label: "Test Label",
+            value: null,
+            required: false,
+            disabled: true,
+        };
+
+        const { getByLabelText } = render(<DateField {...mockProps} />);
+
+        const readOnlyField = getByLabelText("Test Label");
+        expect(readOnlyField).toBeInTheDocument();
+        expect(readOnlyField).toHaveTextContent("-");
     });
 });

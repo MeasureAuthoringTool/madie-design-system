@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
+import { ReadOnlyTextField } from "../index";
 
 const RadioButton = ({
     id,
@@ -20,6 +21,19 @@ const RadioButton = ({
     helperText,
     ...rest
 }) => {
+    if (disabled) {
+        const option = options?.find(option => String(option.value) === rest.value);
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+                value={option?.label}
+            />
+        )
+    }
     return (
         <FormControl error={error} fullWidth>
             <InputLabel

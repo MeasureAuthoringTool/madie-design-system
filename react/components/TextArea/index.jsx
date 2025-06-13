@@ -2,6 +2,7 @@ import React from "react";
 import { FormControl, FormHelperText, TextareaAutosize } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
+import { ReadOnlyTextField } from "../index";
 
 const TextArea = ({
     id,
@@ -14,6 +15,17 @@ const TextArea = ({
     maxLength = undefined,
     ...rest
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+            />
+        )
+    }
     // coerce this to avoid issue passing props to dom.
     // text area autosize is deprecated and only takes style rules
     return (

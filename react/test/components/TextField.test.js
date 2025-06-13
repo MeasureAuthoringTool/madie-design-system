@@ -1,3 +1,4 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextField from "../../components/TextField/index";
@@ -9,8 +10,6 @@ import {
     screen,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import * as React from "react";
 
 describe("TextField", () => {
     test("Textfield exists, and simulates input correctly", async () => {
@@ -52,23 +51,23 @@ describe("TextField", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
-    test("Helper text renders disabled", async () => {
-        await act(async () => {
-            const { findByText } = render(
-                <TextField
-                    disabled
-                    placeholder="test Name"
-                    helperText="helper text"
-                    label="test Name"
-                    id="testName"
-                    inputProps={{ "data-testid": "test-name-input" }}
-                    data-testid="test-name-text-field"
-                    size="small"
-                />
-            );
-            const helperText = await findByText("helper text");
-            expect(helperText).toBeInTheDocument();
-        });
+    test("renders TextField for disabled mode", async () => {
+        render(
+            <TextField
+                disabled
+                placeholder="test Name"
+                helperText="helper text"
+                label="test Name"
+                id="testName"
+                inputProps={{"data-testid": "test-name-input"}}
+                data-testid="test-name-text-field"
+                size="small"
+                value="test value"
+            />
+        );
+        const textField = await screen.findByRole("textbox");
+        expect(textField).toHaveTextContent("test value");
+        expect(textField).toHaveAttribute("readOnly");
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

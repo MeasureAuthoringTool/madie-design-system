@@ -16,10 +16,25 @@ export const DateFieldComponent = (args) => {
     return (
         <div className="qpp-u-padding--16">
             <DateField
-                disabled={false}
                 label="Status Date"
                 handleDateChange={handleDateChange}
                 value={value}
+            />
+        </div>
+    );
+};
+
+export const DateFieldComponentDisabled = (args) => {
+    const handleDateChange = (e) => {
+        console.log("Handle change triggered", e.target.value);
+    };
+    return (
+        <div className="qpp-u-padding--16">
+            <DateField
+                disabled
+                label="Status Date"
+                handleDateChange={handleDateChange}
+                value="2023-10-01"
             />
         </div>
     );

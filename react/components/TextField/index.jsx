@@ -7,6 +7,7 @@ import {
 import InputLabel from "../InputLabel";
 import MadieToolTip from "../MadieTooltip";
 import PropTypes from "prop-types";
+import { ReadOnlyTextField } from "../index";
 
 const TextField = ({
     id,
@@ -22,6 +23,17 @@ const TextField = ({
     maxLength = undefined,
     ...rest
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+            />
+        )
+    }
     // get a copy of input props
     const newInputProps = { ...inputProps } || {};
 

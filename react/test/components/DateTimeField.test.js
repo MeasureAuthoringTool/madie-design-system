@@ -1,14 +1,13 @@
+import * as React from "react";
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect } from "@jest/globals";
 import DateTimeField from "../../components/DateTimeField/DateTimeField";
 import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 import dayjs from "dayjs";
 
-import * as React from "react";
-
 describe("DateTimeField", () => {
-    test("DateTimeField Exists", async () => {
+    it("DateTimeField Exists", async () => {
         await act(async () => {
             const { findByText, findByTestId, getByDisplayValue } = render(
                 <DateTimeField
@@ -31,5 +30,45 @@ describe("DateTimeField", () => {
                 getByDisplayValue("04/17/2022 03:30 PM")
             ).toBeInTheDocument();
         });
+    });
+
+    it("renders ReadOnlyTextField when disabled is true", () => {
+        const label = "Test Label";
+        const dateTimeValue = new Date("2023-01-01T12:00:00Z");
+        const id = "test-id";
+
+        const { getByLabelText } = render(
+            <DateTimeField
+                label={label}
+                dateTimeValue={dateTimeValue}
+                handleDateTimeChange={() => {}}
+                disabled={true}
+                id={id}
+            />
+        );
+
+        const readOnlyField = getByLabelText(label);
+        expect(readOnlyField).toBeInTheDocument();
+        expect(readOnlyField).toHaveTextContent("2023/01/01 12:00 PM");
+        expect(readOnlyField).toHaveAttribute("readOnly");
+    });
+
+    it("renders empty value in ReadOnlyTextField when dateTimeValue is null", () => {
+        const label = "Test Label";
+        const id = "test-id";
+
+        const { getByLabelText } = render(
+            <DateTimeField
+                label={label}
+                dateTimeValue={null}
+                handleDateTimeChange={() => {}}
+                disabled={true}
+                id={id}
+            />
+        );
+
+        const readOnlyField = getByLabelText(label);
+        expect(readOnlyField).toBeInTheDocument();
+        expect(readOnlyField).toHaveTextContent("-");
     });
 });

@@ -1,36 +1,22 @@
 import React from "react";
-import {
-    FormControl,
-    TextField as MUITextField,
-    FormHelperText,
-} from "@mui/material";
+import {FormControl, TextareaAutosize} from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
+import _ from "lodash";
 
 const ReadOnlyTextField = ({
     id,
-    error = false,
-    helperText = undefined,
     required = false,
     disabled = false,
     label,
     ...rest
 }) => {
     return (
-        <FormControl fullWidth error={error}>
-            <div
-                style={{
-                    width: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    flexGrow: 1,
-                }}
-            />
+        <FormControl fullWidth>
             <InputLabel
                 disabled={disabled}
                 shrink
                 required={required}
-                error={error}
                 htmlFor={id}
                 sx={[
                     {
@@ -61,71 +47,31 @@ const ReadOnlyTextField = ({
                     disabled && {
                         color: "rgba(0,0,0,0.6)",
                     },
-                    error && {
-                        color: "#AE1C1C !important",
-                    },
                 ]}
             >
                 {label}
             </InputLabel>
-            {helperText && (
-                <FormHelperText
-                    tabIndex={0}
-                    aria-live="polite"
-                    id={`${id}-helper-text`}
-                    data-testid={`${id}-helper-text`}
-                    sx={[
-                        {
-                            margin: "4px 0px 0px 0px",
-                            color: "#515151",
-                            lineHeight: 1,
-                        },
-                        error && {
-                            color: "#AE1C1C !important",
-                        },
-                    ]}
-                >
-                    {helperText}
-                </FormHelperText>
-            )}
-            <MUITextField
-                sx={{
+            <TextareaAutosize
+                style={{
+                    color: "#333",
+                    fontFamily: "Rubik",
+                    fontSize: "14px",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "24px",
                     border: "none",
-                    "& .MuiOutlinedInput-root": {
-                        "& > fieldset": {
-                            border: "none",
-                        },
-                    },
-                    "& .MuiInputBase-root": {
-                        height: "auto",
-                    },
-                    "& .MuiInputBase-input": {
-                        lineHeight: "19px",
-                        fontFamily: "Rubik",
-                        disableUnderline: true,
-                        fontSize: 16,
-                        padding: "9px 0px",
-                        color: "#333",
-                        "&::placeholder": {
-                            opacity: 1,
-                            color: "#333",
-                        },
-                        "&:focus": {
-                            border: "none",
-                            outline: "none",
-                            boxShadow: "none",
-                        },
-                    },
+                    resize: "none",
+                    padding: "0px 0px",
+                    outline: "none",
+                    boxShadow: "none",
                 }}
-                InputProps={{
-                    readOnly: true,
-                }}
+                readOnly={true}
                 disableUnderline={true}
                 label={null}
-                error={error}
                 disabled={disabled}
                 id={id}
                 {...rest}
+                value={_.isEmpty(rest?.value) ? "-" : rest.value}
             />
         </FormControl>
     );
@@ -133,8 +79,6 @@ const ReadOnlyTextField = ({
 
 ReadOnlyTextField.propTypes = {
     id: PropTypes.string,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.

@@ -27,24 +27,7 @@ export const Textfield = () => (
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
-        />
-    </Wrapper>
-);
-
-export const WithHelperText = () => (
-    <Wrapper>
-        <ReadOnlyTextField
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    a descriptive message
-                </FormHelperText>
-            }
+            value="All Patient Encounters; Cancer Diagnosis; Chemo Administered; Chemotherapy Received during Last 14 days; Chemotherapy Received during Last 14 days - Encounter; Chemotherapy Received during Last 14 days - Medication; Chemotherapy Received during Last 14 days - Procedure; Denominator; Initial Population; Numerator; Patient Expired; SDE Ethnicity; SDE Payer; SDE Race; SDE Sex; Two Office Visits in Measurement Period"
         />
     </Wrapper>
 );

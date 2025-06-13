@@ -7,6 +7,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import { ReadOnlyTextField } from "../index";
 
 dayjs.extend(utc);
 dayjs.utc();
@@ -55,6 +56,19 @@ const DateField = ({
     textFieldSx = {},
     ...rest
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+                value={value ? dayjs.utc(value).format("YYYY/MM/DD") : "-"}
+            />
+        )
+    }
+
     if (containerSx === undefined || containerSx === null) {
         containerSx = {};
     }

@@ -10,6 +10,8 @@ import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { ReadOnlyTextField } from "../index";
+import _ from "lodash";
 
 const autoCompleteStyles = {
     marginTop: "8px",
@@ -83,6 +85,19 @@ const AutoComplete = ({
     onChange,
     ...rest
 }) => {
+    if (disabled) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+                value={_.isEmpty(rest.value) ? "-" : rest.value}
+            />
+        )
+    }
+
     return (
         <FormControl error={error} fullWidth>
             <div
