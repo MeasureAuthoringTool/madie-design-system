@@ -22,7 +22,7 @@ const RadioButton = ({
     ...rest
 }) => {
     if (disabled) {
-        const option = options?.find(option => String(option.value) === rest.value);
+        const option = options?.find(option => String(option.value) === String(rest.value));
         return (
             <ReadOnlyTextField
                 required={required}
