@@ -64,7 +64,7 @@ const DateField = ({
                 id={id}
                 size="small"
                 {...rest}
-                value={value ? dayjs.utc(value).format("YYYY/MM/DD") : "-"}
+                value={value ? dayjs.utc(value).format("MM/DD/YYYY") : "-"}
             />
         )
     }
