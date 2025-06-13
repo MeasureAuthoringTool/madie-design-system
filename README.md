@@ -102,10 +102,7 @@ While working on `@madie/madie-design-system` components and styles locally, Sto
 -   `npm run storybook`
 
 ## Want to Contribute?
-
-Want to file a bug or contribute some code? Read up on our guidelines for [contributing].
-
-[contributing]: /.github/CONTRIBUTING.md
+To publish a new release to the npm registry, create a pull request against the main branch with a commit message starting with 'Release ' followed by the new version number.
 
 ## Public Domain
 This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived

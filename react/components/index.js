@@ -25,6 +25,7 @@ import Popover from "./Popover";
 import { Pagination } from "./Pagination";
 import RadioButton from "./RadioButton/RadioButton";
 import ReadOnlyTextField from "./ReadOnlyTextField";
+import RichTextEditor from "./RichTextEditor";
 import Select from "./Select";
 import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
@@ -42,7 +43,7 @@ import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
-import theme from "../themes/actionCenterTheme.js"; 
+import theme from "../themes/actionCenterTheme.js";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -156,6 +157,7 @@ export {
     Popover,
     RadioButton,
     ReadOnlyTextField,
+    RichTextEditor,
     Search,
     Select,
     Spinner,
@@ -172,5 +174,5 @@ export {
     Tooltip,
     DSLink,
     TruncateText,
-    theme
+    theme,
 };

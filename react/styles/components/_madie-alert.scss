@@ -19,6 +19,8 @@ $green-30: #7cb342;
 	align-items: center;
 	background-color: #fff;
 	position: relative;
+	margin-bottom: 10px; // Add spacing between multiple alerts
+
 	&.inactive {
 		display: none;
 	}
@@ -61,7 +63,9 @@ $green-30: #7cb342;
 			color: #4d7e23;
 		}
 	}
-	#content {
+	#content,
+	[id^="content-"] {
+		flex: 1; // Ensure content takes available space
 		> ol,
 		> ul,
 		> li,

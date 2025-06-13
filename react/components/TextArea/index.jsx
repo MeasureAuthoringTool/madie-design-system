@@ -91,7 +91,7 @@ const TextArea = ({
                 </FormHelperText>
             )}
             <TextareaAutosize
-                style={{ marginTop: "8px", maxWidth: "100%", }}
+                style={{ marginTop: "8px", maxWidth: "100%" }}
                 className={
                     error ? "text-area-variable error" : "text-area-variable"
                 }
@@ -100,7 +100,7 @@ const TextArea = ({
                 id={id}
                 {...inputProps}
                 {...rest}
-            />            
+            />
             {maxLength && !disabled && (
                 <span
                     style={{
