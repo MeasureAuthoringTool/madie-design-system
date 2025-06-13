@@ -57,7 +57,7 @@ describe("DateField", () => {
         const readOnlyField = screen.getByText("Test Label");
         expect(readOnlyField).toBeInTheDocument();
         const dateField = screen.getByRole("textbox");
-        expect(dateField).toHaveTextContent("2023/10/01");
+        expect(dateField).toHaveTextContent("10/01/2023");
         expect(dateField).toHaveAttribute("readOnly");
     });
 

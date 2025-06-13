@@ -49,7 +49,7 @@ describe("DateTimeField", () => {
 
         const readOnlyField = getByLabelText(label);
         expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveTextContent("2023/01/01 12:00 PM");
+        expect(readOnlyField).toHaveTextContent("01/01/2023 12:00 PM");
         expect(readOnlyField).toHaveAttribute("readOnly");
     });
 
