@@ -1,10 +1,10 @@
-import ErrorPage from "./components/Error/error";
-
 import "what-input";
 
 const QppStyleComponents = {
     errorPage(options) {
-        return new ErrorPage(options);
+        return <div>
+            Something has gone terribly wrong.
+        </div>;
     },
     footer() {
         return <div></div>;

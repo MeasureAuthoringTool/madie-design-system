@@ -2,7 +2,6 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import Select from "../../components/Select/index";
-import { Simulate } from "react-dom/test-utils";
 
 import { render, fireEvent, screen } from "@testing-library/react";
 
@@ -42,7 +41,7 @@ describe("Select", () => {
         fireEvent.click(selectNode);
         const inputNode = await getByTestId("test-input");
         fireEvent.select(inputNode, { target: { value: "value1" } });
-        Simulate.change(inputNode);
+        fireEvent.change(inputNode);
         expect(inputNode.value).toBe("value1");
     });
     test("Placeholder value renders", async () => {

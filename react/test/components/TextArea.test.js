@@ -1,9 +1,8 @@
-import * as React from "react";
+import React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextArea from "../../components/TextArea/index";
-import { Simulate } from "react-dom/test-utils";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("TextArea", () => {
@@ -22,7 +21,7 @@ describe("TextArea", () => {
         const textNode = await getByTestId("test-name-text-field");
         expect(textNode).toBeInTheDocument();
         userEvent.type(textNode, "newVal");
-        Simulate.change(textNode);
+        fireEvent.change(textNode);
         await waitFor(() => {
             expect(textNode.value).toBe("newVal");
         });
@@ -106,7 +105,7 @@ describe("TextArea", () => {
         const textNode = await getByTestId("test-name-text-field");
         expect(textNode).toBeInTheDocument();
         userEvent.type(textNode, "newVal");
-        Simulate.change(textNode);
+        fireEvent.change(textNode);
         const maxLength = await findByText("/10 Characters");
         expect(maxLength).toBeInTheDocument();
     });

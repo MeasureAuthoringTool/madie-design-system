@@ -1,8 +1,7 @@
-import * as React from "react";
+import React, { act } from "react";
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import TextField from "../../components/TextField/index";
-import { act, Simulate } from "react-dom/test-utils";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -23,7 +22,7 @@ describe("TextField", () => {
         expect(await findByTestId("test-name-text-field")).toBeInTheDocument();
         const textNode = await getByTestId("test-name-input");
         userEvent.type(textNode, "newVal");
-        Simulate.change(textNode);
+        fireEvent.change(textNode);
         await waitFor(() => {
             expect(textNode.value).toBe("newVal");
         });
@@ -147,7 +146,7 @@ describe("TextField", () => {
         expect(await findByTestId("test-name-text-field")).toBeInTheDocument();
         const textNode = await getByTestId("test-name-input");
         userEvent.type(textNode, "newVal");
-        Simulate.change(textNode);
+        fireEvent.change(textNode);
         await waitFor(() => {
             expect(textNode.value).toBe("newVal");
         });
@@ -169,7 +168,7 @@ describe("TextField", () => {
         expect(await findByTestId("test-name-text-field")).toBeInTheDocument();
         const textNode = await getByTestId("test-name-input");
         userEvent.type(textNode, "newVal");
-        Simulate.change(textNode);
+        fireEvent.change(textNode);
         await waitFor(() => {
             expect(textNode.value).toBe("newVal");
         });
