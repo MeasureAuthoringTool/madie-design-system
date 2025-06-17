@@ -5,7 +5,6 @@ import Breadcrumb from "./Breadcrumb";
 import Button, { TextButton } from "./Button";
 import DateField from "./DateField/DateField";
 import DateTimeField from "./DateTimeField/DateTimeField";
-import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Instant from "./Instant";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
@@ -24,7 +23,6 @@ import RadioButton from "./RadioButton/RadioButton";
 import ReadOnlyTextField from "./ReadOnlyTextField";
 import RichTextEditor from "./RichTextEditor";
 import Select from "./Select";
-import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import Tab from "./Tabs/Tab";
@@ -129,7 +127,6 @@ export {
     Button,
     DateField,
     DateTimeField,
-    FlashNotification,
     FormControlLabel,
     InputLabel,
     Icons,
@@ -151,7 +148,6 @@ export {
     RichTextEditor,
     Search,
     Select,
-    Spinner,
     TabPanel,
     Tabs,
     Tab,

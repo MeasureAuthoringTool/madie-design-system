@@ -28,6 +28,7 @@
         "deploy": "gh-pages -d storybook-static"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.27.5",
         "@storybook/addon-a11y": "^9.0.9",
         "@storybook/addon-backgrounds": "^9.0.8",
         "@storybook/addon-controls": "^9.0.8",
@@ -39,7 +40,6 @@
         "@testing-library/jest-dom": "^6.1.4",
         "@testing-library/react": "^14.2.2",
         "@testing-library/user-event": "^14.4.3",
-        "babel-eslint": "^10.1.0",
         "babel-loader": "^10.0.0",
         "cross-env": "^7.0.3",
         "d3-selection": "^1.4.2",

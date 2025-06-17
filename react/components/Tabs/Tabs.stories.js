@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./tabs.scss";
 import Tabs from "./index";
 import Tab from "./Tab";
+import PropTypes from "prop-types";
 
 export default {
     title: "Tabs",
@@ -82,6 +83,11 @@ const Template = ({ type, size, orientation }) => {
     );
 };
 
+Template.propTypes = {
+    type: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired,
+    orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+};
 export const InteractiveTabs = Template.bind({});
 InteractiveTabs.args = {
     type: "A",

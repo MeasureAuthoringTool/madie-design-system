@@ -3,7 +3,7 @@ const {
     globalIgnores,
 } = require("eslint/config");
 
-const babelParser = require("babel-eslint");
+const babelParser = require("@babel/eslint-parser");
 const globals = require("globals");
 const js = require("@eslint/js");
 
