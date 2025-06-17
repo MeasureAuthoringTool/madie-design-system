@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
-import { act } from "react-dom/test-utils";
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import Tab from "../../components/Tabs/Tab";
 import Tabs from "../../components/Tabs/index";
 import React from "react";
 
 describe("Tabs", () => {
+    const { findByTestId } = screen;
     const Navigations = () => {
         return (
             <div>
@@ -265,29 +265,27 @@ describe("Tabs", () => {
     };
 
     test("All Tab components render. ", async () => {
-        await act(async () => {
-            const { findByTestId } = await render(<Navigations />);
-            const standardA = await findByTestId("standard-a");
-            const standardB = await findByTestId("standard-b");
-            const standardC = await findByTestId("standard-c");
-            const verticalC = await findByTestId("v-c");
-            const standardD = await findByTestId("standard-d");
-            const largeA = await findByTestId("large-a");
-            const largeB = await findByTestId("large-b");
-            const largeC = await findByTestId("large-c");
-            const largeD = await findByTestId("large-d");
+        render(<Navigations />);
+        const standardA = await findByTestId("standard-a");
+        const standardB = await findByTestId("standard-b");
+        const standardC = await findByTestId("standard-c");
+        const verticalC = await findByTestId("v-c");
+        const standardD = await findByTestId("standard-d");
+        const largeA = await findByTestId("large-a");
+        const largeB = await findByTestId("large-b");
+        const largeC = await findByTestId("large-c");
+        const largeD = await findByTestId("large-d");
 
-            await waitFor(() => {
-                expect(standardA).toBeInTheDocument();
-                expect(standardB).toBeInTheDocument();
-                expect(standardC).toBeInTheDocument();
-                expect(verticalC).toBeInTheDocument();
-                expect(standardD).toBeInTheDocument();
-                expect(largeA).toBeInTheDocument();
-                expect(largeB).toBeInTheDocument();
-                expect(largeC).toBeInTheDocument();
-                expect(largeD).toBeInTheDocument();
-            });
+        await waitFor(() => {
+            expect(standardA).toBeInTheDocument();
+            expect(standardB).toBeInTheDocument();
+            expect(standardC).toBeInTheDocument();
+            expect(verticalC).toBeInTheDocument();
+            expect(standardD).toBeInTheDocument();
+            expect(largeA).toBeInTheDocument();
+            expect(largeB).toBeInTheDocument();
+            expect(largeC).toBeInTheDocument();
+            expect(largeD).toBeInTheDocument();
         });
     });
 });

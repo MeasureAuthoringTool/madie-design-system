@@ -21,7 +21,7 @@ export default class FlashNotification {
                     titleText={options.titleText}
                     bodyText={options.bodyText}
                 />,
-                options.rootElement
+                options.rootElement,
             );
         } else {
             render(<FlashNotificationUI />, options);

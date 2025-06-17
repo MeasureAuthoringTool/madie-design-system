@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import RadioButton from "../../components/RadioButton/RadioButton";
 
 describe("RadioButton Component", () => {
-    it("renders RadioButton with options and allows selection", () => {
+    it("renders RadioButton with options and allows selection", async () => {
         const mockOnChange = jest.fn();
         const options = [
             { value: "option1", label: "Option 1" },
@@ -19,7 +19,7 @@ describe("RadioButton Component", () => {
                 label="Radio Button"
                 options={options}
                 onChange={mockOnChange}
-            />
+            />,
         );
 
         const option1 = screen.getByLabelText("Option 1");
@@ -28,7 +28,7 @@ describe("RadioButton Component", () => {
         expect(option1).toBeInTheDocument();
         expect(option2).toBeInTheDocument();
 
-        userEvent.click(option1);
+        await userEvent.click(option1);
         expect(option1).toBeChecked();
         expect(mockOnChange).toHaveBeenCalled();
     });
@@ -47,7 +47,7 @@ describe("RadioButton Component", () => {
                 options={options}
                 value="option1"
                 disabled
-            />
+            />,
         );
 
         const option1 = screen.getByRole("textbox");
@@ -62,7 +62,7 @@ describe("RadioButton Component", () => {
                 dataTestId="radio-button-helper"
                 label="Radio Button"
                 helperText="Helper text goes here"
-            />
+            />,
         );
 
         const helperText = screen.getByText("Helper text goes here");
@@ -77,7 +77,7 @@ describe("RadioButton Component", () => {
                 label="Radio Button"
                 error
                 helperText="This field is required"
-            />
+            />,
         );
 
         const errorText = screen.getByText("This field is required");
@@ -98,7 +98,7 @@ describe("RadioButton Component", () => {
                 label="Radio Button"
                 options={options}
                 disabled
-            />
+            />,
         );
 
         const readOnlyField = screen.getByRole("textbox");

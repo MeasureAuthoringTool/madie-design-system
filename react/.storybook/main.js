@@ -5,17 +5,9 @@ module.exports = {
     ],
 
     addons: [
-        "@storybook/addon-actions",
-        "@storybook/addon-links",
-        "@storybook/addon-storysource",
-        "@storybook/addon-knobs",
-        "@storybook/addon-a11y",
-        "@storybook/addon-docs",
-        "@storybook/addon-backgrounds",
-        "@storybook/addon-viewport",
-        "@storybook/addon-postcss",
-        "@storybook/addon-webpack5-compiler-babel"
-    ],
+    "@storybook/addon-links", 
+    "@storybook/addon-webpack5-compiler-babel", 
+    "@storybook/addon-docs"],
 
     webpackFinal: async (config) => {
         // do mutation to the config

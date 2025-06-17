@@ -32,7 +32,7 @@ const TextField = ({
                 size="small"
                 {...rest}
             />
-        )
+        );
     }
     // get a copy of input props
     const newInputProps = { ...inputProps } || {};

@@ -22,7 +22,7 @@ const useGetConfig = ({
 
     useEffect(() => {
         const storageContent = JSON.parse(
-            localStorage.getItem(localStorageName)
+            localStorage.getItem(localStorageName),
         );
         if (
             storageContent?.content &&
@@ -59,7 +59,7 @@ const useGetConfig = ({
 
                     localStorage.setItem(
                         localStorageName,
-                        JSON.stringify(storageItem)
+                        JSON.stringify(storageItem),
                     );
                     setResult(storageItem);
                 })

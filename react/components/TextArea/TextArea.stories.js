@@ -1,12 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import TextArea from "./index";
 import { FormHelperText } from "@mui/material";
+
 export default {
     title: "TextArea",
     component: TextArea,
-    decorators: [withKnobs],
+    argTypes: {
+        disabled: { control: "boolean" },
+        error: { control: "boolean" },
+        required: { control: "boolean" },
+        size: {
+            control: { type: "select" },
+            options: ["small", "medium", "large"], // adjust if needed
+        },
+        helperText: { control: "text" },
+        value: { control: "text" },
+    },
 };
 
 const Wrapper = ({ children }) => (
@@ -14,148 +24,118 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
+
 Wrapper.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
 };
-export const Textarea = () => (
+
+const Template = (args) => (
     <Wrapper>
         <TextArea
-            placeholder="Placeholder"
-            label="Text Label"
+            {...args}
             id="measureName"
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
-            size="small"
+            label="Text Label"
+            placeholder="Placeholder"
         />
     </Wrapper>
 );
 
-export const WithHelperText = () => (
-    <Wrapper>
-        <TextArea
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    a descriptive message
-                </FormHelperText>
-            }
-        />
-    </Wrapper>
-);
+export const Interactive = Template.bind({});
+Interactive.args = {
+    size: "small",
+    disabled: false,
+    error: false,
+    required: false,
+    helperText: "",
+    value: "",
+};
 
-export const DisabledWithValue = () => (
-    <Wrapper>
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+    ...Interactive.args,
+    helperText: (
+        <FormHelperText data-testid="helper-text" error={false}>
+            a descriptive message
+        </FormHelperText>
+    ),
+};
+
+export const DisabledWithValue = Template.bind({});
+DisabledWithValue.args = {
+    ...Interactive.args,
+    value: "This is a disabled text area",
+    disabled: true,
+    required: true,
+};
+
+export const DisabledWithNoValue = Template.bind({});
+DisabledWithNoValue.args = {
+    ...Interactive.args,
+    disabled: true,
+    required: true,
+};
+
+export const Required = Template.bind({});
+Required.args = {
+    ...Interactive.args,
+    required: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+    ...Interactive.args,
+    error: true,
+    required: true,
+    helperText: "An error message",
+};
+
+export const VariedHeights = () => (
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px", display: "flex", gap: 16 }}
+    >
         <TextArea
             placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            value="This is a disabled text area"
-            disabled
             required
-        />
-    </Wrapper>
-);
-
-export const DisabledWithNoValue = () => (
-    <Wrapper>
-        <TextArea
-            placeholder="Placeholder"
             label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
+            id="measureName1"
+            inputProps={{ "data-testid": "measure-name-input1" }}
+            data-testid="measure-name-text-field1"
             size="small"
-            disabled
-            required
+            helperText="An error message"
         />
-    </Wrapper>
-);
-
-export const Required = () => (
-    <Wrapper>
         <TextArea
             placeholder="Placeholder"
             required
             label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
+            id="measureName2"
+            inputProps={{ "data-testid": "measure-name-input2" }}
+            data-testid="measure-name-text-field2"
             size="small"
+            helperText="An error message"
         />
-    </Wrapper>
-);
-
-export const Error = () => (
-    <Wrapper>
+        <TextArea
+            placeholder="Placeholder"
+            label="Text Label"
+            id="measureName3"
+            inputProps={{ "data-testid": "measure-name-input3" }}
+            data-testid="measure-name-text-field3"
+            size="small"
+            helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner"
+        />
         <TextArea
             placeholder="Placeholder"
             error
             required
             label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
+            id="measureName4"
+            inputProps={{ "data-testid": "measure-name-input4" }}
+            data-testid="measure-name-text-field4"
             size="small"
             helperText="An error message"
         />
-    </Wrapper>
-);
-
-export const VariedHeights = () => (
-    <div
-        className="qpp-u-padding--16"
-        style={{ width: 900, marginBottom: "16px" }}
-    >
-        <div style={{ display: "flex", flexDirection: "row" }}>
-            <TextArea
-                placeholder="Placeholder"
-                required
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message"
-            />
-            <TextArea
-                placeholder="Placeholder"
-                required
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message"
-            />
-            <TextArea
-                placeholder="Placeholder"
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
-            />
-            <TextArea
-                placeholder="Placeholder"
-                error
-                required
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message"
-            />
-        </div>
     </div>
 );

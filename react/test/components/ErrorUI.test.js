@@ -11,7 +11,7 @@ describe("ErrorUI", () => {
             { contentTitle: "Image not found", content: "test number 2" },
         ];
         const { debug, container } = render(
-            <ErrorUI type={type} code={code} message={message} />
+            <ErrorUI type={type} code={code} message={message} />,
         );
         expect(container.querySelector(".page-error")).toBeTruthy();
         expect(container.querySelector(".collapsible-details")).toBeTruthy();
@@ -23,7 +23,7 @@ describe("ErrorUI", () => {
         const type = "Bad thing happened";
         const message = "Not found";
         const { getByText, container } = render(
-            <ErrorUI type={type} code={code} message={message} />
+            <ErrorUI type={type} code={code} message={message} />,
         );
         expect(container.querySelector(".page-error")).toBeTruthy();
         expect(container.querySelector(".collapsible-details")).toBeTruthy();

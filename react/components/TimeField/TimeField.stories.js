@@ -1,26 +1,36 @@
 import React, { useState } from "react";
 import TimeField from "./TimeField";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "TimeField",
     component: TimeField,
-    decorators: [withKnobs],
+    argTypes: {
+        disabled: { control: "boolean" },
+        label: { control: "text" },
+    },
 };
-export const TimeFieldComponent = (args) => {
+
+const Template = (args) => {
     const [value, setValue] = useState("");
-    const handleTimeChange = (newValue, v) => {
+
+    const handleTimeChange = (newValue) => {
         console.log("Time changed: newValue = ", newValue);
         setValue(newValue);
     };
+
     return (
-        <div className="qpp-u-padding--16">
+        <div className="qpp-u-padding--16" style={{ width: 300 }}>
             <TimeField
-                disabled={false}
-                label="Result Time"
-                handleTimeChange={handleTimeChange}
+                {...args}
                 value={value}
+                handleTimeChange={handleTimeChange}
             />
         </div>
     );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+    disabled: false,
+    label: "Result Time",
 };

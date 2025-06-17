@@ -3,12 +3,9 @@ import Alert from "./Alert";
 import AutoComplete from "./AutoComplete/AutoComplete";
 import Breadcrumb from "./Breadcrumb";
 import Button, { TextButton } from "./Button";
-import CalloutBox from "./CalloutBox";
-import Card from "./Card";
 import DateField from "./DateField/DateField";
 import DateTimeField from "./DateTimeField/DateTimeField";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
-import Footer from "./Footer/FooterUI";
 import Instant from "./Instant";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
@@ -34,9 +31,7 @@ import Tab from "./Tabs/Tab";
 import TextField from "./TextField";
 import TimeField from "./TimeField/TimeField";
 import TextArea from "./TextArea";
-import Tooltip from "./Tooltip";
 import Toast from "./Toast";
-import Infotip from "./Infotip";
 import Search from "./Search";
 import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
@@ -132,16 +127,12 @@ export {
     AutoComplete,
     Breadcrumb,
     Button,
-    CalloutBox,
-    Card,
     DateField,
     DateTimeField,
     FlashNotification,
-    Footer,
     FormControlLabel,
     InputLabel,
     Icons,
-    Infotip,
     Instant,
     Modal,
     MadieAlert,
@@ -171,7 +162,6 @@ export {
     TextArea,
     Toast,
     Dropdown,
-    Tooltip,
     DSLink,
     TruncateText,
     theme,

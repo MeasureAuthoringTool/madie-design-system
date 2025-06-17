@@ -10,7 +10,11 @@ describe("Button", () => {
     it("Button renders with provided size, onClick triggers", async () => {
         const onClick = jest.fn();
         render(
-            <Button size="big" onClick={onClick} data-testId="button-test-id" />
+            <Button
+                size="big"
+                onClick={onClick}
+                data-testId="button-test-id"
+            />,
         );
         const button = getByTestId("button-test-id");
         expect(button).toHaveClass("qpp-c-button--big");
@@ -33,7 +37,7 @@ describe("Button", () => {
                 onClick={onClick}
                 href="https://whatwouldkevindo.com/"
                 children="test"
-            />
+            />,
         );
         expect(getByText("test").href).toBe("https://whatwouldkevindo.com/");
     });
@@ -46,7 +50,7 @@ describe("Button", () => {
                 className="test"
                 data-testId="text-test-id"
                 children="test"
-            />
+            />,
         );
         expect(getByText("test")).toBeTruthy();
     });

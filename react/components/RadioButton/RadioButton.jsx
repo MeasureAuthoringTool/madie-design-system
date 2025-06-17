@@ -32,7 +32,7 @@ const RadioButton = ({
                 {...rest}
                 value={option?.label}
             />
-        )
+        );
     }
     return (
         <FormControl error={error} fullWidth>

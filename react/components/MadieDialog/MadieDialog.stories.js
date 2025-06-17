@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieDialog from "./index";
-import TextArea from "../TextArea/index";
-import Select from "../Select/index";
+import TextArea from "../TextArea";
+import Select from "../Select";
 import Button from "../Button";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
 import { DialogContent, Typography } from "@mui/material";
@@ -11,7 +10,6 @@ import { DialogContent, Typography } from "@mui/material";
 export default {
     title: "MadieDialog",
     component: MadieDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
@@ -26,39 +24,29 @@ Wrapper.propTypes = {
 
 export const Dialog = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
-    const onContinue = () => {
-        setOpen(false);
-    };
-
     const [form, setForm] = useState(false);
     const [required, setRequired] = useState(false);
     const [showDialogActions, setShowDialogActions] = useState(false);
 
+    const onClose = () => setOpen(false);
+    const onContinue = () => setOpen(false);
+
     const cancelButtonProps = showDialogActions
-        ? {
-              cancelText: "Discard Changes",
-              "data-testid": "cancel-button",
-          }
+        ? { cancelText: "Discard Changes", "data-testid": "cancel-button" }
         : undefined;
+
     const continueButtonProps = showDialogActions
-        ? {
-              continueText: "Save",
-              "data-testid": "save-button",
-          }
+        ? { continueText: "Save", "data-testid": "save-button" }
         : undefined;
 
     return (
-        <div className="qpp-u-padding--16" style={{ width: 300 }}>
+        <Wrapper>
             <FormGroup>
                 <FormControlLabel
                     control={
                         <Switch
                             checked={form}
                             onChange={(e) => setForm(e.target.checked)}
-                            name="Form"
                         />
                     }
                     label="Form"
@@ -68,7 +56,6 @@ export const Dialog = () => {
                         <Switch
                             checked={required}
                             onChange={(e) => setRequired(e.target.checked)}
-                            name="Required"
                         />
                     }
                     label="Required"
@@ -80,10 +67,9 @@ export const Dialog = () => {
                             onChange={(e) =>
                                 setShowDialogActions(e.target.checked)
                             }
-                            name="actions"
                         />
                     }
-                    label="actions"
+                    label="Show Actions"
                 />
             </FormGroup>
             <Button variant="cyan" onClick={() => setOpen(true)}>
@@ -93,52 +79,40 @@ export const Dialog = () => {
                 form={form}
                 required={required}
                 title="Madie Dialog"
-                dialogProps={{
-                    open,
-                    onClose,
-                    onSubmit: onContinue,
-                }}
+                dialogProps={{ open, onClose, onSubmit: onContinue }}
                 cancelButtonProps={cancelButtonProps}
                 continueButtonProps={continueButtonProps}
             >
-                <div>
-                    <Select
-                        id={`measure-referenceType`}
-                        label="Type"
-                        placeHolder={{ name: "Select", value: "" }}
-                        inputProps={{
-                            "data-testid": `measure-referenceType-input`,
-                        }}
-                        data-testid={`measure-referenceType`}
-                        required
-                        SelectDisplayProps={{
-                            "aria-required": "true",
-                        }}
-                    />
-
-                    <TextArea
-                        required
-                        label="Reference"
-                        placeholder="Enter"
-                        id="measure-referenceText"
-                        data-testid="measure-referenceText"
-                        inputProps={{
-                            "data-testid": "measure-referenceText-input",
-                            "aria-describedby":
-                                "measure-referenceText-helper-text",
-                        }}
-                    />
-                </div>
+                <Select
+                    id="measure-referenceType"
+                    label="Type"
+                    placeHolder={{ name: "Select", value: "" }}
+                    inputProps={{
+                        "data-testid": "measure-referenceType-input",
+                    }}
+                    data-testid="measure-referenceType"
+                    required
+                    SelectDisplayProps={{ "aria-required": "true" }}
+                />
+                <TextArea
+                    required
+                    label="Reference"
+                    placeholder="Enter"
+                    id="measure-referenceText"
+                    data-testid="measure-referenceText"
+                    inputProps={{
+                        "data-testid": "measure-referenceText-input",
+                        "aria-describedby": "measure-referenceText-helper-text",
+                    }}
+                />
             </MadieDialog>
-        </div>
+        </Wrapper>
     );
 };
 
 export const DialogWithActionButtons = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
 
     return (
         <>
@@ -147,19 +121,8 @@ export const DialogWithActionButtons = () => {
             </Button>
             <MadieDialog
                 title="Human Readable"
-                sx={{
-                    "#modal-body": {
-                        h2: {
-                            borderTop: "1px solid black",
-                        },
-                    },
-                }}
-                dialogProps={{
-                    onClose,
-                    open,
-                    maxWidth: "lg",
-                    fullWidth: true,
-                }}
+                sx={{ "#modal-body h2": { borderTop: "1px solid black" } }}
+                dialogProps={{ onClose, open, maxWidth: "lg", fullWidth: true }}
                 cancelButtonProps={{
                     variant: "secondary",
                     cancelText: "Cancel",
@@ -186,9 +149,7 @@ export const DialogWithActionButtons = () => {
 
 export const DialogWithActionButtonsHideContinueButton = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
 
     return (
         <>
@@ -197,19 +158,8 @@ export const DialogWithActionButtonsHideContinueButton = () => {
             </Button>
             <MadieDialog
                 title="Human Readable"
-                sx={{
-                    "#modal-body": {
-                        h2: {
-                            borderTop: "1px solid black",
-                        },
-                    },
-                }}
-                dialogProps={{
-                    onClose,
-                    open,
-                    maxWidth: "lg",
-                    fullWidth: true,
-                }}
+                sx={{ "#modal-body h2": { borderTop: "1px solid black" } }}
+                dialogProps={{ onClose, open, maxWidth: "lg", fullWidth: true }}
                 cancelButtonProps={{
                     variant: "secondary",
                     cancelText: "Cancel",
@@ -231,9 +181,7 @@ export const DialogWithActionButtonsHideContinueButton = () => {
 
 export const DialogWithActionButtonsContinueButtonDisabledWithTooltip = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
 
     return (
         <>
@@ -242,19 +190,8 @@ export const DialogWithActionButtonsContinueButtonDisabledWithTooltip = () => {
             </Button>
             <MadieDialog
                 title="Human Readable"
-                sx={{
-                    "#modal-body": {
-                        h2: {
-                            borderTop: "1px solid black",
-                        },
-                    },
-                }}
-                dialogProps={{
-                    onClose,
-                    open,
-                    maxWidth: "lg",
-                    fullWidth: true,
-                }}
+                sx={{ "#modal-body h2": { borderTop: "1px solid black" } }}
+                dialogProps={{ onClose, open, maxWidth: "lg", fullWidth: true }}
                 cancelButtonProps={{
                     variant: "secondary",
                     cancelText: "Cancel",
@@ -283,9 +220,7 @@ export const DialogWithActionButtonsContinueButtonDisabledWithTooltip = () => {
 
 export const DialogWithPopoverActionButtons = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
 
     return (
         <>
@@ -294,13 +229,7 @@ export const DialogWithPopoverActionButtons = () => {
             </Button>
             <MadieDialog
                 title="Dialog with popover action buttons"
-                sx={{
-                    "#modal-body": {
-                        h2: {
-                            borderTop: "1px solid black",
-                        },
-                    },
-                }}
+                sx={{ "#modal-body h2": { borderTop: "1px solid black" } }}
                 dialogProps={{
                     onClose,
                     open,

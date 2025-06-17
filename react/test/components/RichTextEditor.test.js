@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RichTextEditor from "../../components/RichTextEditor/index";
 
 describe("RichTextEditor Component", () => {
@@ -13,14 +13,16 @@ describe("RichTextEditor Component", () => {
                 content="<p>Initial Content</p>"
                 onChange={mockOnChange}
                 disabled={false}
-            />
+            />,
         );
 
         // Check if the label is rendered
         expect(screen.getByText("Test Label")).toBeInTheDocument();
 
         // Check if the editor content is rendered
-        expect(screen.getByTestId("test-label-rich-text-editor")).toBeInTheDocument();
+        expect(
+            screen.getByTestId("test-label-rich-text-editor"),
+        ).toBeInTheDocument();
     });
 
     it("calls onChange when content is updated", async () => {
@@ -31,12 +33,14 @@ describe("RichTextEditor Component", () => {
                 content="Initial Content"
                 onChange={mockOnChange}
                 disabled={false}
-            />
+            />,
         );
 
         // Simulate content change
         const editorContent = screen.getByRole("textbox");
-        fireEvent.input(editorContent, {target: {innerHTML: "Updated Content"}});
+        fireEvent.input(editorContent, {
+            target: { innerHTML: "Updated Content" },
+        });
 
         // Check if onChange is called
         await waitFor(() => {
@@ -52,7 +56,7 @@ describe("RichTextEditor Component", () => {
                 content="<script>alert('XSS')</script><p>Safe Content</p>"
                 onChange={mockOnChange}
                 disabled={true}
-            />
+            />,
         );
 
         // Check if sanitized content is rendered

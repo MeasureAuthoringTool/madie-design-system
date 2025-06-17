@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import Toast from "./index";
 
 export default {
     title: "Toast",
     component: Toast,
-    decorators: [withKnobs],
+    argTypes: {
+        toastType: {
+            control: {
+                type: "select",
+                options: ["success", "warning", "info", "danger"],
+            },
+        },
+        message: { control: "text" },
+        autoHideDuration: { control: "number" },
+    },
 };
 
-export const SuccessToast = () => {
+const Template = (args) => {
     const [toastOpen, setToastOpen] = useState(false);
+
     return (
         <div
             style={{
                 height: "100vh",
                 width: "100vw",
                 backgroundColor: "#242424",
+                position: "relative",
             }}
         >
             <button
@@ -23,119 +33,49 @@ export const SuccessToast = () => {
                 style={{
                     position: "absolute",
                     top: "50%",
-                    left: "calc(50% - 80px)",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    padding: "8px 16px",
+                    cursor: "pointer",
                 }}
             >
-                Simulate Success
+                Show Toast
             </button>
             <Toast
+                {...args}
                 toastKey="toast-key"
-                testId="success-toast"
-                toastType="success"
+                testId={`${args.toastType}-toast`}
                 open={toastOpen}
-                message="An action has successfully been completed"
                 onClose={() => setToastOpen(false)}
-                autoHideDuration={3000}
             />
         </div>
     );
 };
 
-export const WarningToast = () => {
-    const [toastOpen, setToastOpen] = useState(false);
-    return (
-        <div
-            style={{
-                height: "100vh",
-                width: "100vw",
-                backgroundColor: "#242424",
-            }}
-        >
-            <button
-                onClick={() => setToastOpen(true)}
-                style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "calc(50% - 80px)",
-                }}
-            >
-                Simulate Warning
-            </button>
-            <Toast
-                toastKey="toast-key"
-                toastType="warning"
-                testId="warning-toast"
-                open={toastOpen}
-                message="Something has gone wrong. consider fixing before continuing"
-                onClose={() => setToastOpen(false)}
-                autoHideDuration={3000}
-            />
-        </div>
-    );
+export const SuccessToast = Template.bind({});
+SuccessToast.args = {
+    toastType: "success",
+    message: "An action has successfully been completed",
+    autoHideDuration: 3000,
 };
 
-export const InfoToast = () => {
-    const [toastOpen, setToastOpen] = useState(false);
-    return (
-        <div
-            style={{
-                height: "100vh",
-                width: "100vw",
-                backgroundColor: "#242424",
-            }}
-        >
-            <button
-                onClick={() => setToastOpen(true)}
-                style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "calc(50% - 80px)",
-                }}
-            >
-                Simulate Info
-            </button>
-            <Toast
-                toastKey="toast-key"
-                toastType="info"
-                testId="info-toast"
-                open={toastOpen}
-                message="Some useful information"
-                onClose={() => setToastOpen(false)}
-                autoHideDuration={3000}
-            />
-        </div>
-    );
+export const WarningToast = Template.bind({});
+WarningToast.args = {
+    toastType: "warning",
+    message: "Something has gone wrong. Consider fixing before continuing",
+    autoHideDuration: 3000,
 };
 
-export const DangerToast = () => {
-    const [toastOpen, setToastOpen] = useState(false);
-    return (
-        <div
-            style={{
-                height: "100vh",
-                width: "100vw",
-                backgroundColor: "#242424",
-            }}
-        >
-            <button
-                onClick={() => setToastOpen(true)}
-                style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "calc(50% - 80px)",
-                }}
-            >
-                Simulate Danger
-            </button>
-            <Toast
-                toastKey="toast-key"
-                toastType="danger"
-                testId="danger-toast"
-                open={toastOpen}
-                message="Something has gone wrong. Please try again"
-                onClose={() => setToastOpen(false)}
-                autoHideDuration={3000}
-            />
-        </div>
-    );
+export const InfoToast = Template.bind({});
+InfoToast.args = {
+    toastType: "info",
+    message: "Some useful information",
+    autoHideDuration: 3000,
+};
+
+export const DangerToast = Template.bind({});
+DangerToast.args = {
+    toastType: "danger",
+    message: "Something has gone wrong. Please try again",
+    autoHideDuration: 3000,
 };

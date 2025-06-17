@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Instant from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Instant",
     component: Instant,
-    decorators: [withKnobs],
+    argTypes: {
+        disabled: { control: "boolean" },
+        id: { control: "text" },
+        label: { control: "text" },
+    },
 };
 
 export const InstantComponent = (args) => {
@@ -13,16 +16,21 @@ export const InstantComponent = (args) => {
     const handleDateTimeChange = (v) => {
         setValue(v);
     };
+
     return (
         <div className="qpp-u-padding--16">
-            <div> Date string: {value} </div>
+            <div>Date string: {value}</div>
             <Instant
-                disabled={false}
-                id="status_date_time"
-                label="Status Date/Time"
+                {...args}
                 handleDateTimeChange={handleDateTimeChange}
                 dateTimeValue={value}
             />
         </div>
     );
+};
+
+InstantComponent.args = {
+    disabled: false,
+    id: "status_date_time",
+    label: "Status Date/Time",
 };

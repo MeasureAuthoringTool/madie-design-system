@@ -28,7 +28,7 @@ describe("Pagination", () => {
                 }}
                 hidePrevButton={true}
                 hideNextButton={false}
-            />
+            />,
         );
         expect(getByTestId("NavigateNextIcon")).toBeInTheDocument();
     });
@@ -52,7 +52,7 @@ describe("Pagination", () => {
                 }}
                 hidePrevButton={false}
                 hideNextButton={true}
-            />
+            />,
         );
         expect(getByTestId("NavigateBeforeIcon")).toBeInTheDocument();
     });

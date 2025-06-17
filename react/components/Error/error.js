@@ -20,7 +20,7 @@ export default class ErrorPage {
                 code={options.code}
                 message={options.message}
             />,
-            options.rootElement
+            options.rootElement,
         );
     }
 }

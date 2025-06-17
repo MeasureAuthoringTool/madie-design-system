@@ -2,34 +2,30 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect } from "@jest/globals";
 import DateTimeField from "../../components/DateTimeField/DateTimeField";
-import { act } from "react-dom/test-utils";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import dayjs from "dayjs";
 
 describe("DateTimeField", () => {
+    const { findByText, findByTestId, getByDisplayValue } = screen;
     it("DateTimeField Exists", async () => {
-        await act(async () => {
-            const { findByText, findByTestId, getByDisplayValue } = render(
-                <DateTimeField
-                    label="Active Date/Time"
-                    id="active-date-time"
-                    dateTimeValue={dayjs("2022-04-17T15:30Z")}
-                    handleDateTimeChange={() => {
-                        return;
-                    }}
-                    disabled={false}
-                />
-            );
+        render(
+            <DateTimeField
+                label="Active Date/Time"
+                id="active-date-time"
+                dateTimeValue={dayjs("2022-04-17T15:30Z")}
+                handleDateTimeChange={() => {
+                    return;
+                }}
+                disabled={false}
+            />,
+        );
 
-            const labelText = await findByText("Active Date/Time");
-            expect(labelText).toBeInTheDocument();
-            expect(
-                await findByTestId("active-date-time-input")
-            ).toBeInTheDocument();
-            expect(
-                getByDisplayValue("04/17/2022 03:30 PM")
-            ).toBeInTheDocument();
-        });
+        const labelText = await findByText("Active Date/Time");
+        expect(labelText).toBeInTheDocument();
+        expect(
+            await findByTestId("active-date-time-input"),
+        ).toBeInTheDocument();
+        expect(getByDisplayValue("04/17/2022 03:30 PM")).toBeInTheDocument();
     });
 
     it("renders ReadOnlyTextField when disabled is true", () => {
@@ -44,7 +40,7 @@ describe("DateTimeField", () => {
                 handleDateTimeChange={() => {}}
                 disabled={true}
                 id={id}
-            />
+            />,
         );
 
         const readOnlyField = getByLabelText(label);
@@ -64,7 +60,7 @@ describe("DateTimeField", () => {
                 handleDateTimeChange={() => {}}
                 disabled={true}
                 id={id}
-            />
+            />,
         );
 
         const readOnlyField = getByLabelText(label);

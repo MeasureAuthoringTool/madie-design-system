@@ -24,7 +24,7 @@ const TextArea = ({
                 size="small"
                 {...rest}
             />
-        )
+        );
     }
     // coerce this to avoid issue passing props to dom.
     // text area autosize is deprecated and only takes style rules

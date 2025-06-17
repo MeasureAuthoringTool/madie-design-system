@@ -37,7 +37,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         expect(getByTestId("dialog-form")).toBeInTheDocument();
         expect(queryByText("Indicates required field")).toBeInTheDocument();
@@ -84,7 +84,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a dialog message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         const cancelButton = getByTestId("dialog-cancel-button");
         const submitButton = getByTestId("dialog-continue-button");
@@ -117,7 +117,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a basic dialog</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         // only one button should be there i.e. cancel model icon at top right corner
         expect(queryAllByRole("button")).toHaveLength(1);
@@ -138,7 +138,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form dialog</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         // only one button should be there i.e. cancel model icon at top right corner
         expect(queryAllByRole("button")).toHaveLength(1);
@@ -167,7 +167,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         expect(getByTestId("dialog-form")).toBeInTheDocument();
         expect(queryByText("Indicates required field")).toBeInTheDocument();
@@ -206,7 +206,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         expect(getByTestId("dialog-form")).toBeInTheDocument();
         expect(queryByText("Indicates required field")).toBeInTheDocument();
@@ -218,7 +218,7 @@ describe("Madie Dialog", () => {
         fireEvent.mouseOver(submitButton);
         await waitFor(() => {
             expect(
-                queryByText("Continue button is disabled")
+                queryByText("Continue button is disabled"),
             ).toBeInTheDocument();
         });
     });
@@ -252,7 +252,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         expect(getByTestId("dialog-form")).toBeInTheDocument();
         expect(queryByText("Indicates required field")).toBeInTheDocument();
@@ -264,7 +264,7 @@ describe("Madie Dialog", () => {
         fireEvent.mouseOver(submitButton);
         await waitFor(() => {
             expect(
-                queryByText("Continue button is disabled")
+                queryByText("Continue button is disabled"),
             ).not.toBeInTheDocument();
         });
     });
@@ -296,7 +296,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
         expect(getByTestId("dialog-form")).toBeInTheDocument();
         expect(queryByText("Indicates required field")).toBeInTheDocument();
@@ -308,7 +308,7 @@ describe("Madie Dialog", () => {
         fireEvent.mouseOver(submitButton);
         await waitFor(() => {
             expect(
-                queryByText("Continue button is disabled")
+                queryByText("Continue button is disabled"),
             ).not.toBeInTheDocument();
         });
     });
@@ -354,7 +354,7 @@ describe("Madie Dialog", () => {
                                 dataTestId: "export-publishing-option",
                                 toImplementFunction: () =>
                                     console.log(
-                                        "Export for Publishing clicked"
+                                        "Export for Publishing clicked",
                                     ),
                             },
                         ],
@@ -362,7 +362,7 @@ describe("Madie Dialog", () => {
                 >
                     <div>this is a form message</div>
                 </MadieDialog>
-            </div>
+            </div>,
         );
 
         const cancelButton = getByTestId("cancel-button");

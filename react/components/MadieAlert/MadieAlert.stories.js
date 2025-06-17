@@ -1,34 +1,42 @@
 import React from "react";
 import MadieAlert from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Madie Alert",
     component: MadieAlert,
     decorators: [
-        withKnobs,
-        (storyFn) => (
+        (Story) => (
             <div style={{ padding: "120px", backgroundColor: "gray" }}>
-                {storyFn()}
+                <Story />
             </div>
         ),
     ],
+    argTypes: {
+        type: {
+            control: { type: "select" },
+            options: ["info", "warning", "error", "success"],
+        },
+        content: { control: "text" },
+        active: { control: "boolean" },
+    },
 };
 
-export const MadieAlertWarning = () => (
-    <MadieAlert
-        type="warning"
-        content="Your measure needs a CMS ID, you must first create and import your measure from MAT."
-    />
-);
+const Template = (args) => <MadieAlert {...args} />;
+
+export const MadieAlertWarning = Template.bind({});
+MadieAlertWarning.args = {
+    type: "warning",
+    content:
+        "Your measure needs a CMS ID, you must first create and import your measure from MAT.",
+};
 MadieAlertWarning.storyName = "MadieAlertWarning";
 
-export const MadieAlertInfo = () => (
-    <MadieAlert
-        type="info"
-        content="Your measure needs a CMS ID, you must first create and import your measure from MAT."
-    />
-);
+export const MadieAlertInfo = Template.bind({});
+MadieAlertInfo.args = {
+    type: "info",
+    content:
+        "Your measure needs a CMS ID, you must first create and import your measure from MAT.",
+};
 MadieAlertInfo.storyName = "MadieAlertInfo";
 
 export const MadieAlertInfoList = () => (
@@ -62,19 +70,17 @@ export const MadieAlertWithTitle = () => (
 );
 MadieAlertWithTitle.storyName = "withTitle";
 
-export const MadieAlertError = () => (
-    <MadieAlert
-        type="error"
-        active={false}
-        content="Please complete the CQL Editor process before continuing."
-    />
-);
+export const MadieAlertError = Template.bind({});
+MadieAlertError.args = {
+    type: "error",
+    content: "Please complete the CQL Editor process before continuing.",
+    active: false,
+};
 MadieAlertError.storyName = "MadieAlertError";
 
-export const MadieAlertSuccess = () => (
-    <MadieAlert
-        type="success"
-        content="Your measure has been succesfully updated."
-    />
-);
+export const MadieAlertSuccess = Template.bind({});
+MadieAlertSuccess.args = {
+    type: "success",
+    content: "Your measure has been succesfully updated.",
+};
 MadieAlertSuccess.storyName = "MadieAlertSuccess";

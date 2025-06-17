@@ -62,7 +62,7 @@ const DateTimeField = ({
                 id={id}
                 size="small"
             />
-        )
+        );
     }
     return (
         <FormControl>

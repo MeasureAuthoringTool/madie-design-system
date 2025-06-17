@@ -51,14 +51,14 @@ class FlashNotification extends Component {
             function () {
                 this.setState({ isClosed: false });
             }.bind(this),
-            250
+            250,
         );
 
         this.timer = setTimeout(
             function () {
                 this._fadeOutNotification();
             }.bind(this),
-            10000
+            10000,
         );
     }
 
@@ -71,7 +71,7 @@ class FlashNotification extends Component {
                     this.props.onClose();
                 }
             }.bind(this),
-            500
+            500,
         );
     }
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import "./tabs.scss";
 import Tabs from "./index";
 import Tab from "./Tab";
@@ -7,222 +6,85 @@ import Tab from "./Tab";
 export default {
     title: "Tabs",
     component: Tabs,
-    decorators: [withKnobs],
+    argTypes: {
+        type: {
+            control: { type: "select" },
+            options: ["A", "B", "C", "D"],
+        },
+        size: {
+            control: { type: "select" },
+            options: ["standard", "large"],
+        },
+        orientation: {
+            control: { type: "radio" },
+            options: ["horizontal", "vertical"],
+        },
+    },
 };
 
-export const TypeA = () => {
-    // state, setState
+const Template = ({ type, size, orientation }) => {
     const [selected, setSelected] = useState(1);
 
-    const handleChange = (e, v) => {
-        // 1,2,3
-        setSelected(v);
+    const handleChange = (event, value) => {
+        setSelected(value);
     };
 
-    return (
-        <div style={{ margin: "25px" }}>
-            <div style={{ width: "fit-content" }}>
-                Standard: A
-                <Tabs
-                    type="A"
-                    size="standard"
-                    value={selected}
-                    onChange={handleChange}
-                >
-                    <Tab type="A" size="standard" label="Item One" value={1} />
-                    <Tab type="A" size="standard" label="Item Two" value={2} />
-                    <Tab
-                        type="A"
-                        size="standard"
-                        label="Item Three"
-                        value={3}
-                    />
-                    <Tab
-                        type="A"
-                        size="standard"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Large: A
-                <Tabs
-                    type="A"
-                    size="large"
-                    value={selected}
-                    onChange={handleChange}
-                >
-                    <Tab type="A" size="large" label="Item One" value={1} />
-                    <Tab type="A" size="large" label="Item Two" value={2} />
-                    <Tab type="A" size="large" label="Item Three" value={3} />
-                    <Tab
-                        type="A"
-                        size="large"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Standard: B
-                <Tabs
-                    type="B"
-                    size="standard"
-                    value={selected}
-                    onChange={handleChange}
-                >
-                    <Tab type="B" size="standard" label="Item One" value={1} />
-                    <Tab type="B" size="standard" label="Item Two" value={2} />
-                    <Tab
-                        type="B"
-                        size="standard"
-                        label="Item Three"
-                        value={3}
-                    />
-                    <Tab
-                        type="B"
-                        size="standard"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
+    const tabProps = {
+        type,
+        size,
+        orientation,
+    };
 
-            <div style={{ width: "fit-content" }}>
-                Large: B
-                <Tabs
-                    type="B"
-                    size="large"
-                    value={selected}
-                    onChange={handleChange}
-                >
-                    <Tab type="B" size="large" label="Item One" value={1} />
-                    <Tab type="B" size="large" label="Item Two" value={2} />
-                    <Tab type="B" size="large" label="Item Three" value={3} />
-                    <Tab
-                        type="B"
-                        size="large"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Standard: C
-                <Tabs type="C" value={selected} onChange={handleChange}>
-                    <Tab type="C" size="standard" label="Item One" value={1} />
-                    <Tab type="C" size="standard" label="Item Two" value={2} />
-                    <Tab
-                        type="C"
-                        size="standard"
-                        label="Item Three"
-                        value={3}
-                    />
-                    <Tab
-                        type="C"
-                        size="standard"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Large: C
-                <Tabs type="C" value={selected} onChange={handleChange}>
-                    <Tab type="C" size="large" label="Item One" value={1} />
-                    <Tab type="C" size="large" label="Item Two" value={2} />
-                    <Tab type="C" size="large" label="Item Three" value={3} />
-                    <Tab
-                        type="C"
-                        size="large"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div className={"vertical-standard-type-c-wrapper"}>
-                <div className={"vertical-standard-type-c"}>
-                    <h4>Vertical Standard: C</h4>
-                    <Tabs
-                        type="C"
-                        value={selected}
-                        onChange={handleChange}
-                        orientation="vertical"
-                    >
-                        <Tab
-                            type="C"
-                            size="standard"
-                            label="Item One"
-                            value={1}
-                            orientation="vertical"
-                        />
-                        <Tab
-                            type="C"
-                            size="standard"
-                            label="Item Two"
-                            value={2}
-                            orientation="vertical"
-                        />
-                        <Tab
-                            type="C"
-                            size="standard"
-                            label="Item Three"
-                            value={3}
-                            orientation="vertical"
-                        />
-                        <Tab
-                            type="C"
-                            size="standard"
-                            label="disabled"
-                            value={4}
-                            disabled
-                            orientation="vertical"
-                        />
-                    </Tabs>
-                </div>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Standard: D
-                <Tabs type="D" value={selected} onChange={handleChange}>
-                    <Tab type="D" size="standard" label="Item One" value={1} />
-                    <Tab type="D" size="standard" label="Item Two" value={2} />
-                    <Tab
-                        type="D"
-                        size="standard"
-                        label="Item Three"
-                        value={3}
-                    />
-                    <Tab
-                        type="D"
-                        size="standard"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
-            <div style={{ width: "fit-content" }}>
-                Large: D
-                <Tabs type="D" value={selected} onChange={handleChange}>
-                    <Tab type="D" size="large" label="Item One" value={1} />
-                    <Tab type="D" size="large" label="Item Two" value={2} />
-                    <Tab type="D" size="large" label="Item Three" value={3} />
-                    <Tab
-                        type="D"
-                        size="large"
-                        label="disabled"
-                        value={4}
-                        disabled
-                    />
-                </Tabs>
-            </div>
+    const tabsOrientation =
+        orientation === "vertical" ? "vertical" : "horizontal";
+
+    return (
+        <div
+            style={{
+                margin: "25px",
+                width: orientation === "vertical" ? 200 : "fit-content",
+            }}
+        >
+            <Tabs
+                type={type}
+                size={size}
+                orientation={tabsOrientation}
+                value={selected}
+                onChange={handleChange}
+            >
+                <Tab
+                    {...tabProps}
+                    label="Item One"
+                    value={1}
+                    orientation={tabsOrientation}
+                />
+                <Tab
+                    {...tabProps}
+                    label="Item Two"
+                    value={2}
+                    orientation={tabsOrientation}
+                />
+                <Tab
+                    {...tabProps}
+                    label="Item Three"
+                    value={3}
+                    orientation={tabsOrientation}
+                />
+                <Tab
+                    {...tabProps}
+                    label="disabled"
+                    value={4}
+                    disabled
+                    orientation={tabsOrientation}
+                />
+            </Tabs>
         </div>
     );
+};
+
+export const InteractiveTabs = Template.bind({});
+InteractiveTabs.args = {
+    type: "A",
+    size: "standard",
+    orientation: "horizontal",
 };

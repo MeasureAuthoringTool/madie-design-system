@@ -14,9 +14,11 @@ describe("ReadOnlyTextField", () => {
                 id="testName"
                 inputProps={{ "data-testid": "test-name-input" }}
                 size="small"
-            />
+            />,
         );
-        const textNode = getByRole(document.body, "textbox", { name: "test Name" });
+        const textNode = getByRole(document.body, "textbox", {
+            name: "test Name",
+        });
         expect(textNode).toBeInTheDocument();
         expect(textNode).toHaveAttribute("readOnly");
         expect(textNode).toHaveTextContent("-");

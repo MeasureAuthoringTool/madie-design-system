@@ -66,7 +66,7 @@ const DateField = ({
                 {...rest}
                 value={value ? dayjs.utc(value).format("MM/DD/YYYY") : "-"}
             />
-        )
+        );
     }
 
     if (containerSx === undefined || containerSx === null) {
