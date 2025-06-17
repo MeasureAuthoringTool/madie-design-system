@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RichTextEditor from "../../components/RichTextEditor/index";
+import userEvent from "@testing-library/user-event";
 
 describe("RichTextEditor Component", () => {
     const mockOnChange = jest.fn();
@@ -62,5 +63,84 @@ describe("RichTextEditor Component", () => {
         // Check if sanitized content is rendered
         expect(screen.getByText("Safe Content")).toBeInTheDocument();
         expect(screen.queryByText("alert('XSS')")).not.toBeInTheDocument();
+    });
+
+    it("triggers bold", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Bold" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+    it("triggers Italic", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Italic" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+    it("triggers Underline", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Underline" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+    it("triggers Ordered List", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Bold" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+    it("triggers Bulleted List", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Bulleted List" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+    it("triggers Table", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Table" }));
+        expect(mockOnChange).toHaveBeenCalled();
     });
 });

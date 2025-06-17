@@ -54,7 +54,7 @@ describe("Search Component", () => {
                 {...defaultProps}
                 disabled={true}
                 disableSearchBtn={true}
-            />
+            />,
         );
 
         expect(screen.getByRole("searchbox")).toBeDisabled();
@@ -63,7 +63,13 @@ describe("Search Component", () => {
 
     it("uses default props when none are provided", () => {
         render(<Search />);
-        expect(screen.getByRole("searchbox")).toHaveAttribute("id", "search-input");
-        expect(screen.getByTestId("search-btn")).toHaveAttribute("id", "search-input-submit");
+        expect(screen.getByRole("searchbox")).toHaveAttribute(
+            "id",
+            "search-input",
+        );
+        expect(screen.getByTestId("search-btn")).toHaveAttribute(
+            "id",
+            "search-input-submit",
+        );
     });
 });
