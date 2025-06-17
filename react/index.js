@@ -1,13 +1,13 @@
 import "what-input";
-
+import React from 'react'
 const QppStyleComponents = {
-    errorPage(options) {
-        return <div>
+    errorPage() {
+        return <div data-testId="error-page">
             Something has gone terribly wrong.
         </div>;
     },
     footer() {
-        return <div></div>;
+        return <div data-testId="unused"></div>;
     },
 };
 
