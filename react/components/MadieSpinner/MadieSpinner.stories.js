@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieSpinner from "./index";
 
 export default {
     title: "MadieSpinner",
     component: MadieSpinner,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
@@ -26,4 +24,4 @@ export const ExampleSpinner = () => (
     </Wrapper>
 );
 
-ExampleSpinner.storyName = "example Madie Spinner";
+ExampleSpinner.storyName = "Example Madie Spinner";

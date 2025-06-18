@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieConfirmDialog from "./index";
 import Button from "../Button";
+
 export default {
     title: "MadieConfirmDialog",
     component: MadieConfirmDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
@@ -21,31 +20,20 @@ Wrapper.propTypes = {
 
 export const ConfirmDialog = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
-    const onContinue = () => {
-        setOpen(false);
-    };
-
     const [openDiscardDialog, setOpenDiscardDialog] = useState(false);
-    const onDiscardDialogClose = () => {
-        setOpenDiscardDialog(false);
-    };
-    const onDiscardDialogContinue = () => {
-        setOpenDiscardDialog(false);
-    };
-
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-    const onDeleteDialogClose = () => {
-        setOpenDeleteDialog(false);
-    };
-    const onDeleteDialogContinue = () => {
-        setOpenDeleteDialog(false);
-    };
+
+    const onClose = () => setOpen(false);
+    const onContinue = () => setOpen(false);
+
+    const onDiscardDialogClose = () => setOpenDiscardDialog(false);
+    const onDiscardDialogContinue = () => setOpenDiscardDialog(false);
+
+    const onDeleteDialogClose = () => setOpenDeleteDialog(false);
+    const onDeleteDialogContinue = () => setOpenDeleteDialog(false);
 
     return (
-        <div className="qpp-u-padding--16" style={{ width: 300 }}>
+        <Wrapper>
             <p>
                 <Button variant="cyan" onClick={() => setOpen(true)}>
                     open Confirm Dialog
@@ -62,13 +50,12 @@ export const ConfirmDialog = () => {
             <p>
                 <Button
                     variant="cyan"
-                    onClick={() => {
-                        setOpenDeleteDialog(true);
-                    }}
+                    onClick={() => setOpenDeleteDialog(true)}
                 >
                     open Delete Dialog
                 </Button>
             </p>
+
             <MadieConfirmDialog
                 open={open}
                 onContinue={onContinue}
@@ -78,6 +65,7 @@ export const ConfirmDialog = () => {
                 name="log out of UMLS"
                 action="confirm"
             />
+
             <MadieConfirmDialog
                 open={openDiscardDialog}
                 onContinue={onDiscardDialogContinue}
@@ -89,6 +77,7 @@ export const ConfirmDialog = () => {
                 continueText="Yes, Discard All Changes"
                 cancelText="No, Keep Working"
             />
+
             <MadieConfirmDialog
                 open={openDeleteDialog}
                 onContinue={onDeleteDialogContinue}
@@ -99,6 +88,7 @@ export const ConfirmDialog = () => {
                 action="delete"
                 continueText="Yes, Delete"
             />
-        </div>
+        </Wrapper>
     );
 };
+ConfirmDialog.storyName = "ConfirmDialog";

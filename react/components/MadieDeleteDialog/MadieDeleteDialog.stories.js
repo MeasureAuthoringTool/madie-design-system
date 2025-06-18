@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieDeleteDialog from "./index";
 import Button from "../Button";
+
 export default {
     title: "MadieDeleteDialog",
     component: MadieDeleteDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
@@ -21,15 +20,11 @@ Wrapper.propTypes = {
 
 export const DeleteDialog = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
-    const onContinue = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
+    const onContinue = () => setOpen(false);
 
     return (
-        <div className="qpp-u-padding--16" style={{ width: 300 }}>
+        <Wrapper>
             <Button variant="cyan" onClick={() => setOpen(true)}>
                 open Dialog
             </Button>
@@ -38,21 +33,17 @@ export const DeleteDialog = () => {
                 onContinue={onContinue}
                 onClose={onClose}
             />
-        </div>
+        </Wrapper>
     );
 };
 
 export const DeleteDialogNoWarning = () => {
     const [open, setOpen] = useState(false);
-    const onClose = () => {
-        setOpen(false);
-    };
-    const onContinue = () => {
-        setOpen(false);
-    };
+    const onClose = () => setOpen(false);
+    const onContinue = () => setOpen(false);
 
     return (
-        <div className="qpp-u-padding--16" style={{ width: 300 }}>
+        <Wrapper>
             <Button variant="cyan" onClick={() => setOpen(true)}>
                 open Dialog
             </Button>
@@ -62,6 +53,6 @@ export const DeleteDialogNoWarning = () => {
                 onClose={onClose}
                 hideWarning={true}
             />
-        </div>
+        </Wrapper>
     );
 };

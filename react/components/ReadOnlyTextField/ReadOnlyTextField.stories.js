@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import ReadOnlyTextField from "./index";
 import { FormHelperText } from "@mui/material";
+
 export default {
     title: "ReadOnlyTextField",
     component: ReadOnlyTextField,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
@@ -14,10 +13,12 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
+
 Wrapper.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
 };
+
 export const Textfield = () => (
     <Wrapper>
         <ReadOnlyTextField
@@ -73,7 +74,7 @@ export const Error = () => (
             data-testid="measure-name-text-field"
             size="small"
             helperText={
-                <FormHelperText data-testid={`helper-text`} error={true}>
+                <FormHelperText data-testid="helper-text" error>
                     An error message
                 </FormHelperText>
             }

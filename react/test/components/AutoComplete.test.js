@@ -2,7 +2,7 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect } from "@jest/globals";
 import AutoComplete from "../../components/AutoComplete/AutoComplete";
-import {render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("AutoComplete Component", () => {
@@ -18,7 +18,7 @@ describe("AutoComplete Component", () => {
                 options={options}
                 onChange={mockOnChange}
                 placeholder="Search for a value"
-            />
+            />,
         );
 
         const input = screen.getByRole("combobox");
@@ -29,7 +29,12 @@ describe("AutoComplete Component", () => {
         expect(option).toBeInTheDocument();
 
         await userEvent.click(option);
-        expect(mockOnChange).toHaveBeenCalledWith("autocomplete", "Option1", expect.any(String), expect.any(Object));
+        expect(mockOnChange).toHaveBeenCalledWith(
+            "autocomplete",
+            "Option1",
+            expect.any(String),
+            expect.any(Object),
+        );
     });
 
     it("renders AutoComplete in disabled mode", async () => {
@@ -40,7 +45,7 @@ describe("AutoComplete Component", () => {
                 label="Auto Complete"
                 disabled
                 value="Option1"
-            />
+            />,
         );
 
         const readOnlyField = screen.getByRole("textbox");
@@ -55,7 +60,7 @@ describe("AutoComplete Component", () => {
                 dataTestId="autocomplete-helper"
                 label="Auto Complete"
                 helperText="Helper text goes here"
-            />
+            />,
         );
 
         const helperText = screen.getByText("Helper text goes here");
@@ -70,7 +75,7 @@ describe("AutoComplete Component", () => {
                 label="Auto Complete"
                 error
                 helperText="This field is required"
-            />
+            />,
         );
 
         const errorText = screen.getByText("This field is required");

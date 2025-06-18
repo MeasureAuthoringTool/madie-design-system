@@ -54,8 +54,8 @@ const processContent = (content) => {
                 const childCount = Array.isArray(children)
                     ? children.length
                     : children
-                    ? 1
-                    : 0;
+                      ? 1
+                      : 0;
                 counts[el.type] += childCount;
             }
 
@@ -246,7 +246,7 @@ const MadieAlert = ({
 
     const totalMinimizedErrors = minimizedIndices.reduce(
         (sum, index) => sum + (individualErrors[index] || 0),
-        0
+        0,
     );
 
     // Render alert content
@@ -298,7 +298,7 @@ const MadieAlert = ({
                             navigator.clipboard.writeText(
                                 copyButton
                                     ? processContent(content).copyText
-                                    : copyText
+                                    : copyText,
                             );
                             updateState({ toastOpen: true });
                         }}
@@ -389,7 +389,7 @@ MadieAlert.propTypes = {
             alertProps: PropTypes.object,
             closeButtonProps: PropTypes.object,
             copyButton: PropTypes.bool,
-        })
+        }),
     ),
 };
 

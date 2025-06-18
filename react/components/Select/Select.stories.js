@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import Select from "./index";
 import { MenuItem, Box } from "@mui/material";
 
 export default {
     title: "Select",
     component: Select,
-    decorators: [withKnobs],
+    argTypes: {
+        defaultValue: { control: "text" },
+        placeHolder: { control: "object" },
+        label: { control: "text" },
+        id: { control: "text" },
+        size: {
+            control: { type: "select", options: ["small", "medium", "large"] },
+        },
+        disabled: { control: "boolean" },
+        required: { control: "boolean" },
+        error: { control: "boolean" },
+        helperText: { control: "text" },
+    },
 };
 
 const Wrapper = ({ children }) => (
@@ -19,7 +30,6 @@ const Wrapper = ({ children }) => (
     </div>
 );
 Wrapper.propTypes = {
-    className: PropTypes.string,
     children: PropTypes.node,
 };
 
@@ -28,135 +38,56 @@ const options = [
     { key: "key2", value: "value2", testId: "testid2", name: "name2" },
     { key: "key3", value: "value2", testId: "testid3", name: "name3" },
 ];
-export const SelectWithLabel = () => (
+
+const renderedOptions = options.map(({ key, value, testId, name }) => (
+    <MenuItem key={key} value={value} data-testid={`option-${testId}`}>
+        {name}
+    </MenuItem>
+));
+
+const Template = (args) => (
     <Wrapper>
-        <Select
-            defaultValue=""
-            placeHolder={{ name: "placeholder", value: "" }}
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
+        <Select {...args} options={renderedOptions} />
     </Wrapper>
 );
 
-export const WithHelperText = () => (
-    <Wrapper>
-        <Select
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="A descriptive message"
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-    </Wrapper>
-);
+export const SelectWithLabel = Template.bind({});
+SelectWithLabel.args = {
+    defaultValue: "",
+    placeHolder: { name: "placeholder", value: "" },
+    label: "Text Label",
+    id: "measureName",
+    size: "small",
+    disabled: false,
+    required: false,
+    error: false,
+    helperText: "",
+};
 
-export const Disabled = () => (
-    <Wrapper>
-        <Select
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            disabled
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-    </Wrapper>
-);
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+    ...SelectWithLabel.args,
+    helperText: "A descriptive message",
+};
 
-export const Required = () => (
-    <Wrapper>
-        <Select
-            required
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-    </Wrapper>
-);
+export const Disabled = Template.bind({});
+Disabled.args = {
+    ...SelectWithLabel.args,
+    disabled: true,
+};
 
-export const Error = () => (
-    <Wrapper>
-        <Select
-            error
-            placeHolder={{ name: "placeholder", value: "" }}
-            defaultValue=""
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText="An error message An error message An error message"
-            options={options.map(({ key, value, testId, name }) => {
-                return (
-                    <MenuItem
-                        key={key}
-                        value={value}
-                        data-testid={`option-${testId}`}
-                    >
-                        {name}
-                    </MenuItem>
-                );
-            })}
-        />
-    </Wrapper>
-);
+export const Required = Template.bind({});
+Required.args = {
+    ...SelectWithLabel.args,
+    required: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+    ...SelectWithLabel.args,
+    error: true,
+    helperText: "An error message An error message An error message",
+};
 
 export const VariedHeights = () => (
     <div
@@ -174,20 +105,9 @@ export const VariedHeights = () => (
                 data-testid="measure-name-text-field"
                 size="small"
                 helperText="An error message"
-                options={options.map(({ key, value, testId, name }) => {
-                    return (
-                        <MenuItem
-                            key={key}
-                            value={value}
-                            data-testid={`option-${testId}`}
-                        >
-                            {name}
-                        </MenuItem>
-                    );
-                })}
+                options={renderedOptions}
             />
             <Select
-                // error
                 placeHolder={{ name: "placeholder", value: "" }}
                 defaultValue=""
                 label="Text Label"
@@ -196,20 +116,9 @@ export const VariedHeights = () => (
                 data-testid="measure-name-text-field"
                 size="small"
                 helperText=""
-                options={options.map(({ key, value, testId, name }) => {
-                    return (
-                        <MenuItem
-                            key={key}
-                            value={value}
-                            data-testid={`option-${testId}`}
-                        >
-                            {name}
-                        </MenuItem>
-                    );
-                })}
+                options={renderedOptions}
             />
             <Select
-                // error
                 placeHolder={{ name: "placeholder", value: "" }}
                 defaultValue=""
                 label="Text Label"
@@ -218,17 +127,7 @@ export const VariedHeights = () => (
                 data-testid="measure-name-text-field"
                 size="small"
                 helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
-                options={options.map(({ key, value, testId, name }) => {
-                    return (
-                        <MenuItem
-                            key={key}
-                            value={value}
-                            data-testid={`option-${testId}`}
-                        >
-                            {name}
-                        </MenuItem>
-                    );
-                })}
+                options={renderedOptions}
             />
         </Box>
     </div>

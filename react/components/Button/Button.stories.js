@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import FeatherIcon from "feather-icons-react";
 
 import Button, { TextButton } from "./index";
@@ -8,7 +7,6 @@ import Button, { TextButton } from "./index";
 export default {
     title: "Button",
     component: Button,
-    decorators: [withKnobs],
 };
 
 const Container = ({ className = "", children }) => (

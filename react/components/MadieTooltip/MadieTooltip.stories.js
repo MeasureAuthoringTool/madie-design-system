@@ -11,9 +11,14 @@ export default {
 };
 
 export const ExampleTooltip = () => (
-    <div>
+    <div
+        style={{
+            display: "flex",
+            flexDirection: "row",
+        }}
+    >
         <div>
-            <MadieTooltip text="Input the new version #" />
+            <MadieTooltip tooltipText="Input the new version #" />
         </div>
         <div style={{ marginLeft: 200 }}>
             <MadieTooltip color="#000" />

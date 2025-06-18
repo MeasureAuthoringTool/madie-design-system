@@ -1,15 +1,13 @@
-import ErrorPage from "./components/Error/error";
-import Footer from "./components/Footer/footer";
-
 import "what-input";
-
+import React from 'react'
 const QppStyleComponents = {
-    errorPage(options) {
-        return new ErrorPage(options);
+    errorPage() {
+        return <div data-testId="error-page">
+            Something has gone terribly wrong.
+        </div>;
     },
-
-    footer(options) {
-        return new Footer(options);
+    footer() {
+        return <div data-testId="unused"></div>;
     },
 };
 

@@ -197,7 +197,7 @@ const RichTextEditor = ({
                 onChange(newValue);
             },
         },
-        [content]
+        [content],
     );
     return (
         <div
@@ -245,20 +245,19 @@ const RichTextEditor = ({
                 {label}
             </InputLabel>
             {disabled ? (
-                    <p
-                        data-testid={`${id}-value`}
-                        aria-labelledby={label}
-                        dangerouslySetInnerHTML={{
-                            __html: content ? DOMPurify.sanitize(content) : "-",
-                        }}
-                    />
-
-                ) : (
-                    <>
-                        <MenuBar editor={editor}/>
-                        <EditorContent editor={editor}/>
-                    </>
-                )}
+                <p
+                    data-testid={`${id}-value`}
+                    aria-labelledby={label}
+                    dangerouslySetInnerHTML={{
+                        __html: content ? DOMPurify.sanitize(content) : "-",
+                    }}
+                />
+            ) : (
+                <>
+                    <MenuBar editor={editor} />
+                    <EditorContent editor={editor} />
+                </>
+            )}
         </div>
     );
 };

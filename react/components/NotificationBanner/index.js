@@ -38,7 +38,7 @@ class NotificationBanner extends Component {
             if (Object.keys(notifications).length > 0) {
                 this.setState({
                     expanded: this.isNotificationExpanded(
-                        notifications.content
+                        notifications.content,
                     ),
                 });
             }
@@ -110,7 +110,7 @@ class NotificationBanner extends Component {
                         ...storageNotification.content,
                         dateDismissed,
                     },
-                })
+                }),
             );
         } else {
             window.localStorage.setItem(
@@ -121,7 +121,7 @@ class NotificationBanner extends Component {
                         name: "header-notification",
                         dateDismissed,
                     },
-                })
+                }),
             );
         }
     }

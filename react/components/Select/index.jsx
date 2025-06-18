@@ -34,7 +34,7 @@ const Select = ({
                 size="small"
                 {...rest}
             />
-        )
+        );
     }
 
     const placehold = (

@@ -19,7 +19,7 @@ describe("Madie Alert", () => {
                     onClick: onClose,
                     "data-testid": "close-button",
                 }}
-            />
+            />,
         );
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
         expect(getByTestId("close-button")).toBeInTheDocument();
@@ -85,7 +85,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     onClick: onClose,
                     "data-testid": "close-button",
                 }}
-            />
+            />,
         );
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
         expect(getByTestId("ContentCopyIcon")).toBeInTheDocument();
@@ -140,7 +140,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     onClick: onClose,
                     "data-testid": "close-button",
                 }}
-            />
+            />,
         );
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
         expect(getByTestId("ContentCopyIcon")).toBeInTheDocument();
@@ -174,7 +174,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                     onClick: onClose,
                     "data-testid": "close-button",
                 }}
-            />
+            />,
         );
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
         expect(getByTestId("ContentCopyIcon")).toBeInTheDocument();
@@ -204,7 +204,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 closeButtonProps={{
                     "data-testid": "close-button",
                 }}
-            />
+            />,
         );
         await waitFor(() => {
             expect(screen.queryByTestId("alert-dialog")).toBeNull();
@@ -222,7 +222,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "alert-dialog",
                 }}
-            />
+            />,
         );
 
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
@@ -240,7 +240,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "alert-dialog",
                 }}
-            />
+            />,
         );
 
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
@@ -266,7 +266,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "alert-dialog",
                 }}
-            />
+            />,
         );
 
         expect(getByTestId("alert-dialog")).toBeInTheDocument();
@@ -289,7 +289,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                         canClose: false,
                     },
                 ]}
-            />
+            />,
         );
 
         // Should find two heading elements (one from each alert)
@@ -315,7 +315,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                         alertProps: { "data-testid": "alert-dialog-2" },
                     },
                 ]}
-            />
+            />,
         );
 
         // Both alerts should be visible
@@ -360,7 +360,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                         alertProps: { "data-testid": "alert-dialog-2" },
                     },
                 ]}
-            />
+            />,
         );
 
         // Minimize alerts - update to use the index-specific button ID
@@ -413,7 +413,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                         alertProps: { "data-testid": "alert-dialog-2" },
                     },
                 ]}
-            />
+            />,
         );
 
         // Update to use the index-specific button ID
@@ -424,7 +424,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // check for a count of 2 instead of 3
         await waitFor(() => {
             expect(getByTestId("minimized-alert-text")).toHaveTextContent(
-                "Display Alerts (2)"
+                "Display Alerts (2)",
             );
         });
 
@@ -435,7 +435,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Now both alerts are minimized, check for a count of 3
         await waitFor(() => {
             expect(getByTestId("minimized-alert-text")).toHaveTextContent(
-                "Display Alerts (3)"
+                "Display Alerts (3)",
             );
         });
     });
@@ -476,7 +476,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                         alertProps: { "data-testid": "alert-dialog-2" },
                     },
                 ]}
-            />
+            />,
         );
 
         // Get the first copy button and click it
@@ -488,7 +488,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         await waitFor(() => {
             expect(mockedWriteText).toHaveBeenCalledTimes(1);
             expect(mockedWriteText).toHaveBeenCalledWith(
-                expect.stringContaining("Error")
+                expect.stringContaining("Error"),
             );
         });
     });
@@ -503,7 +503,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "old-alert",
                 }}
-            />
+            />,
         );
 
         expect(getByTestId("old-alert")).toBeInTheDocument();
@@ -529,7 +529,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "alert-dialog",
                 }}
-            />
+            />,
         );
 
         // Update to use the index-specific button ID
@@ -539,7 +539,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Check for error count in minimized alert
         await waitFor(() => {
             expect(getByTestId("minimized-alert-text")).toHaveTextContent(
-                "Display Alerts (3)"
+                "Display Alerts (3)",
             );
         });
     });
@@ -555,7 +555,7 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 alertProps={{
                     "data-testid": "alert-dialog",
                 }}
-            />
+            />,
         );
 
         // Update to use the index-specific button ID
@@ -565,10 +565,10 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
         // Check that there's no error count
         await waitFor(() => {
             expect(getByTestId("minimized-alert-text")).toHaveTextContent(
-                "Display Alerts"
+                "Display Alerts",
             );
             expect(getByTestId("minimized-alert-text")).not.toHaveTextContent(
-                "Display Alerts ("
+                "Display Alerts (",
             );
         });
     });

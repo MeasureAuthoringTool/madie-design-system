@@ -95,7 +95,7 @@ const AutoComplete = ({
                 {...rest}
                 value={_.isEmpty(rest.value) ? "-" : rest.value}
             />
-        )
+        );
     }
 
     return (

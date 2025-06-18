@@ -13,7 +13,7 @@ describe("Accordion", () => {
                 leftItem="leftItem"
             >
                 Content
-            </Accordion>
+            </Accordion>,
         );
         expect(getByTestId("accordion")).toBeTruthy();
         const button = getByRole("button");

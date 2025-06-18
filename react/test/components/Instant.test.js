@@ -44,7 +44,7 @@ describe("Instant", () => {
                     dateTimeValue={dayjs("2022-04-17")}
                     dateFieldSx={{}}
                 />
-            </div>
+            </div>,
         );
         const labelText = await findByText("Status Date");
         expect(labelText).toBeInTheDocument();

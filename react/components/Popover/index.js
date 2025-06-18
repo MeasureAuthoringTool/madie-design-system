@@ -118,14 +118,14 @@ MadiePopover.propTypes = {
             dataTestId: PropTypes.string,
             label: PropTypes.string,
             toImplementFunction: PropTypes.func,
-        })
+        }),
     ),
     additionalSelectOptionProps: PropTypes.arrayOf(
         PropTypes.shape({
             dataTestId: PropTypes.string,
             label: PropTypes.string,
             toImplementFunction: PropTypes.func,
-        })
+        }),
     ),
 };
 

@@ -1,14 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import TextField from "./index";
 import { FormHelperText, IconButton, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
+
 export default {
     title: "TextField",
     component: TextField,
-    decorators: [withKnobs],
+    argTypes: {
+        disabled: { control: "boolean" },
+        error: { control: "boolean" },
+        required: { control: "boolean" },
+        size: {
+            control: { type: "select" },
+            options: ["small", "medium", "large"], // adjust if your component supports different sizes
+        },
+        helperText: { control: "text" },
+        label: { control: "text" },
+        placeholder: { control: "text" },
+        labelColor: { control: "color" },
+        value: { control: "text" },
+    },
 };
 
 const Wrapper = ({ children }) => (
@@ -16,143 +29,114 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
+
 Wrapper.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
 };
 
-export const Textfield = () => (
+const Template = (args) => (
     <Wrapper>
         <TextField
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
+            {...args}
+            id={args.id || "measureName"}
+            inputProps={{
+                "data-testid": "measure-name-input",
+                ...args.inputProps,
+            }}
+            data-testid={args["data-testid"] || "measure-name-text-field"}
         />
     </Wrapper>
 );
 
-export const WithHelperText = () => (
-    <Wrapper>
-        <TextField
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    a descriptive message
-                </FormHelperText>
-            }
-        />
-    </Wrapper>
-);
+export const Interactive = Template.bind({});
+Interactive.args = {
+    size: "small",
+    disabled: false,
+    error: false,
+    required: false,
+    helperText: "",
+    label: "Text Label",
+    placeholder: "Placeholder",
+    labelColor: undefined,
+    value: "",
+};
 
-export const Disabled = () => (
-    <Wrapper>
-        <TextField
-            placeholder="Placeholder"
-            label="Disabled Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-            disabled
-        />
-    </Wrapper>
-);
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+    ...Interactive.args,
+    helperText: (
+        <FormHelperText data-testid="helper-text" error={false}>
+            a descriptive message
+        </FormHelperText>
+    ),
+};
 
-export const Required = () => (
-    <Wrapper>
+export const Disabled = Template.bind({});
+Disabled.args = {
+    ...Interactive.args,
+    disabled: true,
+    label: "Disabled Text Label",
+};
+
+export const Required = Template.bind({});
+Required.args = {
+    ...Interactive.args,
+    required: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+    ...Interactive.args,
+    error: true,
+    required: true,
+    helperText: "An error message",
+};
+
+export const WithToolTipText = Template.bind({});
+WithToolTipText.args = {
+    ...Interactive.args,
+    label: "Confirm New Version #",
+    tooltipText: "Input the new version # located to the left to confirm.",
+    helperText: "test",
+    id: "measure-name",
+};
+
+export const VariedHeights = () => (
+    <div
+        className="qpp-u-padding--16"
+        style={{ width: 900, marginBottom: "16px", display: "flex", gap: 16 }}
+    >
         <TextField
             placeholder="Placeholder"
             required
             label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
+            id="measureName1"
+            inputProps={{ "data-testid": "measure-name-input1" }}
+            data-testid="measure-name-text-field1"
             size="small"
+            helperText="An error message"
         />
-    </Wrapper>
-);
-
-export const Error = () => (
-    <Wrapper>
+        <TextField
+            placeholder="Placeholder"
+            label="Text Label"
+            id="measureName2"
+            inputProps={{ "data-testid": "measure-name-input2" }}
+            data-testid="measure-name-text-field2"
+            size="small"
+            helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
+        />
         <TextField
             placeholder="Placeholder"
             error
             required
             label="Text Label"
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
+            id="measureName3"
+            inputProps={{ "data-testid": "measure-name-input3" }}
+            data-testid="measure-name-text-field3"
             size="small"
             helperText="An error message"
         />
-    </Wrapper>
-);
-
-export const WithToolTipText = () => (
-    <Wrapper>
-        <TextField
-            placeholder="Placeholder"
-            label="Confirm New Version #"
-            data-testid="measure-name-text-field"
-            size="small"
-            tooltipText="Input the new version # located to the left to confirm."
-            helperText="test"
-            id="measure-name"
-            // previously this was how it was done. it could make more sense to only pass it an id and progrematically determine it. Example:
-            // inputProps={{
-            //     "data-testid": "measure-name-input",
-            //     "aria-describedby":
-            //         "measure-name-helper-text measure-name-tooltip",
-            // }}
-        />
-    </Wrapper>
-);
-
-export const VariedHeights = () => (
-    <div
-        className="qpp-u-padding--16"
-        style={{ width: 900, marginBottom: "16px" }}
-    >
-        <div style={{ display: "flex", flexDirection: "row" }}>
-            <TextField
-                placeholder="Placeholder"
-                required
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message"
-            />
-            <TextField
-                placeholder="Placeholder"
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message designed to take up a lot of space to see how we space multiple input elements within the same row in a responsive manner "
-            />
-            <TextField
-                placeholder="Placeholder"
-                error
-                required
-                label="Text Label"
-                id="measureName"
-                inputProps={{ "data-testid": "measure-name-input" }}
-                data-testid="measure-name-text-field"
-                size="small"
-                helperText="An error message"
-            />
-        </div>
     </div>
 );
 
@@ -176,7 +160,7 @@ export const WithLeftAndRightIcon = () => (
                     ),
                     endAdornment: (
                         <InputAdornment position="end">
-                            <IconButton onClick="">
+                            <IconButton onClick={() => {}}>
                                 <ClearIcon />
                             </IconButton>
                         </InputAdornment>
@@ -188,16 +172,9 @@ export const WithLeftAndRightIcon = () => (
     </Wrapper>
 );
 
-export const TextfieldDifferentLabel = () => (
-    <Wrapper>
-        <TextField
-            placeholder="Placeholder"
-            label="Text Label with different color"
-            labelColor={"#1976d2"}
-            id="measureName"
-            inputProps={{ "data-testid": "measure-name-input" }}
-            data-testid="measure-name-text-field"
-            size="small"
-        />
-    </Wrapper>
-);
+export const TextfieldDifferentLabel = Template.bind({});
+TextfieldDifferentLabel.args = {
+    ...Interactive.args,
+    label: "Text Label with different color",
+    labelColor: "#1976d2",
+};

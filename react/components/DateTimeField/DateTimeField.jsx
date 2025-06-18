@@ -58,11 +58,15 @@ const DateTimeField = ({
         return (
             <ReadOnlyTextField
                 label={label}
-                value={dateTimeValue ? dayjs.utc(dateTimeValue).format("MM/DD/YYYY hh:mm A") : "-"}
+                value={
+                    dateTimeValue
+                        ? dayjs.utc(dateTimeValue).format("MM/DD/YYYY hh:mm A")
+                        : "-"
+                }
                 id={id}
                 size="small"
             />
-        )
+        );
     }
     return (
         <FormControl>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Draggable from "react-draggable";
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,14 +17,16 @@ import Button from "../Button";
 import Popover from "../Popover";
 
 const DraggablePaper = (props) => {
+    const nodeRef = useRef(null);
     const { children, ...rest } = props;
 
     return (
         <Draggable
             handle="#draggable-dialog-title"
             cancel={'[class*="MuiDialogContent-root"]'} // Prevent dragging when interacting with content
+            nodeRef={nodeRef}
         >
-            <div style={{ backgroundColor: "#fff" }} {...rest}>
+            <div ref={nodeRef} {...rest} style={{ backgroundColor: "#fff" }}>
                 {children}
             </div>
         </Draggable>
