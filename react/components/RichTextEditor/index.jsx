@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
-import InputLabel from "../InputLabel";
+import InputLabel from "./index.jsx";
 
 import Gapcursor from "@tiptap/extension-gapcursor";
 import Table from "@tiptap/extension-table";
@@ -242,24 +242,15 @@ const RichTextEditor = ({
                 const newValue = editor.getHTML();
                 onChange(newValue);
             },
-            editable: !disabled,
-        },
-        [content, disabled]
+        }
     );
 
+    // Add this useEffect to update content without recreating editor
     React.useEffect(() => {
-        if (!editor || !onBlur || !name) return;
-
-        const handleBlur = () => {
-            onBlur({ target: { name } });
-        };
-
-        editor.on("blur", handleBlur);
-
-        return () => {
-            editor.off("blur", handleBlur);
-        };
-    }, [editor, onBlur, name]);
+        if (editor && content !== editor.getHTML()) {
+            editor.commands.setContent(content);
+        }
+    }, [content, editor]);
 
     return (
         <div
