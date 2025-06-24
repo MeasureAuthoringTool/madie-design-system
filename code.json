@@ -1,0 +1,62 @@
+{
+  "name": "madie-design-system",
+  "description": "",
+  "longDescription": "",
+  "status": "",
+  "permissions": {
+    "license": [
+      {
+        "name": "",
+        "URL": ""
+      }
+    ],
+    "usageType": "",
+    "exemptionText": ""
+  },
+  "organization": "",
+  "repositoryURL": "https://github.com/MeasureAuthoringTool/madie-design-system",
+  "projectURL": "",
+  "repositoryHost": "github",
+  "repositoryVisibility": "",
+  "vcs": "git",
+  "laborHours": 9432,
+  "reuseFrequency": {
+    "forks": 0,
+    "clones": 0
+  },
+  "platforms": [],
+  "categories": [],
+  "softwareType": "",
+  "languages": [
+    "JavaScript",
+    "SCSS",
+    "TypeScript",
+    "HTML"
+  ],
+  "maintenance": "",
+  "contractNumber": "",
+  "date": {
+    "created": "2022-02-07T15:33:33Z",
+    "lastModified": "2025-06-18T14:52:34Z",
+    "metaDataLastUpdated": "2025-06-24T18:26:40.888Z"
+  },
+  "tags": [],
+  "contact": {
+    "email": "",
+    "name": ""
+  },
+  "feedbackMechanisms": [
+    "https://github.com/MeasureAuthoringTool/madie-design-system/issues"
+  ],
+  "localisation": false,
+  "repositoryType": "",
+  "userInput": false,
+  "fismaLevel": "",
+  "group": "",
+  "projects": [],
+  "systems": [],
+  "upstream": "",
+  "subsetInHealthcare": [],
+  "userType": [],
+  "maturityModelTier": 0
+}
