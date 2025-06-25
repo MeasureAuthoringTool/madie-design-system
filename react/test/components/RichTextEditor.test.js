@@ -130,4 +130,31 @@ describe("RichTextEditor Component", () => {
         const helperTextElement = screen.getByTestId("test-editor-helper-text");
         expect(helperTextElement).toHaveTextContent("This field is required.");
     });
+    it("triggers Undo", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Undo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+
+    it("triggers Redo", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Redo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
 });
