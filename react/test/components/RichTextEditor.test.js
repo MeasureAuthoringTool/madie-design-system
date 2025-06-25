@@ -143,4 +143,31 @@ describe("RichTextEditor Component", () => {
         await user.click(screen.getByRole("button", { name: "Table" }));
         expect(mockOnChange).toHaveBeenCalled();
     });
+    it("triggers Undo", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Undo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+
+    it("triggers Redo", async () => {
+        const user = userEvent.setup();
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await user.click(screen.getByRole("button", { name: "Redo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
 });
