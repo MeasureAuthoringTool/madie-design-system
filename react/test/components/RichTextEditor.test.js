@@ -157,4 +157,153 @@ describe("RichTextEditor Component", () => {
         await user.click(screen.getByRole("button", { name: "Redo" }));
         expect(mockOnChange).toHaveBeenCalled();
     });
+
+    describe("Table-related buttons", () => {
+        beforeEach(() => {
+            mockOnChange.mockClear();
+            jest.spyOn(console, 'error').mockImplementation(() => {});
+        });
+        
+        afterEach(() => {
+            console.error.mockRestore();
+        });
+
+        it("shows table manipulation buttons when table content is present", async () => {
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            expect(screen.getByLabelText("Add row above")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add row below")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove row")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add column right")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add column left")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove column")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove table")).toBeInTheDocument();
+        });
+        
+        it("triggers Add row above button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Add row above"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Add row below button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Add row below"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Remove row button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr><tr><td>Another row</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Remove row"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Add column right button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Add column right"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Add column left button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Add column left"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Remove column button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Col 1</td><td>Col 2</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Remove column"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+        
+        it("triggers Remove table button", async () => {
+            const user = userEvent.setup();
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            await user.click(screen.getByLabelText("Remove table"));
+            await waitFor(() => {
+                expect(mockOnChange).toHaveBeenCalled();
+            });
+        });
+    });
 });
