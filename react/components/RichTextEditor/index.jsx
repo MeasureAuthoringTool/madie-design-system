@@ -33,12 +33,6 @@ import {
   DeleteColumnIcon,
 } from "./tableIcons/tabelIconsIndex.js";
 
-const TableIcon = (props) => (
-  <SvgIcon {...props}>
-    <path d="M4 20V4h16v16zm7.5-5.596H5V19h6.5zm1 0V19H19v-4.596zm-1-1V8.769H5v4.635zm1 0H19V8.769h-6.5zM5 7.769h14V5H5z" />
-  </SvgIcon>
-);
-
 const iconStyle = {
   fontSize: "18px",
   display: "block",
@@ -403,6 +397,11 @@ const RichTextEditor = ({
     },
   });
 
+  React.useEffect(() => {
+    if (editor && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
   React.useEffect(() => {
     if (editor && content !== editor.getHTML()) {
       editor.commands.setContent(content);
