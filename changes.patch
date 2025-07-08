@@ -1,0 +1,1025 @@
+diff --git a/react/components/RichTextEditor/index.jsx b/react/components/RichTextEditor/index.jsx
+index 3d0defb..900ae52 100644
+--- a/react/components/RichTextEditor/index.jsx
++++ b/react/components/RichTextEditor/index.jsx
+@@ -11,7 +11,7 @@ import TableHeader from "@tiptap/extension-table-header";
+ import TableRow from "@tiptap/extension-table-row";
+ import Underline from "@tiptap/extension-underline";
+ import StarterKit from "@tiptap/starter-kit";
+-import { IconButton } from "@mui/material";
++import { IconButton, SvgIcon } from "@mui/material";
+ import FormatBoldIcon from "@mui/icons-material/FormatBold";
+ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
+ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
+@@ -20,302 +20,401 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+ import UndoIcon from "@mui/icons-material/Undo";
+ import RedoIcon from "@mui/icons-material/Redo";
+-import TableChartIcon from "@mui/icons-material/TableChart";
+ import { Tooltip } from "@mui/material";
+ import { kebabCase } from "lodash";
+ import DOMPurify from "dompurify";
++import {
++  DeleteTableIcon,
++  AddRowBelowIcon,
++  AddRowAboveIcon,
++  DeleteRowIcon,
++  AddColumnLeftIcon,
++  AddColumnRightIcon,
++  DeleteColumnIcon,
++} from "./tableIcons/tabelIconsIndex.js";
+ 
++const TableIcon = (props) => (
++  <SvgIcon {...props}>
++    <path d="M4 20V4h16v16zm7.5-5.596H5V19h6.5zm1 0V19H19v-4.596zm-1-1V8.769H5v4.635zm1 0H19V8.769h-6.5zM5 7.769h14V5H5z" />
++  </SvgIcon>
++);
++
++const iconStyle = {
++  fontSize: "18px",
++  display: "block",
++};
+ 
+ const MenuBar = ({ editor }) => {
+-    if (!editor) {
+-        return null;
+-    }
+-    return (
+-        <div className="control-group" data-testid="rich-text-editor-toolbar">
+-            <div className="button-group">
+-                <Tooltip
+-                    data-testid="undo-tooltip"
+-                    title="Undo"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"undo"}
+-                        onClick={() =>
+-                            editor.chain().focus().undo().run()
+-                        }
+-                    >
+-                        <UndoIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="redo-tooltip"
+-                    title="Redo"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"redo"}
+-                        onClick={() =>
+-                            editor.chain().focus().redo().run()
+-                        }
+-                        style={{ borderRight: "solid 1px #9c9c9c" }}
+-                    >
+-                        <RedoIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="bold-tooltip"
+-                    title="Bold"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"bold"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleBold().run()
+-                        }
+-                        className={editor.isActive("bold") ? "is-active" : ""}
+-                    >
+-                        <FormatBoldIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="italic-tooltip"
+-                    title="Italic"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"italic"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleItalic().run()
+-                        }
+-                        className={editor.isActive("italic") ? "is-active" : ""}
+-                    >
+-                        <FormatItalicIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="underline-tooltip"
+-                    title="Underline"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"underline"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleUnderline().run()
+-                        }
+-                        className={
+-                            editor.isActive("underline") ? "is-active" : ""
+-                        }
+-                    >
+-                        <FormatUnderlinedIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="strikethrough-tooltip"
+-                    title="Strikethrough"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"strike"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleStrike().run()
+-                        }
+-                        className={editor.isActive("strike") ? "is-active" : ""}
+-                        style={{ borderRight: "solid 1px #9c9c9c" }}
+-                    >
+-                        <StrikethroughSIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="orderedlist-tooltip"
+-                    title="Ordered List"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"orderedList"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleOrderedList().run()
+-                        }
+-                        className={
+-                            editor.isActive("orderedList") ? "is-active" : ""
+-                        }
+-                    >
+-                        <FormatListNumberedIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="bulletedlist-tooltip"
+-                    title="Bulleted List"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"bulletList"}
+-                        onClick={() =>
+-                            editor.chain().focus().toggleBulletList().run()
+-                        }
+-                        className={
+-                            editor.isActive("bulletList") ? "is-active" : ""
+-                        }
+-                        style={{ borderRight: "solid 1px #9c9c9c" }}
+-                    >
+-                        <FormatListBulletedIcon />
+-                    </IconButton>
+-                </Tooltip>
+-                <Tooltip
+-                    data-testid="table-tooltip"
+-                    title="Table"
+-                    placement="top"
+-                    enterDelay={1000}
+-                    arrow
+-                >
+-                    <IconButton
+-                        key={"insertTable"}
+-                        onClick={() =>
+-                            editor.commands.insertTable({
+-                                rows: 3,
+-                                cols: 3,
+-                                withHeaderRow: true,
+-                            })
+-                        }
+-                        className={
+-                            editor.isActive("insertTable") ? "is-active" : ""
+-                        }
+-                    >
+-                        <TableChartIcon />
+-                    </IconButton>
+-                </Tooltip>
+-            </div>
+-        </div>
+-    );
++  if (!editor) {
++    return null;
++  }
++  return (
++    <div className="control-group" data-testid="rich-text-editor-toolbar">
++      <div className="button-group">
++        <Tooltip
++          data-testid="undo-tooltip"
++          title="Undo"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"undo"}
++            onClick={() => editor.chain().focus().undo().run()}
++          >
++            <UndoIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="redo-tooltip"
++          title="Redo"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"redo"}
++            onClick={() => editor.chain().focus().redo().run()}
++            style={{ borderRight: "solid 1px #9c9c9c" }}
++          >
++            <RedoIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="bold-tooltip"
++          title="Bold"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"bold"}
++            onClick={() => editor.chain().focus().toggleBold().run()}
++            className={editor.isActive("bold") ? "is-active" : ""}
++          >
++            <FormatBoldIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="italic-tooltip"
++          title="Italic"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"italic"}
++            onClick={() => editor.chain().focus().toggleItalic().run()}
++            className={editor.isActive("italic") ? "is-active" : ""}
++          >
++            <FormatItalicIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="underline-tooltip"
++          title="Underline"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"underline"}
++            onClick={() => editor.chain().focus().toggleUnderline().run()}
++            className={editor.isActive("underline") ? "is-active" : ""}
++          >
++            <FormatUnderlinedIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="strikethrough-tooltip"
++          title="Strikethrough"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"strike"}
++            onClick={() => editor.chain().focus().toggleStrike().run()}
++            className={editor.isActive("strike") ? "is-active" : ""}
++            style={{ borderRight: "solid 1px #9c9c9c" }}
++          >
++            <StrikethroughSIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="orderedlist-tooltip"
++          title="Ordered List"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"orderedList"}
++            onClick={() => editor.chain().focus().toggleOrderedList().run()}
++            className={editor.isActive("orderedList") ? "is-active" : ""}
++          >
++            <FormatListNumberedIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="bulletedlist-tooltip"
++          title="Bulleted List"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"bulletList"}
++            onClick={() => editor.chain().focus().toggleBulletList().run()}
++            className={editor.isActive("bulletList") ? "is-active" : ""}
++            style={{ borderRight: "solid 1px #9c9c9c" }}
++          >
++            <FormatListBulletedIcon />
++          </IconButton>
++        </Tooltip>
++        <Tooltip
++          data-testid="table-tooltip"
++          title="Table"
++          placement="top"
++          enterDelay={1000}
++          arrow
++        >
++          <IconButton
++            key={"insertTable"}
++            onClick={() =>
++              editor.commands.insertTable({
++                rows: 3,
++                cols: 3,
++                withHeaderRow: true,
++              })
++            }
++            className={editor.isActive("insertTable") ? "is-active" : ""}
++          >
++            <TableIcon />
++          </IconButton>
++        </Tooltip>
++
++        {editor.isActive("table") && (
++          <>
++            <Tooltip
++              data-testid="add-row-above-tooltip"
++              title="Add row above"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="addRowAbove"
++                onClick={() => editor.chain().focus().addRowBefore().run()}
++              >
++                <AddRowAboveIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++            <Tooltip
++              data-testid="add-row-below-tooltip"
++              title="Add row below"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="addRowBelow"
++                onClick={() => editor.chain().focus().addRowAfter().run()}
++              >
++                <AddRowBelowIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++
++            <Tooltip
++              data-testid="remove-row-tooltip"
++              title="Remove row"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="deleteRow"
++                onClick={() => editor.chain().focus().deleteRow().run()}
++              >
++                <DeleteRowIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++            <Tooltip
++              data-testid="add-column-right-tooltip"
++              title="Add column right"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="addColumnRight"
++                onClick={() => editor.chain().focus().addColumnAfter().run()}
++              >
++                <AddColumnRightIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++            <Tooltip
++              data-testid="add-column-left-tooltip"
++              title="Add column left"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="addColumnLeft"
++                onClick={() => editor.chain().focus().addColumnBefore().run()}
++              >
++                <AddColumnLeftIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++
++            <Tooltip
++              data-testid="remove-column-tooltip"
++              title="Remove column"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="deleteColumn"
++                onClick={() => editor.chain().focus().deleteColumn().run()}
++              >
++                <DeleteColumnIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++
++            <Tooltip
++              data-testid="remove-table-tooltip"
++              title="Remove table"
++              placement="top"
++              enterDelay={1000}
++              arrow
++            >
++              <IconButton
++                key="deleteTable"
++                onClick={() => editor.chain().focus().deleteTable().run()}
++                style={{ borderRight: "solid 1px #9c9c9c" }}
++              >
++                <DeleteTableIcon style={iconStyle} />
++              </IconButton>
++            </Tooltip>
++          </>
++        )}
++      </div>
++    </div>
++  );
+ };
+ 
+ const RichTextEditor = ({
+-    id,
+-    error = false,
+-    required = false,
+-    label,
+-    onChange,
+-    content,
+-    disabled,
++  id,
++  error = false,
++  required = false,
++  label,
++  onChange,
++  content,
++  disabled,
+ }) => {
+-    const editor = useEditor(
+-        {
+-            extensions: [
+-                StarterKit,
+-                Gapcursor,
+-                Table.configure({
+-                    resizable: true,
+-                }),
+-                TableRow,
+-                TableHeader,
+-                TableCell,
+-                Underline,
+-            ],
+-            shouldRerenderOnTransaction: false,
+-            content,
+-            onUpdate: ({ editor }) => {
+-                const newValue = editor.getHTML();
+-                onChange(newValue);
+-            },
+-        }
+-    );
++  const editor = useEditor({
++    extensions: [
++      StarterKit,
++      Gapcursor,
++      Table.configure({
++        resizable: true,
++      }),
++      TableRow,
++      TableHeader,
++      TableCell,
++      Underline,
++    ],
++    shouldRerenderOnTransaction: false,
++    content,
++    onUpdate: ({ editor }) => {
++      const newValue = editor.getHTML();
++      onChange(newValue);
++    },
++  });
+ 
+-    React.useEffect(() => {
+-        if (editor && content !== editor.getHTML()) {
+-            editor.commands.setContent(content);
+-        }
+-    }, [content, editor]);
++  React.useEffect(() => {
++    if (editor && content !== editor.getHTML()) {
++      editor.commands.setContent(content);
++    }
++  }, [content, editor]);
+ 
+-    return (
+-        <div
+-            className="rich-text-editor"
+-            data-testid={`${kebabCase(label)}-rich-text-editor`}
+-        >
+-            <InputLabel
+-                shrink
+-                required={required}
+-                error={error}
+-                htmlFor={id}
+-                style={{ marginBottom: 0, height: 16 }} // force a height
+-                sx={[
+-                    {
+-                        backgroundColor: "transparent",
+-                        borderColor: "#8C8C8C",
+-                        display: "inline-flex",
+-                        flexDirection: "row-reverse",
+-                        alignSelf: "baseline",
+-                        textTransform: "none",
+-                        // force it outside the select box
+-                        position: "initial",
+-                        transform: "translateX(0px) translateY(0px)",
+-                        fontFamily: "Rubik",
+-                        fontWeight: 500,
+-                        fontSize: 14,
+-                        color: "#333",
+-                        "& .MuiInputLabel-asterisk": {
+-                            color: "#AE1C1C !important",
+-                            marginRight: "3px !important", //this was
+-                        },
+-                    },
+-                    required && {
+-                        transform: "translateX(-12px) translateY(0px)",
+-                        "& .MuiInputLabel-asterisk": {
+-                            color: "#D92F2",
+-                            marginRight: "3px !important", //this was
+-                        },
+-                    },
+-                    error && {
+-                        color: "#AE1C1C !important",
+-                    },
+-                ]}
+-            >
+-                {label}
+-            </InputLabel>
+-            {disabled ? (
+-                <p
+-                    data-testid={`${id}-value`}
+-                    aria-labelledby={label}
+-                    dangerouslySetInnerHTML={{
+-                        __html: content ? DOMPurify.sanitize(content) : "-",
+-                    }}
+-                />
+-            ) : (
+-                <>
+-                    <MenuBar editor={editor} />
+-                    <EditorContent editor={editor} />
+-                </>
+-            )}
+-        </div>
+-    );
++  return (
++    <div
++      className="rich-text-editor"
++      data-testid={`${kebabCase(label)}-rich-text-editor`}
++    >
++      <InputLabel
++        shrink
++        required={required}
++        error={error}
++        htmlFor={id}
++        style={{ marginBottom: 0, height: 16 }} // force a height
++        sx={[
++          {
++            backgroundColor: "transparent",
++            borderColor: "#8C8C8C",
++            display: "inline-flex",
++            flexDirection: "row-reverse",
++            alignSelf: "baseline",
++            textTransform: "none",
++            // force it outside the select box
++            position: "initial",
++            transform: "translateX(0px) translateY(0px)",
++            fontFamily: "Rubik",
++            fontWeight: 500,
++            fontSize: 14,
++            color: "#333",
++            "& .MuiInputLabel-asterisk": {
++              color: "#AE1C1C !important",
++              marginRight: "3px !important", //this was
++            },
++          },
++          required && {
++            transform: "translateX(-12px) translateY(0px)",
++            "& .MuiInputLabel-asterisk": {
++              color: "#D92F2",
++              marginRight: "3px !important", //this was
++            },
++          },
++          error && {
++            color: "#AE1C1C !important",
++          },
++        ]}
++      >
++        {label}
++      </InputLabel>
++      {disabled ? (
++        <p
++          data-testid={`${id}-value`}
++          aria-labelledby={label}
++          dangerouslySetInnerHTML={{
++            __html: content ? DOMPurify.sanitize(content) : "-",
++          }}
++        />
++      ) : (
++        <>
++          <MenuBar editor={editor} />
++          <EditorContent editor={editor} />
++        </>
++      )}
++    </div>
++  );
+ };
+ 
+ RichTextEditor.propTypes = {
+-    id: PropTypes.string,
+-    error: PropTypes.bool,
+-    required: PropTypes.bool,
+-    label: PropTypes.string,
+-    onChange: PropTypes.func,
+-    content: PropTypes.any,
+-    disabled: PropTypes.bool,
++  id: PropTypes.string,
++  error: PropTypes.bool,
++  required: PropTypes.bool,
++  label: PropTypes.string,
++  onChange: PropTypes.func,
++  content: PropTypes.any,
++  disabled: PropTypes.bool,
+ };
+ 
+ MenuBar.propTypes = {
+-    editor: PropTypes.any,
++  editor: PropTypes.any,
+ };
+ 
+ export default RichTextEditor;
+diff --git a/react/components/RichTextEditor/tableIcons/addColumnLeftIcon.jsx b/react/components/RichTextEditor/tableIcons/addColumnLeftIcon.jsx
+new file mode 100644
+index 0000000..a1ba6b9
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/addColumnLeftIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const AddColumnLeftIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M13.5837 7.48808H12.2938V8.62798C12.2938 8.89771 12.0467 9.11606 11.7415 9.11606C11.4363 9.11606 11.1892 8.89771 11.1892 8.62798V7.48808H9.89929C9.59406 7.48808 9.34699 7.26973 9.34699 7C9.34699 6.73027 9.59406 6.51192 9.89929 6.51192H11.1892V5.37202L11.2 5.27345C11.2516 5.05096 11.4745 4.88394 11.7415 4.88394C12.0085 4.88394 12.2314 5.05096 12.283 5.27345L12.2938 5.37202V6.51192H13.5837C13.8889 6.51192 14.136 6.73027 14.136 7C14.136 7.26973 13.8889 7.48808 13.5837 7.48808ZM1.60939 0.976153C1.51167 0.976153 1.41762 1.01048 1.34853 1.07154C1.27943 1.1326 1.24059 1.21571 1.24059 1.30207V12.6979C1.24059 12.7843 1.27943 12.8674 1.34853 12.9285C1.41762 12.9895 1.51167 13.0238 1.60939 13.0238H5.29379C5.3915 13.0238 5.48555 12.9895 5.55464 12.9285C5.62374 12.8674 5.66259 12.7843 5.66259 12.6979V1.30207C5.66259 1.21571 5.62374 1.1326 5.55464 1.07154C5.48555 1.01048 5.3915 0.976153 5.29379 0.976153H1.60939ZM5.29379 0C5.68465 0 6.05994 0.136519 6.33632 0.380763C6.6127 0.625008 6.76719 0.956654 6.76719 1.30207V12.6979C6.76719 13.0433 6.6127 13.375 6.33632 13.6192C6.05994 13.8635 5.68465 14 5.29379 14H1.60939C1.21852 14 0.843236 13.8635 0.566852 13.6192C0.290469 13.375 0.135986 13.0433 0.135986 12.6979V1.30207C0.135986 0.956654 0.290469 0.625008 0.566852 0.380763C0.843237 0.136519 1.21852 0 1.60939 0H5.29379Z"
++        fill="currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default AddColumnLeftIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/addColumnRightIcon.jsx b/react/components/RichTextEditor/tableIcons/addColumnRightIcon.jsx
+new file mode 100644
+index 0000000..3044dd8
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/addColumnRightIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const AddColumnRightIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M0.688286 6.51192H1.97819V5.37202C1.97819 5.10229 2.22526 4.88394 2.53049 4.88394C2.83571 4.88394 3.08279 5.10229 3.08279 5.37202V6.51192H4.37269C4.67791 6.51192 4.92499 6.73027 4.92499 7C4.92499 7.26973 4.67791 7.48808 4.37269 7.48808H3.08279V8.62798L3.07199 8.72655C3.02041 8.94904 2.79751 9.11606 2.53049 9.11606C2.26346 9.11606 2.04057 8.94904 1.98898 8.72655L1.97819 8.62798V7.48808H0.688286C0.38306 7.48808 0.135986 7.26973 0.135986 7C0.135986 6.73027 0.38306 6.51192 0.688286 6.51192ZM12.6626 13.0238C12.7603 13.0238 12.8543 12.9895 12.9234 12.9285C12.9925 12.8674 13.0314 12.7843 13.0314 12.6979V1.30207C13.0314 1.21571 12.9925 1.1326 12.9234 1.07154C12.8543 1.01048 12.7603 0.976153 12.6626 0.976153H8.97819C8.88047 0.976153 8.78642 1.01048 8.71733 1.07154C8.64823 1.1326 8.60939 1.21571 8.60939 1.30207V12.6979C8.60939 12.7843 8.64823 12.8674 8.71733 12.9285C8.78642 12.9895 8.88047 13.0238 8.97819 13.0238H12.6626ZM8.97819 14C8.58732 14 8.21204 13.8635 7.93565 13.6192C7.65927 13.375 7.50479 13.0433 7.50479 12.6979V1.30207C7.50479 0.956653 7.65927 0.625007 7.93565 0.380763C8.21204 0.136519 8.58732 0 8.97819 0H12.6626C13.0535 0 13.4287 0.136519 13.7051 0.380763C13.9815 0.625007 14.136 0.956653 14.136 1.30207V12.6979C14.136 13.0433 13.9815 13.375 13.7051 13.6192C13.4287 13.8635 13.0534 14 12.6626 14H8.97819Z"
++        fill="currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default AddColumnRightIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/addRowAboveIcon.jsx b/react/components/RichTextEditor/tableIcons/addRowAboveIcon.jsx
+new file mode 100644
+index 0000000..3784547
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/addRowAboveIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const AddRowAboveIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M6.51192 13.5837V12.2938H5.37202C5.10229 12.2938 4.88394 12.0467 4.88394 11.7415C4.88394 11.4363 5.10229 11.1892 5.37202 11.1892H6.51192V9.89929C6.51192 9.59406 6.73027 9.34699 7 9.34699C7.26973 9.34699 7.48808 9.59406 7.48808 9.89929V11.1892H8.62798L8.72655 11.2C8.94904 11.2516 9.11606 11.4745 9.11606 11.7415C9.11606 12.0085 8.94904 12.2314 8.72655 12.283L8.62798 12.2938H7.48808V13.5837C7.48808 13.8889 7.26973 14.136 7 14.136C6.73027 14.136 6.51192 13.8889 6.51192 13.5837ZM13.0238 1.60939C13.0238 1.51167 12.9895 1.41762 12.9285 1.34853C12.8674 1.27943 12.7843 1.24059 12.6979 1.24059H1.30207C1.21571 1.24059 1.1326 1.27943 1.07154 1.34853C1.01048 1.41762 0.976153 1.51167 0.976153 1.60939V5.29379C0.976153 5.3915 1.01048 5.48555 1.07154 5.55464C1.1326 5.62374 1.21571 5.66259 1.30207 5.66259H12.6979C12.7843 5.66259 12.8674 5.62374 12.9285 5.55464C12.9895 5.48555 13.0238 5.3915 13.0238 5.29379V1.60939ZM14 5.29379C14 5.68465 13.8635 6.05994 13.6192 6.33632C13.375 6.6127 13.0433 6.76719 12.6979 6.76719H1.30207C0.956653 6.76719 0.625007 6.6127 0.380763 6.33632C0.136519 6.05994 0 5.68465 0 5.29379V1.60939C0 1.21852 0.136519 0.843236 0.380763 0.566852C0.625007 0.290469 0.956653 0.135986 1.30207 0.135986H12.6979C13.0433 0.135986 13.375 0.290469 13.6192 0.566852C13.8635 0.843237 14 1.21852 14 1.60939V5.29379Z"
++        fill="currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default AddRowAboveIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/addRowBelowIcon.jsx b/react/components/RichTextEditor/tableIcons/addRowBelowIcon.jsx
+new file mode 100644
+index 0000000..f7e4166
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/addRowBelowIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const AddRowBelowIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M7.48808 0.688286L7.48808 1.97819L8.62798 1.97819C8.89771 1.97819 9.11606 2.22526 9.11606 2.53049C9.11606 2.83571 8.89771 3.08279 8.62798 3.08279L7.48808 3.08279L7.48808 4.37269C7.48808 4.67791 7.26973 4.92499 7 4.92499C6.73027 4.92499 6.51192 4.67791 6.51192 4.37269L6.51192 3.08279L5.37202 3.08279L5.27345 3.07199C5.05096 3.02041 4.88394 2.79751 4.88394 2.53049C4.88394 2.26346 5.05096 2.04057 5.27345 1.98898L5.37202 1.97819L6.51192 1.97819L6.51192 0.688286C6.51192 0.38306 6.73027 0.135986 7 0.135986C7.26973 0.135986 7.48808 0.38306 7.48808 0.688286ZM0.976153 12.6626C0.976153 12.7603 1.01048 12.8543 1.07154 12.9234C1.1326 12.9925 1.21571 13.0314 1.30207 13.0314L12.6979 13.0314C12.7843 13.0314 12.8674 12.9925 12.9285 12.9234C12.9895 12.8543 13.0238 12.7603 13.0238 12.6626L13.0238 8.97819C13.0238 8.88047 12.9895 8.78642 12.9285 8.71733C12.8674 8.64823 12.7843 8.60939 12.6979 8.60939L1.30207 8.60939C1.21571 8.60939 1.1326 8.64823 1.07154 8.71733C1.01048 8.78642 0.976153 8.88047 0.976153 8.97819L0.976153 12.6626ZM2.32514e-07 8.97819C2.66685e-07 8.58732 0.136518 8.21204 0.380763 7.93565C0.625008 7.65927 0.956654 7.50479 1.30207 7.50479L12.6979 7.50479C13.0433 7.50479 13.375 7.65927 13.6192 7.93565C13.8635 8.21204 14 8.58732 14 8.97819L14 12.6626C14 13.0535 13.8635 13.4287 13.6192 13.7051C13.375 13.9815 13.0433 14.136 12.6979 14.136L1.30207 14.136C0.956653 14.136 0.625008 13.9815 0.380763 13.7051C0.136518 13.4287 -1.23757e-07 13.0534 -8.95864e-08 12.6626L2.32514e-07 8.97819Z"
++        fill="currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default AddRowBelowIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/deleteColumnIcon.jsx b/react/components/RichTextEditor/tableIcons/deleteColumnIcon.jsx
+new file mode 100644
+index 0000000..a206566
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/deleteColumnIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const DeleteColumnIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M4.36904 8.34493C4.59167 8.55368 4.60294 8.90304 4.39423 9.12571C4.18548 9.34837 3.83613 9.35962 3.61346 9.15089L2.2723 7.89248L0.930249 9.15089L0.841198 9.21925C0.622265 9.35369 0.332058 9.32046 0.149482 9.12571C-0.0331036 8.93095 -0.0473761 8.6393 0.100909 8.42948L0.174668 8.34493L1.46455 7.13599L0.174668 5.92704C-0.0480028 5.71829 -0.0592719 5.36894 0.149482 5.14627C0.358236 4.92359 0.707578 4.91232 0.930249 5.12108L2.2723 6.3786L3.61346 5.12108L3.70251 5.05272C3.92144 4.91832 4.21166 4.95153 4.39423 5.14627C4.57678 5.34102 4.59106 5.63268 4.4428 5.84249L4.36904 5.92704L3.08006 7.13599L4.36904 8.34493ZM12.5878 13.0314C12.6803 13.0314 12.7628 12.9959 12.8181 12.9441C12.8719 12.8935 12.8954 12.8329 12.8954 12.7777L12.8954 1.49425C12.8954 1.43908 12.8719 1.37846 12.8181 1.32784C12.7628 1.27604 12.6803 1.24059 12.5878 1.24059L9.14899 1.24059C9.05659 1.24066 8.97481 1.2761 8.91962 1.32784C8.8656 1.3785 8.84226 1.43901 8.84226 1.49425L8.84226 12.7777C8.84226 12.833 8.8656 12.8935 8.91962 12.9441C8.97481 12.9959 9.05659 13.0313 9.14899 13.0314L12.5878 13.0314ZM9.14899 14.136C8.78562 14.1359 8.43026 14.0014 8.16314 13.751C7.89477 13.4994 7.73677 13.15 7.73677 12.7777L7.73677 1.49425C7.73677 1.12202 7.89477 0.772603 8.16314 0.520977C8.43026 0.270548 8.78562 0.13606 9.14899 0.135986L12.5878 0.135986C12.9512 0.135986 13.3065 0.270616 13.5736 0.520977C13.842 0.772608 14 1.12199 14 1.49425L14 12.7777C14 13.15 13.842 13.4994 13.5736 13.751C13.3065 14.0014 12.9512 14.136 12.5878 14.136L9.14899 14.136Z"
++        fill="#currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default DeleteColumnIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/deleteRowIcon.jsx b/react/components/RichTextEditor/tableIcons/deleteRowIcon.jsx
+new file mode 100644
+index 0000000..44a41d5
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/deleteRowIcon.jsx
+@@ -0,0 +1,15 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const DeleteRowIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M8.20894 9.76694C8.41769 9.54431 8.76706 9.53304 8.98972 9.74176C9.21238 9.9505 9.22363 10.2999 9.01491 10.5225L7.75649 11.8637L9.01491 13.2057L9.08327 13.2948C9.2177 13.5137 9.18447 13.8039 8.98972 13.9865C8.79496 14.1691 8.50332 14.1834 8.2935 14.0351L8.20894 13.9613L7 12.6714L5.79106 13.9613C5.5823 14.184 5.23295 14.1953 5.01028 13.9865C4.78761 13.7778 4.77634 13.4284 4.98509 13.2057L6.24261 11.8637L4.98509 10.5225L4.91673 10.4335C4.78233 10.2145 4.81554 9.92432 5.01028 9.74176C5.20503 9.55921 5.4967 9.54493 5.7065 9.69319L5.79106 9.76694L7 11.0559L8.20894 9.76694ZM12.8954 1.5482C12.8954 1.45568 12.8599 1.37318 12.8081 1.31793C12.7575 1.26405 12.6969 1.24057 12.6417 1.24057H1.35826C1.30309 1.24057 1.24248 1.26405 1.19185 1.31793C1.14006 1.37318 1.1046 1.45568 1.1046 1.5482V4.987C1.10468 5.0794 1.14011 5.16118 1.19185 5.21637C1.24251 5.27039 1.30302 5.29373 1.35826 5.29373H12.6417C12.697 5.29373 12.7575 5.27039 12.8081 5.21637C12.8599 5.16118 12.8953 5.0794 12.8954 4.987V1.5482ZM14 4.987C13.9999 5.35037 13.8654 5.70573 13.615 5.97285C13.3634 6.24122 13.014 6.39921 12.6417 6.39921H1.35826C0.986029 6.39921 0.636617 6.24122 0.384991 5.97285C0.134562 5.70573 7.42534e-05 5.35037 0 4.987V1.5482C0 1.18483 0.13463 0.829519 0.384991 0.56235C0.636621 0.293947 0.986002 0.135986 1.35826 0.135986H12.6417C13.014 0.135986 13.3634 0.293947 13.615 0.56235C13.8654 0.82952 14 1.18483 14 1.5482V4.987Z"
++        fill="#currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default DeleteRowIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/deleteTableIcon.jsx b/react/components/RichTextEditor/tableIcons/deleteTableIcon.jsx
+new file mode 100644
+index 0000000..a604622
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/deleteTableIcon.jsx
+@@ -0,0 +1,19 @@
++import React from "react";
++import { SvgIcon } from "@mui/material";
++
++const DeleteTableIcon = ({ className = "madie-icon", ...props }) => {
++  return (
++    <SvgIcon viewBox="0 0 14 15" className={className} {...props}>
++      <path
++        d="M5.15988 11.006C5.36988 11.186 5.68988 11.176 5.87988 10.986L6.99988 9.84596L8.11988 10.986L8.19988 11.056C8.38988 11.186 8.65988 11.176 8.83988 11.016C9.01988 10.856 9.04988 10.596 8.92988 10.406L8.86988 10.326L7.70988 9.14596L8.86988 7.96596C9.05988 7.76596 9.04988 7.46596 8.84988 7.27596C8.64988 7.08596 8.31988 7.10596 8.12988 7.29596L7.00988 8.42596L5.88988 7.29596L5.80988 7.23596C5.61988 7.10596 5.34988 7.11596 5.16988 7.27596C4.98988 7.43596 4.95988 7.69596 5.07988 7.88596L5.13988 7.96596L6.29988 9.14596L5.13988 10.326C4.94988 10.526 4.95988 10.826 5.15988 11.016V11.006Z"
++        fill="currentColor"
++      />
++      <path
++        d="M13.6 0.135986H0.4C0.17 0.195986 0 0.395986 0 0.635986V13.736C0.05 13.936 0.2 14.086 0.4 14.126H13.6C13.8 14.076 13.95 13.926 13.99 13.726V0.625986C13.99 0.385986 13.82 0.185986 13.59 0.135986H13.6ZM12.9 13.026H1.1V5.12599H12.9V13.026ZM12.9 4.12599H1.1V1.23599H12.9V4.13599V4.12599Z"
++        fill="currentColor"
++      />
++    </SvgIcon>
++  );
++};
++
++export default DeleteTableIcon;
+diff --git a/react/components/RichTextEditor/tableIcons/tabelIconsIndex.js b/react/components/RichTextEditor/tableIcons/tabelIconsIndex.js
+new file mode 100644
+index 0000000..ef65326
+--- /dev/null
++++ b/react/components/RichTextEditor/tableIcons/tabelIconsIndex.js
+@@ -0,0 +1,17 @@
++import DeleteTableIcon from "./deleteTableIcon";
++import AddRowBelowIcon from "./addRowBelowIcon";
++import AddRowAboveIcon from "./addRowAboveIcon";
++import DeleteRowIcon from "./deleteRowIcon";
++import AddColumnLeftIcon from "./addColumnLeftIcon";
++import AddColumnRightIcon from "./addColumnRightIcon";
++import DeleteColumnIcon from "./deleteColumnIcon";
++
++export {
++  DeleteTableIcon,
++  AddRowBelowIcon,
++  AddRowAboveIcon,
++  DeleteRowIcon,
++  AddColumnLeftIcon,
++  AddColumnRightIcon,
++  DeleteColumnIcon,
++};
+diff --git a/react/test/components/RichTextEditor.test.js b/react/test/components/RichTextEditor.test.js
+index 76def08..f80c4d2 100644
+--- a/react/test/components/RichTextEditor.test.js
++++ b/react/test/components/RichTextEditor.test.js
+@@ -170,4 +170,153 @@ describe("RichTextEditor Component", () => {
+         await user.click(screen.getByRole("button", { name: "Redo" }));
+         expect(mockOnChange).toHaveBeenCalled();
+     });
++
++    describe("Table-related buttons", () => {
++        beforeEach(() => {
++            mockOnChange.mockClear();
++            jest.spyOn(console, 'error').mockImplementation(() => {});
++        });
++        
++        afterEach(() => {
++            console.error.mockRestore();
++        });
++
++        it("shows table manipulation buttons when table content is present", async () => {
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            expect(screen.getByLabelText("Add row above")).toBeInTheDocument();
++            expect(screen.getByLabelText("Add row below")).toBeInTheDocument();
++            expect(screen.getByLabelText("Remove row")).toBeInTheDocument();
++            expect(screen.getByLabelText("Add column right")).toBeInTheDocument();
++            expect(screen.getByLabelText("Add column left")).toBeInTheDocument();
++            expect(screen.getByLabelText("Remove column")).toBeInTheDocument();
++            expect(screen.getByLabelText("Remove table")).toBeInTheDocument();
++        });
++        
++        it("triggers Add row above button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Add row above"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Add row below button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Add row below"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Remove row button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr><tr><td>Another row</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Remove row"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Add column right button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Add column right"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Add column left button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Add column left"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Remove column button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Col 1</td><td>Col 2</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Remove column"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++        
++        it("triggers Remove table button", async () => {
++            const user = userEvent.setup();
++            render(
++                <RichTextEditor
++                    id="test-editor"
++                    label="Test Editor"
++                    onChange={mockOnChange}
++                    content="<table><tr><td>Cell content</td></tr></table>"
++                />,
++            );
++            
++            await user.click(screen.getByLabelText("Remove table"));
++            await waitFor(() => {
++                expect(mockOnChange).toHaveBeenCalled();
++            });
++        });
++    });
+ });
