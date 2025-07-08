@@ -183,7 +183,7 @@ describe("RichTextEditor Component", () => {
 
         it("shows table manipulation buttons when table content is present", async () => {
             render(
-                <RichTextEditor
+                <RichTextEditor 
                     id="test-editor"
                     label="Test Editor"
                     onChange={mockOnChange}

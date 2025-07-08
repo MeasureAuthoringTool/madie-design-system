@@ -289,7 +289,7 @@ const MenuBar = ({ editor }) => {
               placement="top"
               enterDelay={1000}
               arrow
-            >
+            > 
               <IconButton
                 key="deleteTable"
                 onClick={() => editor.chain().focus().deleteTable().run()}

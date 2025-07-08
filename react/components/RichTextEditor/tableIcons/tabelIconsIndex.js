@@ -4,7 +4,7 @@ import AddRowAboveIcon from "./addRowAboveIcon";
 import DeleteRowIcon from "./deleteRowIcon";
 import AddColumnLeftIcon from "./addColumnLeftIcon";
 import AddColumnRightIcon from "./addColumnRightIcon";
-import DeleteColumnIcon from "./deleteColumnIcon";
+import DeleteColumnIcon from "./deleteColumnIcon"; 
 
 export {
   DeleteTableIcon,
