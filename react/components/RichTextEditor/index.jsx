@@ -18,10 +18,13 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import UndoIcon from "@mui/icons-material/Undo";
+import RedoIcon from "@mui/icons-material/Redo";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
+
 
 const MenuBar = ({ editor }) => {
     if (!editor) {
@@ -30,6 +33,39 @@ const MenuBar = ({ editor }) => {
     return (
         <div className="control-group" data-testid="rich-text-editor-toolbar">
             <div className="button-group">
+                <Tooltip
+                    data-testid="undo-tooltip"
+                    title="Undo"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
+                >
+                    <IconButton
+                        key={"undo"}
+                        onClick={() =>
+                            editor.chain().focus().undo().run()
+                        }
+                    >
+                        <UndoIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="redo-tooltip"
+                    title="Redo"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
+                >
+                    <IconButton
+                        key={"redo"}
+                        onClick={() =>
+                            editor.chain().focus().redo().run()
+                        }
+                        style={{ borderRight: "solid 1px #9c9c9c" }}
+                    >
+                        <RedoIcon />
+                    </IconButton>
+                </Tooltip>
                 <Tooltip
                     data-testid="bold-tooltip"
                     title="Bold"
@@ -196,9 +232,15 @@ const RichTextEditor = ({
                 const newValue = editor.getHTML();
                 onChange(newValue);
             },
-        },
-        [content],
+        }
     );
+
+    React.useEffect(() => {
+        if (editor && content !== editor.getHTML()) {
+            editor.commands.setContent(content);
+        }
+    }, [content, editor]);
+
     return (
         <div
             className="rich-text-editor"
