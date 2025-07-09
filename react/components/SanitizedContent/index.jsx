@@ -1,6 +1,5 @@
 import React from "react";
 import xss from "xss";
-import PropTypes from "prop-types";
 
 // Override the default allowed HTML tags
 const defaultAllowedTags = [
@@ -188,13 +187,6 @@ const SanitizedContent = ({
             dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
         />
     );
-};
-
-SanitizedContent.propTypes = {
-    html: PropTypes.string,
-    customClassName: PropTypes.string,
-    allowedTags: PropTypes.array,
-    allowedAttributes: PropTypes.array,
 };
 
 export default SanitizedContent;

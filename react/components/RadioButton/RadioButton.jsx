@@ -6,9 +6,8 @@ import {
     Radio,
     RadioGroup,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 const RadioButton = ({
     id,
@@ -119,17 +118,6 @@ const RadioButton = ({
             </RadioGroup>
         </FormControl>
     );
-};
-
-RadioButton.propTypes = {
-    id: PropTypes.string,
-    dataTestId: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    error: PropTypes.bool,
-    label: PropTypes.string,
-    helperText: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.any),
 };
 
 export default RadioButton;

@@ -1,6 +1,5 @@
 import React from "react";
 
-import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
 import InputLabel from "../InputLabel";
 
@@ -260,20 +259,6 @@ const RichTextEditor = ({
             )}
         </div>
     );
-};
-
-RichTextEditor.propTypes = {
-    id: PropTypes.string,
-    error: PropTypes.bool,
-    required: PropTypes.bool,
-    label: PropTypes.string,
-    onChange: PropTypes.func,
-    content: PropTypes.any,
-    disabled: PropTypes.bool,
-};
-
-MenuBar.propTypes = {
-    editor: PropTypes.any,
 };
 
 export default RichTextEditor;

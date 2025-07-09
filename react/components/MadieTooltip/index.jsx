@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TooltipIcon from "../MadieTooltipIcon";
-import PropTypes from "prop-types";
 
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
 const MadieToolTip = ({ tooltipText = "informational text", id }) => {
@@ -39,11 +38,6 @@ const MadieToolTip = ({ tooltipText = "informational text", id }) => {
             </div>
         </button>
     );
-};
-
-MadieToolTip.propTypes = {
-    tooltipText: PropTypes.string,
-    id: PropTypes.string,
 };
 
 export default MadieToolTip;

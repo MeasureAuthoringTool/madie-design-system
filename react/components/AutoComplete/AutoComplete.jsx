@@ -6,11 +6,10 @@ import {
     TextField,
     Checkbox,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import InputLabel from "../InputLabel";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 import _ from "lodash";
 
 const autoCompleteStyles = {
@@ -242,20 +241,6 @@ const AutoComplete = ({
             />
         </FormControl>
     );
-};
-
-AutoComplete.propTypes = {
-    id: PropTypes.string,
-    dataTestId: PropTypes.string,
-    placeholder: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    multiple: PropTypes.bool,
-    error: PropTypes.bool,
-    label: PropTypes.string,
-    helperText: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.element),
-    onChange: PropTypes.any,
 };
 
 export default AutoComplete;

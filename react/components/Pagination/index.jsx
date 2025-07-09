@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { visuallyHidden } from "@mui/utils";
 
 import {
@@ -196,22 +195,6 @@ const Pagination = ({
             />
         </Container>
     );
-};
-
-Pagination.propTypes = {
-    totalItems: PropTypes.number,
-    visibleItems: PropTypes.number,
-    count: PropTypes.number,
-    offset: PropTypes.number,
-    shape: PropTypes.string,
-    limit: PropTypes.number,
-    page: PropTypes.number,
-    limitOptions: PropTypes.array,
-    handlePageChange: PropTypes.func,
-    handleLimitChange: PropTypes.func,
-    hidePrevButton: PropTypes.bool,
-    hideNextButton: PropTypes.bool,
-    type: PropTypes.string,
 };
 
 export { Pagination };

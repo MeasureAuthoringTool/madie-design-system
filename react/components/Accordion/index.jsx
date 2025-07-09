@@ -1,17 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
 import { Chevron } from "../../lib/Chevron.jsx";
 
-const Accordion = (props) => {
+/**
+ * @param {{
+ *   title?: string,
+ *   subTitle?: string,
+ *   children: React.ReactNode,
+ *   centerItem?: string,
+ *   rightItem?: string,
+ *   isOpen?: boolean
+ * }} props
+ */
+const Accordion = ({
+    title = "",
+    subTitle,
+    children,
+    centerItem,
+    rightItem,
+    isOpen = false,
+}) => {
     const content = useRef(null);
-    const [setActive, setActiveState] = useState(props.isOpen ? "active" : "");
+    const [setActive, setActiveState] = useState(isOpen ? "active" : "");
     const ariaPressed = setActive ? "true" : "false";
-    const getHeight = (node) => {
-        if (node) {
-            return `${node.scrollHeight}px`;
-        }
-        return "auto";
-    };
+
+    const getHeight = (node) => (node ? `${node.scrollHeight}px` : "auto");
     const height = setActive ? getHeight(content.current) : "0px";
     const rotate = setActive ? "accordion-icon rotate" : "accordion-icon";
 
@@ -28,37 +40,37 @@ const Accordion = (props) => {
     }
 
     useEffect(() => {
-        if (props.isOpen) {
+        if (isOpen) {
             openAccordion();
         } else {
             closeAccordion();
         }
-    }, [props.isOpen]);
+    }, [isOpen]);
 
     return (
         <div className="accordion-section" data-testid="accordion">
             <button
                 className={`accordion ${setActive}`}
-                aria-label={props.title}
+                aria-label={title}
                 aria-pressed={ariaPressed}
                 aria-expanded={ariaPressed}
                 tabIndex="0"
                 onClick={toggleAccordion}
             >
                 <div className="accordion-left-title">
-                    <p className="accordion-title">{props.title}</p>
-                    {props.subTitle && (
-                        <p className="accordion-subtitle">{props.subTitle}</p>
+                    <p className="accordion-title">{title}</p>
+                    {subTitle && (
+                        <p className="accordion-subtitle">{subTitle}</p>
                     )}
                 </div>
-                {props.centerItem && (
+                {centerItem && (
                     <div className="accordion-center">
-                        <p>{props.centerItem}</p>
+                        <p>{centerItem}</p>
                     </div>
                 )}
-                {props.rightItem && (
+                {rightItem && (
                     <div className="accordion-right">
-                        <p>{props.rightItem}</p>
+                        <p>{rightItem}</p>
                     </div>
                 )}
                 <div className="chevron-container">
@@ -70,26 +82,10 @@ const Accordion = (props) => {
                 style={{ maxHeight: height }}
                 className="accordion-content"
             >
-                <div className="accordion-text dashed-border">
-                    {props.children}
-                </div>
+                <div className="accordion-text dashed-border">{children}</div>
             </div>
         </div>
     );
-};
-
-Accordion.propTypes = {
-    title: PropTypes.string.isRequired,
-    subTitle: PropTypes.string,
-    children: PropTypes.any.isRequired,
-    centerItem: PropTypes.string,
-    rightItem: PropTypes.string,
-    isOpen: PropTypes.bool,
-};
-
-Accordion.defaultProps = {
-    title: "",
-    isOpen: false,
 };
 
 export default Accordion;

@@ -1,19 +1,33 @@
 import React from "react";
-import PropTypes from "prop-types";
 import SearchIcon from "@mui/icons-material/Search";
 
+/**
+ * @param {{
+ *   id?: string,
+ *   name?: string,
+ *   placeholder?: string,
+ *   disableSearchBtn?: boolean,
+ *   disabled?: boolean,
+ *   inputValue?: string,
+ *   onClick?: () => void,
+ *   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+ *   inputAriaLabel?: string,
+ *   buttonAriaLabel?: string,
+ *   inputWidth?: string
+ * }} props
+ */
 const Search = ({
-    id,
-    name,
-    placeholder,
-    disableSearchBtn,
-    disabled,
-    inputValue,
-    onClick,
-    onChange,
-    inputAriaLabel,
-    buttonAriaLabel,
-    inputWidth,
+    id = "search-input",
+    name = "",
+    placeholder = "",
+    disableSearchBtn = false,
+    disabled = false,
+    inputValue = "",
+    onClick = () => null,
+    onChange = () => null,
+    inputAriaLabel = "",
+    buttonAriaLabel = "",
+    inputWidth = "auto",
 }) => {
     const inputStyle = {
         width: inputWidth,
@@ -53,34 +67,6 @@ const Search = ({
             </div>
         </form>
     );
-};
-
-Search.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    placeholder: PropTypes.string,
-    disableSearchBtn: PropTypes.bool,
-    disabled: PropTypes.bool,
-    inputValue: PropTypes.string,
-    onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    inputAriaLabel: PropTypes.string,
-    buttonAriaLabel: PropTypes.string,
-    inputWidth: PropTypes.string,
-};
-
-Search.defaultProps = {
-    id: "search-input",
-    name: "",
-    placeholder: "",
-    disableSearchBtn: false,
-    disabled: false,
-    inputValue: "",
-    onClick: () => null,
-    onChange: () => null,
-    inputAriaLabel: "",
-    buttonAriaLabel: "",
-    inputWidth: "auto",
 };
 
 export default Search;

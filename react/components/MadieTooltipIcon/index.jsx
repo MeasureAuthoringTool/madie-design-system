@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const TooltipIcon = ({ color = "#0073C8", ...props }) => (
     <svg
@@ -25,7 +24,3 @@ const TooltipIcon = ({ color = "#0073C8", ...props }) => (
 );
 
 export default TooltipIcon;
-
-TooltipIcon.propTypes = {
-    color: PropTypes.string,
-};

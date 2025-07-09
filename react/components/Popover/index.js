@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Popover from "@mui/material/Popover";
 
 const MadiePopover = ({
@@ -105,28 +104,6 @@ const MadiePopover = ({
             </div>
         </Popover>
     );
-};
-
-MadiePopover.propTypes = {
-    optionsOpen: PropTypes.bool,
-    anchorEl: PropTypes.any,
-    handleClose: PropTypes.func,
-    canEdit: PropTypes.bool,
-    editViewSelectOptionProps: PropTypes.object,
-    otherSelectOptionProps: PropTypes.arrayOf(
-        PropTypes.shape({
-            dataTestId: PropTypes.string,
-            label: PropTypes.string,
-            toImplementFunction: PropTypes.func,
-        }),
-    ),
-    additionalSelectOptionProps: PropTypes.arrayOf(
-        PropTypes.shape({
-            dataTestId: PropTypes.string,
-            label: PropTypes.string,
-            toImplementFunction: PropTypes.func,
-        }),
-    ),
 };
 
 export default MadiePopover;

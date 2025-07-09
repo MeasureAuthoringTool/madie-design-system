@@ -3,8 +3,7 @@ import { FormControl, Select as MUISelect, MenuItem } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InputLabel from "../InputLabel";
 import FormHelperText from "@mui/material/FormHelperText";
-import PropTypes from "prop-types";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 const Select = ({
     placeHolder = undefined, // expects placeholder objects of { name: value } and inserts into the render item function.
@@ -172,20 +171,6 @@ const Select = ({
             </MUISelect>
         </FormControl>
     );
-};
-
-Select.propTypes = {
-    id: PropTypes.string,
-    placeHolder: PropTypes.shape({
-        name: PropTypes.string,
-        value: PropTypes.any,
-    }), // expects placeholder objects of { name: value } and inserts into the render item function.
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    error: PropTypes.bool,
-    label: PropTypes.string,
-    helperText: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.element),
 };
 
 export default Select;

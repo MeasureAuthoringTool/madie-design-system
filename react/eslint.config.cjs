@@ -28,6 +28,7 @@ module.exports = defineConfig([{
             ecmaFeatures: {
                 jsx: true,
             },
+            ecmaVersion: "latest",
         },
 
         globals: {
@@ -46,6 +47,8 @@ module.exports = defineConfig([{
         "linebreak-style": ["error", "unix"],
         "no-console": 0,
         "no-prototype-builtins": [0],
+        "react/prop-types": "off"
+
     },
 
     settings: {

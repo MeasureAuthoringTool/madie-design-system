@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Select from "./index";
 import { MenuItem, Box } from "@mui/material";
 
@@ -29,9 +28,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-Wrapper.propTypes = {
-    children: PropTypes.node,
-};
 
 const options = [
     { key: "key1", value: "value1", testId: "testid1", name: "name1" },

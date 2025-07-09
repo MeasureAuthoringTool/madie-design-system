@@ -1,6 +1,5 @@
 import React from "react";
 import { CircularProgress } from "@mui/material";
-import PropTypes from "prop-types";
 
 // To change the spinner size you have to pass style props for height and width.
 const MadieSpinner = (props) => {
@@ -26,10 +25,6 @@ const MadieSpinner = (props) => {
             {...props}
         />
     );
-};
-
-MadieSpinner.propTypes = {
-    thickness: PropTypes.number,
 };
 
 export default MadieSpinner;

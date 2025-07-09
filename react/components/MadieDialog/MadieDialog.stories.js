@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import MadieDialog from "./index";
 import TextArea from "../TextArea";
 import Select from "../Select";
@@ -17,10 +16,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-Wrapper.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 export const Dialog = () => {
     const [open, setOpen] = useState(false);

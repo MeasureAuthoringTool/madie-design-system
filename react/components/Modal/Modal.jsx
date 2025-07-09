@@ -1,17 +1,38 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactModal from "react-modal";
-import PropTypes from "prop-types";
-
 import { CloseXIcon2 } from "../../lib/SvgComponents.jsx";
 
+/**
+ * @param {{
+ *   title?: string,
+ *   children: React.ReactNode,
+ *   primary?: {
+ *     title: string | React.ReactElement,
+ *     onClick?: () => void,
+ *     loading?: boolean,
+ *     loadingText?: string,
+ *   } | null,
+ *   secondary?: {
+ *     title: string | React.ReactElement,
+ *     onClick?: () => void,
+ *     loading?: boolean,
+ *     loadingText?: string,
+ *   } | null,
+ *   onRequestClose?: () => void,
+ *   appElement?: string,
+ *   isOpen?: boolean,
+ *   width?: string,
+ *   [key: string]: any
+ * }} props
+ */
 const Modal = ({
     children,
-    onRequestClose,
+    onRequestClose = () => {},
     title,
-    primary,
-    secondary,
-    appElement,
-    isOpen,
+    primary = null,
+    secondary = null,
+    appElement = "body > *:not(.qpp-c-modal)",
+    isOpen = false,
     ...props
 }) => {
     const [overflowSeparator, setOverflowSeparator] = useState(false);
@@ -29,9 +50,8 @@ const Modal = ({
                 maxWidth: "calc(100vw - 2rem)",
                 maxHeight: "calc(100vh - 2rem)",
             };
-        } else {
-            return {};
         }
+        return {};
     };
 
     return (
@@ -46,7 +66,6 @@ const Modal = ({
                 content: getWidth(),
             }}
             onAfterOpen={() => {
-                // Add heading separator based on overflow
                 if (
                     contentRef.current?.scrollHeight >
                     document.documentElement.clientHeight * 0.6
@@ -56,7 +75,6 @@ const Modal = ({
                     setOverflowSeparator(false);
                 }
 
-                // Set default focus
                 if (closeButtonRef?.current) {
                     closeButtonRef.current.focus();
                 }
@@ -98,7 +116,7 @@ const Modal = ({
                             className={`qpp-c-button qpp-c-button--secondary ${
                                 primary ? "qpp-u-margin-right--16" : ""
                             }`}
-                            loading={secondary.loading}
+                            disabled={secondary.loading}
                             onClick={secondary.onClick || onRequestClose}
                             aria-label={secondary.title}
                             data-testid="modal-secondary-btn"
@@ -109,7 +127,7 @@ const Modal = ({
                     {primary && (
                         <button
                             className="qpp-c-button"
-                            loading={primary.loading}
+                            disabled={primary.loading}
                             onClick={primary.onClick}
                             data-testid="modal-primary-btn"
                             aria-label={primary.title}
@@ -121,36 +139,6 @@ const Modal = ({
             )}
         </ReactModal>
     );
-};
-
-Modal.propTypes = {
-    title: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    primary: PropTypes.shape({
-        title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-        onClick: PropTypes.func,
-        loading: PropTypes.bool,
-        loadingText: PropTypes.string,
-    }),
-    secondary: PropTypes.shape({
-        title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-        onClick: PropTypes.func,
-        loading: PropTypes.bool,
-        loadingText: PropTypes.string,
-    }),
-    onRequestClose: PropTypes.func,
-    appElement: PropTypes.string,
-    isOpen: PropTypes.bool,
-    width: PropTypes.string,
-};
-
-Modal.defaultProps = {
-    onRequestClose: () => {},
-    title: undefined,
-    primary: null,
-    secondary: null,
-    appElement: "body > *:not(.qpp-c-modal)",
-    isOpen: false,
 };
 
 export default Modal;

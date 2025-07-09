@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import TextField from "../TextField";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -8,7 +7,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
 import { FormControl } from "@mui/material";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 dayjs.extend(utc);
 dayjs.utc();
@@ -92,13 +91,6 @@ const DateTimeField = ({
             </LocalizationProvider>
         </FormControl>
     );
-};
-DateTimeField.propTypes = {
-    id: PropTypes.string,
-    dateTimeValue: PropTypes.object,
-    handleDateTimeChange: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
 };
 
 export default DateTimeField;

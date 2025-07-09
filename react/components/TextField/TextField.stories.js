@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import TextField from "./index";
 import { FormHelperText, IconButton, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -29,11 +28,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-
-Wrapper.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 const Template = (args) => (
     <Wrapper>

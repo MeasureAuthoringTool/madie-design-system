@@ -1,7 +1,6 @@
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import _ from "lodash";
-import PropTypes from "prop-types";
 
 const TruncateText = ({
     text,
@@ -40,13 +39,6 @@ const TruncateText = ({
             )}
         </div>
     );
-};
-
-TruncateText.propTypes = {
-    text: PropTypes.string,
-    maxLength: PropTypes.number,
-    dataTestId: PropTypes.string,
-    fontSize: PropTypes.string,
 };
 
 export default TruncateText;

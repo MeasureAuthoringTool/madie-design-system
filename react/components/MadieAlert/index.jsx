@@ -12,7 +12,6 @@ import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import Toast from "../Toast/index";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 
 // Define icon mapping outside component to avoid recreation on each render
 const typeToIconMap = {
@@ -144,15 +143,6 @@ const ActionButton = ({ tooltip, onClick, icon, testId, sx }) => (
     </Tooltip>
 );
 
-// Add PropTypes for ActionButton
-ActionButton.propTypes = {
-    tooltip: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    icon: PropTypes.node.isRequired,
-    testId: PropTypes.string.isRequired,
-    sx: PropTypes.object,
-};
-
 const MadieAlert = ({
     type = "warning",
     visible = true,
@@ -161,7 +151,7 @@ const MadieAlert = ({
     minimizeAlerts = false,
     alertProps,
     closeButtonProps,
-    copyButton,
+    copyButton = false,
     alerts = null,
 }) => {
     // Consolidate related state
@@ -368,35 +358,6 @@ const MadieAlert = ({
             )}
         </div>
     );
-};
-
-// PropTypes definition
-MadieAlert.propTypes = {
-    type: PropTypes.string,
-    visible: PropTypes.bool,
-    content: PropTypes.node,
-    canClose: PropTypes.bool,
-    alertProps: PropTypes.object,
-    closeButtonProps: PropTypes.object,
-    copyButton: PropTypes.bool,
-    minimizeAlerts: PropTypes.bool,
-    alerts: PropTypes.arrayOf(
-        PropTypes.shape({
-            type: PropTypes.string,
-            visible: PropTypes.bool,
-            content: PropTypes.node,
-            canClose: PropTypes.bool,
-            alertProps: PropTypes.object,
-            closeButtonProps: PropTypes.object,
-            copyButton: PropTypes.bool,
-        }),
-    ),
-};
-
-MadieAlert.defaultProps = {
-    copyButton: false,
-    minimizeAlerts: false,
-    alerts: null,
 };
 
 export default MadieAlert;

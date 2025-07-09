@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ErrorIcon from "@mui/icons-material/Error";
 import MadieDialog from "../MadieDialog";
 
@@ -39,11 +38,5 @@ const MadieDiscardDialog = ({ open, onClose, onContinue }) => (
         </div>
     </MadieDialog>
 );
-
-MadieDiscardDialog.propTypes = {
-    open: PropTypes.bool,
-    onClose: PropTypes.func,
-    onContinue: PropTypes.func,
-};
 
 export default MadieDiscardDialog;

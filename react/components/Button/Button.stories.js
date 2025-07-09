@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import FeatherIcon from "feather-icons-react";
 
 import Button, { TextButton } from "./index";
@@ -12,10 +11,6 @@ export default {
 const Container = ({ className = "", children }) => (
     <div className={`qppds qpp-u-padding--16 ${className}`}>{children}</div>
 );
-Container.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 export const Primary = () => (
     <div>

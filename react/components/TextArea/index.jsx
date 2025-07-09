@@ -1,8 +1,7 @@
 import React from "react";
 import { FormControl, FormHelperText, TextareaAutosize } from "@mui/material";
 import InputLabel from "../InputLabel";
-import PropTypes from "prop-types";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 const TextArea = ({
     id,
@@ -131,15 +130,4 @@ const TextArea = ({
     );
 };
 
-TextArea.propTypes = {
-    id: PropTypes.string,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
-    label: PropTypes.string,
-    inputProps: PropTypes.any,
-    maxLength: PropTypes.number,
-};
 export default TextArea;
