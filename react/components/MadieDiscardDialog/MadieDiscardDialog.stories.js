@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import MadieDiscardDialog from "./index";
 import Button from "../Button";
 
@@ -13,10 +12,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-Wrapper.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 export const DiscardDialog = () => {
     const [open, setOpen] = useState(false);

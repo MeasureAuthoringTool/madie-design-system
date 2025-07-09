@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import TextField from "../TextField";
 
 export default function NumberInput({
@@ -61,15 +60,3 @@ export default function NumberInput({
         />
     );
 }
-
-NumberInput.propTypes = {
-    id: PropTypes.string,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    label: PropTypes.string,
-    tooltipText: PropTypes.string,
-    inputProps: PropTypes.object,
-    allowNegative: PropTypes.bool,
-};

@@ -6,8 +6,7 @@ import {
 } from "@mui/material";
 import InputLabel from "../InputLabel";
 import MadieToolTip from "../MadieTooltip";
-import PropTypes from "prop-types";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 const TextField = ({
     id,
@@ -204,18 +203,4 @@ const TextField = ({
     );
 };
 
-TextField.propTypes = {
-    id: PropTypes.string,
-    textFieldStyles: PropTypes.object,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
-    label: PropTypes.string,
-    tooltipText: PropTypes.string,
-    inputProps: PropTypes.object,
-    labelColor: PropTypes.string,
-    maxLength: PropTypes.number,
-};
 export default TextField;

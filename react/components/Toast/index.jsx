@@ -9,7 +9,6 @@ import { IconButton, Snackbar } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import classNames from "classnames";
-import PropTypes from "prop-types";
 
 const Toast = ({
     toastType = "warning",
@@ -99,19 +98,6 @@ const Toast = ({
             {...rest}
         />
     );
-};
-
-Toast.propTypes = {
-    toastType: PropTypes.string,
-    open: PropTypes.bool,
-    message: PropTypes.node,
-    canClose: PropTypes.bool,
-    onClose: PropTypes.func,
-    autoHideDuration: PropTypes.number,
-    testId: PropTypes.string,
-    toastKey: PropTypes.string,
-    toastProps: PropTypes.object,
-    closeButtonProps: PropTypes.object,
 };
 
 export default Toast;

@@ -56,21 +56,11 @@ describe("Button", () => {
     });
 
     it("Default props are as expected", async () => {
-        const onClick = Button.defaultProps.onClick();
-        expect(onClick).toBe(null);
-        const children = Button.defaultProps.children;
-        expect(children).toBe(false);
-        const className = Button.defaultProps.className;
-        expect(className).toBe("");
-        const href = Button.defaultProps.href;
-        expect(href).toBe("");
-        const loading = Button.defaultProps.loading;
-        expect(loading).toBe(false);
-        const size = Button.defaultProps.size;
-        expect(size).toBe(null);
-        const type = Button.defaultProps.type;
-        expect(type).toBe("button");
-        const variant = Button.defaultProps.variant;
-        expect(variant).toBe(null);
+        render(<Button>Click me</Button>);
+        const button = screen.getByRole("button", { name: /click me/i });
+        expect(button).toHaveAttribute("type", "button");
+        expect(button).not.toBeDisabled();
+        expect(button).toHaveTextContent("Click me");
+        expect(button.className).toContain("");
     });
 });

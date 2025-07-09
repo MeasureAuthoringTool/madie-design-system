@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./tabs.scss";
 import Tabs from "./index";
 import Tab from "./Tab";
-import PropTypes from "prop-types";
 
 export default {
     title: "Tabs",
@@ -23,21 +22,18 @@ export default {
     },
 };
 
+/**
+ * @param {{
+ *   type: "A" | "B" | "C" | "D",
+ *   size: "standard" | "large",
+ *   orientation: "horizontal" | "vertical"
+ * }} props
+ */
 const Template = ({ type, size, orientation }) => {
     const [selected, setSelected] = useState(1);
+    const handleChange = (_, value) => setSelected(value);
 
-    const handleChange = (event, value) => {
-        setSelected(value);
-    };
-
-    const tabProps = {
-        type,
-        size,
-        orientation,
-    };
-
-    const tabsOrientation =
-        orientation === "vertical" ? "vertical" : "horizontal";
+    const tabProps = { type, size, orientation };
 
     return (
         <div
@@ -46,48 +42,16 @@ const Template = ({ type, size, orientation }) => {
                 width: orientation === "vertical" ? 200 : "fit-content",
             }}
         >
-            <Tabs
-                type={type}
-                size={size}
-                orientation={tabsOrientation}
-                value={selected}
-                onChange={handleChange}
-            >
-                <Tab
-                    {...tabProps}
-                    label="Item One"
-                    value={1}
-                    orientation={tabsOrientation}
-                />
-                <Tab
-                    {...tabProps}
-                    label="Item Two"
-                    value={2}
-                    orientation={tabsOrientation}
-                />
-                <Tab
-                    {...tabProps}
-                    label="Item Three"
-                    value={3}
-                    orientation={tabsOrientation}
-                />
-                <Tab
-                    {...tabProps}
-                    label="disabled"
-                    value={4}
-                    disabled
-                    orientation={tabsOrientation}
-                />
+            <Tabs {...tabProps} value={selected} onChange={handleChange}>
+                <Tab {...tabProps} label="Item One" value={1} />
+                <Tab {...tabProps} label="Item Two" value={2} />
+                <Tab {...tabProps} label="Item Three" value={3} />
+                <Tab {...tabProps} label="disabled" value={4} disabled />
             </Tabs>
         </div>
     );
 };
 
-Template.propTypes = {
-    type: PropTypes.string.isRequired,
-    size: PropTypes.string.isRequired,
-    orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
-};
 export const InteractiveTabs = Template.bind({});
 InteractiveTabs.args = {
     type: "A",

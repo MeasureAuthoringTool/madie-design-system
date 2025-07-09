@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import PropTypes from "prop-types";
 import Draggable from "react-draggable";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -337,24 +336,4 @@ const MadieDialog = ({
     );
 };
 
-MadieDialog.propTypes = {
-    required: PropTypes.bool,
-    form: PropTypes.bool,
-    title: PropTypes.string,
-    dialogProps: PropTypes.object,
-    cancelButtonProps: PropTypes.object,
-    continueButtonProps: PropTypes.object,
-    children: PropTypes.object,
-    maxWidth: PropTypes.string,
-};
-
-DraggablePaper.propTypes = {
-    children: PropTypes.object,
-};
-
-Actions.propTypes = {
-    onClose: PropTypes.any,
-    cancelButtonProps: PropTypes.object,
-    continueButtonProps: PropTypes.object,
-};
 export default MadieDialog;

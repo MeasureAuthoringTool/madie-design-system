@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import TextField from "../TextField";
 import { Box } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -7,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { ReadOnlyTextField } from "../index";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 dayjs.extend(utc);
 dayjs.utc();
@@ -111,18 +110,6 @@ const DateField = ({
             </Box>
         </LocalizationProvider>
     );
-};
-DateField.propTypes = {
-    label: PropTypes.string.isRequired,
-    value: PropTypes.object,
-    handleDateChange: PropTypes.func.isRequired,
-    disabled: PropTypes.bool,
-    id: PropTypes.string,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
-    required: PropTypes.bool,
-    containerSx: PropTypes.object,
-    textFieldSx: PropTypes.object,
 };
 
 export default DateField;

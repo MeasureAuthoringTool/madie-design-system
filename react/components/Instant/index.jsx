@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import TextField from "../TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -247,21 +246,6 @@ const Instant = ({
             </LocalizationProvider>
         </FormControl>
     );
-};
-
-Instant.propTypes = {
-    id: PropTypes.string,
-    placeholder: PropTypes.string,
-    disabled: PropTypes.bool,
-    required: PropTypes.bool,
-    dateTimeValue: PropTypes.any,
-    handleDateTimeChange: PropTypes.function,
-    textFieldSx: PropTypes.any,
-    dateFieldSx: PropTypes.any,
-    error: PropTypes.bool,
-    helperText: PropTypes.string,
-    datePickerProps: PropTypes.any,
-    onBlur: PropTypes.any,
 };
 
 export default Instant;

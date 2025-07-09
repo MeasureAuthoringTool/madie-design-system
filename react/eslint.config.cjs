@@ -28,6 +28,7 @@ module.exports = defineConfig([{
             ecmaFeatures: {
                 jsx: true,
             },
+            ecmaVersion: "latest",
         },
 
         globals: {

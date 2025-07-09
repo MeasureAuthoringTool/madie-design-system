@@ -4,7 +4,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import InputLabel from "../InputLabel";
 import { kebabCase } from "lodash";
-import PropTypes from "prop-types";
 
 const timeFieldStyle = {
     width: "170px",
@@ -87,15 +86,6 @@ const TimeField = ({
             />
         </LocalizationProvider>
     );
-};
-
-TimeField.propTypes = {
-    label: PropTypes.string.isRequired,
-    value: PropTypes.object,
-    handleTimeChange: PropTypes.func.isRequired,
-    disabled: PropTypes.bool,
-    required: PropTypes.bool,
-    error: PropTypes.string,
 };
 
 export default TimeField;

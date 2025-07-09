@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Tabs as MuiTabs } from "@mui/material";
 
 const typeA = {
@@ -63,7 +62,12 @@ const baseStyle = {
     },
 };
 
-const Tabs = ({ type, size, orientation, ...rest }) => {
+const Tabs = ({
+    type = "A",
+    size = "standard",
+    orientation = "horizontal",
+    ...rest
+}) => {
     let style = { ...baseStyle };
 
     switch (type) {
@@ -74,11 +78,10 @@ const Tabs = ({ type, size, orientation, ...rest }) => {
             style = { ...style, ...typeB };
             break;
         case "C":
-            if (orientation === "vertical") {
-                style = { ...style, ...typeC, ...typeCVerticalSelected };
-            } else {
-                style = { ...style, ...typeC };
-            }
+            style =
+                orientation === "vertical"
+                    ? { ...style, ...typeC, ...typeCVerticalSelected }
+                    : { ...style, ...typeC };
             break;
         case "D":
             style = { ...style, ...typeD };
@@ -90,27 +93,6 @@ const Tabs = ({ type, size, orientation, ...rest }) => {
     return (
         <MuiTabs disableRipple orientation={orientation} sx={style} {...rest} />
     );
-};
-
-Tabs.propTypes = {
-    orientation: PropTypes.string,
-    type: PropTypes.oneOf(["A", "B", "C", "D"]),
-    size: PropTypes.oneOf(["standard", "large"]),
-    ariaLabel: PropTypes.string,
-    selected: PropTypes.string,
-    defaultSelectedId: PropTypes.string,
-    onChange: PropTypes.func,
-    children: PropTypes.oneOfType([PropTypes.node, PropTypes.array]),
-};
-
-Tabs.defaultProps = {
-    orientation: "horizontal",
-    type: "A",
-    size: "standard",
-    selected: null,
-    defaultSelectedId: null,
-    onChange: null,
-    children: null,
 };
 
 export default Tabs;

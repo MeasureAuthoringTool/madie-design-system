@@ -1,15 +1,25 @@
 import React from "react";
-import PropTypes from "prop-types";
 
+/**
+ * @param {{
+ *   children?: React.ReactNode,
+ *   value?: number,
+ *   id: string,
+ *   index?: number,
+ *   className?: string,
+ *   disabled?: boolean
+ * }} props
+ */
 export const TabPanel = ({
     children,
-    value,
+    value = 0,
+    index = 0,
     id,
-    index,
-    className,
-    disabled,
+    className = "",
+    disabled = false,
 }) => {
     const classes = ["qpp-c-tabs__panel", className].filter(Boolean).join(" ");
+
     return (
         <div
             role="tabpanel"
@@ -22,20 +32,6 @@ export const TabPanel = ({
             {value === index && children}
         </div>
     );
-};
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    index: PropTypes.number.isRequired,
-    id: PropTypes.string,
-    value: PropTypes.number.isRequired,
-    disabled: PropTypes.bool,
-};
-
-TabPanel.defaultProps = {
-    index: 0,
-    value: 0,
 };
 
 export default TabPanel;

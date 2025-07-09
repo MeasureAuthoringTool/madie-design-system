@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Tab as MuiTab } from "@mui/material";
 
 const typeA = {
@@ -14,6 +13,7 @@ const typeA = {
         boxShadow: "0px 0px 0px 4px #CBE4FF",
     },
 };
+
 const typeB = {
     color: "#515151",
     "&:hover": {
@@ -25,6 +25,7 @@ const typeB = {
         background: "#fff",
     },
 };
+
 const typeC = {
     color: "#333",
     background: "#EDEDED",
@@ -38,7 +39,20 @@ const typeC = {
     },
 };
 
-const Tab = ({ type, orientation, size, ...rest }) => {
+/**
+ * @param {{
+ *   type?: "A" | "B" | "C" | "D",
+ *   size?: "standard" | string,
+ *   orientation?: "horizontal" | "vertical",
+ *   [key: string]: any
+ * }} props
+ */
+const Tab = ({
+    type = "A",
+    size = "standard",
+    orientation = "horizontal",
+    ...rest
+}) => {
     const baseStyle = {
         height: size === "standard" ? "48px" : "60px",
         fontFamily: "Rubik, sans serif",
@@ -46,35 +60,25 @@ const Tab = ({ type, orientation, size, ...rest }) => {
         padding: size === "standard" ? "14.5px 24px" : "20.5px 24px",
         textTransform: "none",
         fontSize: "16px",
-        alignItems: orientation === "vertical" && "flex-start",
+        alignItems: orientation === "vertical" ? "flex-start" : undefined,
         "&.Mui-disabled": {
             background: "#DDDDDD",
             color: "#717171 !important",
         },
     };
-    const style = ((type) => {
-        if (type === "A") {
-            return { ...baseStyle, ...typeA };
-        }
-        if (type === "B" || type === "D") {
-            return { ...baseStyle, ...typeB };
-        }
-        if (type === "C") {
-            return { ...baseStyle, ...typeC };
-        }
-    })(type);
-    return <MuiTab tabIndex={0} sx={style} {...rest} />;
-};
 
-Tab.propTypes = {
-    orientation: PropTypes.string,
-    type: PropTypes.oneOf(["A", "B", "C", "D"]),
-    size: PropTypes.oneOf(["standard", "large"]),
-};
-Tab.defaultProps = {
-    type: "A",
-    size: "standard",
-    onChange: null,
+    const variantStyles =
+        type === "A"
+            ? typeA
+            : type === "B" || type === "D"
+              ? typeB
+              : type === "C"
+                ? typeC
+                : {};
+
+    const style = { ...baseStyle, ...variantStyles };
+
+    return <MuiTab tabIndex={0} sx={style} {...rest} />;
 };
 
 export default Tab;

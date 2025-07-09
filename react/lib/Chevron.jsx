@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export const Chevron = (props) => {
+export const Chevron = ({ className = "accordion-icon", ...props }) => {
+    
     return (
         <svg
             width="10px"
@@ -21,12 +21,4 @@ export const Chevron = (props) => {
             </g>
         </svg>
     );
-};
-
-Chevron.propTypes = {
-    className: PropTypes.string,
-};
-
-Chevron.defaultProps = {
-    className: "accordion-icon",
 };

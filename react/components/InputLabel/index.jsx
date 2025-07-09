@@ -1,6 +1,5 @@
 import React from "react";
 import { InputLabel as MUIInputLabel } from "@mui/material";
-import PropTypes from "prop-types";
 
 const Label = ({ required, disabled, error, ...rest }) => {
     return (
@@ -45,9 +44,5 @@ const Label = ({ required, disabled, error, ...rest }) => {
         />
     );
 };
-Label.propTypes = {
-    required: PropTypes.bool.isRequired,
-    disabled: PropTypes.bool.isRequired,
-    error: PropTypes.bool,
-};
+
 export default Label;

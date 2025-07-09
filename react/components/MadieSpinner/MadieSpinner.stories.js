@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MadieSpinner from "./index";
 
 export default {
@@ -12,11 +11,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-
-Wrapper.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 export const ExampleSpinner = () => (
     <Wrapper>

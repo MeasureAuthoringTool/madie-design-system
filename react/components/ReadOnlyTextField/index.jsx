@@ -1,7 +1,6 @@
 import React from "react";
 import { FormControl, TextareaAutosize } from "@mui/material";
 import InputLabel from "../InputLabel";
-import PropTypes from "prop-types";
 import _ from "lodash";
 
 const ReadOnlyTextField = ({
@@ -77,11 +76,4 @@ const ReadOnlyTextField = ({
     );
 };
 
-ReadOnlyTextField.propTypes = {
-    id: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
-    label: PropTypes.string,
-};
 export default ReadOnlyTextField;

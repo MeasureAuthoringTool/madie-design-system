@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ReadOnlyTextField from "./index";
 import { FormHelperText } from "@mui/material";
 
@@ -13,11 +12,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-
-Wrapper.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node,
-};
 
 export const Textfield = () => (
     <Wrapper>

@@ -1,6 +1,5 @@
 import React from "react";
 import NumberInput from "./index";
-import PropTypes from "prop-types";
 
 export default {
     title: "NumberInput",
@@ -12,10 +11,6 @@ const Wrapper = ({ children }) => (
         {children}
     </div>
 );
-
-Wrapper.propTypes = {
-    children: PropTypes.node,
-};
 
 export const BasicNumberInput = () => (
     <Wrapper>
