@@ -23,6 +23,15 @@ import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
 
+function fixColgroup(html) {
+    return html
+        .replace(/<col ([^/>]*)>/gi, "<col $1 />")
+        .replace(
+            /<colgroup([^>]*)>(?![\s\S]*?<\/colgroup>)/gi,
+            "<colgroup$1></colgroup>",
+        );
+}
+
 const MenuBar = ({ editor }) => {
     if (!editor) {
         return null;
@@ -193,8 +202,9 @@ const RichTextEditor = ({
             shouldRerenderOnTransaction: false,
             content,
             onUpdate: ({ editor }) => {
-                const newValue = editor.getHTML();
-                onChange(newValue);
+                const value = editor.getHTML();
+                const updatedValue = fixColgroup(value);
+                onChange(updatedValue);
             },
         },
         [content],

@@ -141,6 +141,8 @@ describe("RichTextEditor Component", () => {
             />,
         );
         await user.click(screen.getByRole("button", { name: "Table" }));
-        expect(mockOnChange).toHaveBeenCalled();
+        expect(mockOnChange).toHaveBeenCalledWith(
+            expect.stringContaining('<table style="min-width: 75px"><colgroup><col style="min-width: 25px" /><col style="min-width: 25px" /><col style="min-width: 25px" /></colgroup>')
+        );
     });
 });
