@@ -3,19 +3,20 @@
     "version": "2.0.1",
     "description": "Shared style guide across the Madie program.",
     "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
+    "type": "module",
+    "main": "./dist/react/index.mjs",
     "exports": {
         ".": {
-            "import": "./dist/react/index.mjs",
-            "require": "./dist/react/index.js"
+            "import": "./dist/react/index.mjs"
         },
         "./styles/*": "./styles/*"
     },
     "scripts": {
         "prepublishOnly": "npm run build",
-        "build": "npm run clean && webpack-cli --progress --color --env production && npm run build-react",
+        "build": "npm run clean && npm run build-react",
+        "build-react": "webpack --progress --config webpack.config.react.mjs && echo '{ \"type\": \"module\" }' > dist/react/package.json",
         "dev": "npm run clean && webpack-cli --progress --color --watch --env production=false",
         "clean": "rimraf build && rimraf dist",
-        "build-react": "webpack --progress --config webpack.config.react.mjs && echo '{ \"type\": \"module\" }' > dist/react/package.json",
         "build-react-watch": "webpack --progress --watch --config webpack.config.react.mjs",
         "start": "npm run build",
         "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",        
