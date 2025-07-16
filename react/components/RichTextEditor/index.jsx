@@ -284,7 +284,7 @@ RichTextEditor.propTypes = {
 
 MenuBar.propTypes = {
     editor: PropTypes.any,
-    readOnly: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 export default RichTextEditor;
