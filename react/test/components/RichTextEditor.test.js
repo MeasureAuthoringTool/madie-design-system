@@ -44,19 +44,22 @@ describe("RichTextEditor Component", () => {
         });
     });
 
-    it("renders sanitized content when canEdit is false", () => {
+    it("renders sanitized content when disabled is true", () => {
         render(
             <RichTextEditor
                 id="test-editor"
                 label="Test Label"
                 content="<script>alert('XSS')</script><p>Safe Content</p>"
                 onChange={mockOnChange}
-                disabled={true}
+                disabled
             />
         );
 
         // Check if sanitized content is rendered
         expect(screen.getByText("Safe Content")).toBeInTheDocument();
         expect(screen.queryByText("alert('XSS')")).not.toBeInTheDocument();
+
+        const editorContent = screen.getByRole("textbox");
+        expect(editorContent).toHaveAttribute("contenteditable", "false");
     });
 });

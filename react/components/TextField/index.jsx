@@ -15,6 +15,7 @@ const TextField = ({
     helperText = undefined,
     required = false,
     disabled = false,
+    readOnly = false,
     label,
     tooltipText,
     inputProps,
@@ -23,7 +24,7 @@ const TextField = ({
     maxLength = undefined,
     ...rest
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 required={required}
@@ -32,7 +33,7 @@ const TextField = ({
                 size="small"
                 {...rest}
             />
-        )
+        );
     }
     // get a copy of input props
     const newInputProps = { ...inputProps } || {};
@@ -211,6 +212,7 @@ TextField.propTypes = {
     helperText: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
     tooltipText: PropTypes.string,

@@ -51,6 +51,24 @@ describe("TextField", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
+    test("renders TextField for read only mode", async () => {
+        render(
+            <TextField
+                readOnly
+                placeholder="test Name"
+                helperText="helper text"
+                label="test Name"
+                id="testName"
+                inputProps={{"data-testid": "test-name-input"}}
+                data-testid="test-name-text-field"
+                size="small"
+                value="test value"
+            />
+        );
+        const textField = await screen.findByRole("textbox");
+        expect(textField).toHaveValue("test value");
+        expect(textField).toHaveAttribute("readOnly");
+    });
     test("renders TextField for disabled mode", async () => {
         render(
             <TextField
@@ -66,8 +84,8 @@ describe("TextField", () => {
             />
         );
         const textField = await screen.findByRole("textbox");
-        expect(textField).toHaveTextContent("test value");
-        expect(textField).toHaveAttribute("readOnly");
+        expect(textField).toHaveValue("test value");
+        expect(textField).toHaveAttribute("disabled");
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

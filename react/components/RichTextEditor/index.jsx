@@ -23,7 +23,7 @@ import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
 
-const MenuBar = ({ editor }) => {
+const MenuBar = ({ editor, disabled }) => {
     if (!editor) {
         return null;
     }
@@ -43,6 +43,7 @@ const MenuBar = ({ editor }) => {
                             editor.chain().focus().toggleBold().run()
                         }
                         className={editor.isActive("bold") ? "is-active" : ""}
+                        disabled={disabled}
                     >
                         <FormatBoldIcon />
                     </IconButton>
@@ -60,6 +61,7 @@ const MenuBar = ({ editor }) => {
                             editor.chain().focus().toggleItalic().run()
                         }
                         className={editor.isActive("italic") ? "is-active" : ""}
+                        disabled={disabled}
                     >
                         <FormatItalicIcon />
                     </IconButton>
@@ -79,6 +81,7 @@ const MenuBar = ({ editor }) => {
                         className={
                             editor.isActive("underline") ? "is-active" : ""
                         }
+                        disabled={disabled}
                     >
                         <FormatUnderlinedIcon />
                     </IconButton>
@@ -97,6 +100,7 @@ const MenuBar = ({ editor }) => {
                         }
                         className={editor.isActive("strike") ? "is-active" : ""}
                         style={{ borderRight: "solid 1px #9c9c9c" }}
+                        disabled={disabled}
                     >
                         <StrikethroughSIcon />
                     </IconButton>
@@ -116,6 +120,7 @@ const MenuBar = ({ editor }) => {
                         className={
                             editor.isActive("orderedList") ? "is-active" : ""
                         }
+                        disabled={disabled}
                     >
                         <FormatListNumberedIcon />
                     </IconButton>
@@ -136,6 +141,7 @@ const MenuBar = ({ editor }) => {
                             editor.isActive("bulletList") ? "is-active" : ""
                         }
                         style={{ borderRight: "solid 1px #9c9c9c" }}
+                        disabled={disabled}
                     >
                         <FormatListBulletedIcon />
                     </IconButton>
@@ -159,6 +165,7 @@ const MenuBar = ({ editor }) => {
                         className={
                             editor.isActive("insertTable") ? "is-active" : ""
                         }
+                        disabled={disabled}
                     >
                         <TableChartIcon />
                     </IconButton>
@@ -175,7 +182,8 @@ const RichTextEditor = ({
     label,
     onChange,
     content,
-    disabled,
+    disabled = false,
+    readOnly = false,
 }) => {
     const editor = useEditor(
         {
@@ -196,8 +204,9 @@ const RichTextEditor = ({
                 const newValue = editor.getHTML();
                 onChange(newValue);
             },
+            editable: !disabled,
         },
-        [content]
+        [content, disabled]
     );
     return (
         <div
@@ -244,21 +253,20 @@ const RichTextEditor = ({
             >
                 {label}
             </InputLabel>
-            {disabled ? (
-                    <p
-                        data-testid={`${id}-value`}
-                        aria-labelledby={label}
-                        dangerouslySetInnerHTML={{
-                            __html: content ? DOMPurify.sanitize(content) : "-",
-                        }}
-                    />
-
-                ) : (
-                    <>
-                        <MenuBar editor={editor}/>
-                        <EditorContent editor={editor}/>
-                    </>
-                )}
+            {readOnly ? (
+                <p
+                    data-testid={`${id}-value`}
+                    aria-labelledby={label}
+                    dangerouslySetInnerHTML={{
+                        __html: content ? DOMPurify.sanitize(content) : "-",
+                    }}
+                />
+            ) : (
+                <>
+                    <MenuBar editor={editor} disabled={disabled} />
+                    <EditorContent editor={editor} />
+                </>
+            )}
         </div>
     );
 };
@@ -271,10 +279,12 @@ RichTextEditor.propTypes = {
     onChange: PropTypes.func,
     content: PropTypes.any,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
 };
 
 MenuBar.propTypes = {
     editor: PropTypes.any,
+    readOnly: PropTypes.bool,
 };
 
 export default RichTextEditor;

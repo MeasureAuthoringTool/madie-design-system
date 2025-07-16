@@ -47,6 +47,23 @@ describe("TextArea", () => {
             expect(helperText).toBeInTheDocument();
         });
     });
+    test("renders TextArea for readOnly mode", async () => {
+        render(
+            <TextArea
+                readOnly
+                placeholder="test Name"
+                helperText="helper text"
+                label="test Name"
+                id="testName"
+                inputProps={{"data-testid": "test-name-input"}}
+                data-testid="test-name-text-field"
+                value="test value"
+            />
+        );
+        const textArea = await screen.findByRole("textbox");
+        expect(textArea).toHaveTextContent("test value");
+        expect(textArea).toHaveAttribute("readonly");
+    });
     test("renders TextArea for disabled mode", async () => {
         render(
             <TextArea
@@ -62,7 +79,7 @@ describe("TextArea", () => {
         );
         const textArea = await screen.findByRole("textbox");
         expect(textArea).toHaveTextContent("test value");
-        expect(textArea).toHaveAttribute("readOnly");
+        expect(textArea).toHaveAttribute("disabled");
     });
     test("HelperText renders errored", async () => {
         await act(async () => {
