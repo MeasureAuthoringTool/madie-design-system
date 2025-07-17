@@ -91,5 +91,5 @@ describe("DateTimeField", () => {
         expect(readOnlyField).toBeInTheDocument();
         expect(readOnlyField).toHaveValue("01/01/2023 12:00 PM");
         expect(readOnlyField).toHaveProperty("readOnly", true);
-        });
+    });
 });

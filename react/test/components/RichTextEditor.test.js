@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RichTextEditor from "../../components/RichTextEditor/index";
 
 describe("RichTextEditor Component", () => {
@@ -20,7 +20,9 @@ describe("RichTextEditor Component", () => {
         expect(screen.getByText("Test Label")).toBeInTheDocument();
 
         // Check if the editor content is rendered
-        expect(screen.getByTestId("test-label-rich-text-editor")).toBeInTheDocument();
+        expect(
+            screen.getByTestId("test-label-rich-text-editor")
+        ).toBeInTheDocument();
     });
 
     it("calls onChange when content is updated", async () => {
@@ -36,7 +38,9 @@ describe("RichTextEditor Component", () => {
 
         // Simulate content change
         const editorContent = screen.getByRole("textbox");
-        fireEvent.input(editorContent, {target: {innerHTML: "Updated Content"}});
+        fireEvent.input(editorContent, {
+            target: { innerHTML: "Updated Content" },
+        });
 
         // Check if onChange is called
         await waitFor(() => {

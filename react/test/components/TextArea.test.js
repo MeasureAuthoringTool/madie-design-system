@@ -6,11 +6,10 @@ import { act, Simulate } from "react-dom/test-utils";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-
 describe("TextArea", () => {
     test("TextArea exists, and simulates input correctly", async () => {
         await act(async () => {
-            const {findByTestId, getByTestId} = render(
+            const { findByTestId, getByTestId } = render(
                 <TextArea
                     placeholder="test Name"
                     required
@@ -32,14 +31,14 @@ describe("TextArea", () => {
     });
     test("TextArea renders with helper text", async () => {
         await act(async () => {
-            const {findByText} = render(
+            const { findByText } = render(
                 <TextArea
                     error={false}
                     placeholder="test Name"
                     helperText="helper text"
                     label="test Name"
                     id="testName"
-                    inputProps={{"data-testid": "test-name-input"}}
+                    inputProps={{ "data-testid": "test-name-input" }}
                     data-testid="test-name-text-field"
                 />
             );
@@ -55,7 +54,7 @@ describe("TextArea", () => {
                 helperText="helper text"
                 label="test Name"
                 id="testName"
-                inputProps={{"data-testid": "test-name-input"}}
+                inputProps={{ "data-testid": "test-name-input" }}
                 data-testid="test-name-text-field"
                 value="test value"
             />
@@ -72,7 +71,7 @@ describe("TextArea", () => {
                 helperText="helper text"
                 label="test Name"
                 id="testName"
-                inputProps={{"data-testid": "test-name-input"}}
+                inputProps={{ "data-testid": "test-name-input" }}
                 data-testid="test-name-text-field"
                 value="test value"
             />
@@ -83,14 +82,14 @@ describe("TextArea", () => {
     });
     test("HelperText renders errored", async () => {
         await act(async () => {
-            const {findByText} = render(
+            const { findByText } = render(
                 <TextArea
                     error
                     placeholder="test Name"
                     helperText="helper text"
                     label="test Name"
                     id="testName"
-                    inputProps={{"data-testid": "test-name-input"}}
+                    inputProps={{ "data-testid": "test-name-input" }}
                     data-testid="test-name-text-field"
                 />
             );
@@ -100,7 +99,7 @@ describe("TextArea", () => {
     });
     test("TextArea renders with default propTypes left out", async () => {
         await act(async () => {
-            const {findByText} = render(
+            const { findByText } = render(
                 <TextArea
                     // error purposely omitted
                     // disabled purposely omitted
@@ -108,7 +107,7 @@ describe("TextArea", () => {
                     helperText="helper text"
                     label="test Name"
                     id="testName"
-                    inputProps={{"data-testid": "test-name-input"}}
+                    inputProps={{ "data-testid": "test-name-input" }}
                     data-testid="test-name-text-field"
                 />
             );
@@ -118,7 +117,7 @@ describe("TextArea", () => {
     });
     test("TextArea shows maxLength", async () => {
         await act(async () => {
-            const {findByTestId, getByTestId, findByText} = render(
+            const { findByTestId, getByTestId, findByText } = render(
                 <TextArea
                     placeholder="test Name"
                     required

@@ -51,7 +51,7 @@ describe("RadioButton Component", () => {
         );
 
         const radios = screen.getAllByRole("radio");
-            radios.forEach((radio) => {
+        radios.forEach((radio) => {
             expect(radio).toBeDisabled();
         });
     });

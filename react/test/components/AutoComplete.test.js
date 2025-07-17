@@ -2,7 +2,7 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect } from "@jest/globals";
 import AutoComplete from "../../components/AutoComplete/AutoComplete";
-import {render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("AutoComplete Component", () => {
@@ -29,7 +29,12 @@ describe("AutoComplete Component", () => {
         expect(option).toBeInTheDocument();
 
         await userEvent.click(option);
-        expect(mockOnChange).toHaveBeenCalledWith("autocomplete", "Option1", expect.any(String), expect.any(Object));
+        expect(mockOnChange).toHaveBeenCalledWith(
+            "autocomplete",
+            "Option1",
+            expect.any(String),
+            expect.any(Object)
+        );
     });
 
     it("renders AutoComplete in disabled mode", async () => {
