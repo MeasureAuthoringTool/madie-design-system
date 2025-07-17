@@ -192,6 +192,9 @@ const RichTextEditor = ({
                 Gapcursor,
                 Table.configure({
                     resizable: true,
+                    HTMLAttributes: {
+                        class: "rich-text-table",
+                    },
                 }),
                 TableRow,
                 TableHeader,
