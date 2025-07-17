@@ -23,7 +23,9 @@ const RadioButton = ({
     ...rest
 }) => {
     if (readOnly) {
-        const option = options?.find(option => String(option.value) === String(rest.value));
+        const option = options?.find(
+            (option) => String(option.value) === String(rest.value)
+        );
         return (
             <ReadOnlyTextField
                 required={required}
@@ -33,7 +35,7 @@ const RadioButton = ({
                 {...rest}
                 value={option?.label}
             />
-        )
+        );
     }
     return (
         <FormControl error={error} fullWidth>
