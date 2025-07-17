@@ -105,6 +105,59 @@ export const Disabled = () => (
     </Wrapper>
 );
 
+export const ReadOnlyWithNoValue = () => (
+    <Wrapper>
+        <Select
+            placeHolder={{ name: "placeholder", value: "" }}
+            defaultValue=""
+            label="Text Label"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            readOnly
+            options={options.map(({ key, value, testId, name }) => {
+                return (
+                    <MenuItem
+                        key={key}
+                        value={value}
+                        data-testid={`option-${testId}`}
+                    >
+                        {name}
+                    </MenuItem>
+                );
+            })}
+        />
+    </Wrapper>
+);
+
+export const ReadOnlyWithValue = () => (
+    <Wrapper>
+        <Select
+            placeHolder={{ name: "placeholder", value: "" }}
+            defaultValue=""
+            label="Text Label"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            readOnly
+            options={options.map(({ key, value, testId, name }) => {
+                return (
+                    <MenuItem
+                        key={key}
+                        value={value}
+                        data-testid={`option-${testId}`}
+                    >
+                        {name}
+                    </MenuItem>
+                );
+            })}
+            value="name1"
+        />
+    </Wrapper>
+);
+
 export const Required = () => (
     <Wrapper>
         <Select

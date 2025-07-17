@@ -47,6 +47,17 @@ RadioButtonWithLabelDisabledWithValue.args = {
     value: "options 3",
 };
 
+export const RadioButtonWithLabelReadOnlyWithNoValue = TemplateRadioButton.bind({});
+RadioButtonWithLabelReadOnlyWithNoValue.args = {
+    readOnly: true,
+};
+
+export const RadioButtonWithLabelReadOnlyWithValue = TemplateRadioButton.bind({});
+RadioButtonWithLabelReadOnlyWithValue.args = {
+    readOnly: true,
+    value: "options 3",
+};
+
 export const RadioButtonWithHelperText = TemplateRadioButton.bind({});
 RadioButtonWithHelperText.args = {
     helperText: "Helper text goes here",

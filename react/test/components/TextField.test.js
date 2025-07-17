@@ -67,7 +67,7 @@ describe("TextField", () => {
         );
         const textField = await screen.findByRole("textbox");
         expect(textField).toHaveValue("test value");
-        expect(textField).toHaveAttribute("readOnly");
+        expect(textField).toHaveProperty("readOnly", true);
     });
     test("renders TextField for disabled mode", async () => {
         render(
@@ -85,7 +85,7 @@ describe("TextField", () => {
         );
         const textField = await screen.findByRole("textbox");
         expect(textField).toHaveValue("test value");
-        expect(textField).toHaveAttribute("disabled");
+        expect(textField).toBeDisabled();
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

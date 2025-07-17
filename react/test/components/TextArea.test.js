@@ -79,7 +79,7 @@ describe("TextArea", () => {
         );
         const textArea = await screen.findByRole("textbox");
         expect(textArea).toHaveTextContent("test value");
-        expect(textArea).toHaveAttribute("disabled");
+        expect(textArea).toBeDisabled();
     });
     test("HelperText renders errored", async () => {
         await act(async () => {

@@ -50,9 +50,10 @@ describe("RadioButton Component", () => {
             />
         );
 
-        const option1 = screen.getByRole("textbox");
-        expect(option1).toHaveTextContent("Option 1");
-        expect(option1).toHaveAttribute("readOnly");
+        const radios = screen.getAllByRole("radio");
+            radios.forEach((radio) => {
+            expect(radio).toBeDisabled();
+        });
     });
 
     it("renders helper text", () => {
@@ -85,7 +86,7 @@ describe("RadioButton Component", () => {
         expect(errorText).toHaveStyle("color: #d32f2f");
     });
 
-    it("renders placeholder '-' when disabled and no value is provided", () => {
+    it("renders placeholder '-' when read only and no value is provided", () => {
         const options = [
             { value: "option1", label: "Option 1" },
             { value: "option2", label: "Option 2" },
@@ -97,11 +98,12 @@ describe("RadioButton Component", () => {
                 dataTestId="radio-button-placeholder"
                 label="Radio Button"
                 options={options}
-                disabled
+                readOnly
             />
         );
 
         const readOnlyField = screen.getByRole("textbox");
         expect(readOnlyField).toHaveTextContent("-");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
     });
 });

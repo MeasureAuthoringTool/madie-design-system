@@ -32,7 +32,7 @@ describe("DateTimeField", () => {
         });
     });
 
-    it("renders ReadOnlyTextField when disabled is true", () => {
+    it("renders disabled DateTimeField when disabled is true", () => {
         const label = "Test Label";
         const dateTimeValue = new Date("2023-01-01T12:00:00Z");
         const id = "test-id";
@@ -47,13 +47,13 @@ describe("DateTimeField", () => {
             />
         );
 
-        const readOnlyField = getByLabelText(label);
-        expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveTextContent("01/01/2023 12:00 PM");
-        expect(readOnlyField).toHaveAttribute("readOnly");
+        const disabledField = getByLabelText(label);
+        expect(disabledField).toBeInTheDocument();
+        expect(disabledField).toHaveValue("01/01/2023 12:00 PM");
+        expect(disabledField).toBeDisabled();
     });
 
-    it("renders empty value in ReadOnlyTextField when dateTimeValue is null", () => {
+    it("renders empty value in disabled DateTimeField when dateTimeValue is null", () => {
         const label = "Test Label";
         const id = "test-id";
 
@@ -67,8 +67,29 @@ describe("DateTimeField", () => {
             />
         );
 
+        const disabledField = getByLabelText(label);
+        expect(disabledField).toBeInTheDocument();
+        expect(disabledField).toHaveValue("");
+    });
+
+    it("renders ReadOnlyTextField when readOnly is true", () => {
+        const label = "Test Label";
+        const dateTimeValue = new Date("2023-01-01T12:00:00Z");
+        const id = "test-id";
+
+        const { getByLabelText } = render(
+            <DateTimeField
+                label={label}
+                dateTimeValue={dateTimeValue}
+                handleDateTimeChange={() => {}}
+                readOnly={true}
+                id={id}
+            />
+        );
+
         const readOnlyField = getByLabelText(label);
         expect(readOnlyField).toBeInTheDocument();
-        expect(readOnlyField).toHaveTextContent("-");
-    });
+        expect(readOnlyField).toHaveValue("01/01/2023 12:00 PM");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
+        });
 });

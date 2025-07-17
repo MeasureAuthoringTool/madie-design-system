@@ -76,6 +76,7 @@ const AutoComplete = ({
     dataTestId,
     options = [],
     disabled = false,
+    readOnly = false,
     label,
     placeholder,
     multiple = false,
@@ -85,7 +86,7 @@ const AutoComplete = ({
     onChange,
     ...rest
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 required={required}
@@ -250,6 +251,7 @@ AutoComplete.propTypes = {
     placeholder: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     multiple: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,

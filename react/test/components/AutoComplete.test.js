@@ -43,9 +43,25 @@ describe("AutoComplete Component", () => {
             />
         );
 
+        const disabledInput = screen.getByRole("combobox");
+        expect(disabledInput).toHaveValue("Option1");
+        expect(disabledInput).toBeDisabled();
+    });
+
+    it("renders AutoComplete in read only mode", async () => {
+        render(
+            <AutoComplete
+                id="autocomplete-disabled"
+                dataTestId="autocomplete-disabled"
+                label="Auto Complete"
+                readOnly
+                value="Option1"
+            />
+        );
+
         const readOnlyField = screen.getByRole("textbox");
-        expect(readOnlyField).toHaveTextContent("Option1");
-        expect(readOnlyField).toHaveAttribute("readOnly");
+        expect(readOnlyField).toHaveValue("Option1");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
     });
 
     it("renders AutoComplete with helper text", () => {
