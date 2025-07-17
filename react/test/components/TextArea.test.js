@@ -61,7 +61,7 @@ describe("TextArea", () => {
         );
         const textArea = await screen.findByRole("textbox");
         expect(textArea).toHaveTextContent("test value");
-        expect(textArea).toHaveAttribute("readonly");
+        expect(textArea).toHaveProperty("readOnly", true);
     });
     test("renders TextArea for disabled mode", async () => {
         render(
