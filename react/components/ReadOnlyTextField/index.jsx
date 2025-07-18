@@ -71,7 +71,14 @@ const ReadOnlyTextField = ({
                 disabled={disabled}
                 id={id}
                 {...rest}
-                value={_.isEmpty(rest?.value) ? "-" : rest.value}
+                value={
+                    rest?.value == null ||
+                    rest.value === "" ||
+                    (typeof rest.value === "object" &&
+                        Object.keys(rest.value).length === 0)
+                        ? "-"
+                        : rest.value
+                }
             />
         </FormControl>
     );
