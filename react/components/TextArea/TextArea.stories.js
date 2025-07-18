@@ -49,6 +49,22 @@ export const WithHelperText = () => (
     </Wrapper>
 );
 
+export const ReadOnlyWithValue = () => (
+    <Wrapper>
+        <TextArea
+            placeholder="Placeholder"
+            label="Text Label"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            value="This is a read only text area"
+            readOnly
+            required
+        />
+    </Wrapper>
+);
+
 export const DisabledWithValue = () => (
     <Wrapper>
         <TextArea

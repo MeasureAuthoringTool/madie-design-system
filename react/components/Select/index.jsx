@@ -10,6 +10,7 @@ const Select = ({
     placeHolder = undefined, // expects placeholder objects of { name: value } and inserts into the render item function.
     required = false,
     disabled = false,
+    readOnly = false,
     id,
     error = false,
     label,
@@ -25,7 +26,7 @@ const Select = ({
     ],
     ...rest
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 required={required}
@@ -34,7 +35,7 @@ const Select = ({
                 size="small"
                 {...rest}
             />
-        )
+        );
     }
 
     const placehold = (
@@ -182,6 +183,7 @@ Select.propTypes = {
     }), // expects placeholder objects of { name: value } and inserts into the render item function.
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,
     helperText: PropTypes.string,

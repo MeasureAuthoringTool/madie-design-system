@@ -36,14 +36,33 @@ const TemplateRadioButton = (args) => {
 export const RadioButtonWithLabel = TemplateRadioButton.bind({});
 RadioButtonWithLabel.args = {};
 
-export const RadioButtonWithLabelDisabledWithNoValue = TemplateRadioButton.bind({});
+export const RadioButtonWithLabelDisabledWithNoValue = TemplateRadioButton.bind(
+    {}
+);
 RadioButtonWithLabelDisabledWithNoValue.args = {
     disabled: true,
 };
 
-export const RadioButtonWithLabelDisabledWithValue = TemplateRadioButton.bind({});
+export const RadioButtonWithLabelDisabledWithValue = TemplateRadioButton.bind(
+    {}
+);
 RadioButtonWithLabelDisabledWithValue.args = {
     disabled: true,
+    value: "options 3",
+};
+
+export const RadioButtonWithLabelReadOnlyWithNoValue = TemplateRadioButton.bind(
+    {}
+);
+RadioButtonWithLabelReadOnlyWithNoValue.args = {
+    readOnly: true,
+};
+
+export const RadioButtonWithLabelReadOnlyWithValue = TemplateRadioButton.bind(
+    {}
+);
+RadioButtonWithLabelReadOnlyWithValue.args = {
+    readOnly: true,
     value: "options 3",
 };
 

@@ -8,6 +8,7 @@ export default function NumberInput({
     helperText = undefined,
     required = false,
     disabled = false,
+    readOnly = false,
     label,
     tooltipText,
     inputProps,
@@ -42,6 +43,7 @@ export default function NumberInput({
             helperText={helperText}
             required={required}
             disabled={disabled}
+            readOnly={readOnly}
             label={label}
             tooltipText={tooltipText}
             inputProps={newInputProps}
@@ -68,6 +70,7 @@ NumberInput.propTypes = {
     helperText: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     label: PropTypes.string,
     tooltipText: PropTypes.string,
     inputProps: PropTypes.object,

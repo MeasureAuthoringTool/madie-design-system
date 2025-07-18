@@ -39,6 +39,12 @@ AutoCompleteWithLabelDisabled.args = {
     value: "Option1",
 };
 
+export const AutoCompleteWithLabelReadOnly = TemplateSingleSelect.bind({});
+AutoCompleteWithLabelReadOnly.args = {
+    readOnly: true,
+    value: "Option1",
+};
+
 export const AutoCompleteWithHelperText = TemplateSingleSelect.bind({});
 AutoCompleteWithHelperText.args = {
     helperText: "Helper text goes here",
@@ -88,6 +94,12 @@ export const AutoCompleteMultipleDisabled = TemplateMultipleSelect.bind({});
 AutoCompleteMultipleDisabled.args = {
     disabled: true,
     placeholder: "Start typing",
+};
+
+export const AutoCompleteMultipleReadOnly = TemplateMultipleSelect.bind({});
+AutoCompleteMultipleReadOnly.args = {
+    readOnly: true,
+    value: "Option1",
 };
 
 export const AutoCompleteMultipleWithError = TemplateMultipleSelect.bind({});

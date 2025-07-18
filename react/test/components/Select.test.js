@@ -117,17 +117,37 @@ describe("Select", () => {
                 disabled
                 helperText="helper text"
                 label="Test"
-                value=""
+                value="select value"
                 id="test-select"
                 inputProps={{ "data-testid": "test-input" }}
                 data-testid="test-select"
                 size="small"
             />
         );
-        const value = screen.getByRole("textbox");
-        expect(value).toHaveTextContent("-");
-        expect(value).toHaveAttribute("readOnly");
+        const select = screen.getByTestId("test-input");
+        expect(select).toBeDisabled();
+        expect(select).toHaveValue("select value");
     });
+
+    test("Select renders read only", () => {
+        render(
+            <Select
+                readOnly
+                helperText="helper text"
+                label="Test"
+                value="select value"
+                id="test-select"
+                inputProps={{ "data-testid": "test-input" }}
+                data-testid="test-select"
+                size="small"
+            />
+        );
+
+        const readOnlyField = screen.getByRole("textbox");
+        expect(readOnlyField).toHaveTextContent("select value");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
+    });
+
     test("Select renders error", async () => {
         await act(async () => {
             const { findByText } = render(

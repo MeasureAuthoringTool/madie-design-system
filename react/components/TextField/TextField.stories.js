@@ -52,6 +52,20 @@ export const WithHelperText = () => (
     </Wrapper>
 );
 
+export const ReadOnly = () => (
+    <Wrapper>
+        <TextField
+            placeholder="Placeholder"
+            label="ReadOnly Text Label"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            readOnly
+        />
+    </Wrapper>
+);
+
 export const Disabled = () => (
     <Wrapper>
         <TextField

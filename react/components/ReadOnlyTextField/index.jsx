@@ -1,8 +1,7 @@
 import React from "react";
-import {FormControl, TextareaAutosize} from "@mui/material";
+import { FormControl, TextareaAutosize } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
-import _ from "lodash";
 
 const ReadOnlyTextField = ({
     id,
@@ -71,7 +70,14 @@ const ReadOnlyTextField = ({
                 disabled={disabled}
                 id={id}
                 {...rest}
-                value={_.isEmpty(rest?.value) ? "-" : rest.value}
+                value={
+                    rest?.value == null ||
+                    rest.value === "" ||
+                    (typeof rest.value === "object" &&
+                        Object.keys(rest.value).length === 0)
+                        ? "-"
+                        : rest.value
+                }
             />
         </FormControl>
     );

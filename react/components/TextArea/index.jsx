@@ -10,21 +10,23 @@ const TextArea = ({
     helperText = undefined,
     required = false,
     disabled = false,
+    readOnly = false,
     label,
     inputProps,
     maxLength = undefined,
     ...rest
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 required={required}
                 label={label}
                 id={id}
                 size="small"
+                {...inputProps}
                 {...rest}
             />
-        )
+        );
     }
     // coerce this to avoid issue passing props to dom.
     // text area autosize is deprecated and only takes style rules
@@ -137,6 +139,7 @@ TextArea.propTypes = {
     helperText: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     placeholder: PropTypes.string, // expects placeholder objects of { name: value } and inserts into the render item function.
     label: PropTypes.string,
     inputProps: PropTypes.any,

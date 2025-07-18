@@ -16,9 +16,11 @@ describe("ReadOnlyTextField", () => {
                 size="small"
             />
         );
-        const textNode = getByRole(document.body, "textbox", { name: "test Name" });
+        const textNode = getByRole(document.body, "textbox", {
+            name: "test Name",
+        });
         expect(textNode).toBeInTheDocument();
-        expect(textNode).toHaveAttribute("readOnly");
+        expect(textNode).toHaveProperty("readOnly", true);
         expect(textNode).toHaveTextContent("-");
     });
 });

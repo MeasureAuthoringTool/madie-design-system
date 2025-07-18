@@ -39,3 +39,19 @@ export const DateFieldComponentDisabled = (args) => {
         </div>
     );
 };
+
+export const DateFieldComponentReadOnly = (args) => {
+    const handleDateChange = (e) => {
+        console.log("Handle change triggered", e.target.value);
+    };
+    return (
+        <div className="qpp-u-padding--16">
+            <DateField
+                readOnly
+                label="Status Date"
+                handleDateChange={handleDateChange}
+                value="2023-10-01"
+            />
+        </div>
+    );
+};

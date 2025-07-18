@@ -51,18 +51,23 @@ const DateTimeField = ({
     label,
     dateTimeValue,
     handleDateTimeChange,
-    disabled,
+    disabled = false,
+    readOnly = false,
     id = "default_dateTime-input",
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 label={label}
-                value={dateTimeValue ? dayjs.utc(dateTimeValue).format("MM/DD/YYYY hh:mm A") : "-"}
+                value={
+                    dateTimeValue
+                        ? dayjs.utc(dateTimeValue).format("MM/DD/YYYY hh:mm A")
+                        : "-"
+                }
                 id={id}
                 size="small"
             />
-        )
+        );
     }
     return (
         <FormControl>
@@ -95,6 +100,7 @@ DateTimeField.propTypes = {
     handleDateTimeChange: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
 };
 
 export default DateTimeField;

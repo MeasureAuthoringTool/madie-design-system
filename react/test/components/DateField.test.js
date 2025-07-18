@@ -44,7 +44,7 @@ describe("DateField", () => {
         });
     });
 
-    it("renders ReadOnlyTextField when disabled is true", () => {
+    it("renders disabled DateField when disabled is true", () => {
         const mockProps = {
             id: "test_id",
             label: "Test Label",
@@ -54,20 +54,38 @@ describe("DateField", () => {
 
         render(<DateField {...mockProps} />);
 
-        const readOnlyField = screen.getByText("Test Label");
-        expect(readOnlyField).toBeInTheDocument();
-        const dateField = screen.getByRole("textbox");
-        expect(dateField).toHaveTextContent("10/01/2023");
-        expect(dateField).toHaveAttribute("readOnly");
+        const label = screen.getByText("Test Label");
+        expect(label).toBeInTheDocument();
+
+        const disabledField = screen.getByRole("textbox");
+        expect(disabledField).toHaveValue("10/01/2023");
+        expect(disabledField).toBeDisabled();
     });
 
-    it("renders placeholder '-' when value is null and disabled is true", () => {
+    it("renders ReadOnlyTextField when readOnly is true", () => {
+        const mockProps = {
+            id: "test_id",
+            label: "Test Label",
+            value: dayjs.utc("2023-10-01"),
+            readOnly: true,
+        };
+
+        render(<DateField {...mockProps} />);
+
+        const label = screen.getByText("Test Label");
+        expect(label).toBeInTheDocument();
+        const readOnlyField = screen.getByRole("textbox");
+        expect(readOnlyField).toHaveTextContent("10/01/2023");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
+    });
+
+    it("renders placeholder '-' when value is null and readOnly is true", () => {
         const mockProps = {
             id: "test_id",
             label: "Test Label",
             value: null,
             required: false,
-            disabled: true,
+            readOnly: true,
         };
 
         const { getByLabelText } = render(<DateField {...mockProps} />);

@@ -15,14 +15,17 @@ const RadioButton = ({
     dataTestId,
     options = [],
     disabled = false,
+    readOnly = false,
     label,
     required = false,
     error = false,
     helperText,
     ...rest
 }) => {
-    if (disabled) {
-        const option = options?.find(option => String(option.value) === String(rest.value));
+    if (readOnly) {
+        const option = options?.find(
+            (option) => String(option.value) === String(rest.value)
+        );
         return (
             <ReadOnlyTextField
                 required={required}
@@ -32,7 +35,7 @@ const RadioButton = ({
                 {...rest}
                 value={option?.label}
             />
-        )
+        );
     }
     return (
         <FormControl error={error} fullWidth>
@@ -124,6 +127,7 @@ RadioButton.propTypes = {
     dataTestId: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,
     helperText: PropTypes.string,

@@ -48,7 +48,8 @@ const DateField = ({
     label,
     value,
     handleDateChange,
-    disabled,
+    disabled = false,
+    readOnly = false,
     error,
     helperText,
     required = false,
@@ -56,7 +57,7 @@ const DateField = ({
     textFieldSx = {},
     ...rest
 }) => {
-    if (disabled) {
+    if (readOnly) {
         return (
             <ReadOnlyTextField
                 required={required}
@@ -66,7 +67,7 @@ const DateField = ({
                 {...rest}
                 value={value ? dayjs.utc(value).format("MM/DD/YYYY") : "-"}
             />
-        )
+        );
     }
 
     if (containerSx === undefined || containerSx === null) {
@@ -117,6 +118,7 @@ DateField.propTypes = {
     value: PropTypes.object,
     handleDateChange: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     id: PropTypes.string,
     error: PropTypes.bool,
     helperText: PropTypes.string,

@@ -2,7 +2,7 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { describe, expect } from "@jest/globals";
 import AutoComplete from "../../components/AutoComplete/AutoComplete";
-import {render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("AutoComplete Component", () => {
@@ -29,7 +29,12 @@ describe("AutoComplete Component", () => {
         expect(option).toBeInTheDocument();
 
         await userEvent.click(option);
-        expect(mockOnChange).toHaveBeenCalledWith("autocomplete", "Option1", expect.any(String), expect.any(Object));
+        expect(mockOnChange).toHaveBeenCalledWith(
+            "autocomplete",
+            "Option1",
+            expect.any(String),
+            expect.any(Object)
+        );
     });
 
     it("renders AutoComplete in disabled mode", async () => {
@@ -43,9 +48,25 @@ describe("AutoComplete Component", () => {
             />
         );
 
+        const disabledInput = screen.getByRole("combobox");
+        expect(disabledInput).toHaveValue("Option1");
+        expect(disabledInput).toBeDisabled();
+    });
+
+    it("renders AutoComplete in read only mode", async () => {
+        render(
+            <AutoComplete
+                id="autocomplete-disabled"
+                dataTestId="autocomplete-disabled"
+                label="Auto Complete"
+                readOnly
+                value="Option1"
+            />
+        );
+
         const readOnlyField = screen.getByRole("textbox");
-        expect(readOnlyField).toHaveTextContent("Option1");
-        expect(readOnlyField).toHaveAttribute("readOnly");
+        expect(readOnlyField).toHaveValue("Option1");
+        expect(readOnlyField).toHaveProperty("readOnly", true);
     });
 
     it("renders AutoComplete with helper text", () => {

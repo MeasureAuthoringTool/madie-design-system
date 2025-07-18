@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RichTextEditor from "../../components/RichTextEditor/index";
 
 describe("RichTextEditor Component", () => {
@@ -20,7 +20,9 @@ describe("RichTextEditor Component", () => {
         expect(screen.getByText("Test Label")).toBeInTheDocument();
 
         // Check if the editor content is rendered
-        expect(screen.getByTestId("test-label-rich-text-editor")).toBeInTheDocument();
+        expect(
+            screen.getByTestId("test-label-rich-text-editor")
+        ).toBeInTheDocument();
     });
 
     it("calls onChange when content is updated", async () => {
@@ -36,7 +38,9 @@ describe("RichTextEditor Component", () => {
 
         // Simulate content change
         const editorContent = screen.getByRole("textbox");
-        fireEvent.input(editorContent, {target: {innerHTML: "Updated Content"}});
+        fireEvent.input(editorContent, {
+            target: { innerHTML: "Updated Content" },
+        });
 
         // Check if onChange is called
         await waitFor(() => {
@@ -44,19 +48,44 @@ describe("RichTextEditor Component", () => {
         });
     });
 
-    it("renders sanitized content when canEdit is false", () => {
+    it("renders sanitized content within editor when disabled is true", () => {
         render(
             <RichTextEditor
                 id="test-editor"
                 label="Test Label"
                 content="<script>alert('XSS')</script><p>Safe Content</p>"
                 onChange={mockOnChange}
-                disabled={true}
+                disabled
             />
         );
 
         // Check if sanitized content is rendered
         expect(screen.getByText("Safe Content")).toBeInTheDocument();
         expect(screen.queryByText("alert('XSS')")).not.toBeInTheDocument();
+
+        const editorContent = screen.getByRole("textbox");
+        expect(editorContent).toBeInTheDocument();
+        expect(editorContent).toHaveAttribute("contenteditable", "false");
+        expect(editorContent).toHaveTextContent("Safe Content");
+    });
+
+    it("renders read only, sanitized content when readOnly is true", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Label"
+                content="<script>alert('XSS')</script><p>Safe Content</p>"
+                onChange={mockOnChange}
+                readOnly
+            />
+        );
+
+        // Check if sanitized content is rendered
+        expect(screen.getByText("Safe Content")).toBeInTheDocument();
+        expect(screen.queryByText("alert('XSS')")).not.toBeInTheDocument();
+
+        const editorContent = screen.getByTestId("test-editor-value");
+        expect(editorContent).toBeInTheDocument();
+        expect(editorContent).toHaveTextContent("Safe Content");
     });
 });
