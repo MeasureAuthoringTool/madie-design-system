@@ -258,6 +258,7 @@ const RichTextEditor = ({
             </InputLabel>
             {readOnly ? (
                 <p
+                    className="rich-text-editor_read_only"
                     data-testid={`${id}-value`}
                     aria-labelledby={label}
                     dangerouslySetInnerHTML={{
