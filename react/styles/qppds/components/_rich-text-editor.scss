@@ -20,8 +20,12 @@
 		border-top: 0;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
-		padding-left: 4px;
-		padding-right: 4px;
+		padding-left: 0.2px;
+		padding-right: 0.2px;
+
+		&.has-error {
+			border: 1px solid #ae1c1c;
+		}
 
 		:first-child {
 			margin-top: 0;
@@ -187,6 +191,10 @@
 				}
 			}
 		}
+	}
+
+	.rich-text-editor_read_only {
+		white-space: pre-wrap;
 	}
 
 	table {

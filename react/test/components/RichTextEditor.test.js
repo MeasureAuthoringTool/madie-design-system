@@ -35,8 +35,10 @@ describe("RichTextEditor Component", () => {
         );
 
         // Simulate content change
-        const editorContent = screen.getByRole("textbox");
+        const editorContent = screen.getByText("Initial Content");
         fireEvent.input(editorContent, {target: {innerHTML: "Updated Content"}});
+
+        screen.logTestingPlaygroundURL();
 
         // Check if onChange is called
         await waitFor(() => {
@@ -58,5 +60,28 @@ describe("RichTextEditor Component", () => {
         // Check if sanitized content is rendered
         expect(screen.getByText("Safe Content")).toBeInTheDocument();
         expect(screen.queryByText("alert('XSS')")).not.toBeInTheDocument();
+    });
+
+    it("test renders sanitized content when canEdit is false", () => {
+        const content = `this is a statement
+     this is a statement    
+           this is a statement
+
+        this is a statement`;
+
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Label"
+                content={content}
+                onChange={mockOnChange}
+                disabled={true}
+            />
+        );
+
+        const readOnlyContent = screen.getByTestId("test-editor-value");
+        expect(readOnlyContent.textContent).toBe(content);
+
+        //expect(readOnlyContent).toHaveTextContent("this is a statement this is a statement this is a statement this is a statement");
     });
 });
