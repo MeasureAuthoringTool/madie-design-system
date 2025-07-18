@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RichTextEditor from "../../components/RichTextEditor/index";
+import DOMPurify from "dompurify";
 
 describe("RichTextEditor Component", () => {
     const mockOnChange = jest.fn();
@@ -87,5 +88,29 @@ describe("RichTextEditor Component", () => {
         const editorContent = screen.getByTestId("test-editor-value");
         expect(editorContent).toBeInTheDocument();
         expect(editorContent).toHaveTextContent("Safe Content");
+    });
+
+    it("test renders sanitized content with preserved whitespace when readOnly is true", () => {
+        const content = `this is a statement
+                            this is a statement    
+                                this is a statement
+
+                            --------------------- 
+                            this is a statement`;
+
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Label"
+                content={content}
+                onChange={mockOnChange}
+                readOnly
+            />
+        );
+
+        const readOnlyContent = screen.getByTestId("test-editor-value");
+
+        // Ensure the innerHTML matches the sanitized version of the content
+        expect(readOnlyContent.innerHTML).toBe(DOMPurify.sanitize(content));
     });
 });
