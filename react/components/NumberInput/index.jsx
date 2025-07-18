@@ -70,6 +70,7 @@ NumberInput.propTypes = {
     helperText: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     label: PropTypes.string,
     tooltipText: PropTypes.string,
     inputProps: PropTypes.object,

@@ -2,7 +2,6 @@ import React from "react";
 import { FormControl, TextareaAutosize } from "@mui/material";
 import InputLabel from "../InputLabel";
 import PropTypes from "prop-types";
-import _ from "lodash";
 
 const ReadOnlyTextField = ({
     id,
