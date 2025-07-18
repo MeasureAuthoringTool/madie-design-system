@@ -11,7 +11,7 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { IconButton } from "@mui/material";
+import { FormHelperText, IconButton } from "@mui/material";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
@@ -28,7 +28,12 @@ const MenuBar = ({ editor, disabled }) => {
         return null;
     }
     return (
-        <div className="control-group" data-testid="rich-text-editor-toolbar">
+        <div
+            className="control-group"
+            role="toolbar"
+            aria-label="Text formatting toolbar"
+            data-testid="rich-text-editor-toolbar"
+        >
             <div className="button-group">
                 <Tooltip
                     data-testid="bold-tooltip"
@@ -42,8 +47,11 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleBold().run()
                         }
+                        aria-label="Bold"
+                        aria-pressed={editor.isActive("bold")}
                         className={editor.isActive("bold") ? "is-active" : ""}
                         disabled={disabled}
+                        type="button"
                     >
                         <FormatBoldIcon />
                     </IconButton>
@@ -60,8 +68,11 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleItalic().run()
                         }
+                        aria-label="Italic"
+                        aria-pressed={editor.isActive("italic")}
                         className={editor.isActive("italic") ? "is-active" : ""}
                         disabled={disabled}
+                        type="button"
                     >
                         <FormatItalicIcon />
                     </IconButton>
@@ -78,10 +89,13 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleUnderline().run()
                         }
+                        aria-label="Underline"
+                        aria-pressed={editor.isActive("underline")}
                         className={
                             editor.isActive("underline") ? "is-active" : ""
                         }
                         disabled={disabled}
+                        type="button"
                     >
                         <FormatUnderlinedIcon />
                     </IconButton>
@@ -98,9 +112,12 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleStrike().run()
                         }
+                        aria-label="Strikethrough"
+                        aria-pressed={editor.isActive("strike")}
                         className={editor.isActive("strike") ? "is-active" : ""}
                         style={{ borderRight: "solid 1px #9c9c9c" }}
                         disabled={disabled}
+                        type="button"
                     >
                         <StrikethroughSIcon />
                     </IconButton>
@@ -117,10 +134,13 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleOrderedList().run()
                         }
+                        aria-label="Ordered List"
+                        aria-pressed={editor.isActive("orderedList")}
                         className={
                             editor.isActive("orderedList") ? "is-active" : ""
                         }
                         disabled={disabled}
+                        type="button"
                     >
                         <FormatListNumberedIcon />
                     </IconButton>
@@ -137,11 +157,14 @@ const MenuBar = ({ editor, disabled }) => {
                         onClick={() =>
                             editor.chain().focus().toggleBulletList().run()
                         }
+                        aria-label="Bulleted List"
+                        aria-pressed={editor.isActive("bulletList")}
                         className={
                             editor.isActive("bulletList") ? "is-active" : ""
                         }
                         style={{ borderRight: "solid 1px #9c9c9c" }}
                         disabled={disabled}
+                        type="button"
                     >
                         <FormatListBulletedIcon />
                     </IconButton>
@@ -162,10 +185,12 @@ const MenuBar = ({ editor, disabled }) => {
                                 withHeaderRow: true,
                             })
                         }
+                        aria-label="Insert Table"
                         className={
                             editor.isActive("insertTable") ? "is-active" : ""
                         }
                         disabled={disabled}
+                        type="button"
                     >
                         <TableChartIcon />
                     </IconButton>
@@ -176,11 +201,14 @@ const MenuBar = ({ editor, disabled }) => {
 };
 
 const RichTextEditor = ({
+    name,
     id,
     error = false,
+    helperText,
     required = false,
     label,
     onChange,
+    onBlur,
     content,
     disabled = false,
     readOnly = false,
@@ -211,12 +239,28 @@ const RichTextEditor = ({
         },
         [content, disabled]
     );
+
+    React.useEffect(() => {
+        if (!editor || !onBlur || !name) return;
+
+        const handleBlur = () => {
+            onBlur({ target: { name } });
+        };
+
+        editor.on("blur", handleBlur);
+
+        return () => {
+            editor.off("blur", handleBlur);
+        };
+    }, [editor, onBlur, name]);
+
     return (
         <div
             className="rich-text-editor"
             data-testid={`${kebabCase(label)}-rich-text-editor`}
         >
             <InputLabel
+                id={`${id}-label`}
                 shrink
                 required={required}
                 error={error}
@@ -256,10 +300,32 @@ const RichTextEditor = ({
             >
                 {label}
             </InputLabel>
+
+            {helperText && (
+                <FormHelperText
+                    tabIndex={0}
+                    aria-live="polite"
+                    id={`${id}-helper-text`}
+                    data-testid={`${id}-helper-text`}
+                    sx={[
+                        {
+                            margin: "4px 0px 0px 0px",
+                            color: "#515151",
+                            lineHeight: 1,
+                        },
+                        error && {
+                            color: "#AE1C1C !important",
+                        },
+                    ]}
+                >
+                    {helperText}
+                </FormHelperText>
+            )}
+
             {readOnly ? (
                 <p
                     data-testid={`${id}-value`}
-                    aria-labelledby={label}
+                    aria-labelledby={`${id}-label`}
                     dangerouslySetInnerHTML={{
                         __html: content ? DOMPurify.sanitize(content) : "-",
                     }}
@@ -267,7 +333,20 @@ const RichTextEditor = ({
             ) : (
                 <>
                     <MenuBar editor={editor} disabled={disabled} />
-                    <EditorContent editor={editor} />
+                    <EditorContent
+                        id={id}
+                        tabIndex={0}
+                        data-testid="rich-text-editor-content"
+                        editor={editor}
+                        aria-labelledby={`${id}-label`}
+                        aria-describedby={
+                            helperText ? `${id}-helper-text` : undefined
+                        }
+                        aria-multiline="true"
+                        aria-required={required || undefined}
+                        aria-invalid={error || undefined}
+                        className={`ProseMirror ${error ? "has-error" : ""}`}
+                    />
                 </>
             )}
         </div>
@@ -276,10 +355,13 @@ const RichTextEditor = ({
 
 RichTextEditor.propTypes = {
     id: PropTypes.string,
+    name: PropTypes.string,
     error: PropTypes.bool,
+    helperText: PropTypes.string,
     required: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
     content: PropTypes.any,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
