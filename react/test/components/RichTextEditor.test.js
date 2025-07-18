@@ -113,4 +113,21 @@ describe("RichTextEditor Component", () => {
         // Ensure the innerHTML matches the sanitized version of the content
         expect(readOnlyContent.innerHTML).toBe(DOMPurify.sanitize(content));
     });
+
+    it("displays helper text when error is true", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Label"
+                content={null}
+                helperText="This field is required."
+                required={true}
+                error={true}
+                onChange={mockOnChange}
+            />
+        );
+
+        const helperTextElement = screen.getByTestId("test-editor-helper-text");
+        expect(helperTextElement).toHaveTextContent("This field is required.");
+    });
 });
