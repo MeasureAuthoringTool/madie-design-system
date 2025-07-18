@@ -324,6 +324,7 @@ const RichTextEditor = ({
 
             {readOnly ? (
                 <p
+                    className="rich-text-editor_read_only"
                     data-testid={`${id}-value`}
                     aria-labelledby={`${id}-label`}
                     dangerouslySetInnerHTML={{

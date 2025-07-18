@@ -192,6 +192,11 @@
 			}
 		}
 	}
+
+	.rich-text-editor_read_only {
+		white-space: pre-wrap;
+	}
+	
 	/* Table-specific styling */
 	  table {
 		border-collapse: collapse;
