@@ -8,6 +8,7 @@ export default function NumberInput({
     helperText = undefined,
     required = false,
     disabled = false,
+    readOnly = false,
     label,
     tooltipText,
     inputProps,
@@ -42,6 +43,7 @@ export default function NumberInput({
             helperText={helperText}
             required={required}
             disabled={disabled}
+            readOnly={readOnly}
             label={label}
             tooltipText={tooltipText}
             inputProps={newInputProps}
