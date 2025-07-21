@@ -63,4 +63,24 @@ export const DisabledTextEditor = () => {
         />
     );
 };
+
+export const TextEditorWithError = () => {
+    const [value, setValue] = useState(
+        "<p>There is an error</p>"
+    );
+
+    const handleChange = (selectedVal) => {
+        setValue(selectedVal);
+    };
+    return (
+        <RichTextEditor
+            label="Test Text Editor"
+            error={true}
+            helperText="This field is required"
+            required={true}
+            onChange={handleChange}
+            content={value}
+        />
+    );
+};
 TextEditor.storyName = "Rich Text Editor";
