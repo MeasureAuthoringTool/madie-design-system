@@ -22,6 +22,7 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
+import { Strike } from "@tiptap/extension-strike";
 
 const MenuBar = ({ editor, disabled }) => {
     if (!editor) {
@@ -228,6 +229,12 @@ const RichTextEditor = ({
                 TableHeader,
                 TableCell,
                 Underline,
+                Strike.extend({
+                    strike: false, // disable default strike through
+                    renderHTML({ HTMLAttributes }) {
+                        return ["del", HTMLAttributes, 0];
+                    },
+                }),
             ],
             shouldRerenderOnTransaction: false,
             content,

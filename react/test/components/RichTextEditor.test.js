@@ -92,10 +92,10 @@ describe("RichTextEditor Component", () => {
 
     it("test renders sanitized content with preserved whitespace when readOnly is true", () => {
         const content = `this is a statement
-                            this is a statement    
+                            this is a statement
                                 this is a statement
 
-                            --------------------- 
+                            ---------------------
                             this is a statement`;
 
         render(
