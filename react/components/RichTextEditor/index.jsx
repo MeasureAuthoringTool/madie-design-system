@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
-import InputLabel from "../InputLabel";
+import InputLabel from "./label.jsx";
 
 import Gapcursor from "@tiptap/extension-gapcursor";
 import Table from "@tiptap/extension-table";
@@ -18,11 +18,13 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import TableChartIcon from "@mui/icons-material/TableChart";
 import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
+import { Strike } from "@tiptap/extension-strike";
 import {
   DeleteTableIcon,
   AddRowBelowIcon,
@@ -369,6 +371,9 @@ const RichTextEditor = ({
     readOnly = false,
 }) => {
   const editor = useEditor({
+    parseOptions: {
+          preserveWhitespace: 'full',
+  },
     extensions: [
       StarterKit,
       Gapcursor,
@@ -394,17 +399,12 @@ const RichTextEditor = ({
     onUpdate: ({ editor }) => {
       const newValue = editor.getHTML();
       onChange(newValue);
-    },
+    },  
   });
 
   React.useEffect(() => {
     if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content);
-    }
-  }, [content, editor]);
-  React.useEffect(() => {
-    if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content);
+      editor.commands.setContent(content, false, {preserveWhitespace: "full"});
     }
   }, [content, editor]);
 
@@ -475,6 +475,7 @@ const RichTextEditor = ({
                     {helperText}
                 </FormHelperText>
             )}
+            
 
             {readOnly ? (
                 <p
