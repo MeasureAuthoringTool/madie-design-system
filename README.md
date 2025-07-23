@@ -2,7 +2,7 @@
 
 Shared style guide across the QPP program.
 
-This repository houses `@madie/madie-design-system`, a shared style guide/library for the QPP program. `@madie/madie-design-system` was built on top of bootstrap.
+This repository houses `@madie/madie-design-system, a shared style guide/library for the QPP program. `@madie/madie-design-system` was built on top of bootstrap.
 
 The purpose of `madie/madie-design-system` is to provide assets such as CSS, SCSS, JS, images and fonts to design a site with the visual style of `madie`. This allows multiple sites built in separate repositories and with different languages to share a global style without repeating styling code. The qpp-style library is primarily distributed on the node/npm ecosystem.
 
