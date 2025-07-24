@@ -12,6 +12,7 @@ import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { IconButton, FormHelperText } from "@mui/material";
+import TableChartIcon from "@mui/icons-material/TableChart";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
@@ -23,6 +24,7 @@ import RedoIcon from "@mui/icons-material/Redo";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
+import { Strike } from "@tiptap/extension-strike";
 import {
   DeleteTableIcon,
   AddRowBelowIcon,
