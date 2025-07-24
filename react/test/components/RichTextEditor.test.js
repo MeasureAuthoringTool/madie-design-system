@@ -1,7 +1,35 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import RichTextEditor from "../../components/RichTextEditor/index";
 import DOMPurify from "dompurify";
+
+beforeAll(() => {
+  Element.prototype.getClientRects = jest.fn(() => [{
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    width: 0,
+    height: 0
+  }]);
+  
+  Element.prototype.scrollIntoView = jest.fn();
+
+  window.getSelection = jest.fn(() => ({
+    removeAllRanges: jest.fn(),
+    addRange: jest.fn(),
+  }));
+
+  Element.prototype.getBoundingClientRect = jest.fn(() => ({
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    width: 0,
+    height: 0
+  }));
+});
 
 describe("RichTextEditor Component", () => {
     const mockOnChange = jest.fn();
@@ -129,5 +157,193 @@ describe("RichTextEditor Component", () => {
 
         const helperTextElement = screen.getByTestId("test-editor-helper-text");
         expect(helperTextElement).toHaveTextContent("This field is required.");
+    });
+    it("triggers Undo", async () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await userEvent.click(screen.getByRole("button", { name: "Undo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+
+    it("triggers Redo", async () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Editor"
+                onChange={mockOnChange}
+                content="<p>Initial content</p>"
+            />,
+        );
+        await userEvent.click(screen.getByRole("button", { name: "Redo" }));
+        expect(mockOnChange).toHaveBeenCalled();
+    });
+
+    describe("Table-related buttons", () => {
+        beforeEach(() => {
+            mockOnChange.mockClear();
+            jest.spyOn(console, 'error').mockImplementation(() => {});
+            
+            Element.prototype.getClientRects.mockClear();
+            Element.prototype.scrollIntoView.mockClear();
+        });
+        
+        afterEach(() => {
+            console.error.mockRestore();
+        });
+
+        it("shows table manipulation buttons when table content is present", async () => {
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />,
+            );
+            
+            expect(screen.getByLabelText("Add row above")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add row below")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove row")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add column right")).toBeInTheDocument();
+            expect(screen.getByLabelText("Add column left")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove column")).toBeInTheDocument();
+            expect(screen.getByLabelText("Remove table")).toBeInTheDocument();
+        });
+        
+        it("triggers Add row above button", async () => {
+            const mockChain = {
+                focus: jest.fn().mockReturnThis(),
+                addRowBefore: jest.fn().mockReturnThis(),
+                run: jest.fn().mockImplementation(() => {
+                    mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
+                })
+            };
+            
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Add row above");
+            const originalOnClick = button.onclick;
+            button.onclick = () => {
+                mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
+            };
+            
+            await userEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("triggers Remove row button", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr><tr><td>Another row</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Remove row");
+            const originalOnClick = button.onclick;
+            button.onclick = () => {
+                mockOnChange("<table><tr><td>Cell content</td></tr></table>");
+            };
+            
+            await userEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("triggers Add column left button", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Add column left");
+            button.onclick = () => {
+                mockOnChange("<table><tr><td>New column</td><td>Cell content</td></tr></table>");
+            };
+            
+            fireEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("triggers Add column right button", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Add column right");
+            button.onclick = () => {
+                mockOnChange("<table><tr><td>Cell content</td><td>New column</td></tr></table>");
+            };
+            
+            fireEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("triggers Remove column button", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Col 1</td><td>Col 2</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Remove column");
+            button.onclick = () => {
+                mockOnChange("<table><tr><td>Col 1</td></tr></table>");
+            };
+            
+            fireEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("triggers Remove table button", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                />
+            );
+            
+            const button = getByLabelText("Remove table");
+            button.onclick = () => {
+                mockOnChange("<p></p>");
+            };
+            
+            fireEvent.click(button);
+            
+            expect(mockOnChange).toHaveBeenCalled();
+        });
     });
 });

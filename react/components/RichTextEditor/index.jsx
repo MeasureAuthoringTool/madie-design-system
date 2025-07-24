@@ -11,18 +11,34 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { FormHelperText, IconButton } from "@mui/material";
+import { IconButton, FormHelperText } from "@mui/material";
+import TableChartIcon from "@mui/icons-material/TableChart";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import TableChartIcon from "@mui/icons-material/TableChart";
+import UndoIcon from "@mui/icons-material/Undo";
+import RedoIcon from "@mui/icons-material/Redo";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
 import { Strike } from "@tiptap/extension-strike";
+import {
+  DeleteTableIcon,
+  AddRowBelowIcon,
+  AddRowAboveIcon,
+  DeleteRowIcon,
+  AddColumnLeftIcon,
+  AddColumnRightIcon,
+  DeleteColumnIcon,
+} from "./tableIcons/tabelIconsIndex.js";
+
+const iconStyle = {
+  fontSize: "18px",
+  display: "block",
+};
 
 const MenuBar = ({ editor, disabled }) => {
     if (!editor) {
@@ -36,6 +52,39 @@ const MenuBar = ({ editor, disabled }) => {
             data-testid="rich-text-editor-toolbar"
         >
             <div className="button-group">
+                <Tooltip
+                    data-testid="undo-tooltip"
+                    title="Undo"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
+                >
+                    <IconButton
+                        key={"undo"}
+                        onClick={() =>
+                            editor.chain().focus().undo().run()
+                        }
+                    >
+                        <UndoIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip
+                    data-testid="redo-tooltip"
+                    title="Redo"
+                    placement="top"
+                    enterDelay={1000}
+                    arrow
+                >
+                    <IconButton
+                        key={"redo"}
+                        onClick={() =>
+                            editor.chain().focus().redo().run()
+                        }
+                        style={{ borderRight: "solid 1px #9c9c9c" }}
+                    >
+                        <RedoIcon />
+                    </IconButton>
+                </Tooltip>
                 <Tooltip
                     data-testid="bold-tooltip"
                     title="Bold"
@@ -193,12 +242,119 @@ const MenuBar = ({ editor, disabled }) => {
                         disabled={disabled}
                         type="button"
                     >
+                        
                         <TableChartIcon />
                     </IconButton>
                 </Tooltip>
-            </div>
-        </div>
-    );
+                     {editor.isActive("table") && (
+          <>
+            <Tooltip
+              data-testid="add-row-above-tooltip"
+              title="Add row above"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="addRowAbove"
+                onClick={() => editor.chain().focus().addRowBefore().run()}
+              >
+                <AddRowAboveIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip
+              data-testid="add-row-below-tooltip"
+              title="Add row below"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="addRowBelow"
+                onClick={() => editor.chain().focus().addRowAfter().run()}
+              >
+                <AddRowBelowIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip
+              data-testid="remove-row-tooltip"
+              title="Remove row"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="deleteRow"
+                onClick={() => editor.chain().focus().deleteRow().run()}
+              >
+                <DeleteRowIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip
+              data-testid="add-column-right-tooltip"
+              title="Add column right"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="addColumnRight"
+                onClick={() => editor.chain().focus().addColumnAfter().run()}
+              >
+                <AddColumnRightIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip
+              data-testid="add-column-left-tooltip"
+              title="Add column left"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="addColumnLeft"
+                onClick={() => editor.chain().focus().addColumnBefore().run()}
+              >
+                <AddColumnLeftIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip
+              data-testid="remove-column-tooltip"
+              title="Remove column"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="deleteColumn"
+                onClick={() => editor.chain().focus().deleteColumn().run()}
+              >
+                <DeleteColumnIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip
+              data-testid="remove-table-tooltip"
+              title="Remove table"
+              placement="top"
+              enterDelay={1000}
+              arrow
+            >
+              <IconButton
+                key="deleteTable"
+                onClick={() => editor.chain().focus().deleteTable().run()}
+                style={{ borderRight: "solid 1px #9c9c9c" }}
+              >
+                <DeleteTableIcon style={iconStyle} />
+              </IconButton>
+            </Tooltip>
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 const RichTextEditor = ({
@@ -214,40 +370,49 @@ const RichTextEditor = ({
     disabled = false,
     readOnly = false,
 }) => {
-    const editor = useEditor(
-        {
-            extensions: [
-                StarterKit,
-                Gapcursor,
-                Table.configure({
-                    resizable: true,
-                    HTMLAttributes: {
-                        class: "rich-text-table",
-                    },
-                }),
-                TableRow,
-                TableHeader,
-                TableCell,
-                Underline,
-                Strike.extend({
-                    strike: false, // disable default strike through
-                    renderHTML({ HTMLAttributes }) {
-                        return ["del", HTMLAttributes, 0];
-                    },
-                }),
-            ],
-            shouldRerenderOnTransaction: false,
-            content,
-            onUpdate: ({ editor }) => {
-                const newValue = editor.getHTML();
-                onChange(newValue);
-            },
-            editable: !disabled,
+  const editor = useEditor({
+    parseOptions: {
+      preserveWhitespace: 'full',
+    },
+    extensions: [
+      StarterKit,
+      Gapcursor,
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: "rich-text-table",
         },
-        [content, disabled]
-    );
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
+      Underline,
+      Strike.extend({
+        strike: false, // disable default strike through
+        renderHTML({ HTMLAttributes }) {
+          return ["del", HTMLAttributes, 0];
+        },
+      }),
+    ],
+    shouldRerenderOnTransaction: false,
+    content,
+    editable: !disabled,
+    onUpdate: ({ editor }) => {
+      const newValue = editor.getHTML();
+      onChange(newValue);
+    },  
+  });
 
-    React.useEffect(() => {
+  React.useEffect(() => {
+    if (editor && content !== editor.getHTML()) {
+      editor.commands.setContent(content, false, {preserveWhitespace: "full"});
+    }
+    if (editor) {
+      editor.setEditable(!disabled);
+    }
+  }, [content, editor, disabled]);
+
+  React.useEffect(() => {
         if (!editor || !onBlur || !name) return;
 
         const handleBlur = () => {
@@ -328,6 +493,7 @@ const RichTextEditor = ({
                     {helperText}
                 </FormHelperText>
             )}
+            
 
             {readOnly ? (
                 <p
@@ -362,21 +528,21 @@ const RichTextEditor = ({
 };
 
 RichTextEditor.propTypes = {
-    id: PropTypes.string,
+  id: PropTypes.string,
     name: PropTypes.string,
-    error: PropTypes.bool,
+  error: PropTypes.bool,
     helperText: PropTypes.string,
-    required: PropTypes.bool,
-    label: PropTypes.string,
-    onChange: PropTypes.func,
+  required: PropTypes.bool,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
     onBlur: PropTypes.func,
-    content: PropTypes.any,
-    disabled: PropTypes.bool,
+  content: PropTypes.any,
+  disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
 };
 
 MenuBar.propTypes = {
-    editor: PropTypes.any,
+  editor: PropTypes.any,
     disabled: PropTypes.bool,
 };
 
