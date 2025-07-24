@@ -412,6 +412,20 @@ const RichTextEditor = ({
     }
   }, [content, editor, disabled]);
 
+  React.useEffect(() => {
+        if (!editor || !onBlur || !name) return;
+
+        const handleBlur = () => {
+            onBlur({ target: { name } });
+        };
+
+        editor.on("blur", handleBlur);
+
+        return () => {
+            editor.off("blur", handleBlur);
+        };
+    }, [editor, onBlur, name]);
+
     return (
         <div
             className="rich-text-editor"
