@@ -4,6 +4,18 @@ import userEvent from "@testing-library/user-event";
 import RichTextEditor from "../../components/RichTextEditor/index";
 import DOMPurify from "dompurify";
 
+// Mock scrollIntoView which ProseMirror/TipTap tries to use
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
+// Mock getClientRects which is used in the scrolling functionality
+window.HTMLElement.prototype.getClientRects = jest.fn(() => [{
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  width: 0,
+  height: 0
+}]);
+
 describe("RichTextEditor Component", () => {
     const mockOnChange = jest.fn();
 
@@ -161,6 +173,10 @@ describe("RichTextEditor Component", () => {
         beforeEach(() => {
             mockOnChange.mockClear();
             jest.spyOn(console, 'error').mockImplementation(() => {});
+            
+            // Reset mocks for each test
+            window.HTMLElement.prototype.scrollIntoView.mockClear();
+            window.HTMLElement.prototype.getClientRects.mockClear();
         });
         
         afterEach(() => {
