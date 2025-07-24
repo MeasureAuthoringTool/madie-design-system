@@ -132,7 +132,6 @@ describe("RichTextEditor Component", () => {
         expect(helperTextElement).toHaveTextContent("This field is required.");
     });
     it("triggers Undo", async () => {
-        const user = userEvent.setup();
         render(
             <RichTextEditor
                 id="test-editor"
@@ -141,12 +140,11 @@ describe("RichTextEditor Component", () => {
                 content="<p>Initial content</p>"
             />,
         );
-        await user.click(screen.getByRole("button", { name: "Undo" }));
+        await userEvent.click(screen.getByRole("button", { name: "Undo" }));
         expect(mockOnChange).toHaveBeenCalled();
     });
 
     it("triggers Redo", async () => {
-        const user = userEvent.setup();
         render(
             <RichTextEditor
                 id="test-editor"
@@ -155,7 +153,7 @@ describe("RichTextEditor Component", () => {
                 content="<p>Initial content</p>"
             />,
         );
-        await user.click(screen.getByRole("button", { name: "Redo" }));
+        await userEvent.click(screen.getByRole("button", { name: "Redo" }));
         expect(mockOnChange).toHaveBeenCalled();
     });
 
@@ -189,7 +187,6 @@ describe("RichTextEditor Component", () => {
         });
         
         it("triggers Add row above button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -199,14 +196,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Add row above"));
+            await userEvent.click(screen.getByLabelText("Add row above"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Add row below button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -216,14 +212,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Add row below"));
+            await userEvent.click(screen.getByLabelText("Add row below"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Remove row button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -233,14 +228,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Remove row"));
+            await userEvent.click(screen.getByLabelText("Remove row"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Add column right button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -250,14 +244,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Add column right"));
+            await userEvent.click(screen.getByLabelText("Add column right"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Add column left button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -267,14 +260,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Add column left"));
+            await userEvent.click(screen.getByLabelText("Add column left"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Remove column button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -284,14 +276,13 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Remove column"));
+            await userEvent.click(screen.getByLabelText("Remove column"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
         });
         
         it("triggers Remove table button", async () => {
-            const user = userEvent.setup();
             render(
                 <RichTextEditor
                     id="test-editor"
@@ -301,7 +292,7 @@ describe("RichTextEditor Component", () => {
                 />,
             );
             
-            await user.click(screen.getByLabelText("Remove table"));
+            await userEvent.click(screen.getByLabelText("Remove table"));
             await waitFor(() => {
                 expect(mockOnChange).toHaveBeenCalled();
             });
