@@ -359,43 +359,44 @@ const MenuBar = ({ editor, disabled }) => {
 
 const RichTextEditor = ({
     name,
-  id,
-  error = false,
+    id,
+    error = false,
     helperText,
-  required = false,
-  label,
-  onChange,
+    required = false,
+    label,
+    onChange,
     onBlur,
-  content,
-  disabled = false,
+    content,
+    disabled = false,
     readOnly = false,
 }) => {
   const editor = useEditor({
     parseOptions: {
-          preserveWhitespace: 'full',
-  },
+      preserveWhitespace: 'full',
+    },
     extensions: [
       StarterKit,
       Gapcursor,
       Table.configure({
         resizable: true,
-                    HTMLAttributes: {
-                        class: "rich-text-table",
-                    },
+        HTMLAttributes: {
+          class: "rich-text-table",
+        },
       }),
       TableRow,
       TableHeader,
       TableCell,
       Underline,
-                Strike.extend({
-                    strike: false, // disable default strike through
-                    renderHTML({ HTMLAttributes }) {
-                        return ["del", HTMLAttributes, 0];
-                    },
-                }),
+      Strike.extend({
+        strike: false, // disable default strike through
+        renderHTML({ HTMLAttributes }) {
+          return ["del", HTMLAttributes, 0];
+        },
+      }),
     ],
     shouldRerenderOnTransaction: false,
     content,
+    editable: !disabled,
     onUpdate: ({ editor }) => {
       const newValue = editor.getHTML();
       onChange(newValue);
@@ -406,7 +407,10 @@ const RichTextEditor = ({
     if (editor && content !== editor.getHTML()) {
       editor.commands.setContent(content, false, {preserveWhitespace: "full"});
     }
-  }, [content, editor]);
+    if (editor) {
+      editor.setEditable(!disabled);
+    }
+  }, [content, editor, disabled]);
 
     return (
         <div
