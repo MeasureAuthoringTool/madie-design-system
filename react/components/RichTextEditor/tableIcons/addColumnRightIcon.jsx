@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SvgIcon } from "@mui/material";
 
 const AddColumnRightIcon = ({ className = "madie-icon", ...props }) => {
@@ -10,6 +11,10 @@ const AddColumnRightIcon = ({ className = "madie-icon", ...props }) => {
       />
     </SvgIcon>
   );
+};
+
+AddColumnRightIcon.propTypes = {
+  className: PropTypes.string,
 };
 
 export default AddColumnRightIcon;

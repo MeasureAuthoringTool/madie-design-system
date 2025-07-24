@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SvgIcon } from "@mui/material";
 
 const AddRowAboveIcon = ({ className = "madie-icon", ...props }) => {
@@ -10,6 +11,10 @@ const AddRowAboveIcon = ({ className = "madie-icon", ...props }) => {
       />
     </SvgIcon>
   );
+};
+
+AddRowAboveIcon.propTypes = {
+  className: PropTypes.string,
 };
 
 export default AddRowAboveIcon;

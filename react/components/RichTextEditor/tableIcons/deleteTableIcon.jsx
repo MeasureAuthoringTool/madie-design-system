@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SvgIcon } from "@mui/material";
 
 const DeleteTableIcon = ({ className = "madie-icon", ...props }) => {
@@ -14,6 +15,10 @@ const DeleteTableIcon = ({ className = "madie-icon", ...props }) => {
       />
     </SvgIcon>
   );
+};
+
+DeleteTableIcon.propTypes = {
+  className: PropTypes.string,
 };
 
 export default DeleteTableIcon;

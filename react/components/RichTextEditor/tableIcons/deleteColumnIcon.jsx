@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SvgIcon } from "@mui/material";
 
 const DeleteColumnIcon = ({ className = "madie-icon", ...props }) => {
@@ -10,6 +11,10 @@ const DeleteColumnIcon = ({ className = "madie-icon", ...props }) => {
       />
     </SvgIcon>
   );
+};
+
+DeleteColumnIcon.propTypes = {
+  className: PropTypes.string,
 };
 
 export default DeleteColumnIcon;

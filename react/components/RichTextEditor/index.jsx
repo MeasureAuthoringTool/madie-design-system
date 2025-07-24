@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
-import InputLabel from "./label.jsx";
+import InputLabel from "../InputLabel";
 
 import Gapcursor from "@tiptap/extension-gapcursor";
 import Table from "@tiptap/extension-table";
@@ -11,20 +11,18 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { IconButton, SvgIcon } from "@mui/material";
+import { IconButton, FormHelperText } from "@mui/material";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import TableChartIcon from "@mui/icons-material/TableChart";
 import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 import { Tooltip } from "@mui/material";
 import { kebabCase } from "lodash";
 import DOMPurify from "dompurify";
-import { Strike } from "@tiptap/extension-strike";
 import {
   DeleteTableIcon,
   AddRowBelowIcon,
