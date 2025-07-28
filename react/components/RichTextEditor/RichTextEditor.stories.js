@@ -27,9 +27,7 @@ export const TextEditor = () => {
 };
 
 export const ReadOnlyTextEditor = () => {
-    const [value, setValue] = useState(
-        "<p>This is <strong>read only</strong> content</p>"
-    );
+    const value = "<p>This is <strong>read only</strong> content</p>";
 
     return (
         <RichTextEditor
