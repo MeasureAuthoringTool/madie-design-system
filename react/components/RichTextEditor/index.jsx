@@ -399,7 +399,7 @@ const RichTextEditor = ({
     editable: !disabled,
     onUpdate: ({ editor }) => {
       const newValue = editor.getHTML();
-      onChange(newValue);
+      onChange?.(newValue);
     },  
   });
 
@@ -429,7 +429,7 @@ const RichTextEditor = ({
     return (
         <div
             className="rich-text-editor"
-            data-testid={`${kebabCase(label)}-rich-text-editor`}
+            data-testid={`${kebabCase(id)}-rich-text-editor`}
         >
             <InputLabel
                 id={`${id}-label`}
