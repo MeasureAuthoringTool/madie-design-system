@@ -50,7 +50,7 @@ describe("RichTextEditor Component", () => {
 
         // Check if the editor content is rendered
         expect(
-            screen.getByTestId("test-label-rich-text-editor")
+            screen.getByTestId("test-editor-rich-text-editor")
         ).toBeInTheDocument();
     });
 
