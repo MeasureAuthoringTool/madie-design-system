@@ -31,14 +31,10 @@ export const ReadOnlyTextEditor = () => {
         "<p>This is <strong>read only</strong> content</p>"
     );
 
-    const handleChange = (selectedVal) => {
-        setValue(selectedVal);
-    };
     return (
         <RichTextEditor
             label="Test Text Editor"
             required={true}
-            onChange={handleChange}
             content={value}
             readOnly
         />
