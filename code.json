@@ -1,62 +1,79 @@
 {
   "name": "madie-design-system",
-  "description": "",
-  "longDescription": "",
-  "status": "",
+  "description": "Shared style guide across the QPP program.",
+  "longDescription": "The purpose of madie/madie-design-system is to provide assets such as CSS, SCSS, JS, images and fonts to design a site with the visual style of madie. This allows multiple sites built in separate repositories and with different languages to share a global style without repeating styling code. The qpp-style library is primarily distributed on the node/npm ecosystem.",
+  "status": "production",
   "permissions": {
-    "license": [
+    "licenses": [
       {
-        "name": "",
-        "URL": ""
+        "name": "CC0-1.0",
+        "URL": "https://github.com/MeasureAuthoringTool/madie-design-system/blob/main/LICENSE"
       }
     ],
-    "usageType": "",
+    "usageType": "openSource",
     "exemptionText": ""
   },
-  "organization": "",
+  "organization": "Centers for Medicare & Medicaid Services",
   "repositoryURL": "https://github.com/MeasureAuthoringTool/madie-design-system",
   "projectURL": "",
-  "repositoryHost": "github",
-  "repositoryVisibility": "",
+  "repositoryHost": "github.com/MeasureAuthoringTool",
+  "repositoryVisibility": "public",
   "vcs": "git",
-  "laborHours": 9432,
+  "laborHours": 28229,
   "reuseFrequency": {
-    "forks": 0,
-    "clones": 0
+    "forks": 2
   },
-  "platforms": [],
-  "categories": [],
-  "softwareType": "",
+  "platforms": [
+    "web"
+  ],
+  "categories": [
+    "design",
+    "design-system"
+  ],
+  "softwareType": "library",
   "languages": [
     "JavaScript",
     "SCSS",
     "TypeScript",
     "HTML"
   ],
-  "maintenance": "",
+  "maintenance": "internal",
   "contractNumber": "",
   "date": {
     "created": "2022-02-07T15:33:33Z",
-    "lastModified": "2025-06-18T14:52:34Z",
-    "metaDataLastUpdated": "2025-06-24T19:48:05.010Z"
+    "lastModified": "2025-07-09T21:04:12Z",
+    "metaDataLastUpdated": "2025-08-05T17:16:59.817Z"
   },
-  "tags": [],
+  "tags": [
+    "design",
+    "MAT",
+    "design system",
+    "QPP",
+    "madie"
+  ],
   "contact": {
-    "email": "",
-    "name": ""
+    "email": "Benjamin Ohe",
+    "name": "ben.ohe@semanticbits.com"
   },
   "feedbackMechanisms": [
     "https://github.com/MeasureAuthoringTool/madie-design-system/issues"
   ],
   "localisation": false,
-  "repositoryType": "",
+  "repositoryType": "libraries",
   "userInput": false,
-  "fismaLevel": "",
-  "group": "",
-  "projects": [],
+  "fismaLevel": "low",
+  "group": "CMS/MAT",
+  "projects": [
+    "Measure Authoring Tool"
+  ],
   "systems": [],
-  "upstream": "",
-  "subsetInHealthcare": [],
-  "userType": [],
-  "maturityModelTier": 0
+  "upstream": "https://github.com/MeasureAuthoringTool/madie-design-system/network/dependencies",
+  "subsetInHealthcare": [
+    "operational"
+  ],
+  "userType": [
+    "government"
+  ],
+  "maturityModelTier": 0,
+  "AIUseCaseInventory": false
 }
