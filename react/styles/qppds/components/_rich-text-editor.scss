@@ -145,8 +145,8 @@
 		border-top: 0;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
-		padding-left: 0.2px;
-		padding-right: 0.2px;
+		padding: 8px 14px;
+  		box-sizing: border-box;
 
 		&.has-error {
 			border: 1.5px solid #ae1c1c;
@@ -156,6 +156,10 @@
 			margin-top: 0;
 		}
 	}
+
+	.has-error .ProseMirror {
+    	border: 1.5px solid #ae1c1c;
+  	}
 
 	/* Bubble menu */
 	.bubble-menu {
