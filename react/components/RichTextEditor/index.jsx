@@ -519,7 +519,7 @@ const RichTextEditor = ({
                         aria-multiline="true"
                         aria-required={required || undefined}
                         aria-invalid={error || undefined}
-                        className={`ProseMirror ${error ? "has-error" : ""}`}
+                        className={`${error ? "has-error" : ""}`}
                     />
                 </>
             )}
