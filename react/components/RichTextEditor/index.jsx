@@ -242,7 +242,7 @@ const MenuBar = ({ editor, disabled }) => {
                         disabled={disabled}
                         type="button"
                     >
-                        
+
                         <TableChartIcon />
                     </IconButton>
                 </Tooltip>
@@ -370,6 +370,19 @@ const RichTextEditor = ({
     disabled = false,
     readOnly = false,
 }) => {
+  if(readOnly) {
+    return (
+      <p
+        className="rich-text-editor_read_only"
+        data-testid={`${id}-value`}
+        aria-labelledby={`${id}-label`}
+        dangerouslySetInnerHTML={{
+          __html: content ? DOMPurify.sanitize(content) : "-",
+        }}
+      />
+    );
+  }
+
   const editor = useEditor({
     parseOptions: {
       preserveWhitespace: 'full',
@@ -400,7 +413,7 @@ const RichTextEditor = ({
     onUpdate: ({ editor }) => {
       const newValue = editor.getHTML();
       onChange?.(newValue);
-    },  
+    },
   });
 
   React.useEffect(() => {
@@ -493,36 +506,23 @@ const RichTextEditor = ({
                     {helperText}
                 </FormHelperText>
             )}
-            
-
-            {readOnly ? (
-                <p
-                    className="rich-text-editor_read_only"
-                    data-testid={`${id}-value`}
+            <>
+                <MenuBar editor={editor} disabled={disabled} />
+                <EditorContent
+                    id={id}
+                    tabIndex={0}
+                    data-testid="rich-text-editor-content"
+                    editor={editor}
                     aria-labelledby={`${id}-label`}
-                    dangerouslySetInnerHTML={{
-                        __html: content ? DOMPurify.sanitize(content) : "-",
-                    }}
+                    aria-describedby={
+                        helperText ? `${id}-helper-text` : undefined
+                    }
+                    aria-multiline="true"
+                    aria-required={required || undefined}
+                    aria-invalid={error || undefined}
+                    className={`${error ? "has-error" : ""}`}
                 />
-            ) : (
-                <>
-                    <MenuBar editor={editor} disabled={disabled} />
-                    <EditorContent
-                        id={id}
-                        tabIndex={0}
-                        data-testid="rich-text-editor-content"
-                        editor={editor}
-                        aria-labelledby={`${id}-label`}
-                        aria-describedby={
-                            helperText ? `${id}-helper-text` : undefined
-                        }
-                        aria-multiline="true"
-                        aria-required={required || undefined}
-                        aria-invalid={error || undefined}
-                        className={`${error ? "has-error" : ""}`}
-                    />
-                </>
-            )}
+            </>
         </div>
     );
 };
