@@ -140,7 +140,7 @@ const TextField = ({
                             },
                         },
                         disabled && {
-                            color: "rgba(0,0,0,0.6)",
+                            color: "rgba(0,0,0,0.6) !important",
                         },
                         error && {
                             color: "#AE1C1C !important",
