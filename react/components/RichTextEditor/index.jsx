@@ -358,18 +358,18 @@ const MenuBar = ({editor, disabled}) => {
 };
 
 const RichTextEditor = ({
-                          name,
-                          id,
-                          error = false,
-                          helperText,
-                          required = false,
-                          label,
-                          onChange,
-                          onBlur,
-                          content,
-                          disabled = false,
-                          readOnly = false,
-                        }) => {
+  name,
+  id,
+  error = false,
+  helperText,
+  required = false,
+  label,
+  onChange,
+  onBlur,
+  content,
+  disabled = false,
+  readOnly = false,
+}) => {
   const labelStyles = [
     {
       backgroundColor: "transparent",
@@ -404,10 +404,7 @@ const RichTextEditor = ({
 
   if (readOnly) {
     return (
-      <div
-        className="rich-text-editor"
-        data-testid={`${kebabCase(id)}-rich-text-editor`}
-      >
+      <div className="rich-text-editor" data-testid={`${kebabCase(id)}-rich-text-editor`}>
         <InputLabel
           id={`${id}-label`}
           shrink
