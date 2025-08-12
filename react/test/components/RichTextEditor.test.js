@@ -13,7 +13,7 @@ beforeAll(() => {
     width: 0,
     height: 0
   }]);
-  
+
   Element.prototype.scrollIntoView = jest.fn();
 
   window.getSelection = jest.fn(() => ({
@@ -116,6 +116,8 @@ describe("RichTextEditor Component", () => {
         const editorContent = screen.getByTestId("test-editor-value");
         expect(editorContent).toBeInTheDocument();
         expect(editorContent).toHaveTextContent("Safe Content");
+        const editorLabel = screen.getByText("Test Label");
+        expect(editorLabel).toBeInTheDocument();
     });
 
     it("test renders sanitized content with preserved whitespace when readOnly is true", () => {
@@ -188,11 +190,11 @@ describe("RichTextEditor Component", () => {
         beforeEach(() => {
             mockOnChange.mockClear();
             jest.spyOn(console, 'error').mockImplementation(() => {});
-            
+
             Element.prototype.getClientRects.mockClear();
             Element.prototype.scrollIntoView.mockClear();
         });
-        
+
         afterEach(() => {
             console.error.mockRestore();
         });
@@ -206,7 +208,7 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr></table>"
                 />,
             );
-            
+
             expect(screen.getByLabelText("Add row above")).toBeInTheDocument();
             expect(screen.getByLabelText("Add row below")).toBeInTheDocument();
             expect(screen.getByLabelText("Remove row")).toBeInTheDocument();
@@ -215,7 +217,7 @@ describe("RichTextEditor Component", () => {
             expect(screen.getByLabelText("Remove column")).toBeInTheDocument();
             expect(screen.getByLabelText("Remove table")).toBeInTheDocument();
         });
-        
+
         it("triggers Add row above button", async () => {
             const mockChain = {
                 focus: jest.fn().mockReturnThis(),
@@ -224,7 +226,7 @@ describe("RichTextEditor Component", () => {
                     mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
                 })
             };
-            
+
             const { getByLabelText } = render(
                 <RichTextEditor
                     id="test-editor"
@@ -233,18 +235,18 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Add row above");
             const originalOnClick = button.onclick;
             button.onclick = () => {
                 mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
             };
-            
+
             await userEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
-        
+
         it("triggers Remove row button", async () => {
             const { getByLabelText } = render(
                 <RichTextEditor
@@ -254,18 +256,18 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr><tr><td>Another row</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Remove row");
             const originalOnClick = button.onclick;
             button.onclick = () => {
                 mockOnChange("<table><tr><td>Cell content</td></tr></table>");
             };
-            
+
             await userEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
-        
+
         it("triggers Add column left button", async () => {
             const { getByLabelText } = render(
                 <RichTextEditor
@@ -275,17 +277,17 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Add column left");
             button.onclick = () => {
                 mockOnChange("<table><tr><td>New column</td><td>Cell content</td></tr></table>");
             };
-            
+
             fireEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
-        
+
         it("triggers Add column right button", async () => {
             const { getByLabelText } = render(
                 <RichTextEditor
@@ -295,17 +297,17 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Add column right");
             button.onclick = () => {
                 mockOnChange("<table><tr><td>Cell content</td><td>New column</td></tr></table>");
             };
-            
+
             fireEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
-        
+
         it("triggers Remove column button", async () => {
             const { getByLabelText } = render(
                 <RichTextEditor
@@ -315,17 +317,17 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Col 1</td><td>Col 2</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Remove column");
             button.onclick = () => {
                 mockOnChange("<table><tr><td>Col 1</td></tr></table>");
             };
-            
+
             fireEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
-        
+
         it("triggers Remove table button", async () => {
             const { getByLabelText } = render(
                 <RichTextEditor
@@ -335,14 +337,14 @@ describe("RichTextEditor Component", () => {
                     content="<table><tr><td>Cell content</td></tr></table>"
                 />
             );
-            
+
             const button = getByLabelText("Remove table");
             button.onclick = () => {
                 mockOnChange("<p></p>");
             };
-            
+
             fireEvent.click(button);
-            
+
             expect(mockOnChange).toHaveBeenCalled();
         });
     });
