@@ -24,7 +24,7 @@ const DialogTester = () => {
     );
 };
 
-const { findByTestId, getByTestId, queryByText } = screen;
+const { findByTestId, getByTestId, queryByText, getByText } = screen;
 describe("MadieDeleteDialog", () => {
     test("Dialog renders", async () => {
         render(<DialogTester />);
@@ -88,6 +88,35 @@ describe("MadieDeleteDialog", () => {
             expect(
                 queryByText("This Action cannot be undone."),
             ).not.toBeInTheDocument();
+        });
+    });
+
+    test("Dialog strip out html tags", async () => {
+        render(
+            <MadieDeleteDialog
+                open={true}
+                onClose={() => setDialogOpen(false)}
+                onContinue={() => setDialogOpen(false)}
+                hideWarning={true}
+                dialogTitle="Delete Measure Reference"
+                name={"<p><strong>test &</strong></p><p>test2</p>"}
+            />,
+        );
+
+        const deleteDialog = await getByTestId("delete-dialog");
+        expect(deleteDialog).toBeInTheDocument();
+        await waitFor(() => {
+            expect(
+                queryByText("Are you sure you want to delete ?"),
+            ).toBeVisible();
+            expect(
+                queryByText("This Action cannot be undone."),
+            ).not.toBeInTheDocument();
+            expect(
+                queryByText("<p><strong>test &</strong></p><p>test2</p>"),
+            ).not.toBeInTheDocument();
+            expect(getByText("test &")).toBeInTheDocument();
+            expect(getByText("test2")).toBeInTheDocument();
         });
     });
 });
