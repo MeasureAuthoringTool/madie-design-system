@@ -2,6 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import ErrorIcon from "@mui/icons-material/Error";
 import MadieDialog from "../MadieDialog";
+import parse, { domToReact } from "html-react-parser";
+
+const options = {
+    replace: ({ name, children }) => {
+        if (name === "p") {
+            return <>{domToReact(children)}</>; //  Return the children directly, effectively removing the <p> tag
+        }
+    },
+};
 
 const MadieDeleteDialog = ({
     open,
@@ -34,7 +43,15 @@ const MadieDeleteDialog = ({
             <section className="dialog-warning-body">
                 <p>
                     Are you sure you want to delete{" "}
-                    <span className="strong">{otherDialogProps.name}</span>?
+                    <span className="strong">
+                        {parse(
+                            otherDialogProps?.name
+                                ? otherDialogProps?.name
+                                : "",
+                            options,
+                        )}
+                    </span>
+                    ?
                 </p>
             </section>
             {otherDialogProps.hideWarning !== true && (

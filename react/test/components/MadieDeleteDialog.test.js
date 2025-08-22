@@ -108,4 +108,35 @@ describe("MadieDeleteDialog", () => {
             });
         });
     });
+
+    test("Dialog strip out html tags", async () => {
+        await act(async () => {
+            const { getByTestId, queryByText, getByText } = await render(
+                <MadieDeleteDialog
+                    open={true}
+                    onClose={() => setDialogOpen(false)}
+                    onContinue={() => setDialogOpen(false)}
+                    hideWarning={true}
+                    dialogTitle="Delete Measure Reference"
+                    name={"<p><strong>test &</strong></p><p>test2</p>"}
+                />
+            );
+
+            const deleteDialog = await getByTestId("delete-dialog");
+            expect(deleteDialog).toBeInTheDocument();
+            await waitFor(() => {
+                expect(
+                    queryByText("Are you sure you want to delete ?")
+                ).toBeVisible();
+                expect(
+                    queryByText("This Action cannot be undone.")
+                ).not.toBeInTheDocument();
+                expect(
+                    queryByText("<p><strong>test &</strong></p><p>test2</p>"),
+                ).not.toBeInTheDocument();
+                expect(getByText("test &")).toBeInTheDocument();
+                expect(getByText("test2")).toBeInTheDocument();
+            });
+        });
+    });
 });
