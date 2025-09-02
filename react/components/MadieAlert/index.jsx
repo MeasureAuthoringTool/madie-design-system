@@ -158,7 +158,7 @@ const MadieAlert = ({
     visible = true,
     content,
     canClose = true,
-    minimizeAlerts = false,
+    minimizeAlerts = true,
     alertProps,
     closeButtonProps,
     copyButton,
@@ -395,7 +395,7 @@ MadieAlert.propTypes = {
 
 MadieAlert.defaultProps = {
     copyButton: false,
-    minimizeAlerts: false,
+    minimizeAlerts: true,
     alerts: null,
 };
 
