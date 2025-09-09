@@ -34,7 +34,7 @@ const DraggablePaper = (props) => {
 
 const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
     const { cancelText, cancelIcon, ...otherCancelButtonProps } =
-        cancelButtonProps;
+        cancelButtonProps || {};
     const {
         continueText,
         continueIcon,
@@ -42,7 +42,7 @@ const Actions = ({ onClose, cancelButtonProps, continueButtonProps }) => {
         disabled,
         tooltipText,
         ...otherContinueButtonProps
-    } = continueButtonProps;
+    } = continueButtonProps || {};
     const [anchorEl, setAnchorEl] = useState(null);
 
     const openPopOverMenu = (event) => {
