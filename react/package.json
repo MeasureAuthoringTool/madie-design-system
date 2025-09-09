@@ -1,6 +1,6 @@
 {
     "name": "@madie/madie-design-system",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Shared style guide across the Madie program.",
     "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
     "main": "./components/index.js",
