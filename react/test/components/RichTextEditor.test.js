@@ -349,6 +349,7 @@ describe("RichTextEditor Component", () => {
                     label="Test Editor"
                     onChange={mockOnChange}
                     content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText={undefined}
                     sx={{
                         color: "red",
                     }}
@@ -378,6 +379,93 @@ describe("RichTextEditor Component", () => {
 
             const helperText = screen.getByText("This is helper text");
             expect(helperText).toBeInTheDocument();
+        });
+
+        it("renders tooltips and buttons", () => {
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText="This is helper text"
+                />
+            );
+            //undo
+            const undoTooltip = screen.getByTestId("test-editor-undo-tooltip");
+            userEvent.hover(undoTooltip);
+            expect(undoTooltip).toBeInTheDocument();
+            //redo
+            const redoTooltip = screen.getByTestId("test-editor-redo-tooltip");
+            expect(redoTooltip).toBeInTheDocument();
+            //bold
+            const boldTooltip = screen.getByTestId("test-editor-bold-tooltip");
+            expect(boldTooltip).toBeInTheDocument();
+            //italic
+            const italicTooltip = screen.getByTestId(
+                "test-editor-italic-tooltip"
+            );
+            expect(italicTooltip).toBeInTheDocument();
+            //underline
+            const underlineTooltip = screen.getByTestId(
+                "test-editor-underline-tooltip"
+            );
+            expect(underlineTooltip).toBeInTheDocument();
+            //strikethrough
+            const strikethroughTooltip = screen.getByTestId(
+                "test-editor-strikethrough-tooltip"
+            );
+            expect(strikethroughTooltip).toBeInTheDocument();
+            //ordered list
+            const orderedListTooltip = screen.getByTestId(
+                "test-editor-orderedlist-tooltip"
+            );
+            expect(orderedListTooltip).toBeInTheDocument();
+            //bulleted list
+            const bulletedListTooltip = screen.getByTestId(
+                "test-editor-bulletedlist-tooltip"
+            );
+            expect(bulletedListTooltip).toBeInTheDocument();
+            //table
+            const tableTooltip = screen.getByTestId(
+                "test-editor-table-tooltip"
+            );
+            expect(tableTooltip).toBeInTheDocument();
+            //add column right
+            const addColumnRightTooltip = screen.getByTestId(
+                "test-editor-add-column-right-tooltip"
+            );
+            expect(addColumnRightTooltip).toBeInTheDocument();
+            //add column left
+            const addColumnLeftTooltip = screen.getByTestId(
+                "test-editor-add-column-left-tooltip"
+            );
+            expect(addColumnLeftTooltip).toBeInTheDocument();
+            //remove column
+            const removeColumnTooltip = screen.getByTestId(
+                "test-editor-remove-column-tooltip"
+            );
+            expect(removeColumnTooltip).toBeInTheDocument();
+            //remove table
+            const removeTableTooltip = screen.getByTestId(
+                "test-editor-remove-table-tooltip"
+            );
+            expect(removeTableTooltip).toBeInTheDocument();
+            //add row above
+            const addRowAboveTooltip = screen.getByTestId(
+                "test-editor-add-row-above-tooltip"
+            );
+            expect(addRowAboveTooltip).toBeInTheDocument();
+            //add row below
+            const addRowBelowTooltip = screen.getByTestId(
+                "test-editor-add-row-below-tooltip"
+            );
+            expect(addRowBelowTooltip).toBeInTheDocument();
+            //remove row
+            const removeRowTooltip = screen.getByTestId(
+                "test-editor-remove-row-tooltip"
+            );
+            expect(removeRowTooltip).toBeInTheDocument();
         });
 
         it("renders no menu bar", async () => {

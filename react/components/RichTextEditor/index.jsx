@@ -54,7 +54,7 @@ export const MenuBar = ({editor, disabled, id}) => {
     >
       <div className="button-group">
         <Tooltip
-          data-testid="undo-tooltip"
+          data-testid={`${id}-undo-tooltip`}
           title="Undo"
           placement="top"
           enterDelay={1000}
@@ -65,12 +65,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             onClick={() =>
               editor.chain().focus().undo().run()
             }
+            data-testId={`${id}-undo-button`}
           >
             <UndoIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="redo-tooltip"
+          data-testid={`${id}-redo-tooltip`}
           title="Redo"
           placement="top"
           enterDelay={1000}
@@ -82,12 +83,13 @@ export const MenuBar = ({editor, disabled, id}) => {
               editor.chain().focus().redo().run()
             }
             style={{borderRight: "solid 1px #9c9c9c"}}
+            data-testId={`${id}-redo-button`}
           >
             <RedoIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="bold-tooltip"
+          data-testid={`${id}-bold-tooltip`}
           title="Bold"
           placement="top"
           enterDelay={1000}
@@ -103,12 +105,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             className={editor.isActive("bold") ? "is-active" : ""}
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-bold-button`}
           >
             <FormatBoldIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="italic-tooltip"
+          data-testid={`${id}-italic-tooltip`}
           title="Italic"
           placement="top"
           enterDelay={1000}
@@ -124,12 +127,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             className={editor.isActive("italic") ? "is-active" : ""}
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-italic-button`}
           >
             <FormatItalicIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="underline-tooltip"
+          data-testid={`${id}-underline-tooltip`}
           title="Underline"
           placement="top"
           enterDelay={1000}
@@ -147,12 +151,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             }
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-underline-button`}
           >
             <FormatUnderlinedIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="strikethrough-tooltip"
+          data-testid={`${id}-strikethrough-tooltip`}
           title="Strikethrough"
           placement="top"
           enterDelay={1000}
@@ -169,12 +174,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             style={{borderRight: "solid 1px #9c9c9c"}}
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-strikethrough-button`}
           >
             <StrikethroughSIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="orderedlist-tooltip"
+          data-testid={`${id}-orderedlist-tooltip`}
           title="Ordered List"
           placement="top"
           enterDelay={1000}
@@ -192,12 +198,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             }
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-ordered-list-button`}
           >
             <FormatListNumberedIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="bulletedlist-tooltip"
+          data-testid={`${id}-bulletedlist-tooltip`}
           title="Bulleted List"
           placement="top"
           enterDelay={1000}
@@ -216,12 +223,13 @@ export const MenuBar = ({editor, disabled, id}) => {
             style={{borderRight: "solid 1px #9c9c9c"}}
             disabled={disabled}
             type="button"
+            data-testId={`${id}-add-bulleted-list-button`}
           >
             <FormatListBulletedIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip
-          data-testid="table-tooltip"
+          data-testid={`${id}-table-tooltip`}
           title="Table"
           placement="top"
           enterDelay={1000}
@@ -242,6 +250,7 @@ export const MenuBar = ({editor, disabled, id}) => {
             }
             disabled={disabled}
             type="button"
+            data-testId={`${id}-insert-table-button`}
           >
 
             <TableChartIcon/>
@@ -250,21 +259,22 @@ export const MenuBar = ({editor, disabled, id}) => {
         {editor.isActive("table") && (
           <>
             <Tooltip
-              data-testid="add-row-above-tooltip"
+              data-testid={`${id}-add-row-above-tooltip`}
               title="Add row above"
               placement="top"
               enterDelay={1000}
               arrow
             >
-              <IconButton
+              <IconButton 
                 key="addRowAbove"
                 onClick={() => editor.chain().focus().addRowBefore().run()}
+                data-testId={`${id}-add-row-above-button`}
               >
                 <AddRowAboveIcon style={iconStyle}/>
               </IconButton>
             </Tooltip>
             <Tooltip
-              data-testid="add-row-below-tooltip"
+              data-testid={`${id}-add-row-below-tooltip`}
               title="Add row below"
               placement="top"
               enterDelay={1000}
@@ -272,6 +282,7 @@ export const MenuBar = ({editor, disabled, id}) => {
             >
               <IconButton
                 key="addRowBelow"
+                data-testId={`${id}-add-row-below-button`}
                 onClick={() => editor.chain().focus().addRowAfter().run()}
               >
                 <AddRowBelowIcon style={iconStyle}/>
@@ -279,7 +290,7 @@ export const MenuBar = ({editor, disabled, id}) => {
             </Tooltip>
 
             <Tooltip
-              data-testid="remove-row-tooltip"
+              data-testid={`${id}-remove-row-tooltip`}
               title="Remove row"
               placement="top"
               enterDelay={1000}
@@ -287,13 +298,14 @@ export const MenuBar = ({editor, disabled, id}) => {
             >
               <IconButton
                 key="deleteRow"
+                data-testId={`${id}-delete-row-below-button`}
                 onClick={() => editor.chain().focus().deleteRow().run()}
               >
                 <DeleteRowIcon style={iconStyle}/>
               </IconButton>
             </Tooltip>
             <Tooltip
-              data-testid="add-column-right-tooltip"
+              data-testid={`${id}-add-column-right-tooltip`}
               title="Add column right"
               placement="top"
               enterDelay={1000}
@@ -301,13 +313,14 @@ export const MenuBar = ({editor, disabled, id}) => {
             >
               <IconButton
                 key="addColumnRight"
+                data-testId={`${id}-add-column-right-button`}
                 onClick={() => editor.chain().focus().addColumnAfter().run()}
               >
                 <AddColumnRightIcon style={iconStyle}/>
               </IconButton>
             </Tooltip>
             <Tooltip
-              data-testid="add-column-left-tooltip"
+              data-testid={`${id}-add-column-left-tooltip`}
               title="Add column left"
               placement="top"
               enterDelay={1000}
@@ -316,13 +329,14 @@ export const MenuBar = ({editor, disabled, id}) => {
               <IconButton
                 key="addColumnLeft"
                 onClick={() => editor.chain().focus().addColumnBefore().run()}
+                data-testId={`${id}-add-column-left-button`}
               >
                 <AddColumnLeftIcon style={iconStyle}/>
               </IconButton>
             </Tooltip>
 
             <Tooltip
-              data-testid="remove-column-tooltip"
+              data-testid={`${id}-remove-column-tooltip`}
               title="Remove column"
               placement="top"
               enterDelay={1000}
@@ -331,13 +345,14 @@ export const MenuBar = ({editor, disabled, id}) => {
               <IconButton
                 key="deleteColumn"
                 onClick={() => editor.chain().focus().deleteColumn().run()}
+                data-testId={`${id}-delete-column-right-button`}
               >
                 <DeleteColumnIcon style={iconStyle}/>
               </IconButton>
             </Tooltip>
 
             <Tooltip
-              data-testid="remove-table-tooltip"
+              data-testid={`${id}-remove-table-tooltip`}
               title="Remove table"
               placement="top"
               enterDelay={1000}
@@ -346,6 +361,7 @@ export const MenuBar = ({editor, disabled, id}) => {
               <IconButton
                 key="deleteTable"
                 onClick={() => editor.chain().focus().deleteTable().run()}
+                data-testId={`${id}-delete-table-button`}
                 style={{borderRight: "solid 1px #9c9c9c"}}
               >
                 <DeleteTableIcon style={iconStyle}/>
