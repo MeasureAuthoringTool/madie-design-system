@@ -335,6 +335,7 @@ describe("RichTextEditor Component", () => {
                     label="Test Editor"
                     onChange={mockOnChange}
                     content="<table><tr><td>Cell content</td></tr></table>"
+                    sx={{}}
                 />
             );
 
@@ -346,6 +347,21 @@ describe("RichTextEditor Component", () => {
             fireEvent.click(button);
 
             expect(mockOnChange).toHaveBeenCalled();
+        });
+        
+        it("renders helper text", async () => {
+            const { getByLabelText } = render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText="This is helper text"
+                />
+            );
+
+            const helperText = screen.getByText("This is helper text");
+            expect(helperText).toBeInTheDocument();
         });
     });
 });
