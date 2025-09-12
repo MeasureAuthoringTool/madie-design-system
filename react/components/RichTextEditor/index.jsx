@@ -40,7 +40,7 @@ const iconStyle = {
   display: "block",
 };
 
-const MenuBar = ({editor, disabled}) => {
+const MenuBar = ({editor, disabled, id}) => {
   if (!editor) {
     return null;
   }
@@ -49,7 +49,8 @@ const MenuBar = ({editor, disabled}) => {
       className="control-group"
       role="toolbar"
       aria-label="Text formatting toolbar"
-      data-testid="rich-text-editor-toolbar"
+      data-testid={`${id}-rich-text-editor-toolbar`}
+      id={`${id}-rich-text-editor-toolbar`}
     >
       <div className="button-group">
         <Tooltip
@@ -459,7 +460,7 @@ const RichTextEditor = ({
         tabIndex: '0',
         role: 'textbox',
         id,
-        'data-testid': 'rich-text-editor-content',
+        'data-testid': `${id}-rich-text-editor-content`,
         'aria-invalid': error ? "true" : undefined,
         'aria-labelledby': `${id}-label`,
         'aria-describedby': helperText ? `${id}-helper-text` : undefined,
@@ -539,7 +540,7 @@ const RichTextEditor = ({
         </FormHelperText>
       )}
       <>
-        <MenuBar editor={editor} disabled={disabled}/>
+        <MenuBar editor={editor} disabled={disabled} id={id}/>
         <EditorContent
           editor={editor}
         />
@@ -565,6 +566,7 @@ RichTextEditor.propTypes = {
 MenuBar.propTypes = {
   editor: PropTypes.any,
   disabled: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default RichTextEditor;
