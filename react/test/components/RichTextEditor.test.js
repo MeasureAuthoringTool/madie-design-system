@@ -1,34 +1,36 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RichTextEditor from "../../components/RichTextEditor/index";
+import RichTextEditor, { MenuBar } from "../../components/RichTextEditor/index";
 import DOMPurify from "dompurify";
 
 beforeAll(() => {
-  Element.prototype.getClientRects = jest.fn(() => [{
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: 0,
-    height: 0
-  }]);
+    Element.prototype.getClientRects = jest.fn(() => [
+        {
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+        },
+    ]);
 
-  Element.prototype.scrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = jest.fn();
 
-  window.getSelection = jest.fn(() => ({
-    removeAllRanges: jest.fn(),
-    addRange: jest.fn(),
-  }));
+    window.getSelection = jest.fn(() => ({
+        removeAllRanges: jest.fn(),
+        addRange: jest.fn(),
+    }));
 
-  Element.prototype.getBoundingClientRect = jest.fn(() => ({
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: 0,
-    height: 0
-  }));
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        width: 0,
+        height: 0,
+    }));
 });
 
 describe("RichTextEditor Component", () => {
@@ -167,7 +169,7 @@ describe("RichTextEditor Component", () => {
                 label="Test Editor"
                 onChange={mockOnChange}
                 content="<p>Initial content</p>"
-            />,
+            />
         );
         await userEvent.click(screen.getByRole("button", { name: "Undo" }));
         expect(mockOnChange).toHaveBeenCalled();
@@ -180,7 +182,7 @@ describe("RichTextEditor Component", () => {
                 label="Test Editor"
                 onChange={mockOnChange}
                 content="<p>Initial content</p>"
-            />,
+            />
         );
         await userEvent.click(screen.getByRole("button", { name: "Redo" }));
         expect(mockOnChange).toHaveBeenCalled();
@@ -189,7 +191,7 @@ describe("RichTextEditor Component", () => {
     describe("Table-related buttons", () => {
         beforeEach(() => {
             mockOnChange.mockClear();
-            jest.spyOn(console, 'error').mockImplementation(() => {});
+            jest.spyOn(console, "error").mockImplementation(() => {});
 
             Element.prototype.getClientRects.mockClear();
             Element.prototype.scrollIntoView.mockClear();
@@ -206,14 +208,18 @@ describe("RichTextEditor Component", () => {
                     label="Test Editor"
                     onChange={mockOnChange}
                     content="<table><tr><td>Cell content</td></tr></table>"
-                />,
+                />
             );
 
             expect(screen.getByLabelText("Add row above")).toBeInTheDocument();
             expect(screen.getByLabelText("Add row below")).toBeInTheDocument();
             expect(screen.getByLabelText("Remove row")).toBeInTheDocument();
-            expect(screen.getByLabelText("Add column right")).toBeInTheDocument();
-            expect(screen.getByLabelText("Add column left")).toBeInTheDocument();
+            expect(
+                screen.getByLabelText("Add column right")
+            ).toBeInTheDocument();
+            expect(
+                screen.getByLabelText("Add column left")
+            ).toBeInTheDocument();
             expect(screen.getByLabelText("Remove column")).toBeInTheDocument();
             expect(screen.getByLabelText("Remove table")).toBeInTheDocument();
         });
@@ -223,8 +229,10 @@ describe("RichTextEditor Component", () => {
                 focus: jest.fn().mockReturnThis(),
                 addRowBefore: jest.fn().mockReturnThis(),
                 run: jest.fn().mockImplementation(() => {
-                    mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
-                })
+                    mockOnChange(
+                        "<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>"
+                    );
+                }),
             };
 
             const { getByLabelText } = render(
@@ -239,7 +247,9 @@ describe("RichTextEditor Component", () => {
             const button = getByLabelText("Add row above");
             const originalOnClick = button.onclick;
             button.onclick = () => {
-                mockOnChange("<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>");
+                mockOnChange(
+                    "<table><tr><td>New row</td></tr><tr><td>Cell content</td></tr></table>"
+                );
             };
 
             await userEvent.click(button);
@@ -280,7 +290,9 @@ describe("RichTextEditor Component", () => {
 
             const button = getByLabelText("Add column left");
             button.onclick = () => {
-                mockOnChange("<table><tr><td>New column</td><td>Cell content</td></tr></table>");
+                mockOnChange(
+                    "<table><tr><td>New column</td><td>Cell content</td></tr></table>"
+                );
             };
 
             fireEvent.click(button);
@@ -300,7 +312,9 @@ describe("RichTextEditor Component", () => {
 
             const button = getByLabelText("Add column right");
             button.onclick = () => {
-                mockOnChange("<table><tr><td>Cell content</td><td>New column</td></tr></table>");
+                mockOnChange(
+                    "<table><tr><td>Cell content</td><td>New column</td></tr></table>"
+                );
             };
 
             fireEvent.click(button);
@@ -335,6 +349,10 @@ describe("RichTextEditor Component", () => {
                     label="Test Editor"
                     onChange={mockOnChange}
                     content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText={undefined}
+                    sx={{
+                        color: "red",
+                    }}
                 />
             );
 
@@ -346,6 +364,113 @@ describe("RichTextEditor Component", () => {
             fireEvent.click(button);
 
             expect(mockOnChange).toHaveBeenCalled();
+        });
+
+        it("renders helper text", async () => {
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText="This is helper text"
+                />
+            );
+
+            const helperText = screen.getByText("This is helper text");
+            expect(helperText).toBeInTheDocument();
+        });
+
+        it("renders tooltips and buttons", () => {
+            render(
+                <RichTextEditor
+                    id="test-editor"
+                    label="Test Editor"
+                    onChange={mockOnChange}
+                    content="<table><tr><td>Cell content</td></tr></table>"
+                    helperText="This is helper text"
+                />
+            );
+            //undo
+            const undoTooltip = screen.getByTestId("test-editor-undo-tooltip");
+            userEvent.hover(undoTooltip);
+            expect(undoTooltip).toBeInTheDocument();
+            //redo
+            const redoTooltip = screen.getByTestId("test-editor-redo-tooltip");
+            expect(redoTooltip).toBeInTheDocument();
+            //bold
+            const boldTooltip = screen.getByTestId("test-editor-bold-tooltip");
+            expect(boldTooltip).toBeInTheDocument();
+            //italic
+            const italicTooltip = screen.getByTestId(
+                "test-editor-italic-tooltip"
+            );
+            expect(italicTooltip).toBeInTheDocument();
+            //underline
+            const underlineTooltip = screen.getByTestId(
+                "test-editor-underline-tooltip"
+            );
+            expect(underlineTooltip).toBeInTheDocument();
+            //strikethrough
+            const strikethroughTooltip = screen.getByTestId(
+                "test-editor-strikethrough-tooltip"
+            );
+            expect(strikethroughTooltip).toBeInTheDocument();
+            //ordered list
+            const orderedListTooltip = screen.getByTestId(
+                "test-editor-orderedlist-tooltip"
+            );
+            expect(orderedListTooltip).toBeInTheDocument();
+            //bulleted list
+            const bulletedListTooltip = screen.getByTestId(
+                "test-editor-bulletedlist-tooltip"
+            );
+            expect(bulletedListTooltip).toBeInTheDocument();
+            //table
+            const tableTooltip = screen.getByTestId(
+                "test-editor-table-tooltip"
+            );
+            expect(tableTooltip).toBeInTheDocument();
+            //add column right
+            const addColumnRightTooltip = screen.getByTestId(
+                "test-editor-add-column-right-tooltip"
+            );
+            expect(addColumnRightTooltip).toBeInTheDocument();
+            //add column left
+            const addColumnLeftTooltip = screen.getByTestId(
+                "test-editor-add-column-left-tooltip"
+            );
+            expect(addColumnLeftTooltip).toBeInTheDocument();
+            //remove column
+            const removeColumnTooltip = screen.getByTestId(
+                "test-editor-remove-column-tooltip"
+            );
+            expect(removeColumnTooltip).toBeInTheDocument();
+            //remove table
+            const removeTableTooltip = screen.getByTestId(
+                "test-editor-remove-table-tooltip"
+            );
+            expect(removeTableTooltip).toBeInTheDocument();
+            //add row above
+            const addRowAboveTooltip = screen.getByTestId(
+                "test-editor-add-row-above-tooltip"
+            );
+            expect(addRowAboveTooltip).toBeInTheDocument();
+            //add row below
+            const addRowBelowTooltip = screen.getByTestId(
+                "test-editor-add-row-below-tooltip"
+            );
+            expect(addRowBelowTooltip).toBeInTheDocument();
+            //remove row
+            const removeRowTooltip = screen.getByTestId(
+                "test-editor-remove-row-tooltip"
+            );
+            expect(removeRowTooltip).toBeInTheDocument();
+        });
+
+        it("renders no menu bar", async () => {
+            const { container } = render(<MenuBar />);
+            expect(container).toBeEmptyDOMElement();
         });
     });
 });
