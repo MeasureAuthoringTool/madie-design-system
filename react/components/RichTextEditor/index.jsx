@@ -40,7 +40,7 @@ const iconStyle = {
   display: "block",
 };
 
-const MenuBar = ({editor, disabled, id}) => {
+export const MenuBar = ({editor, disabled, id}) => {
   if (!editor) {
     return null;
   }
