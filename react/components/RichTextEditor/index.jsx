@@ -429,38 +429,53 @@ const RichTextEditor = ({
     );
   }
 
-  const editor = useEditor({
-    parseOptions: {
-      preserveWhitespace: 'full',
-    },
-    extensions: [
-      StarterKit,
-      Gapcursor,
-      Table.configure({
-        resizable: true,
-        HTMLAttributes: {
-          class: "rich-text-table",
+  
+    const editor = useEditor({
+      parseOptions: {
+        preserveWhitespace: 'full',
+      },
+      extensions: [
+        StarterKit,
+        Gapcursor,
+        Table.configure({
+          resizable: true,
+          HTMLAttributes: {
+            class: "rich-text-table",
+          },
+        }),
+        TableRow,
+        TableHeader,
+        TableCell,
+        Underline,
+        Strike.extend({
+          strike: false, // disable default strike through
+          renderHTML({HTMLAttributes}) {
+            return ["del", HTMLAttributes, 0];
+          },
+        }),
+      ],
+      editorProps: {
+        attributes: {
+        tabIndex: '0',
+        role: 'textbox',
+        id,
+        'data-testid': 'rich-text-editor-content',
+        'aria-invalid': error ? "true" : undefined,
+        'aria-labelledby': `${id}-label`,
+        'aria-describedby': helperText ? `${id}-helper-text` : undefined,
+        'aria-multiline': "true",
+        'aria-required': required ? "true" : undefined,
+        'className': `${error ? "has-error" : ""}`
         },
-      }),
-      TableRow,
-      TableHeader,
-      TableCell,
-      Underline,
-      Strike.extend({
-        strike: false, // disable default strike through
-        renderHTML({HTMLAttributes}) {
-          return ["del", HTMLAttributes, 0];
-        },
-      }),
-    ],
-    shouldRerenderOnTransaction: false,
-    content,
-    editable: !disabled,
-    onUpdate: ({editor}) => {
-      const newValue = editor.getHTML();
-      onChange?.(newValue);
-    },
-  });
+      },
+      shouldRerenderOnTransaction: false,
+      content,
+      editable: !disabled,
+      onUpdate: ({editor}) => {
+        const newValue = editor.getHTML();
+        onChange?.(newValue);
+      },
+    });
 
   React.useEffect(() => {
     if (editor && content !== editor.getHTML()) {
@@ -526,18 +541,7 @@ const RichTextEditor = ({
       <>
         <MenuBar editor={editor} disabled={disabled}/>
         <EditorContent
-          id={id}
-          tabIndex={0}
-          data-testid="rich-text-editor-content"
           editor={editor}
-          aria-labelledby={`${id}-label`}
-          aria-describedby={
-            helperText ? `${id}-helper-text` : undefined
-          }
-          aria-multiline="true"
-          aria-required={required || undefined}
-          aria-invalid={error || undefined}
-          className={`${error ? "has-error" : ""}`}
         />
       </>
     </div>
