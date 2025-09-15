@@ -132,7 +132,7 @@ describe("MadieDeleteDialog", () => {
                     queryByText("This Action cannot be undone.")
                 ).not.toBeInTheDocument();
                 expect(
-                    queryByText("<p><strong>test &</strong></p><p>test2</p>"),
+                    queryByText("<p><strong>test &</strong></p><p>test2</p>")
                 ).not.toBeInTheDocument();
                 expect(getByText("test &")).toBeInTheDocument();
                 expect(getByText("test2")).toBeInTheDocument();
