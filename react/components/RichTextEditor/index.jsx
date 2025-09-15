@@ -536,9 +536,7 @@ const RichTextEditor = ({
       >
         {label}
       </InputLabel>
-
-
-{helperText ? (
+      {helperText ? (
         <FormHelperText
           tabIndex={0}
           aria-live="polite"
