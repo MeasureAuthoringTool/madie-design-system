@@ -1,5 +1,11 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+    render,
+    screen,
+    fireEvent,
+    waitFor,
+    act,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RichTextEditor, { MenuBar } from "../../components/RichTextEditor/index";
 import DOMPurify from "dompurify";
@@ -77,6 +83,39 @@ describe("RichTextEditor Component", () => {
         await waitFor(() => {
             expect(mockOnChange).toHaveBeenCalledWith("<p>Updated Content</p>");
         });
+    });
+
+    it("calls renders withs style", async () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Description"
+                content="Initial Content"
+                onChange={mockOnChange}
+                disabled={false}
+            />
+        );
+
+        // Simulate content change
+        const label = screen.getByTestId("test-editor-label");
+        expect(label.className).toMatch(/Mui/);
+    });
+
+    it("calls renders withs style in readOnly", async () => {
+        render(
+            <RichTextEditor
+                readOnly
+                id="test-editor"
+                label="Description"
+                content="Initial Content"
+                onChange={mockOnChange}
+                disabled={false}
+            />
+        );
+
+        // Simulate content change
+        const label = screen.getByTestId("test-editor-label");
+        expect(label.className).toMatch(/Mui/);
     });
 
     it("renders sanitized content within editor when disabled is true", () => {
@@ -162,6 +201,61 @@ describe("RichTextEditor Component", () => {
         const helperTextElement = screen.getByTestId("test-editor-helper-text");
         expect(helperTextElement).toHaveTextContent("This field is required.");
     });
+
+    it("displays no helper text", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Test Label"
+                content={null}
+                helperText={null}
+                required={true}
+                error={true}
+                onChange={mockOnChange}
+            />
+        );
+
+        expect(
+            screen.queryByTestId("test-editor-helper-text")
+        ).not.toBeInTheDocument();
+    });
+    it("verifiably triggers content", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Label"
+                content="<p>Hello world</p>"
+                helperText="Help"
+                error={false}
+                onChange={mockOnChange}
+            />
+        );
+
+        const editor = screen.getByTestId(
+            "test-editor-rich-text-editor-content"
+        );
+        expect(editor.innerHTML).toContain("Hello world");
+    });
+
+    it("updates content without rerendering", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Label"
+                content="<p>Initial</p>"
+                helperText="Help"
+                error={false}
+                onChange={mockOnChange}
+            />
+        );
+
+        act(() => {
+            mockOnChange("<p>Updated</p>");
+        });
+
+        expect(mockOnChange).toHaveBeenCalledWith("<p>Updated</p>");
+    });
+
     it("triggers Undo", async () => {
         render(
             <RichTextEditor

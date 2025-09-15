@@ -424,6 +424,7 @@ const RichTextEditor = ({
       <div className="rich-text-editor" data-testid={`${kebabCase(id)}-rich-text-editor`}>
         <InputLabel
           id={`${id}-label`}
+          data-testid={`${id}-label`}
           shrink
           required={required}
           error={error}
@@ -524,6 +525,7 @@ const RichTextEditor = ({
     >
       <InputLabel
         id={`${id}-label`}
+        data-testid={`${id}-label`}
         shrink
         required={required}
         error={error}
@@ -535,7 +537,8 @@ const RichTextEditor = ({
         {label}
       </InputLabel>
 
-      {helperText && (
+
+{helperText ? (
         <FormHelperText
           tabIndex={0}
           aria-live="polite"
@@ -554,7 +557,7 @@ const RichTextEditor = ({
         >
           {helperText}
         </FormHelperText>
-      )}
+        ) : null}
       <>
         <MenuBar editor={editor} disabled={disabled} id={id}/>
         <EditorContent
