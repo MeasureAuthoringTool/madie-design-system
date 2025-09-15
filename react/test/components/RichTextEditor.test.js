@@ -116,6 +116,7 @@ describe("RichTextEditor Component", () => {
         // Simulate content change
         const label = screen.getByTestId("test-editor-label");
         expect(label.className).toMatch(/Mui/);
+        expect(label).toHaveTextContent("Description");
     });
 
     it("renders sanitized content within editor when disabled is true", () => {
