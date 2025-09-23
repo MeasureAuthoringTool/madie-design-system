@@ -532,7 +532,7 @@ const RichTextEditor = ({
         htmlFor={id}
         style={{marginBottom: 0, height: 16}} // force a height
         sx={labelStyles}
-        disabled
+        disabled={disabled}
       >
         {label}
       </InputLabel>
