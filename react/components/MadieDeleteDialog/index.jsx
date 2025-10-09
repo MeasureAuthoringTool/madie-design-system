@@ -48,10 +48,10 @@ const MadieDeleteDialog = ({
                             otherDialogProps?.name
                                 ? otherDialogProps?.name
                                 : "",
-                            options,
+                            options
                         )}
                     </span>
-                    ?
+                    ? {otherDialogProps?.additionalText}
                 </p>
             </section>
             {otherDialogProps.hideWarning !== true && (
