@@ -149,6 +149,8 @@ const MadieDialog = ({
     continueButtonProps,
     maxWidth = "sm",
     children,
+    titleBoxSx,
+    contentSx,
 }) => {
     const {
         open,
@@ -192,6 +194,7 @@ const MadieDialog = ({
                             alignItems: "center",
                             padding: "24px 32px",
                             cursor: "move",
+                            ...titleBoxSx
                         }}
                     >
                         <DialogTitle
@@ -246,7 +249,7 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogContent sx={{ padding: "32px" }}>
+                    <DialogContent sx={{ padding: "32px", ...contentSx }}>
                         {showRequiredFieldMessage && (
                             <Box
                                 sx={{
@@ -296,6 +299,7 @@ const MadieDialog = ({
                             justifyContent: "space-between",
                             alignItems: "center",
                             padding: "24px 32px",
+                            ...titleBoxSx,
                         }}
                     >
                         <DialogTitle
@@ -319,7 +323,7 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogContent sx={{ padding: "32px" }}>
+                    <DialogContent sx={{ padding: "32px", ...contentSx }}>
                         {children}
                     </DialogContent>
                     {(cancelButtonProps || continueButtonProps) && (
@@ -344,6 +348,8 @@ MadieDialog.propTypes = {
     continueButtonProps: PropTypes.object,
     children: PropTypes.object,
     maxWidth: PropTypes.string,
+    titleBoxSx: PropTypes.object,
+    contentSx: PropTypes.object,
 };
 
 DraggablePaper.propTypes = {
