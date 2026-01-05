@@ -5,6 +5,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import InputLabel from "../InputLabel";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import { ReadOnlyTextField } from "../ReadOnlyTextField";
 
 const timeFieldStyle = {
     width: "170px",
@@ -39,14 +41,28 @@ const timeFieldStyle = {
 };
 
 const TimeField = ({
+    id,
     label,
     value,
     handleTimeChange,
+    readOnly,
     disabled,
     required,
     error,
     ...rest
 }) => {
+        if (readOnly) {
+        return (
+            <ReadOnlyTextField
+                required={required}
+                label={label}
+                id={id}
+                size="small"
+                {...rest}
+                value={value ? dayjs.utc(value).format("HH:mm:ss a") : "-"}
+            />
+        );
+    }
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <InputLabel
@@ -90,11 +106,13 @@ const TimeField = ({
 };
 
 TimeField.propTypes = {
+    id: PropTypes.string,
     label: PropTypes.string.isRequired,
     value: PropTypes.object,
     handleTimeChange: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
+    readOnly: PropTypes.bool,
     error: PropTypes.string,
 };
 
