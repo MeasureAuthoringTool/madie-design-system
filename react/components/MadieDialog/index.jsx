@@ -183,7 +183,11 @@ const MadieDialog = ({
                         e.preventDefault();
                         onSubmit(e);
                     }}
-                    style={{ overflow: "scroll" }}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%",
+                    }}
                 >
                     <Box
                         id="draggable-dialog-title"
@@ -194,7 +198,7 @@ const MadieDialog = ({
                             alignItems: "center",
                             padding: "24px 32px",
                             cursor: "move",
-                            ...titleBoxSx
+                            ...titleBoxSx,
                         }}
                     >
                         <DialogTitle
@@ -249,7 +253,16 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogContent sx={{ padding: "32px", ...contentSx }}>
+                    <DialogContent
+                        sx={{
+                            flexGrow: 1,
+                            maxHeight: "calc(100vh - 250px)",
+                            overflowX: "auto",
+                            overflowY: "auto",
+                            padding: "32px",
+                            ...contentSx,
+                        }}
+                    >
                         {showRequiredFieldMessage && (
                             <Box
                                 sx={{
@@ -323,7 +336,16 @@ const MadieDialog = ({
                         </div>
                     </Box>
                     <Divider sx={{ borderColor: "#8c8c8c" }} />
-                    <DialogContent sx={{ padding: "32px", ...contentSx }}>
+                    <DialogContent
+                        sx={{
+                            flexGrow: 1,
+                            maxHeight: "calc(100vh - 250px)",
+                            overflowX: "auto",
+                            overflowY: "auto",
+                            padding: "32px",
+                            ...contentSx,
+                        }}
+                    >
                         {children}
                     </DialogContent>
                     {(cancelButtonProps || continueButtonProps) && (
