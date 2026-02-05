@@ -141,7 +141,7 @@ describe("MadieDeleteDialog", () => {
     });
 
      test("Dialog shows alternate text", async () => {
-        render(
+        const { getByTestId, queryByText } = render(
             <MadieDeleteDialog
                 open={true}
                 onClose={() => setDialogOpen(false)}
