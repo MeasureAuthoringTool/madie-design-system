@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ErrorIcon from "@mui/icons-material/Error";
 import MadieDialog from "../MadieDialog";
 import parse, { domToReact } from "html-react-parser";
@@ -35,14 +34,14 @@ const MadieDeleteDialog = ({
             variant: "danger-primary",
             type: "submit",
             "data-testid": "delete-dialog-continue-button",
-            continueText: "Yes, Delete",
+            continueText: otherDialogProps.alternateText? `Yes, ${otherDialogProps.alternateText}` : "Yes, Delete",
             onClick: onContinue,
         }}
     >
         <div id="delete-dialog-body">
             <section className="dialog-warning-body">
                 <p>
-                    Are you sure you want to delete{" "}
+                    Are you sure you want to {otherDialogProps.alternateText ? otherDialogProps.alternateText.toLowerCase() : "delete"}{" "}
                     <span className="strong">
                         {parse(
                             otherDialogProps?.name
@@ -51,7 +50,7 @@ const MadieDeleteDialog = ({
                             options
                         )}
                     </span>
-                    ? {otherDialogProps?.additionalText}
+                    ?
                 </p>
             </section>
             {otherDialogProps.hideWarning !== true && (
@@ -63,11 +62,5 @@ const MadieDeleteDialog = ({
         </div>
     </MadieDialog>
 );
-
-MadieDeleteDialog.propTypes = {
-    open: PropTypes.bool,
-    onClose: PropTypes.func,
-    onContinue: PropTypes.func,
-};
 
 export default MadieDeleteDialog;
