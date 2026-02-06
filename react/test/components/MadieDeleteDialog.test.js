@@ -139,4 +139,31 @@ describe("MadieDeleteDialog", () => {
             });
         });
     });
+
+     test("Dialog shows alternate text", async () => {
+        const { getByTestId, queryByText } = render(
+            <MadieDeleteDialog
+                open={true}
+                onClose={() => setDialogOpen(false)}
+                onContinue={() => setDialogOpen(false)}
+                hideWarning={true}
+                dialogTitle="Remove Element"
+                alternateText="Remove"
+                name="element"
+            />,
+        );
+
+        const deleteDialog = await getByTestId("delete-dialog");
+        expect(deleteDialog).toBeInTheDocument();
+        await waitFor(() => {
+            expect(
+                deleteDialog.textContent.includes(
+                    "Are you sure you want to remove element?",
+                ),
+            ).toBeTruthy();
+            expect(
+                queryByText("This Action cannot be undone."),
+            ).not.toBeInTheDocument();
+        });
+    });
 });

@@ -90,3 +90,26 @@ export const DeleteDialogWithHtmlTags = () => {
         </Wrapper>
     );
 };
+
+export const DeleteDialogWithAlternateText = () => {
+    const [open, setOpen] = useState(false);
+    const onClose = () => setOpen(false);
+    const onContinue = () => setOpen(false);
+
+    return (
+        <Wrapper>
+            <Button variant="cyan" onClick={() => setOpen(true)}>
+                open Dialog
+            </Button>
+            <MadieDeleteDialog
+                open={open}
+                onContinue={onContinue}
+                onClose={onClose}
+                hideWarning={true}
+                dialogTitle="Remove Element"
+                alternateText="Remove"
+                name="element"
+            />
+        </Wrapper>
+    );
+};
