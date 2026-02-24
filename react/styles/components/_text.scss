@@ -21,7 +21,7 @@ body {
 }
 
 p {
-	margin-bottom: 30px;
+	margin-bottom: 8px;
 
 	&.lead {
 		color: $lead-color;
@@ -31,8 +31,8 @@ p {
 
 	& ~ ul,
 	& ~ ol {
-		margin-bottom: 30px;
-		margin-top: -25px;
+		margin-bottom: 8px;
+		margin-top: -3px;
 	}
 }
 
