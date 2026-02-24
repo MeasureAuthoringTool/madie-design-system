@@ -122,7 +122,7 @@ const TextArea = ({
                         fontSize: 12,
                         color: "#717171",
                         position: "absolute",
-                        bottom: -26,
+                        bottom: -17,
                         right: 0,
                     }}
                 >
