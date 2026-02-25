@@ -49,32 +49,6 @@ export const WithHelperText = () => (
     </Wrapper>
 );
 
-export const TextareaWithMaxLength = () => (
-    <Wrapper>
-        <TextArea
-            placeholder="Placeholder"
-            label="Text Label"
-            id="measureName"
-            inputProps={{
-                "data-testid": "measure-name-input",
-                style: { maxHeight: 120, overflowY: "auto" },
-            }}
-            data-testid="measure-name-text-field"
-            size="small"
-            multiline
-            minRows={3}
-            maxRows={3}
-            maxLength={500}
-            value="This is a text area with a max length, which will display the length of the text used out of the max length. The min lines is 3, and max lines is 3, so the text area will grow to accomodate up to 3 lines of text, and then will scroll if more lines of text are added."
-            helperText={
-                <FormHelperText data-testid={`helper-text`} error={false}>
-                    a descriptive message
-                </FormHelperText>
-            }
-        />
-    </Wrapper>
-);
-
 export const ReadOnlyWithValue = () => (
     <Wrapper>
         <TextArea
