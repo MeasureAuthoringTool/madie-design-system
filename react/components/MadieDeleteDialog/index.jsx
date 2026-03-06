@@ -35,14 +35,25 @@ const MadieDeleteDialog = ({
             variant: "danger-primary",
             type: "submit",
             "data-testid": "delete-dialog-continue-button",
-            continueText: otherDialogProps.alternateText? `Yes, ${otherDialogProps.alternateText}` : "Yes, Delete",
+            continueText: otherDialogProps.alternateText
+                ? `${otherDialogProps.alternateText}`
+                : "Yes, Delete",
             onClick: onContinue,
         }}
     >
         <div id="delete-dialog-body">
             <section className="dialog-warning-body">
                 <p>
-                    Are you sure you want to {otherDialogProps.alternateText ? otherDialogProps.alternateText.toLowerCase() : "delete"}{" "}
+                    {otherDialogProps?.customDialog ? (
+                        otherDialogProps.customDialog
+                    ) : (
+                        <>
+                            Are you sure you want to{" "}
+                            {otherDialogProps.alternateText
+                                ? otherDialogProps.alternateText.toLowerCase()
+                                : "delete"}{" "}
+                        </>
+                    )}
                     <span className="strong">
                         {parse(
                             otherDialogProps?.name
@@ -51,7 +62,7 @@ const MadieDeleteDialog = ({
                             options
                         )}
                     </span>
-                    ?
+                    {otherDialogProps?.statement ? "" : "?"}
                 </p>
             </section>
             {otherDialogProps.hideWarning !== true && (
