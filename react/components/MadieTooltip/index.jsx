@@ -4,9 +4,13 @@ import TooltipIcon from "../MadieTooltipIcon";
 import PropTypes from "prop-types";
 
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
-const MadieToolTip = (props) => {
-    const rest = {...props, iconWidthContainer : 14}
-    const iconWidthContainer = props;
+const MadieToolTip = 
+({
+  id,
+  widthContainer = 14,
+  heightContainer = 14,
+  ...rest
+}) => {
     return (
         <Tooltip
           placement="bottom"
@@ -24,7 +28,7 @@ const MadieToolTip = (props) => {
           }}
               {...rest}
         >
-              <div style={{ width: iconWidthContainer }}>
+              <div style={{ width: widthContainer, height: heightContainer}} data-testId={id} id={id}>
                 <TooltipIcon />
               </div>
             </Tooltip>

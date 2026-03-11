@@ -99,7 +99,7 @@ const TextField = ({
                     flexGrow: 1,
                 }}
             />
-            <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "baseline" }}>
                 <InputLabel
                     disabled={disabled}
                     shrink
@@ -151,7 +151,7 @@ const TextField = ({
                 </InputLabel>
                 {tooltipText && (
                     <MadieToolTip
-                        tooltipText={tooltipText}
+                        title={tooltipText}
                         id={`${id}-tooltip`}
                     />
                 )}
