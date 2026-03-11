@@ -12,13 +12,13 @@ export default {
 
 export const ExampleTooltip = () => (
     <div style={{width: "14px"}}>
-        <div styler={{width: 20, marginBottom: 20}}>
+        <div style={{width: 20, marginBottom: 20}}>
             <MadieTooltip title="Input the new version #" placement="left"/>
         </div>
-        <div styler={{width: 20, marginBottom: 20}}>
+        <div style={{width: 20, marginBottom: 20}}>
             <MadieTooltip title="Input the new version #" placement="right"/>
         </div>
-        <div styler={{width: 20, marginBottom: 20}}>
+        <div style={{width: 20, marginBottom: 20}}>
             <MadieTooltip title="Input the new version #" placement="bottom"/>
         </div>
     </div>
