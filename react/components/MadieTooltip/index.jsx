@@ -1,49 +1,44 @@
-import React, { useState } from "react";
-import TooltipIcon from "../MadieTooltipIcon";
+import React from "react";
 import PropTypes from "prop-types";
+import { Tooltip } from "@mui/material";
+import TooltipIcon from "../MadieTooltipIcon";
 
-// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
-const MadieToolTip = ({ tooltipText = "informational text", id }) => {
-    const [activeTip, setActiveTip] = useState(false);
+const MadieToolTip = 
+({
+  id,
+  widthContainer = 14,
+  heightContainer = 14,
+  ...rest
+}) => {
     return (
-        <button
-            data-testid={`${id}-button`}
-            tabIndex={0}
-            onFocus={() => setActiveTip(true)}
-            onBlur={() => {
-                setActiveTip(false);
-            }}
-            onMouseEnter={() => {
-                setActiveTip(true);
-            }}
-            onMouseLeave={() => {
-                setActiveTip(false);
-            }}
-            onKeyDown={(e) => {
-                if (e.key === "Escape") {
-                    setActiveTip(false);
-                }
-            }}
-            className="madie-tooltip-button"
-            onClick={(e) => e.preventDefault()}
+        <Tooltip
+          placement="bottom"
+          arrow
+          slotProps={{
+            tooltip: {
+              sx: {
+                zIndex: 99,
+                backgroundColor: "#333",
+                "& .MuiTooltip-arrow": {
+                  color: "#333",
+                },
+              },
+            },
+          }}
+              {...rest}
         >
-            <TooltipIcon />
-            <div
-                role="tooltip"
-                id={id}
-                data-testid={id}
-                aria-live="polite"
-                className={activeTip ? "madie-tooltip" : "madie-tooltip hidden"}
-            >
-                <p>{tooltipText}</p>
-            </div>
-        </button>
-    );
+              <div style={{ width: widthContainer, height: heightContainer}} data-testId={id} id={id}>
+                <TooltipIcon />
+              </div>
+            </Tooltip>
+          );
 };
 
+
 MadieToolTip.propTypes = {
-    tooltipText: PropTypes.string,
-    id: PropTypes.string,
+  id: PropTypes.string,
+  widthContainer: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  heightContainer: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default MadieToolTip;
