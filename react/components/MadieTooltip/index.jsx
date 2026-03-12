@@ -1,9 +1,7 @@
 import React from "react";
 import { Tooltip } from "@mui/material";
 import TooltipIcon from "../MadieTooltipIcon";
-import PropTypes from "prop-types";
 
-// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
 const MadieToolTip = 
 ({
   id,
@@ -33,11 +31,6 @@ const MadieToolTip =
               </div>
             </Tooltip>
           );
-};
-
-MadieToolTip.propTypes = {
-    tooltipText: PropTypes.string,
-    id: PropTypes.string,
 };
 
 export default MadieToolTip;
