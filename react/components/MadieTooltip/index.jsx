@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Tooltip } from "@mui/material";
 import TooltipIcon from "../MadieTooltipIcon";
 
@@ -31,6 +32,13 @@ const MadieToolTip =
               </div>
             </Tooltip>
           );
+};
+
+
+MadieToolTip.propTypes = {
+  id: PropTypes.string,
+  widthContainer: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  heightContainer: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default MadieToolTip;
