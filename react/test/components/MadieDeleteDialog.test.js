@@ -175,7 +175,7 @@ describe("MadieDeleteDialog", () => {
                 onContinue={() => setDialogOpen(false)}
                 hideWarning={true}
                 dialogTitle="Delete Item"
-                customDialog={<span>Custom Dialog</span>}
+                customDialogBody={<span>Custom Dialog</span>}
                 name="Test Item"
             />
         );
