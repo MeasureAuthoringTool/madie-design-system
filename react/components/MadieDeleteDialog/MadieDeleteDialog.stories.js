@@ -114,7 +114,7 @@ export const DeleteDialogWithAlternateText = () => {
     );
 };
 
-export const DeleteDialogWithCustomDialog = () => {
+export const DeleteDialogWithCustomDialogBody = () => {
     const [open, setOpen] = useState(false);
     const onClose = () => setOpen(false);
     const onContinue = () => setOpen(false);
@@ -130,7 +130,7 @@ export const DeleteDialogWithCustomDialog = () => {
                 onClose={onClose}
                 hideWarning={true}
                 dialogTitle="Are you sure?"
-                customDialog={
+                customDialogBody={
                     "You are choosing to delete the following Test Case(s)!"
                 }
                 alternateText="Delete Case(s)"

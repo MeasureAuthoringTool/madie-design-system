@@ -44,8 +44,8 @@ const MadieDeleteDialog = ({
         <div id="delete-dialog-body">
             <section className="dialog-warning-body">
                 <p>
-                    {otherDialogProps?.customDialog ? (
-                        otherDialogProps.customDialog
+                    {otherDialogProps?.customDialogBody ? (
+                        otherDialogProps.customDialogBody
                     ) : (
                         <>
                             Are you sure you want to{" "}
