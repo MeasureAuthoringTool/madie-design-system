@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, expect, test } from "@jest/globals";
 import MadieDeleteDialog from "../../components/MadieDeleteDialog/index";
 import { act } from "react-dom/test-utils";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 
 import React, { useState } from "react";
 
@@ -140,7 +140,7 @@ describe("MadieDeleteDialog", () => {
         });
     });
 
-     test("Dialog shows alternate text", async () => {
+    test("Dialog shows alternate text", async () => {
         const { getByTestId, queryByText } = render(
             <MadieDeleteDialog
                 open={true}
@@ -150,7 +150,7 @@ describe("MadieDeleteDialog", () => {
                 dialogTitle="Remove Element"
                 alternateText="Remove"
                 name="element"
-            />,
+            />
         );
 
         const deleteDialog = await getByTestId("delete-dialog");
@@ -158,12 +158,52 @@ describe("MadieDeleteDialog", () => {
         await waitFor(() => {
             expect(
                 deleteDialog.textContent.includes(
-                    "Are you sure you want to remove element?",
-                ),
+                    "Are you sure you want to remove element?"
+                )
             ).toBeTruthy();
             expect(
-                queryByText("This Action cannot be undone."),
+                queryByText("This Action cannot be undone.")
             ).not.toBeInTheDocument();
+        });
+    });
+
+    test("Dialog shows custom dialog", async () => {
+        const { getByTestId, queryByText } = render(
+            <MadieDeleteDialog
+                open={true}
+                onClose={() => setDialogOpen(false)}
+                onContinue={() => setDialogOpen(false)}
+                hideWarning={true}
+                dialogTitle="Delete Item"
+                customDialogBody={<span>Custom Dialog</span>}
+                name="Test Item"
+            />
+        );
+
+        const deleteDialog = await getByTestId("delete-dialog");
+        expect(deleteDialog).toBeInTheDocument();
+        await waitFor(() => {
+            expect(screen.getByText("Custom Dialog")).toBeInTheDocument();
+        });
+    });
+
+    test("renders '?' only if statement is not provided", async () => {
+        const { getByTestId, queryByText } = render(
+            <MadieDeleteDialog
+                open={true}
+                onClose={() => setDialogOpen(false)}
+                onContinue={() => setDialogOpen(false)}
+                hideWarning={true}
+                dialogTitle="Delete Item"
+                statement={true}
+                name="Test Item"
+            />
+        );
+
+        const deleteDialog = await getByTestId("delete-dialog");
+        expect(deleteDialog).toBeInTheDocument();
+        await waitFor(() => {
+            expect(screen.queryByText("?")).not.toBeInTheDocument();
         });
     });
 });
