@@ -126,7 +126,7 @@
         "@tiptap/extension-underline": "^2.11.7",
         "@tiptap/react": "^2.11.7",
         "@tiptap/starter-kit": "^2.11.7",
-        "axios": "^1.7.4",
+        "axios": "^1.15.0",
         "cookie": "^0.7.2",
         "cross-env": "^7.0.3",
         "d3-selection": "^1.4.2",
