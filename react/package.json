@@ -1,6 +1,6 @@
 {
     "name": "@madie/madie-design-system",
-    "version": "1.2.87",
+    "version": "1.2.88",
     "description": "Shared style guide across the Madie program.",
     "main": "dist/index.js",
     "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
@@ -135,7 +135,7 @@
         "dompurify": "^3.2.6",
         "html-react-parser": "^5.2.6",
         "jwt-decode": "^3.1.2",
-        "lodash": "^4.17.21",
+        "lodash": "^4.18.1",
         "preact": "^10.6.4",
         "prop-types": "^15.8.1",
         "react-draggable": "^4.4.6",
