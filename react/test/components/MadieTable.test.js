@@ -1,7 +1,9 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { createColumnHelper, useReactTable, getCoreRowModel } from "@tanstack/react-table";
 import { MadieTable } from "../../components";
+import userEvent from "@testing-library/user-event";
+
 /**
  * Test helper component to provide a real TanStack table instance
  */
@@ -120,4 +122,22 @@ describe("MadieTable", () => {
       screen.getByText("Expanded content for Test Measure 2")
     ).toBeInTheDocument();
   });
+
+   
+it("shows the hover icon on mouse enter", () => {
+  render(
+    <TestTableWrapper
+      data={data}
+      columns={columns}
+    />
+  );
+  const headerCell = screen
+    .getByTestId("header-name")
+    .closest("th");
+  fireEvent.mouseEnter(headerCell);
+
+  expect(
+    screen.getByTestId("unfold-more-icon")
+  ).toBeInTheDocument();
+});
 });

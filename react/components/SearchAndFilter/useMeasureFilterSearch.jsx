@@ -15,8 +15,8 @@ export const filterMap = {
 export const useMeasureFilterSearch = (
   onPageReset
 ) => {
-  const [filterBy, setFilterBy] = useState<string>("");
-  const [searchField, setSearchField] = useState<string>("");
+  const [filterBy, setFilterBy] = useState("");
+  const [searchField, setSearchField] = useState("");
   const [finalSearchAndFilterby, setFinalSearchAndFilterby] =
     useState({
       finalSearchField: "",
