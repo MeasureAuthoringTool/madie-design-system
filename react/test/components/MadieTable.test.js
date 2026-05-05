@@ -140,4 +140,37 @@ it("shows the hover icon on mouse enter", () => {
     screen.getByTestId("unfold-more-icon")
   ).toBeInTheDocument();
 });
+
+
+it("renders ascending sort icon when currentSort is ASC", () => {
+  render(
+    <TestTableWrapper
+      data={data}
+      columns={columns}
+      currentSort="name"
+      currentDirection="ASC"
+    />
+  );
+
+  expect(
+    screen.getByTestId("KeyboardArrowUpIcon")
+  ).toBeInTheDocument();
+});
+
+
+it("renders descending sort icon when currentSort is DESC", () => {
+  render(
+    <TestTableWrapper
+      data={data}
+      columns={columns}
+      currentSort="name"
+      currentDirection="DESC"
+    />
+  );
+
+  expect(
+    screen.getByTestId("KeyboardArrowDownIcon")
+  ).toBeInTheDocument();
+});
+
 });
