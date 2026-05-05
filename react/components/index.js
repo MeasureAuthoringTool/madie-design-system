@@ -17,6 +17,7 @@ import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
 import MadieConfirmDialog from "./MadieConfirmDialog";
+import MadieTable from "./MadieTable";
 import MadieSpinner from "./MadieSpinner";
 import MadieTooltip from "./MadieTooltip";
 import MadieTooltipIcon from "./MadieTooltipIcon";
@@ -37,13 +38,14 @@ import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
 import Toast from "./Toast";
 import Infotip from "./Infotip";
-import Search from "./Search";
+import SearchAndFilter from "./SearchAndFilter";
 import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
 import DSLink from "./Link";
 import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
 import theme from "../themes/actionCenterTheme.js";
+import useMeasureFilterSearch from "./SearchAndFilter/useMeasureFilterSearch";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -150,6 +152,7 @@ export {
     MadieDeleteDialog,
     MadieConfirmDialog,
     MadieSpinner,
+    MadieTable,
     MadieTooltipIcon,
     MadieTooltip,
     NumberInput,
@@ -158,7 +161,7 @@ export {
     RadioButton,
     ReadOnlyTextField,
     RichTextEditor,
-    Search,
+    SearchAndFilter,
     Select,
     Spinner,
     TabPanel,
@@ -170,6 +173,7 @@ export {
     TextField,
     TextArea,
     Toast,
+    useMeasureFilterSearch,
     Dropdown,
     Tooltip,
     DSLink,
