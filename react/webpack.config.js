@@ -74,7 +74,7 @@ const plugins = [
 ];
 
 const resolve = {
-    extensions: [".js", ".jsx", ".json", ".svg", "*"],
+    extensions: [".js", ".jsx", ".json", ".svg"],
     alias: {
         react: "preact/compat",
         "react-dom": "preact/compat",
