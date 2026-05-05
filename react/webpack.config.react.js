@@ -99,9 +99,6 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx", ".json", ".svg"],
     },
-    fallback: {
-        path: require.resolve("path-browserify"),
-    },
     optimization,
     externals: { react: "react" },
 };
