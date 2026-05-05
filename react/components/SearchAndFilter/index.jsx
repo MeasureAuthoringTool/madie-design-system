@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { IconButton, InputAdornment, MenuItem } from "@mui/material";
 import Select from "../Select"
 import TextField from "../TextField"
@@ -104,4 +105,17 @@ const SearchAndFilter = ({
   );
 };
 
+SearchAndFilter.propTypes = {
+  filterBy: PropTypes.string.isRequired,
+  searchField: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
+  onSearchTrigger: PropTypes.func.isRequired,
+  onSearchClear: PropTypes.func.isRequired,
+  filterByOpts: PropTypes.arrayOf(PropTypes.string),
+};
+
+SearchAndFilter.defaultProps = {
+  filterByOpts: filterByOptions,
+};
 export default SearchAndFilter;

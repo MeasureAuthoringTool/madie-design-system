@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { flexRender } from "@tanstack/react-table";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -20,6 +21,7 @@ const MadieTable = ({
 
   return (
     <table
+      /* eslint-disable-next-line react/no-unknown-property */
       tw="min-w-full"
       id={id}
       data-testid={dataTestId}
@@ -139,5 +141,22 @@ const MadieTable = ({
     </table>
   );
 };
+
+MadieTable.propTypes = {
+  table: PropTypes.shape({
+    getHeaderGroups: PropTypes.func.isRequired,
+    getRowModel: PropTypes.func.isRequired,
+    getAllColumns: PropTypes.func.isRequired,
+  }).isRequired,
+
+  currentSort: PropTypes.string,
+  currentDirection: PropTypes.oneOf(["ASC", "DESC"]),
+  handleSort: PropTypes.func.isRequired,
+  renderExpandedRow: PropTypes.func,
+
+  id: PropTypes.string,
+  dataTestId: PropTypes.string,
+};
+
 
 export default MadieTable;
