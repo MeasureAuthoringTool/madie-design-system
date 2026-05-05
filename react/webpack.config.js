@@ -79,6 +79,9 @@ const resolve = {
         react: "preact/compat",
         "react-dom": "preact/compat",
     },
+    fallback: {
+        path: require.resolve("path-browserify"),
+    }
 };
 
 const optimization = {
