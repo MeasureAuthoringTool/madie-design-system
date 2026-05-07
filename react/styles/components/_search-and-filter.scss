@@ -1,5 +1,4 @@
 .measure-search-filters {
-  margin: 0 32px 40px 32px;
   display: flex;
   flex-direction: row;
   column-gap: 24px;
@@ -9,6 +8,6 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    max-width: 412px;
+    width: 312px;
   }
 }
