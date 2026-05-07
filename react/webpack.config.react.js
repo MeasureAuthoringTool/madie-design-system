@@ -97,7 +97,7 @@ module.exports = {
     module: _module,
     plugins,
     resolve: {
-        extensions: [".js", ".jsx", ".json", ".svg", "*"],
+        extensions: [".js", ".jsx", ".json", ".svg"],
     },
     optimization,
     externals: { react: "react" },

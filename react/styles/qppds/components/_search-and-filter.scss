@@ -1,0 +1,13 @@
+.measure-search-filters {
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+
+  > div {
+    flex-basis: 1;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 312px;
+  }
+}
