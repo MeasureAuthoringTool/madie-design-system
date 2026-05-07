@@ -5,7 +5,7 @@ import Select from "../Select"
 import TextField from "../TextField"
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
-import { filterByOptions } from "./useMeasureFilterSearch";
+import { filterByOptions } from "./useFilterSearch";
 /**
  * Reusable component for measure filter and search UI
  * Provides filter dropdown and search input with trigger and clear actions

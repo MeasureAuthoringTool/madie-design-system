@@ -9,10 +9,10 @@ export const filterMap = {
 };
 
 /**
- * Custom hook for managing measure filter and search functionality
+ * Custom hook for managing measure or libraries filter and search functionality
  * Provides state and handlers for filtering and searching measures by various criteria
  */
-export const useMeasureFilterSearch = (
+export const useFilterSearch = (
   onPageReset
 ) => {
   const [filterBy, setFilterBy] = useState("");
