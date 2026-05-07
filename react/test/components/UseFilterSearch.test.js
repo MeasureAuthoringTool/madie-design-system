@@ -1,10 +1,10 @@
 import React from "react";
 import { screen, fireEvent, render } from "@testing-library/react";
 import {
-  useMeasureFilterSearch,
+  useFilterSearch,
   filterByOptions,
   filterMap,
-} from "../../components/SearchAndFilter/useMeasureFilterSearch";
+} from "../../components/SearchAndFilter/useFilterSearch";
 
 /**
  * Test harness to expose hook state & handlers
@@ -18,7 +18,7 @@ const TestHarness = ({ onPageReset }) => {
     handleSearch,
     finalizeSearchCriteria,
     blankSearchCriteria,
-  } = useMeasureFilterSearch(onPageReset);
+  } = useFilterSearch(onPageReset);
 
   return (
     <div>
@@ -55,7 +55,7 @@ const TestHarness = ({ onPageReset }) => {
   );
 };
 
-describe("useMeasureFilterSearch", () => {
+describe("useFilterSearch", () => {
   /**
    * ✅ exported constants
    */
@@ -144,7 +144,7 @@ describe("useMeasureFilterSearch", () => {
     expect(screen.getByTestId("searchField")).toHaveTextContent("");
   });
 });
-describe("useMeasureFilterSearch", () => {
+describe("useFilterSearch", () => {
   it("exposes the correct static filter options", () => {
     expect(filterByOptions).toEqual([
       "Measure",
