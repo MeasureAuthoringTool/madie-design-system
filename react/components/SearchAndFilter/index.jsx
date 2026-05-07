@@ -18,7 +18,8 @@ const SearchAndFilter = ({
   onSearchChange,
   onSearchTrigger,
   onSearchClear,
-  filterByOpts = filterByOptions
+  filterByOpts = filterByOptions,
+  textFieldID = "test-case"
 }) => {
   
   return (
@@ -61,7 +62,7 @@ const SearchAndFilter = ({
           label="Search"
           placeholder="Search"
           inputProps={{
-            "data-testid": "test-case-list-search-input",
+            "data-testid": `${textFieldID}-list-search-input`, 
           }}
           data-testid="test-case-list-search"
           name="searchField"
@@ -78,7 +79,7 @@ const SearchAndFilter = ({
               startAdornment: (
                 <InputAdornment
                   position="start"
-                  data-testid="test-cases-trigger-search"
+                  data-testid={`${textFieldID}-trigger-search`}
                   onClick={onSearchTrigger}
                   style={{ cursor: "pointer" }}
                 >
@@ -87,7 +88,7 @@ const SearchAndFilter = ({
               ),
               endAdornment: (
                 <InputAdornment
-                  data-testid="test-cases-clear-search"
+                  data-testid={`${textFieldID}-clear-search`}
                   position="end"
                   style={{ cursor: "pointer" }}
                   onClick={onSearchClear}
@@ -113,6 +114,7 @@ SearchAndFilter.propTypes = {
   onSearchTrigger: PropTypes.func.isRequired,
   onSearchClear: PropTypes.func.isRequired,
   filterByOpts: PropTypes.arrayOf(PropTypes.string),
+  textFieldID: PropTypes.string,
 };
 
 SearchAndFilter.defaultProps = {

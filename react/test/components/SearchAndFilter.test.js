@@ -60,7 +60,7 @@ describe("MeasureSearchFilter", () => {
     render(<SearchAndFilter {...defaultProps} />);
 
     fireEvent.click(
-      screen.getByTestId("test-cases-trigger-search")
+      screen.getByTestId("test-case-trigger-search")
     );
 
     expect(defaultProps.onSearchTrigger).toHaveBeenCalled();
@@ -70,7 +70,7 @@ describe("MeasureSearchFilter", () => {
     render(<SearchAndFilter {...defaultProps} />);
 
     fireEvent.click(
-      screen.getByTestId("test-cases-clear-search")
+      screen.getByTestId("test-case-clear-search")
     );
 
     expect(defaultProps.onSearchClear).toHaveBeenCalled();
