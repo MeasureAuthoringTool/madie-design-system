@@ -45,7 +45,8 @@ import DSLink from "./Link";
 import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
 import theme from "../themes/actionCenterTheme.js";
-import useFilterSearch from "./SearchAndFilter/useFilterSearch.jsx";
+// utilities
+import { filterByOptions, filterMap, useFilterSearch } from "./SearchAndFilter/useFilterSearch.jsx";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -173,10 +174,13 @@ export {
     TextField,
     TextArea,
     Toast,
-    useFilterSearch,
     Dropdown,
     Tooltip,
     DSLink,
     TruncateText,
     theme,
+    // utilities
+    filterByOptions,
+    filterMap,
+    useFilterSearch,
 };
