@@ -6,6 +6,7 @@ import CalloutBox from "./CalloutBox";
 import Card from "./Card";
 import FlashNotification from "./FlashNotification/FlashNotificationUI";
 import Footer from "./Footer/FooterUI";
+import Infotip from "./Infotip";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
 import MadieDialog from "./MadieDialog";
@@ -19,11 +20,12 @@ import Tabs from "./Tabs/index";
 import TextField from "./TextField";
 import Tooltip from "./Tooltip";
 import Toast from "./Toast";
-import Infotip from "./Infotip";
 import Search from "./Search";
 import TextInput from "./TextInput";
 import Dropdown from "./Dropdown";
-import DSLink from "./Link";
+import DSLink from "./Link"; 
+// utilities
+import { useFilterSearch, filterMap, filterByOptions } from "./SearchAndFilter/useFilterSearch.jsx";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -135,4 +137,8 @@ export {
     Dropdown,
     Tooltip,
     DSLink,
+    // utilities
+    useFilterSearch,
+    filterMap,
+    filterByOptions,
 };
