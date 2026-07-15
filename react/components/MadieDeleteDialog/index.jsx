@@ -68,7 +68,7 @@ const MadieDeleteDialog = ({
             {otherDialogProps.hideWarning !== true && (
                 <section className="dialog-warning-action">
                     <ErrorIcon />
-                    <p>This Action cannot be undone.</p>
+                    <p>This action cannot be undone.</p>
                 </section>
             )}
         </div>

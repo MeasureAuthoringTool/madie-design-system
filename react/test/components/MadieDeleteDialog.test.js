@@ -40,7 +40,7 @@ describe("MadieDeleteDialog", () => {
                     queryByText("Are you sure you want to delete ?")
                 ).toBeVisible();
                 expect(
-                    queryByText("This Action cannot be undone.")
+                    queryByText("This action cannot be undone.")
                 ).toBeVisible();
             });
         });
@@ -103,7 +103,7 @@ describe("MadieDeleteDialog", () => {
                     queryByText("Are you sure you want to delete ?")
                 ).toBeVisible();
                 expect(
-                    queryByText("This Action cannot be undone.")
+                    queryByText("This action cannot be undone.")
                 ).not.toBeInTheDocument();
             });
         });
@@ -129,7 +129,7 @@ describe("MadieDeleteDialog", () => {
                     queryByText("Are you sure you want to delete ?")
                 ).toBeVisible();
                 expect(
-                    queryByText("This Action cannot be undone.")
+                    queryByText("This action cannot be undone.")
                 ).not.toBeInTheDocument();
                 expect(
                     queryByText("<p><strong>test &</strong></p><p>test2</p>")
@@ -162,7 +162,7 @@ describe("MadieDeleteDialog", () => {
                 )
             ).toBeTruthy();
             expect(
-                queryByText("This Action cannot be undone.")
+                queryByText("This action cannot be undone.")
             ).not.toBeInTheDocument();
         });
     });
