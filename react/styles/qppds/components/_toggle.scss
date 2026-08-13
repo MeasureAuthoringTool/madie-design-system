@@ -1,0 +1,85 @@
+@import "../settings/index";
+
+.qpp-c-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-rubik;
+  font-size: $font-size-14;
+  line-height: $line-height-md;
+}
+
+.qpp-c-toggle__input {
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.qpp-c-toggle__label {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  gap: $spacing-8;
+  min-height: rem(38px);
+}
+
+.qpp-c-toggle__control {
+  background-color: rgba($black, 0.38);
+  border-radius: rem(7px);
+  display: inline-flex;
+  height: rem(14px);
+  margin: 0 rem(3px);
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+  width: rem(38px);
+
+  &::after {
+    background-color: $white;
+    box-shadow: 0 rem(1px) rem(3px) rgba($black, 0.35);
+    border-radius: 50%;
+    content: "";
+    height: rem(20px);
+    left: rem(-3px);
+    position: absolute;
+    top: rem(-3px);
+    transition: transform 0.2s ease-in-out;
+    width: rem(20px);
+  }
+}
+
+.qpp-c-toggle__input:checked + .qpp-c-toggle__control {
+  background-color: rgba($blue-60, 0.5);
+
+  &::after {
+    background-color: $blue-60;
+    transform: translateX(rem(21px));
+  }
+}
+
+.qpp-c-toggle__input:focus-visible + .qpp-c-toggle__control {
+  box-shadow: 0 0 0 rem(4px) $blue-10;
+}
+
+.qpp-c-toggle--disabled .qpp-c-toggle__label {
+  color: $gray-60;
+  cursor: not-allowed;
+}
+
+.qpp-c-toggle__input:disabled + .qpp-c-toggle__control {
+  background-color: rgba($black, 0.12);
+
+  &::after {
+    background-color: $gray-20;
+    box-shadow: none;
+  }
+}
+
+.qpp-c-toggle__input:disabled:checked + .qpp-c-toggle__control {
+  background-color: rgba($blue-60, 0.3);
+
+  &::after {
+    background-color: #9ecaea;
+  }
+}
