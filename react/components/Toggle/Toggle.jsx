@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { FormControlLabel, Switch } from "@mui/material";
 
 const Toggle = ({
     checked,
@@ -34,22 +35,25 @@ const Toggle = ({
     };
 
     return (
-        <div className={classes}>
-            <label className="qpp-c-toggle__label">
-                <input
+        <FormControlLabel
+            className={classes}
+            control={
+                <Switch
                     checked={isChecked}
-                    className="qpp-c-toggle__input"
                     disabled={disabled}
                     id={id}
                     onChange={handleChange}
-                    role="switch"
-                    type="checkbox"
-                    {...rest}
+                    slotProps={{
+                        input: {
+                            role: "switch",
+                            ...rest,
+                        },
+                    }}
                 />
-                <span className="qpp-c-toggle__control" aria-hidden="true" />
-                {label && <span className="qpp-c-toggle__text">{label}</span>}
-            </label>
-        </div>
+            }
+            label={label}
+            sx={{ color: "#515151", textTransform: "none" }}
+        />
     );
 };
 
