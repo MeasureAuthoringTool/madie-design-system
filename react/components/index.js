@@ -36,6 +36,7 @@ import TextField from "./TextField";
 import TimeField from "./TimeField/TimeField";
 import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
+import Toggle from "./Toggle/Toggle";
 import Toast from "./Toast";
 import Infotip from "./Infotip";
 import SearchAndFilter from "./SearchAndFilter";
@@ -173,6 +174,7 @@ export {
     TimeField,
     TextField,
     TextArea,
+    Toggle,
     Toast,
     Dropdown,
     Tooltip,
