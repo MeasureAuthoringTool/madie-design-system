@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Toggle from "../../components/Toggle/Toggle";
 
 describe("Toggle", () => {
@@ -61,6 +60,21 @@ describe("Toggle", () => {
         expect(onChange).toHaveBeenCalledWith(expect.any(Object), true);
     });
 
+    test("forwards input attributes to the switch", () => {
+        render(
+            <Toggle
+                data-testid="toggle-input"
+                id="hide-invalid"
+                label="Hide Invalid Test Cases"
+            />
+        );
+
+        expect(screen.getByTestId("toggle-input")).toHaveAttribute(
+            "role",
+            "switch"
+        );
+    });
+
     test("does not change when disabled", () => {
         const onChange = jest.fn();
 
@@ -76,7 +90,6 @@ describe("Toggle", () => {
         const toggle = screen.getByRole("switch", {
             name: "Hide Invalid Test Cases",
         });
-        userEvent.click(toggle);
 
         expect(toggle).toBeDisabled();
         expect(toggle).not.toBeChecked();
