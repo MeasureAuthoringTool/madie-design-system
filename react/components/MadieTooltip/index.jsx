@@ -27,7 +27,13 @@ const MadieToolTip =
           }}
               {...rest}
         >
-              <div style={{ width: widthContainer, height: heightContainer}} data-testId={id} id={id}>
+              <div
+                aria-describedby={id} 
+                style={{ width: widthContainer, height: heightContainer}}
+                data-testId={id} 
+                id={id}
+                role="tooltip"
+              >
                 <TooltipIcon />
               </div>
             </Tooltip>
