@@ -33,7 +33,6 @@ const MadieToolTip =
                 style={{ width: widthContainer, height: heightContainer}}
                 data-testId={id} 
                 id={id}
-                role="tooltip"
               >
                 <TooltipIcon />
               </div>
