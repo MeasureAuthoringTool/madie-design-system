@@ -3,12 +3,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { EditorContent, useEditor } from "@tiptap/react";
 import InputLabel from "../InputLabel";
-
-import Gapcursor from "@tiptap/extension-gapcursor";
-import Table from "@tiptap/extension-table";
-import TableCell from "@tiptap/extension-table-cell";
-import TableHeader from "@tiptap/extension-table-header";
-import TableRow from "@tiptap/extension-table-row";
+import { Gapcursor } from "@tiptap/extensions";
+import {
+Table,
+TableCell,
+TableHeader,
+TableRow,
+} from "@tiptap/extension-table";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { IconButton, FormHelperText } from "@mui/material";
