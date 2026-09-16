@@ -98,7 +98,6 @@ const TextField = ({
         ...textFieldStyles,
     };
 
-    const currentValueLength = rest.value?.length ?? "";
     return (
         <FormControl fullWidth error={error}>
             <div
@@ -243,7 +242,7 @@ const TextField = ({
                                 alignSelf: "flex-start",
                             }}
                         >
-                            {currentValueLength}/{maxLength} Characters
+                            {rest.value?.length}/{maxLength} Characters
                         </span>
                     )}
                 </div>
