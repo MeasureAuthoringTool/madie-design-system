@@ -22,6 +22,7 @@ const TextField = ({
     labelColor = undefined,
     textFieldStyles = {},
     maxLength = undefined,
+    recommendation = undefined,
     ...rest
 }) => {
     if (readOnly) {
@@ -89,6 +90,10 @@ const TextField = ({
         },
         ...textFieldStyles,
     };
+
+    const showMaxLength = Boolean(maxLength) && !disabled;
+    const showRecommendation = Boolean(recommendation) && !disabled;
+    const currentValueLength = rest.value?.length ?? "";
     return (
         <FormControl fullWidth error={error}>
             <div
@@ -187,19 +192,57 @@ const TextField = ({
                 }}
                 {...rest}
             />
-            {maxLength && !disabled && (
-                <span
+
+            {(showRecommendation || showMaxLength) && (
+                <div
                     style={{
-                        fontFamily: "Rubik",
-                        fontSize: 12,
-                        color: "#717171",
-                        position: "absolute",
-                        bottom: -26,
-                        right: 0,
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        gap: 8,
+                        marginTop: 4,
+                        width: "100%",
                     }}
                 >
-                    {rest.value?.length}/{maxLength} Characters
-                </span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                        {showRecommendation && (
+                            <FormHelperText
+                                tabIndex={0}
+                                aria-live="polite"
+                                id={`${id}-recommendation-text`}
+                                data-testid={`${id}-recommendation-text`}
+                                sx={[
+                                    {
+                                        margin: 0,
+                                        color: "#515151",
+                                        lineHeight: 1.2,
+                                        overflowWrap: "anywhere",
+                                    },
+                                    error && {
+                                        color: "#AE1C1C !important",
+                                    },
+                                ]}
+                            >
+                                {recommendation}
+                            </FormHelperText>
+                        )}
+                    </div>
+
+                    {showMaxLength && (
+                        <span
+                            style={{
+                                fontFamily: "Rubik",
+                                fontSize: 12,
+                                color: "#717171",
+                                whiteSpace: "nowrap",
+                                flexShrink: 0,
+                                alignSelf: "flex-start",
+                            }}
+                        >
+                            {currentValueLength}/{maxLength} Characters
+                        </span>
+                    )}
+                </div>
             )}
         </FormControl>
     );
@@ -219,5 +262,6 @@ TextField.propTypes = {
     inputProps: PropTypes.object,
     labelColor: PropTypes.string,
     maxLength: PropTypes.number,
+    recommendation: PropTypes.string,
 };
 export default TextField;

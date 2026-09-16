@@ -178,4 +178,39 @@ describe("TextField", () => {
             expect(maxLength).toBeInTheDocument();
         });
     });
+
+    test("recommendation text and max length share a row with left/right layout", async () => {
+        act(async () => {
+            const longRecommendation =
+                "This recommendation is intentionally long so it can wrap without overlapping the character counter.";
+            const {findByTestId, findByText} = render(
+                <TextField
+                    placeholder="test Name"
+                    label="test Name"
+                    id="testName"
+                    inputProps={{"data-testid": "test-name-input"}}
+                    data-testid="test-name-text-field"
+                    size="small"
+                    value="abc"
+                    maxLength={10}
+                    recommendation={longRecommendation}
+                />
+            );
+
+            const recommendationNode = await findByTestId("testName-recommendation-text");
+            const maxLengthNode = await findByText("3/10 Characters");
+
+            expect(recommendationNode).toBeInTheDocument();
+            expect(maxLengthNode).toBeInTheDocument();
+
+            const recommendationContainer = recommendationNode.parentElement;
+            const footerRow = recommendationContainer?.parentElement;
+
+            expect(recommendationContainer).toHaveStyle("flex: 1");
+            expect(recommendationContainer).toHaveStyle("min-width: 0");
+            expect(footerRow).toHaveStyle("display: flex");
+            expect(footerRow).toHaveStyle("justify-content: space-between");
+            expect(maxLengthNode).toHaveStyle("white-space: nowrap");
+        });
+    });
 });

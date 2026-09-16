@@ -212,6 +212,26 @@ export const TextfieldDifferentLabel = () => (
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
             size="small"
+            value="This is a test value"
+            maxLength={500}
+        />
+    </Wrapper>
+);
+
+export const TextFieldWithHint = () => (
+    <Wrapper>
+        <TextField
+            placeholder="Placeholder"
+            label="Text Label with different color"
+            labelColor="#1976d2"
+            id="measureName"
+            inputProps={{ "data-testid": "measure-name-input" }}
+            data-testid="measure-name-text-field"
+            size="small"
+            value="This is a test value"
+            maxLength={500}
+            helperText="Must contain at least one letter and must not contain special characters and underscores"
+            recommendation="Strongly recommend to have under 30 characters"
         />
     </Wrapper>
 );
