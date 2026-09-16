@@ -218,12 +218,11 @@ export const TextfieldDifferentLabel = () => (
     </Wrapper>
 );
 
-export const TextFieldWithHint = () => (
+export const TextFieldWithRecommendationText = () => (
     <Wrapper>
         <TextField
             placeholder="Placeholder"
-            label="Text Label with different color"
-            labelColor="#1976d2"
+            label="With recommendation text"
             id="measureName"
             inputProps={{ "data-testid": "measure-name-input" }}
             data-testid="measure-name-text-field"
