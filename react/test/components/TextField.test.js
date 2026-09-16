@@ -194,6 +194,8 @@ describe("TextField", () => {
                     value="abc"
                     maxLength={10}
                     recommendation={longRecommendation}
+                    tooltipText="tooltip text"
+                    helperText="helper text"
                 />
             );
 
@@ -211,6 +213,14 @@ describe("TextField", () => {
             expect(footerRow).toHaveStyle("display: flex");
             expect(footerRow).toHaveStyle("justify-content: space-between");
             expect(maxLengthNode).toHaveStyle("white-space: nowrap");
+
+            // 508 compliance
+            const textNode = await findByTestId("test-name-input");
+            const describedBy = textNode.getAttribute("aria-describedby") || "";
+
+            expect(describedBy).toContain("testName-helper-text");
+            expect(describedBy).toContain("testName-tooltip");
+            expect(describedBy).toContain("testName-recommendation-text");
         });
     });
 });

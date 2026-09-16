@@ -36,24 +36,31 @@ const TextField = ({
             />
         );
     }
+    const showMaxLength = Boolean(maxLength) && !disabled;
+    const showRecommendation = Boolean(recommendation) && !disabled;
     // get a copy of input props
     const newInputProps = { ...inputProps } || {};
 
     if (!newInputProps["data-testid"]) {
         newInputProps["data-testid"] = `${id}-input`;
     }
-    // if aria-describedBy is not provided, add it depending on helper-text and tooltip presence
-    if (!newInputProps["aria-describedby"]) {
-        let newDescribedBy = "";
-        if (helperText) {
-            newDescribedBy += `${id}-helper-text `;
-        }
-        if (tooltipText) {
-            newDescribedBy += `${id}-tooltip`;
-        }
-        if (newDescribedBy) {
-            newInputProps["aria-describedby"] = newDescribedBy;
-        }
+    // Build aria-describedby ids so helper, tooltip, and recommendation are announced on input focus.
+    const describedByIds = new Set(
+        `${newInputProps["aria-describedby"] || ""}`
+            .split(/\s+/)
+            .filter(Boolean)
+    );
+    if (helperText) {
+        describedByIds.add(`${id}-helper-text`);
+    }
+    if (tooltipText) {
+        describedByIds.add(`${id}-tooltip`);
+    }
+    if (showRecommendation) {
+        describedByIds.add(`${id}-recommendation-text`);
+    }
+    if (describedByIds.size) {
+        newInputProps["aria-describedby"] = Array.from(describedByIds).join(" ");
     }
 
     const extendedTextFieldStyles = {
@@ -91,8 +98,6 @@ const TextField = ({
         ...textFieldStyles,
     };
 
-    const showMaxLength = Boolean(maxLength) && !disabled;
-    const showRecommendation = Boolean(recommendation) && !disabled;
     const currentValueLength = rest.value?.length ?? "";
     return (
         <FormControl fullWidth error={error}>
@@ -207,7 +212,6 @@ const TextField = ({
                     <div style={{ flex: 1, minWidth: 0 }}>
                         {showRecommendation && (
                             <FormHelperText
-                                tabIndex={0}
                                 aria-live="polite"
                                 id={`${id}-recommendation-text`}
                                 data-testid={`${id}-recommendation-text`}
