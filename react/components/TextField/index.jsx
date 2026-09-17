@@ -217,13 +217,10 @@ const TextField = ({
                                 sx={[
                                     {
                                         margin: 0,
-                                        color: "#515151",
+                                        color: "#515151 !important",
                                         lineHeight: 1.2,
                                         overflowWrap: "anywhere",
-                                    },
-                                    error && {
-                                        color: "#AE1C1C !important",
-                                    },
+                                    }
                                 ]}
                             >
                                 {recommendation}
