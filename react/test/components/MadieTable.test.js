@@ -14,6 +14,7 @@ const TestTableWrapper = ({
   currentDirection,
   handleSort = jest.fn(),
   renderExpandedRow,
+  emptyMessage,
 }) => {
   const table = useReactTable({
     data,
@@ -28,6 +29,7 @@ const TestTableWrapper = ({
       currentDirection={currentDirection}
       handleSort={handleSort}
       renderExpandedRow={renderExpandedRow}
+      emptyMessage={emptyMessage}
     />
   );
 };
@@ -81,6 +83,19 @@ describe("MadieTable", () => {
     expect(
       screen.getByText("No results were found")
     ).toBeInTheDocument();
+  });
+
+  it("shows custom empty message when provided and there are no rows", () => {
+    render(
+      <TestTableWrapper
+        data={[]}
+        columns={columns}
+        emptyMessage="Custom empty message"
+      />
+    );
+
+    expect(screen.getByText("Custom empty message")).toBeInTheDocument();
+    expect(screen.queryByText("No results were found")).not.toBeInTheDocument();
   });
 
   it("calls handleSort when sortable header is clicked", () => {
