@@ -12,6 +12,7 @@ import Footer from "./Footer/FooterUI";
 import Instant from "./Instant";
 import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
+import HowItWorks from "./HowItWorks";
 import MadieAlert from "./MadieAlert";
 import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
@@ -143,6 +144,7 @@ export {
     FlashNotification,
     Footer,
     FormControlLabel,
+    HowItWorks,
     InputLabel,
     Icons,
     Infotip,

@@ -13,7 +13,6 @@ module.exports = {
         "@storybook/addon-docs",
         "@storybook/addon-backgrounds",
         "@storybook/addon-viewport",
-        "@storybook/addon-postcss",
         "@storybook/addon-webpack5-compiler-babel"
     ],
 

@@ -13,6 +13,7 @@ const MadieTable = ({
   currentDirection,
   handleSort,
   renderExpandedRow,
+  emptyMessage = "No results were found",
   id="measureListTable",
   dataTestId = "measure-list-tbl"
 }) => {
@@ -112,7 +113,7 @@ const MadieTable = ({
                       colSpan={table.getAllColumns().length}
                       style={{ padding: "40px 0", textAlign: "center" }}
                     >
-                      <span>No results were found</span>
+                      <span>{emptyMessage}</span>
                     </td>
                   </tr>
                 )}
@@ -153,6 +154,7 @@ MadieTable.propTypes = {
   currentDirection: PropTypes.oneOf(["ASC", "DESC"]),
   handleSort: PropTypes.func.isRequired,
   renderExpandedRow: PropTypes.func,
+  emptyMessage: PropTypes.node,
 
   id: PropTypes.string,
   dataTestId: PropTypes.string,
