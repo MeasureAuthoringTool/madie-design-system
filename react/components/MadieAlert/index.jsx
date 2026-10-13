@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, {
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+    useMemo,
+} from "react";
 
 import ErrorIcon from "@mui/icons-material/Error"; // warning
 import InfoIcon from "@mui/icons-material/Info"; // info
@@ -6,13 +12,13 @@ import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
 import FullscreenExitRoundedIcon from "@mui/icons-material/FullscreenExitRounded";
-import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import Toast from "../Toast/index";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { MadieAlertContext } from "./MadieAlertProvider";
 
 // Define icon mapping outside component to avoid recreation on each render
 const typeToIconMap = {
@@ -158,12 +164,21 @@ const MadieAlert = ({
     visible = true,
     content,
     canClose = true,
-    minimizeAlerts = true,
+    minimizeAlerts,
     alertProps,
     closeButtonProps,
     copyButton,
     alerts = null,
 }) => {
+    const alertContext = useContext(MadieAlertContext);
+    const canMinimize = minimizeAlerts ?? Boolean(alertContext);
+    if (canMinimize && !alertContext) {
+        throw new Error(
+            "MadieAlert with minimization enabled must be rendered within a MadieAlertProvider."
+        );
+    }
+    const registerMinimizedAlerts = alertContext?.registerMinimizedAlerts;
+
     // Consolidate related state
     const [state, setState] = useState({
         toastOpen: false,
@@ -230,24 +245,44 @@ const MadieAlert = ({
 
     // Utility functions for managing minimized state
     const minimizeAlert = (index) => {
-        updateState({
-            minimizedAlerts: { ...minimizedAlerts, [index]: true },
-        });
+        setState((previous) => ({
+            ...previous,
+            minimizedAlerts: { ...previous.minimizedAlerts, [index]: true },
+        }));
     };
 
-    const restoreAllAlerts = () => {
-        updateState({ minimizedAlerts: {} });
-    };
+    const restoreAllAlerts = useCallback(() => {
+        setState((previous) => ({ ...previous, minimizedAlerts: {} }));
+    }, []);
 
     // Calculate minimized alerts info
     const minimizedIndices = Object.keys(minimizedAlerts)
-        .filter((key) => minimizedAlerts[key])
-        .map((key) => parseInt(key));
+        .map((key) => parseInt(key, 10))
+        .filter(
+            (index) =>
+                minimizedAlerts[index] &&
+                alertsArray[index] &&
+                alertsArray[index].visible !== false
+        );
 
     const totalMinimizedErrors = minimizedIndices.reduce(
         (sum, index) => sum + (individualErrors[index] || 0),
         0
     );
+
+    useEffect(() => {
+        if (minimizedIndices.length > 0 && registerMinimizedAlerts) {
+            return registerMinimizedAlerts(
+                totalMinimizedErrors,
+                restoreAllAlerts
+            );
+        }
+    }, [
+        minimizedIndices.length,
+        totalMinimizedErrors,
+        registerMinimizedAlerts,
+        restoreAllAlerts,
+    ]);
 
     // Render alert content
     const renderAlert = (alert, index) => {
@@ -273,7 +308,7 @@ const MadieAlert = ({
                     {content}
                 </div>
 
-                {minimizeAlerts && (
+                {canMinimize && (
                     <ActionButton
                         tooltip="Minimize"
                         onClick={(e) => {
@@ -304,9 +339,7 @@ const MadieAlert = ({
                         }}
                         icon={<ContentCopyIcon sx={{ color: "#242424" }} />}
                         testId="copy-button"
-                        sx={
-                            !minimizeAlerts ? buttonWithDividerSx : buttonBaseSx
-                        }
+                        sx={!canMinimize ? buttonWithDividerSx : buttonBaseSx}
                     />
                 )}
 
@@ -333,39 +366,6 @@ const MadieAlert = ({
 
             {/* Render visible alerts */}
             {alertsArray.map((alert, index) => renderAlert(alert, index))}
-
-            {/* Show minimized indicator if any alerts are minimized */}
-            {minimizedIndices.length > 0 && (
-                <div
-                    style={{
-                        position: "absolute",
-                        right: "32px",
-                        top: "10px",
-                        display: "flex",
-                        alignItems: "center",
-                        cursor: "pointer",
-                    }}
-                    data-testid="minimized-alert"
-                    className="minimized-alert"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        restoreAllAlerts();
-                    }}
-                >
-                    <WarningRoundedIcon
-                        sx={{ color: "yellow", marginRight: "5px" }}
-                    />
-                    <span
-                        data-testid="minimized-alert-text"
-                        style={{ color: "white", fontSize: "16px" }}
-                    >
-                        Display Alerts{" "}
-                        {totalMinimizedErrors > 0
-                            ? `(${totalMinimizedErrors})`
-                            : ""}
-                    </span>
-                </div>
-            )}
         </div>
     );
 };
@@ -395,7 +395,6 @@ MadieAlert.propTypes = {
 
 MadieAlert.defaultProps = {
     copyButton: false,
-    minimizeAlerts: true,
     alerts: null,
 };
 
