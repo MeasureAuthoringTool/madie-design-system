@@ -10,7 +10,7 @@ const MinimizedAlert = ({ errorCount = 0, onClick, ...buttonProps }) => (
         color="inherit"
         className="minimized-alert"
         data-testid="minimized-alert"
-        startIcon={<WarningRoundedIcon sx={{ color: "#df711c" }} />}
+        startIcon={<WarningRoundedIcon sx={{ color: "yellow" }} />}
         sx={{ fontSize: "16px", textTransform: "none" }}
         {...buttonProps}
         onClick={onClick}
