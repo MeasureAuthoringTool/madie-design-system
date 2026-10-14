@@ -8,7 +8,8 @@ The purpose of `madie/madie-design-system` is to provide assets such as CSS, SCS
 
 ## System Requirements
 
-Node 14.15.4 (LTS)
+Node and npm versions are pinned in [react/package.json](react/package.json).
+See [the React setup instructions](react/README.md) to use the same toolchain as CI.
 
 ## Style Guide Documentation
 

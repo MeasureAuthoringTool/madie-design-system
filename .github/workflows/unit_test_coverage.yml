@@ -17,10 +17,6 @@ on:
 
 jobs:
   node_matrix:
-    strategy:
-      fail-fast: false
-      matrix:
-        version: [20]
     name: Checkout, install, lint, build and test with coverage
     runs-on: ubuntu-latest
     defaults:
@@ -31,10 +27,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js (matrix)
+      - name: Use pinned Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.version }}
+          node-version-file: react/package.json
+
+      - name: Use pinned npm
+        run: npm install --global "npm@$(node -p 'require("./package.json").volta.npm')"
 
       - name: Cache node modules
         uses: actions/cache@v4
