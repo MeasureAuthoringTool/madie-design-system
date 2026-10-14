@@ -1,7 +1,25 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import {
+    render as rtlRender,
+    fireEvent,
+    waitFor,
+    screen,
+} from "@testing-library/react";
 import MadieAlert from "../../components/MadieAlert";
+import MadieAlertProvider from "../../components/MadieAlert/MadieAlertProvider";
+import MinimizedAlert from "../../components/MinimizedAlert";
+
+const AlertLayout = ({ children }) => (
+    <MadieAlertProvider>
+        <header data-testid="alert-actions" style={{ display: "flex" }}>
+            <MinimizedAlert />
+        </header>
+        {children}
+    </MadieAlertProvider>
+);
+
+const render = (ui) => rtlRender(ui, { wrapper: AlertLayout });
 
 describe("Madie Alert", () => {
     it("It renders as expected with basic props and triggers on Close on click", async () => {
@@ -571,5 +589,201 @@ Row: 6, Col:0: VSAC: 0:87 | Request failed with status code 404 for oid = 1.16.8
                 "Display Alerts ("
             );
         });
+    });
+
+    it("does not render a built-in minimized link", () => {
+        rtlRender(
+            <MadieAlertProvider>
+                <MadieAlert
+                    content="Alert content"
+                    alertProps={{ "data-testid": "alert-dialog" }}
+                />
+            </MadieAlertProvider>
+        );
+
+        fireEvent.click(screen.getByTestId("minimize-button-0"));
+
+        expect(screen.queryByTestId("alert-dialog")).not.toBeInTheDocument();
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+    });
+
+    it("keeps minimized state isolated between providers", () => {
+        rtlRender(
+            <>
+                <MadieAlertProvider>
+                    <header data-testid="first-actions">
+                        <MinimizedAlert />
+                    </header>
+                    <MadieAlert
+                        content="First page alert"
+                        alertProps={{ "data-testid": "first-page-alert" }}
+                    />
+                </MadieAlertProvider>
+                <MadieAlertProvider>
+                    <header data-testid="second-actions">
+                        <MinimizedAlert />
+                    </header>
+                    <MadieAlert
+                        content="Second page alert"
+                        alertProps={{ "data-testid": "second-page-alert" }}
+                    />
+                </MadieAlertProvider>
+            </>
+        );
+        const minimizeButtons = screen.getAllByTestId("minimize-button-0");
+        fireEvent.click(minimizeButtons[0]);
+        fireEvent.click(minimizeButtons[1]);
+
+        fireEvent.click(
+            screen.getByTestId("first-actions").querySelector("button")
+        );
+        expect(screen.getByTestId("first-page-alert")).toBeInTheDocument();
+        expect(
+            screen.queryByTestId("second-page-alert")
+        ).not.toBeInTheDocument();
+        expect(screen.getByTestId("second-actions")).toHaveTextContent(
+            "Display Alerts"
+        );
+    });
+
+    it("removes unmounted groups without losing other minimized counts", () => {
+        const first = (
+            <MadieAlert
+                key="first"
+                content={
+                    <ul>
+                        <li>Error 1</li>
+                        <li>Error 2</li>
+                    </ul>
+                }
+            />
+        );
+        const second = (
+            <MadieAlert
+                key="second"
+                content={
+                    <ul>
+                        <li>Error 3</li>
+                    </ul>
+                }
+            />
+        );
+        const { rerender } = render(
+            <>
+                {first}
+                {second}
+            </>
+        );
+        const minimizeButtons = screen.getAllByTestId("minimize-button-0");
+        fireEvent.click(minimizeButtons[0]);
+        fireEvent.click(minimizeButtons[1]);
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (3)"
+        );
+
+        rerender(<>{second}</>);
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (1)"
+        );
+        fireEvent.click(screen.getByTestId("minimized-alert"));
+        expect(screen.getByText("Error 3")).toBeInTheDocument();
+        expect(screen.queryByText("Error 1")).not.toBeInTheDocument();
+    });
+
+    it("aggregates and restores separate alert components from the header", () => {
+        render(
+            <>
+                <MadieAlert
+                    content={
+                        <ul>
+                            <li>Error 1</li>
+                            <li>Error 2</li>
+                        </ul>
+                    }
+                    alertProps={{ "data-testid": "first-alert" }}
+                />
+                <MadieAlert
+                    content={
+                        <ul>
+                            <li>Warning 1</li>
+                        </ul>
+                    }
+                    alertProps={{ "data-testid": "second-alert" }}
+                />
+            </>
+        );
+        const minimizeButtons = screen.getAllByTestId("minimize-button-0");
+
+        fireEvent.click(minimizeButtons[0]);
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (2)"
+        );
+        expect(screen.getByTestId("second-alert")).toBeInTheDocument();
+        fireEvent.click(minimizeButtons[1]);
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (3)"
+        );
+        expect(screen.getByTestId("alert-actions")).toContainElement(
+            screen.getByTestId("minimized-alert")
+        );
+
+        fireEvent.click(screen.getByTestId("minimized-alert"));
+        expect(screen.getByTestId("first-alert")).toBeInTheDocument();
+        expect(screen.getByTestId("second-alert")).toBeInTheDocument();
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+    });
+
+    it("updates the minimized count when alert content changes", () => {
+        const { rerender } = render(
+            <MadieAlert
+                content={
+                    <ul>
+                        <li>Error 1</li>
+                    </ul>
+                }
+            />
+        );
+        fireEvent.click(screen.getByTestId("minimize-button-0"));
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (1)"
+        );
+
+        rerender(
+            <MadieAlert
+                content={
+                    <ul>
+                        <li>Error 1</li>
+                        <li>Error 2</li>
+                    </ul>
+                }
+            />
+        );
+        expect(screen.getByTestId("minimized-alert-text")).toHaveTextContent(
+            "Display Alerts (2)"
+        );
+    });
+
+    it("removes hidden and unmounted alerts from the minimized link", () => {
+        const { rerender } = render(
+            <MadieAlert content="Alert content" visible />
+        );
+        fireEvent.click(screen.getByTestId("minimize-button-0"));
+        expect(screen.getByTestId("minimized-alert")).toBeInTheDocument();
+
+        rerender(<MadieAlert content="Alert content" visible={false} />);
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+
+        rerender(<MadieAlert content="Alert content" visible />);
+        expect(screen.getByTestId("minimized-alert")).toBeInTheDocument();
+        rerender(null);
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+    });
+
+    it("renders standalone alerts without an unrecoverable minimize action", () => {
+        rtlRender(<MadieAlert content="Standalone alert" />);
+        expect(screen.getByText("Standalone alert")).toBeInTheDocument();
+        expect(
+            screen.queryByTestId("minimize-button-0")
+        ).not.toBeInTheDocument();
     });
 });

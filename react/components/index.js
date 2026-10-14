@@ -14,6 +14,9 @@ import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
 import HowItWorks from "./HowItWorks";
 import MadieAlert from "./MadieAlert";
+import MadieAlertProvider from "./MadieAlert/MadieAlertProvider";
+import MinimizedAlert from "./MinimizedAlert";
+import PageHeaderActions from "./PageHeaderActions";
 import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
@@ -48,7 +51,11 @@ import NumberInput from "./NumberInput";
 import TruncateText from "./TruncateText/index";
 import theme from "../themes/actionCenterTheme.js";
 // utilities
-import { filterByOptions, filterMap, useFilterSearch } from "./SearchAndFilter/useFilterSearch.jsx";
+import {
+    filterByOptions,
+    filterMap,
+    useFilterSearch,
+} from "./SearchAndFilter/useFilterSearch.jsx";
 import {
     MyApplicationsIcon,
     UserSignInIcon,
@@ -151,6 +158,9 @@ export {
     Instant,
     Modal,
     MadieAlert,
+    MadieAlertProvider,
+    MinimizedAlert,
+    PageHeaderActions,
     MadieDialog,
     MadieDiscardDialog,
     MadieDeleteDialog,
