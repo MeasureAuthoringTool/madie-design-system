@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import MadieAlert from "./index";
+import MinimizedAlert from "../MinimizedAlert";
 import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
@@ -8,7 +9,9 @@ export default {
     decorators: [
         withKnobs,
         (storyFn) => (
-            <div style={{ padding: "120px", backgroundColor: "gray" }}>
+            <div
+                style={{ padding: "min(120px, 5vw)", backgroundColor: "gray" }}
+            >
                 {storyFn()}
             </div>
         ),
@@ -78,3 +81,46 @@ export const MadieAlertSuccess = () => (
     />
 );
 MadieAlertSuccess.storyName = "MadieAlertSuccess";
+
+export const IndependentlyPositionedMinimizedAlert = () => {
+    const [minimizedAlerts, setMinimizedAlerts] = useState({});
+    const [errorCount, setErrorCount] = useState(0);
+
+    return (
+        <>
+            <header
+                style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    marginBottom: "16px",
+                }}
+            >
+                <h2 style={{ margin: 0, lineHeight: 1.3 }}>Measure Details</h2>
+                {Object.values(minimizedAlerts).some(Boolean) && (
+                    <MinimizedAlert
+                        errorCount={errorCount}
+                        onClick={() => setMinimizedAlerts({})}
+                    />
+                )}
+            </header>
+            <MadieAlert
+                type="warning"
+                canClose={false}
+                minimizedAlerts={minimizedAlerts}
+                onMinimizedAlertsChange={(nextMinimizedAlerts, count) => {
+                    setMinimizedAlerts(nextMinimizedAlerts);
+                    setErrorCount(count);
+                }}
+                content={
+                    <ul>
+                        <li>Your measure needs a CMS ID.</li>
+                        <li>Please complete the CQL Editor process.</li>
+                    </ul>
+                }
+            />
+        </>
+    );
+};

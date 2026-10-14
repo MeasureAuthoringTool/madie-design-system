@@ -1,9 +1,105 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { act, render, fireEvent, waitFor, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import MadieAlert from "../../components/MadieAlert";
+import MinimizedAlert from "../../components/MinimizedAlert";
 
 describe("Madie Alert", () => {
+    it("supports minimizing and restoring alerts from a separate layout container", async () => {
+        const AlertLayout = () => {
+            const [minimizedAlerts, setMinimizedAlerts] = React.useState({});
+            const [errorCount, setErrorCount] = React.useState(0);
+
+            return (
+                <>
+                    <header data-testid="page-header">
+                        {Object.values(minimizedAlerts).some(Boolean) && (
+                            <MinimizedAlert
+                                errorCount={errorCount}
+                                onClick={() => setMinimizedAlerts({})}
+                            />
+                        )}
+                    </header>
+                    <main data-testid="page-content">
+                        <MadieAlert
+                            minimizedAlerts={minimizedAlerts}
+                            onMinimizedAlertsChange={(next, count) => {
+                                setMinimizedAlerts(next);
+                                setErrorCount(count);
+                            }}
+                            alerts={[
+                                {
+                                    content: (
+                                        <ul>
+                                            <li>Error 1</li>
+                                            <li>Error 2</li>
+                                        </ul>
+                                    ),
+                                    alertProps: { "data-testid": "first-alert" },
+                                },
+                                {
+                                    content: (
+                                        <ul>
+                                            <li>Warning 1</li>
+                                        </ul>
+                                    ),
+                                    alertProps: { "data-testid": "second-alert" },
+                                },
+                            ]}
+                        />
+                    </main>
+                </>
+            );
+        };
+
+        render(<AlertLayout />);
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+
+        fireEvent.click(screen.getByTestId("minimize-button-0"));
+        expect(screen.queryByTestId("first-alert")).not.toBeInTheDocument();
+        expect(screen.getByTestId("second-alert")).toBeInTheDocument();
+        expect(screen.getByTestId("page-header")).toContainElement(
+            screen.getByRole("button", { name: "Display Alerts (2)" })
+        );
+        expect(screen.getByTestId("page-content")).not.toContainElement(
+            screen.getByTestId("minimized-alert")
+        );
+
+        fireEvent.click(screen.getByTestId("minimize-button-1"));
+        expect(screen.queryByTestId("second-alert")).not.toBeInTheDocument();
+        const restoreButton = screen.getByRole("button", {
+            name: "Display Alerts (3)",
+        });
+        await act(async () => {
+            restoreButton.focus();
+            userEvent.keyboard("{Enter}");
+        });
+
+        expect(screen.getByTestId("first-alert")).toBeInTheDocument();
+        expect(screen.getByTestId("second-alert")).toBeInTheDocument();
+        expect(screen.queryByTestId("minimized-alert")).not.toBeInTheDocument();
+    });
+
+    it("renders the standalone restore control without a count or page positioning", async () => {
+        const onClick = jest.fn();
+        render(<MinimizedAlert onClick={onClick} />);
+
+        const restoreButton = screen.getByRole("button", {
+            name: "Display Alerts",
+        });
+        expect(restoreButton).toHaveAttribute("type", "button");
+        expect(restoreButton).not.toHaveStyle({ position: "absolute" });
+        expect(screen.getByTestId("minimized-alert-text")).not.toHaveTextContent(
+            "("
+        );
+        await act(async () => {
+            restoreButton.focus();
+            userEvent.keyboard(" ");
+        });
+        expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
     it("It renders as expected with basic props and triggers on Close on click", async () => {
         const onClose = jest.fn();
         const { getByTestId } = render(
