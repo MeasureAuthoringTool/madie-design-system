@@ -4,10 +4,6 @@
     "description": "Shared style guide across the Madie program.",
     "main": "dist/index.js",
     "homepage": "https://github.com/MeasureAuthoringTool/madie-design-system",
-    "engines": {
-        "node": ">=20",
-        "npm": "10.x"
-    },
     "volta": {
         "node": "20.20.2",
         "npm": "10.9.9"
