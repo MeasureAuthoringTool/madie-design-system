@@ -1,12 +1,11 @@
 import React from "react";
 import Infotip from "./index";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
 
 export default {
     title: "Infotip",
     component: Infotip,
+    args: { lightIcon: false },
     decorators: [
-        withKnobs,
         (storyFn) => (
             <div style={{ marginTop: "120px", marginLeft: "100px" }}>
                 {storyFn()}
@@ -15,8 +14,8 @@ export default {
     ],
 };
 
-export const ExampleInfoTip = () => (
-    <Infotip label="Tooltip Content!" lightIcon={boolean("lightIcon", false)} />
+export const ExampleInfoTip = (args) => (
+    <Infotip label="Tooltip Content!" lightIcon={args.lightIcon} />
 );
 
 ExampleInfoTip.storyName = "qpp themed Infotip";

@@ -93,7 +93,7 @@ const SearchAndFilter = ({
                   style={{ cursor: "pointer" }}
                   onClick={onSearchClear}
                 >
-                  <IconButton>
+                  <IconButton aria-label="Clear search">
                     <ClearIcon />
                   </IconButton>
                 </InputAdornment>

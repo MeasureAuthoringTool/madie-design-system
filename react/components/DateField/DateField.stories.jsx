@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import DateField from "./DateField";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "DateField",
     component: DateField,
-    decorators: [withKnobs],
 };
 export const DateFieldComponent = (args) => {
     const [value, setValue] = useState("");

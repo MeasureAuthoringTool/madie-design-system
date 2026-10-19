@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import HowItWorks from "./index";
 
 export default {
     title: "HowItWorks",
     component: HowItWorks,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

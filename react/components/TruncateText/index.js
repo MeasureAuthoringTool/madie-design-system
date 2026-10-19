@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
+let idCounter = 0;
+
 const TruncateText = ({
     text,
     maxLength = 120,
@@ -10,6 +12,7 @@ const TruncateText = ({
     fontSize = "1rem",
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [contentId] = useState(() => `truncate-text-${++idCounter}`);
 
     if (!text || _.trim(text) === "") {
         return null;
@@ -21,10 +24,13 @@ const TruncateText = ({
 
     return (
         <div data-testid={`${dataTestId}-content`} style={{ fontSize }}>
-            <span>{displayedText}</span>
+            <span id={contentId}>{displayedText}</span>
             {text.length > maxLength && (
                 <IconButton
+                    type="button"
                     onClick={toggleExpanded}
+                    aria-expanded={isExpanded}
+                    aria-controls={contentId}
                     data-testid={`${dataTestId}-toggle-button`}
                     color="primary"
                     sx={{
@@ -33,6 +39,11 @@ const TruncateText = ({
                         cursor: "pointer",
                         textDecoration: "underline",
                         fontSize: "inherit",
+                        borderRadius: "2px",
+                        "&:focus-visible": {
+                            outline: "2px solid #0073c8",
+                            outlineOffset: "2px",
+                        },
                     }}
                 >
                     {isExpanded ? "Show less" : "Show more"}

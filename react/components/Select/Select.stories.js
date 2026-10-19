@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import Select from "./index";
 import { MenuItem, Box } from "@mui/material";
 
 export default {
     title: "Select",
     component: Select,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

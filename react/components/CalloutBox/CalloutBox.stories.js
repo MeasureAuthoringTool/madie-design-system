@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 
 import CalloutBox from "./index";
 
 export default {
     title: "CalloutBox",
     component: CalloutBox,
-    decorators: [withKnobs],
 };
 
 export const Default = () => {

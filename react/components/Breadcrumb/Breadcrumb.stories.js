@@ -1,17 +1,18 @@
 import React from "react";
 import Breadcrumb from "./index";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
 
 export default {
     title: "Breadcrumb",
     component: Breadcrumb,
-    decorators: [withKnobs],
+    args: {
+        newBreadcrumb: true,
+    },
 };
 
-export const ExampleLightBreadcrumb = () => (
+export const ExampleLightBreadcrumb = (args) => (
     <div className="qppds qpp-u-padding--16 qpp-u-fill--blue-80">
         <Breadcrumb
-            newBreadcrumb={boolean("newBreadcrumb", true)}
+            newBreadcrumb={args.newBreadcrumb}
             crumbs={[
                 {
                     url: "/",
@@ -32,10 +33,10 @@ export const ExampleLightBreadcrumb = () => (
 
 ExampleLightBreadcrumb.storyName = "Light";
 
-export const ExampleScreenreaderOnlyBreadcrumb = () => (
+export const ExampleScreenreaderOnlyBreadcrumb = (args) => (
     <div className="qppds qpp-u-padding--16 qpp-u-fill--blue-80">
         <Breadcrumb
-            newBreadcrumb={boolean("newBreadcrumb", true)}
+            newBreadcrumb={args.newBreadcrumb}
             crumbs={[
                 {
                     url: "/",
@@ -50,10 +51,10 @@ export const ExampleScreenreaderOnlyBreadcrumb = () => (
 );
 ExampleScreenreaderOnlyBreadcrumb.storyName = "SR Only Breadcrumb";
 
-export const ExampleDarkBreadcrumb = () => (
+export const ExampleDarkBreadcrumb = (args) => (
     <div className="qppds qpp-u-padding--16">
         <Breadcrumb
-            newBreadcrumb={boolean("newBreadcrumb", true)}
+            newBreadcrumb={args.newBreadcrumb}
             dark
             crumbs={[
                 {
