@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { TruncateText } from "../../components";
 
 describe("TruncateText", () => {
-    const longText = "abcdefghijklmnopqrstuvwxyz";
+    const longText = "This is a long description that should be truncated";
 
     it("renders full text without a toggle when within the limit", () => {
         render(<TruncateText text="short" maxLength={10} dataTestId="t" />);
@@ -33,6 +33,6 @@ describe("TruncateText", () => {
         const target = document.getElementById(
             button.getAttribute("aria-controls")
         );
-        expect(target).toHaveTextContent("abcde");
+        expect(target).toHaveTextContent("This");
     });
 });
