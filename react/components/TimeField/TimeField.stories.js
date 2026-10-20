@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import TimeField from "./TimeField";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "TimeField",
     component: TimeField,
-    decorators: [withKnobs],
 };
 export const TimeFieldComponent = (args) => {
     const [value, setValue] = useState("");

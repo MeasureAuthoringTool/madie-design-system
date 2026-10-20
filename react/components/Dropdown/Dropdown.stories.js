@@ -1,11 +1,9 @@
 import React from "react";
 import Dropdown from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Dropdown",
     component: Dropdown,
-    decorators: [withKnobs],
 };
 
 export const DropdownField = () => (

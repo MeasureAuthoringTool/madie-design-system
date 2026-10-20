@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieDialog from "./index";
 import TextArea from "../TextArea/index";
 import Select from "../Select/index";
@@ -11,7 +10,6 @@ import { DialogContent, Typography } from "@mui/material";
 export default {
     title: "MadieDialog",
     component: MadieDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

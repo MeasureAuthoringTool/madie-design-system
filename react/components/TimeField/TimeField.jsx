@@ -6,7 +6,7 @@ import InputLabel from "../InputLabel";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
-import { ReadOnlyTextField } from "../ReadOnlyTextField";
+import ReadOnlyTextField from "../ReadOnlyTextField";
 
 const timeFieldStyle = {
     width: "170px",

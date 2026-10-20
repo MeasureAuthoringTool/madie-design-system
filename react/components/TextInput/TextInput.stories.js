@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Text Input",
     component: TextInput,
-    decorators: [withKnobs],
 };
 
 const optionalProps = {

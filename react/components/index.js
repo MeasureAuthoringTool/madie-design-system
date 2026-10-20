@@ -29,7 +29,6 @@ import RadioButton from "./RadioButton/RadioButton";
 import ReadOnlyTextField from "./ReadOnlyTextField";
 import RichTextEditor from "./RichTextEditor";
 import Select from "./Select";
-import Spinner from "./UnwrappedSpinner";
 import TabPanel from "./Tabs/TabPanel";
 import Tabs from "./Tabs/index";
 import Tab from "./Tabs/Tab";
@@ -167,7 +166,6 @@ export {
     RichTextEditor,
     SearchAndFilter,
     Select,
-    Spinner,
     TabPanel,
     Tabs,
     Tab,

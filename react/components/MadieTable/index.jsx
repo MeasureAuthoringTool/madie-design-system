@@ -4,8 +4,20 @@ import { flexRender } from "@tanstack/react-table";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
-import tw from "twin.macro";
-import "styled-components/macro";
+import styled from "@emotion/styled";
+
+const StyledTable = styled.table`
+  min-width: 100%;
+`;
+
+const TH = styled.th`
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+`;
 
 const MadieTable = ({
   table,
@@ -15,16 +27,15 @@ const MadieTable = ({
   renderExpandedRow,
   emptyMessage = "No results were found",
   id="measureListTable",
-  dataTestId = "measure-list-tbl"
+  dataTestId = "measure-list-tbl",
+  ariaLabel,
 }) => {
-    const TH = tw.th`p-3 text-left text-sm font-bold capitalize`;
     const [hoveredHeader, setHoveredHeader] = useState(null);
 
   return (
-    <table
-      /* eslint-disable-next-line react/no-unknown-property */
-      tw="min-w-full"
+    <StyledTable
       id={id}
+      aria-label={ariaLabel}
       data-testid={dataTestId}
       className="tcl-table"
       style={{
@@ -39,11 +50,23 @@ const MadieTable = ({
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
               const isHovered = hoveredHeader?.includes(header.id);
+              const isSorted =
+                currentSort === header.column.id.replace("_", ".");
+              const ariaSort = header.column.getCanSort()
+                ? isSorted
+                  ? currentDirection === "ASC"
+                    ? "ascending"
+                    : currentDirection === "DESC"
+                    ? "descending"
+                    : "none"
+                  : "none"
+                : undefined;
 
               return (
                 <TH
                   key={header.id}
                   scope="col"
+                  aria-sort={ariaSort}
                   onMouseEnter={() => setHoveredHeader(header.id)}
                   onMouseLeave={() => setHoveredHeader(null)}
                   className="header-cell"
@@ -59,6 +82,8 @@ const MadieTable = ({
                       onClick={() =>
                         handleSort(header.id.replace("_", "."))
                       }
+                      onFocus={() => setHoveredHeader(header.id)}
+                      onBlur={() => setHoveredHeader(null)}
                       data-testid={`header-${header.id.replace("_", ".")}`}
                       title={
                         header.column.getCanSort()
@@ -139,7 +164,7 @@ const MadieTable = ({
                   </React.Fragment>
                 ))}
               </tbody>
-    </table>
+    </StyledTable>
   );
 };
 
@@ -157,6 +182,7 @@ MadieTable.propTypes = {
   emptyMessage: PropTypes.node,
 
   id: PropTypes.string,
+  ariaLabel: PropTypes.string,
   dataTestId: PropTypes.string,
 };
 

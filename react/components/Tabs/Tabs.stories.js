@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import "./tabs.scss";
 import Tabs from "./index";
 import Tab from "./Tab";
@@ -7,7 +6,6 @@ import Tab from "./Tab";
 export default {
     title: "Tabs",
     component: Tabs,
-    decorators: [withKnobs],
 };
 
 export const TypeA = () => {
