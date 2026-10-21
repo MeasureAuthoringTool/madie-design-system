@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieDeleteDialog from "./index";
 import Button from "../Button";
 export default {
     title: "MadieDeleteDialog",
     component: MadieDeleteDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

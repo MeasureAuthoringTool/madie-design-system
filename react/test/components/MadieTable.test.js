@@ -15,6 +15,7 @@ const TestTableWrapper = ({
   handleSort = jest.fn(),
   renderExpandedRow,
   emptyMessage,
+  ariaLabel,
 }) => {
   const table = useReactTable({
     data,
@@ -30,6 +31,7 @@ const TestTableWrapper = ({
       handleSort={handleSort}
       renderExpandedRow={renderExpandedRow}
       emptyMessage={emptyMessage}
+      ariaLabel={ariaLabel}
     />
   );
 };
@@ -187,5 +189,41 @@ it("renders descending sort icon when currentSort is DESC", () => {
     screen.getByTestId("KeyboardArrowDownIcon")
   ).toBeInTheDocument();
 });
+
+  it("exposes sort state through aria-sort on the column header", () => {
+    render(
+      <TestTableWrapper
+        data={data}
+        columns={columns}
+        currentSort="name"
+        currentDirection="ASC"
+      />
+    );
+    expect(
+      screen.getByRole("columnheader", { name: /measure name/i })
+    ).toHaveAttribute("aria-sort", "ascending");
+  });
+
+  it("marks unsorted sortable headers with aria-sort none", () => {
+    render(<TestTableWrapper data={data} columns={columns} />);
+    expect(
+      screen.getByRole("columnheader", { name: /measure name/i })
+    ).toHaveAttribute("aria-sort", "none");
+  });
+
+  it("makes sortable headers keyboard focusable and shows the sort affordance on focus", () => {
+    render(<TestTableWrapper data={data} columns={columns} />);
+    const button = screen.getByRole("button", { name: /measure name/i });
+    button.focus();
+    expect(button).toHaveFocus();
+    expect(screen.getByTestId("unfold-more-icon")).toBeInTheDocument();
+  });
+
+  it("applies an accessible name to the table", () => {
+    render(
+      <TestTableWrapper data={data} columns={columns} ariaLabel="Measures" />
+    );
+    expect(screen.getByRole("table", { name: "Measures" })).toBeInTheDocument();
+  });
 
 });

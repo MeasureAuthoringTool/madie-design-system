@@ -1,12 +1,10 @@
 import React from "react";
 import MadieAlert from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Madie Alert",
     component: MadieAlert,
     decorators: [
-        withKnobs,
         (storyFn) => (
             <div style={{ padding: "120px", backgroundColor: "gray" }}>
                 {storyFn()}

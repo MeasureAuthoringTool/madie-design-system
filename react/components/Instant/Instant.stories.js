@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Instant from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Instant",
     component: Instant,
-    decorators: [withKnobs],
 };
 
 export const InstantComponent = (args) => {

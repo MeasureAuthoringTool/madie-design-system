@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Modal from "./index";
-import { withKnobs, boolean, text } from "@storybook/addon-knobs";
 import { humanReadable } from "./HumanReadable";
 
 export default {
     title: "Modal",
     component: Modal,
-    decorators: [withKnobs],
+    args: {
+        isOpen: false,
+        titleText: "Title Text",
+        bodyText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac pulvinar massa, in mattis ligula. Vestibulum enim velit, ullamcorper vitae lorem ullamcorper, blandit fringilla mauris.",
+    },
 };
 
 const useModal = () => {
@@ -16,9 +20,9 @@ const useModal = () => {
     return [open, openModal, closeModal];
 };
 
-export const WithDesignSystem = () => {
+export const WithDesignSystem = (args) => {
     const [open, openModal, closeModal] = useModal();
-    const knobIsOpen = boolean("isOpen", false);
+    const knobIsOpen = args.isOpen;
     return (
         <div className="qpp-u-padding--12">
             <button className="qpp-c-button" onClick={openModal}>
@@ -27,23 +31,18 @@ export const WithDesignSystem = () => {
             <Modal
                 useDesignSystem
                 isOpen={open || knobIsOpen}
-                title={text("Title text", "Title Text")}
+                title={args.titleText}
                 onRequestClose={closeModal}
             >
-                <p>
-                    {text(
-                        "bodyText",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac pulvinar massa, in mattis ligula. Vestibulum enim velit, ullamcorper vitae lorem ullamcorper, blandit fringilla mauris."
-                    )}
-                </p>
+                <p>{args.bodyText}</p>
             </Modal>
         </div>
     );
 };
 
-export const WithDesignSystemDialog = () => {
+export const WithDesignSystemDialog = (args) => {
     const [open, openModal, closeModal] = useModal();
-    const knobIsOpen = boolean("isOpen", false);
+    const knobIsOpen = args.isOpen;
     return (
         <div className="qpp-u-padding--12">
             <button className="qpp-c-button" onClick={openModal}>
@@ -52,7 +51,7 @@ export const WithDesignSystemDialog = () => {
             <Modal
                 useDesignSystem
                 isOpen={open || knobIsOpen}
-                title={text("Title text", "Title Text")}
+                title={args.titleText}
                 onRequestClose={closeModal}
                 primary={{
                     title: "Yes, go for it",
@@ -65,20 +64,15 @@ export const WithDesignSystemDialog = () => {
                     title: "No, take me back",
                 }}
             >
-                <p>
-                    {text(
-                        "bodyText",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac pulvinar massa, in mattis ligula. Vestibulum enim velit, ullamcorper vitae lorem ullamcorper, blandit fringilla mauris."
-                    )}
-                </p>
+                <p>{args.bodyText}</p>
             </Modal>
         </div>
     );
 };
 
-export const WithDesignSystemOverflow = () => {
+export const WithDesignSystemOverflow = (args) => {
     const [open, openModal, closeModal] = useModal();
-    const knobIsOpen = boolean("isOpen", false);
+    const knobIsOpen = args.isOpen;
     return (
         <div className="qpp-u-padding--12">
             <button className="qpp-c-button" onClick={openModal}>
@@ -87,7 +81,7 @@ export const WithDesignSystemOverflow = () => {
             <Modal
                 useDesignSystem
                 isOpen={open || knobIsOpen}
-                title={text("Title text", "Title Text")}
+                title={args.titleText}
                 onRequestClose={closeModal}
                 primary={{
                     title: "Yes, go for it",
@@ -167,9 +161,9 @@ export const WithDesignSystemOverflow = () => {
     );
 };
 
-export const WithDesignSystemOverflowForHR = () => {
+export const WithDesignSystemOverflowForHR = (args) => {
     const [open, openModal, closeModal] = useModal();
-    const knobIsOpen = boolean("isOpen", false);
+    const knobIsOpen = args.isOpen;
 
     const hr = humanReadable();
 
