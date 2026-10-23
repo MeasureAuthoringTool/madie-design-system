@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MadieAlert from "./index";
+import MinimizedAlert from "../MinimizedAlert";
 
 export default {
     title: "Madie Alert",
