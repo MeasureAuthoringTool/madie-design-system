@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import DateTimeField from "./DateTimeField";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "DateTimeField",
     component: DateTimeField,
-    decorators: [withKnobs],
 };
 
 export const TimeDateFieldComponent = (args) => {

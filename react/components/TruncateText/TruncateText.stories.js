@@ -1,11 +1,9 @@
 import * as React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import TruncateText from "./index";
 
 export default {
     title: "Truncate Text",
     component: TruncateText,
-    decorators: [withKnobs],
 };
 
 export const FullText = () => (

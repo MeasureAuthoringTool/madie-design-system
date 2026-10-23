@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Popover from "./index";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Popover",
     component: Popover,
-    decorators: [withKnobs],
 };
 
 export const PopOver = () => {

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import Toast from "./index";
 
 export default {
     title: "Toast",
     component: Toast,
-    decorators: [withKnobs],
 };
 
 export const SuccessToast = () => {

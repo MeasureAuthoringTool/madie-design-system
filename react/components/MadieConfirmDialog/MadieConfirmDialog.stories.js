@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import MadieConfirmDialog from "./index";
 import Button from "../Button";
 export default {
     title: "MadieConfirmDialog",
     component: MadieConfirmDialog,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

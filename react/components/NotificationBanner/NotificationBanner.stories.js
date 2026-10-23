@@ -1,21 +1,22 @@
 import React from "react";
 import NotificationBanner from "./index";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
 
 export default {
     title: "NotificationBanner",
     component: NotificationBanner,
-    decorators: [withKnobs],
+    args: {
+        dismissable: false,
+    },
 };
 
-export const ExampleNotificationBanner = () => (
+export const ExampleNotificationBanner = (args) => (
     <NotificationBanner
         result={{
             content: "CONTENT",
             label: "Label",
             name: "name",
             color: "blue",
-            dismissable: boolean("dismissable", false),
+            dismissable: args.dismissable,
         }}
     />
 );

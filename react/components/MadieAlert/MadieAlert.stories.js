@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import MadieAlert from "./index";
-import MinimizedAlert from "../MinimizedAlert";
-import { withKnobs } from "@storybook/addon-knobs";
 
 export default {
     title: "Madie Alert",
     component: MadieAlert,
     decorators: [
-        withKnobs,
         (storyFn) => (
             <div
                 style={{ padding: "min(120px, 5vw)", backgroundColor: "gray" }}

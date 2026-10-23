@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import RichTextEditor from "./index";
 export default {
     title: "RichTextEditor",
     component: RichTextEditor,
     decorators: [
-        withKnobs,
         (storyFn) => <div style={{ padding: "120px" }}>{storyFn()}</div>,
     ],
 };

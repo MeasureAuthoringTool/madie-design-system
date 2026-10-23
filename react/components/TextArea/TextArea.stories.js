@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withKnobs } from "@storybook/addon-knobs";
 import TextArea from "./index";
 import { FormHelperText } from "@mui/material";
 export default {
     title: "TextArea",
     component: TextArea,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (

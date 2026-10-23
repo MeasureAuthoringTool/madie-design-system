@@ -1,12 +1,10 @@
 import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
 import NumberInput from "./index";
 import PropTypes from "prop-types";
 
 export default {
     title: "NumberInput",
     component: NumberInput,
-    decorators: [withKnobs],
 };
 
 const Wrapper = ({ children }) => (
