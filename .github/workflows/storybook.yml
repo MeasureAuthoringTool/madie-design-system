@@ -7,20 +7,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./react
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.1
-
-      - name: Use pinned Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: react/package.json
-
-      - name: Use pinned npm
-        run: npm install --global "npm@$(node -p 'require("./package.json").volta.npm')"
 
       - name: Install and Build
         run: |
@@ -31,4 +20,4 @@ jobs:
         uses: "@madie/madie-design-system/github-pages-deploy-action@3.6.2"
         with:
           branch: develop
-          folder: react/storybook-static # output folder from `npm run build-storybook`
+          folder: storybook-static # output folder from `npm run build-storybook`
