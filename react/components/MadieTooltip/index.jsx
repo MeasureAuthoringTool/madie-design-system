@@ -28,7 +28,8 @@ const MadieToolTip =
               {...rest}
         >
               <div
-                aria-describedby={id} 
+                aria-describedby={id}
+                role="img"
                 tabIndex={0}
                 style={{ width: widthContainer, height: heightContainer}}
                 data-testId={id} 
