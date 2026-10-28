@@ -42,6 +42,60 @@ beforeAll(() => {
 describe("RichTextEditor Component", () => {
     const mockOnChange = jest.fn();
 
+    it("renders valid default ARIA states without undefined attributes", () => {
+        render(
+            <RichTextEditor
+                id="test-editor"
+                label="Description"
+                content=""
+                onChange={mockOnChange}
+            />
+        );
+
+        const editor = screen.getByRole("textbox", { name: "Description" });
+        expect(editor).toHaveAttribute("aria-invalid", "false");
+        expect(editor).toHaveAttribute("aria-required", "false");
+        expect(editor).not.toHaveAttribute("aria-describedby");
+    });
+
+    it("updates ARIA states and helper text references when validation changes", async () => {
+        const props = {
+            id: "test-editor",
+            label: "Description",
+            content: "",
+            onChange: mockOnChange,
+        };
+        const { rerender } = render(<RichTextEditor {...props} />);
+
+        rerender(
+            <RichTextEditor
+                {...props}
+                required
+                error
+                helperText="This field is required."
+            />
+        );
+        const editor = screen.getByRole("textbox", { name: "Description" });
+        await waitFor(() => {
+            expect(editor).toHaveAttribute("aria-invalid", "true");
+            expect(editor).toHaveAttribute("aria-required", "true");
+            expect(editor).toHaveAttribute(
+                "aria-describedby",
+                "test-editor-helper-text"
+            );
+        });
+        expect(
+            document.getElementById("test-editor-helper-text")
+        ).toHaveTextContent("This field is required.");
+
+        rerender(<RichTextEditor {...props} error={false} required={false} />);
+        await waitFor(() => {
+            expect(editor).toHaveAttribute("aria-invalid", "false");
+            expect(editor).toHaveAttribute("aria-required", "false");
+            expect(editor).not.toHaveAttribute("aria-describedby");
+        });
+    });
+
     it("renders the RichTextEditor with label and content", () => {
         render(
             <RichTextEditor
