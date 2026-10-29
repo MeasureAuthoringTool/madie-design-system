@@ -6,8 +6,8 @@ import TooltipIcon from "../MadieTooltipIcon";
 const MadieToolTip = 
 ({
   id,
-  widthContainer = 14,
-  heightContainer = 14,
+  widthContainer = 24,
+  heightContainer = 24,
   ...rest
 }) => {
     return (
@@ -28,9 +28,15 @@ const MadieToolTip =
               {...rest}
         >
               <div
-                aria-describedby={id} 
+                aria-describedby={id}
+                role="img"
                 tabIndex={0}
-                style={{ width: widthContainer, height: heightContainer}}
+                style={{
+                  width: widthContainer,
+                  height: heightContainer,
+                  flexShrink: 0,
+                  display: "inline-flex",
+                }}
                 data-testId={id} 
                 id={id}
               >

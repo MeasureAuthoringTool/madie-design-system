@@ -89,9 +89,14 @@ const DateField = ({
                         textField: (params) => {
                             const { InputProps } = params;
                             InputProps["data-testid"] = id;
-                            InputProps["aria-required"] = required;
                             return {
                                 id: id,
+                                inputProps: {
+                                    ...params.inputProps,
+                                    ...rest.inputProps,
+                                    "aria-required": required,
+                                    required,
+                                },
                                 label,
                                 sx: { ...dateTextFieldStyle, ...textFieldSx },
                                 value: value ? dayjs.utc(value) : null,
