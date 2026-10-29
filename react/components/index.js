@@ -14,6 +14,7 @@ import InputLabel from "./InputLabel";
 import FormControlLabel from "./FormControlLabel";
 import HowItWorks from "./HowItWorks";
 import MadieAlert from "./MadieAlert";
+import MinimizedAlert from "./MinimizedAlert";
 import MadieDialog from "./MadieDialog";
 import MadieDiscardDialog from "./MadieDiscardDialog";
 import MadieDeleteDialog from "./MadieDeleteDialog";
@@ -150,6 +151,7 @@ export {
     Instant,
     Modal,
     MadieAlert,
+    MinimizedAlert,
     MadieDialog,
     MadieDiscardDialog,
     MadieDeleteDialog,
