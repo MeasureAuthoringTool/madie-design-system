@@ -7,6 +7,30 @@ import { render, screen } from "@testing-library/react";
 import dayjs from "dayjs";
 
 describe("DateField", () => {
+    it.each([true, false])(
+        "places required state on the native input when required is %s",
+        (required) => {
+            render(
+                <DateField
+                    id="measurement-period-start"
+                    label="Start Date"
+                    required={required}
+                    handleDateChange={jest.fn()}
+                    inputProps={{ "aria-describedby": "date-help" }}
+                />
+            );
+
+            const input = screen.getByRole("textbox", { name: "Start Date" });
+            expect(input).toHaveAttribute("aria-required", String(required));
+            expect(input.required).toBe(required);
+            expect(input).toHaveAttribute("aria-describedby", "date-help");
+            expect(input).toHaveAttribute("placeholder", "MM/DD/YYYY");
+            expect(
+                screen.getByTestId("measurement-period-start")
+            ).not.toHaveAttribute("aria-required");
+        }
+    );
+
     it("DateField Exists", async () => {
         await act(async () => {
             const { findByText, getByDisplayValue } = render(
