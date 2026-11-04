@@ -6,10 +6,10 @@ import CancelIcon from "@mui/icons-material/Cancel"; // error
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; //success
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"; //copy
 import FullscreenExitRoundedIcon from "@mui/icons-material/FullscreenExitRounded";
-import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import MinimizedAlert from "../MinimizedAlert";
 import Toast from "../Toast/index";
 import classNames from "classnames";
 import PropTypes from "prop-types";
@@ -163,6 +163,8 @@ const MadieAlert = ({
     closeButtonProps,
     copyButton,
     alerts = null,
+    minimizedAlerts: controlledMinimizedAlerts,
+    onMinimizedAlertsChange,
 }) => {
     // Consolidate related state
     const [state, setState] = useState({
@@ -173,7 +175,8 @@ const MadieAlert = ({
     });
 
     // Create alias for readability
-    const { toastOpen, copyText, minimizedAlerts, individualErrors } = state;
+    const { toastOpen, copyText, individualErrors } = state;
+    const minimizedAlerts = controlledMinimizedAlerts ?? state.minimizedAlerts;
 
     // Use a single update function
     const updateState = (updates) => {
@@ -229,14 +232,27 @@ const MadieAlert = ({
     }, [alertsArray]);
 
     // Utility functions for managing minimized state
+    const changeMinimizedAlerts = (nextMinimizedAlerts) => {
+        updateState({ minimizedAlerts: nextMinimizedAlerts });
+        if (onMinimizedAlertsChange) {
+            const errorCount = Object.keys(nextMinimizedAlerts).reduce(
+                (sum, index) =>
+                    sum +
+                    (nextMinimizedAlerts[index]
+                        ? individualErrors[index] || 0
+                        : 0),
+                0
+            );
+            onMinimizedAlertsChange(nextMinimizedAlerts, errorCount);
+        }
+    };
+
     const minimizeAlert = (index) => {
-        updateState({
-            minimizedAlerts: { ...minimizedAlerts, [index]: true },
-        });
+        changeMinimizedAlerts({ ...minimizedAlerts, [index]: true });
     };
 
     const restoreAllAlerts = () => {
-        updateState({ minimizedAlerts: {} });
+        changeMinimizedAlerts({});
     };
 
     // Calculate minimized alerts info
@@ -335,37 +351,13 @@ const MadieAlert = ({
             {alertsArray.map((alert, index) => renderAlert(alert, index))}
 
             {/* Show minimized indicator if any alerts are minimized */}
-            {minimizedIndices.length > 0 && (
-                <div
-                    style={{
-                        position: "absolute",
-                        right: "32px",
-                        top: "10px",
-                        display: "flex",
-                        alignItems: "center",
-                        cursor: "pointer",
-                    }}
-                    data-testid="minimized-alert"
-                    className="minimized-alert"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        restoreAllAlerts();
-                    }}
-                >
-                    <WarningRoundedIcon
-                        sx={{ color: "yellow", marginRight: "5px" }}
+            {controlledMinimizedAlerts === undefined &&
+                minimizedIndices.length > 0 && (
+                    <MinimizedAlert
+                        errorCount={totalMinimizedErrors}
+                        onClick={restoreAllAlerts}
                     />
-                    <span
-                        data-testid="minimized-alert-text"
-                        style={{ color: "white", fontSize: "16px" }}
-                    >
-                        Display Alerts{" "}
-                        {totalMinimizedErrors > 0
-                            ? `(${totalMinimizedErrors})`
-                            : ""}
-                    </span>
-                </div>
-            )}
+                )}
         </div>
     );
 };
@@ -380,6 +372,8 @@ MadieAlert.propTypes = {
     closeButtonProps: PropTypes.object,
     copyButton: PropTypes.bool,
     minimizeAlerts: PropTypes.bool,
+    minimizedAlerts: PropTypes.objectOf(PropTypes.bool),
+    onMinimizedAlertsChange: PropTypes.func,
     alerts: PropTypes.arrayOf(
         PropTypes.shape({
             type: PropTypes.string,
